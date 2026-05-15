@@ -4,6 +4,33 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>MasterStock USA | Real lots, real manifests, Net-30 terms</title>
+<!-- Lottie player is injected lazily via IntersectionObserver. See script at end of body. -->
+<style id="lottie-base-style">
+  .ms-lottie { display: inline-block; line-height: 0; }
+  .ms-lottie.hidden-until-mobile { display: none; }
+  @media (min-width: 768px) { .ms-lottie.hidden-until-mobile { display: inline-block; } }
+  .ms-lottie lottie-player { display: block; width: 100%; height: 100%; }
+  /* Hide static fallback once a Lottie successfully renders */
+  .ms-lottie[data-lottie-loaded="1"] > .ms-lottie-fallback { display: none; }
+  /* Hero illustration sizing */
+  .hero-illustration { width: 100%; max-width: 520px; aspect-ratio: 5 / 4; margin: 0 auto; }
+  /* Value card icon sizing for Lottie */
+  .vc-icon.has-lottie { width: 56px; height: 56px; padding: 4px; background: linear-gradient(135deg,#E8F0FE 0%,#d8e6ff 100%); }
+  .vc-icon.has-lottie .ms-lottie { width: 100%; height: 100%; }
+  /* Milestone Lottie sits inside the dot */
+  .milestone-dot .ms-lottie { width: 32px; height: 32px; }
+  .milestone-dot.has-lottie svg.milestone-icon { display: none; }
+  /* Founder micro-anim */
+  .founder-micro { width: 64px; height: 48px; margin: 14px auto 0; opacity: 0.85; }
+  /* Flow node lottie */
+  .flow-node .ms-lottie { width: 26px; height: 26px; }
+  .flow-node.has-lottie .flow-node-icon svg { display: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .ms-lottie lottie-player { display: none; }
+    .ms-lottie .ms-lottie-fallback { display: inline-block !important; }
+    .ms-lottie[data-lottie-loaded="1"] > .ms-lottie-fallback { display: inline-block !important; }
+  }
+</style>
 <link rel="icon" type="image/png" href="images/logo-final.png" />
 <link rel="apple-touch-icon" href="images/logo-final.png" />
 <meta name="description" content="Verified excess inventory from US brands, distributors, and 3PLs. Full manifests, Net-30 terms, US-domestic pickup. No mystery pallets." />
@@ -1124,10 +1151,10 @@
       <div class="lg:col-span-6">
         <span class="b-eyebrow reveal"><span class="dot"></span>Onboarding buyers now</span>
         <h1 class="mt-6 font-extrabold reveal reveal-delay-1">
-          <span class="gradient-text">Real</span> lots. Real manifests. Net-30 terms.
+          <span class="gradient-text">Real</span> pallets. Real manifests. Net-30 terms.
         </h1>
         <p class="mt-6 text-lg sm:text-xl text-slate-300 max-w-xl leading-relaxed reveal reveal-delay-2">
-          You know the pain. Pallets show up, the manifest doesn't match, and your customer is waiting. We fix that. Every lot on MasterStock comes straight from US brands, distributors, and 3PLs &mdash; with the manifest you actually saw.
+          You ordered a pallet. What arrived didn't match the manifest. Your customer is waiting. We fix that. Jose walks the warehouse floor every week. Every lot gets opened, counted, and graded before it ships out of the US.
         </p>
         <div class="mt-8 flex flex-col sm:flex-row gap-3 reveal reveal-delay-3">
           <a href="/request-access.html" class="b-btn-primary">
@@ -1137,6 +1164,16 @@
           <a href="/login.html" class="b-btn-secondary">Sign in</a>
         </div>
         <p class="mt-5 text-sm text-slate-400 reveal reveal-delay-4">No mystery pallets. No broker stack. Pick up in the US, ship when you're ready.</p>
+
+        <!-- Hero illustration: warehouse / logistics scene (lazy Lottie, mobile only stacks above catalog) -->
+        <div class="mt-10 lg:hidden">
+          <div class="ms-lottie hero-illustration"
+               data-lottie-src="https://assets10.lottiefiles.com/packages/lf20_q5pk6p1k.json"
+               data-lottie-speed="0.8"
+               aria-hidden="true">
+            <div class="ms-lottie-fallback" aria-hidden="true"></div>
+          </div>
+        </div>
       </div>
 
       <!-- Catalog preview mock -->
@@ -1149,7 +1186,7 @@
           </div>
           <div class="catalog-body">
             <div class="catalog-header">
-              <h4>Available lots &mdash; this week</h4>
+              <h4>Available lots this week</h4>
               <span>12 new</span>
             </div>
             <div class="catalog-filters">
@@ -1234,7 +1271,7 @@
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0847A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 4v16"/></svg>
         </div>
         <h3 class="text-xl font-bold text-ink">Browse this week's lots</h3>
-        <p class="mt-3 text-gray-600 leading-relaxed">Sourced direct from US brands, distributors, and 3PLs. Filter by category, region, and volume.</p>
+        <p class="mt-3 text-gray-600 leading-relaxed">Pulled direct from US brands, distributors, and 3PLs. Filter by category, region, and pallet count.</p>
       </div>
 
       <div class="step-card reveal">
@@ -1242,8 +1279,8 @@
           <span class="step-num">2</span>
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0847A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg>
         </div>
-        <h3 class="text-xl font-bold text-ink">See the full manifest</h3>
-        <p class="mt-3 text-gray-600 leading-relaxed">SKU-level detail, condition grading, and pickup location. What you approve is what ships.</p>
+        <h3 class="text-xl font-bold text-ink">Read the full manifest</h3>
+        <p class="mt-3 text-gray-600 leading-relaxed">Every SKU listed. Condition graded. Pickup address on the page. What you approve is what loads.</p>
       </div>
 
       <div class="step-card reveal">
@@ -1251,8 +1288,8 @@
           <span class="step-num">3</span>
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0847A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h13l5 5v5h-2"/><path d="M3 7v10h2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg>
         </div>
-        <h3 class="text-xl font-bold text-ink">Pay on Net-30, ship when ready</h3>
-        <p class="mt-3 text-gray-600 leading-relaxed">Pick up in the US and route the freight your way. Net-30 available once you're onboarded.</p>
+        <h3 class="text-xl font-bold text-ink">Pickup now, pay in 30 days</h3>
+        <p class="mt-3 text-gray-600 leading-relaxed">Route your own truck. Net-30 unlocks once your credit review clears. First lot can move the same week.</p>
       </div>
     </div>
   </div>
@@ -1264,39 +1301,48 @@
     <div class="max-w-3xl reveal">
       <p class="section-eyebrow">What's different here</p>
       <h2 class="mt-3 text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-ink">What you actually get.</h2>
+      <p class="mt-4 text-lg text-gray-600 max-w-2xl">Built for wholesale buyers who got burned once and won't get burned again.</p>
     </div>
 
     <div class="mt-14 bento">
       <div class="value-card span-2 reveal">
-        <div class="vc-icon">
-          <span class="anim-lock"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0847A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span>
+        <div class="vc-icon has-lottie">
+          <div class="ms-lottie" data-lottie-src="https://assets1.lottiefiles.com/packages/lf20_xlmpz8z3.json" aria-hidden="true">
+            <span class="ms-lottie-fallback anim-lock"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0847A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span>
+          </div>
         </div>
         <h3>No mystery pallets</h3>
-        <p>Every lot ships with the manifest you saw. SKU-level detail, condition grading, pickup location. If it's off at pickup, we make it right or you don't pay.</p>
+        <p>Every lot ships with the manifest you saw. SKU counts, condition grades, pickup address. If the count is off by more than 5%, you get a pro-rated credit inside a week. We've already cut those checks.</p>
       </div>
 
       <div class="value-card reveal reveal-delay-1">
-        <div class="vc-icon">
-          <span class="anim-dollar"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0847A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>
+        <div class="vc-icon has-lottie">
+          <div class="ms-lottie" data-lottie-src="https://assets10.lottiefiles.com/packages/lf20_touohxv0.json" aria-hidden="true">
+            <span class="ms-lottie-fallback anim-dollar"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0847A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>
+          </div>
         </div>
         <h3>Net-30 terms</h3>
-        <p>Move volume without locking up your cash on every container.</p>
+        <p>Stop fronting cash on every container. Once you're approved, you pay thirty days after pickup.</p>
       </div>
 
       <div class="value-card reveal reveal-delay-2">
-        <div class="vc-icon">
-          <span class="anim-truck"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0847A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v10H3z"/><path d="M14 10h4l3 3v4h-7z"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></span>
+        <div class="vc-icon has-lottie">
+          <div class="ms-lottie" data-lottie-src="https://assets4.lottiefiles.com/packages/lf20_dchqomgm.json" aria-hidden="true">
+            <span class="ms-lottie-fallback anim-truck"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0847A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v10H3z"/><path d="M14 10h4l3 3v4h-7z"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></span>
+          </div>
         </div>
         <h3>US-domestic pickup</h3>
-        <p>Skip the import paperwork. Take title in the US and route the freight your way.</p>
+        <p>Take title in Dover, Miami, or LA. Route your own freight. The import side is yours.</p>
       </div>
 
       <div class="value-card reveal reveal-delay-3">
-        <div class="vc-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0847A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="anim-check" d="M4 12l5 5L20 6"/></svg>
+        <div class="vc-icon has-lottie">
+          <div class="ms-lottie" data-lottie-src="https://assets3.lottiefiles.com/packages/lf20_jcikwtux.json" aria-hidden="true">
+            <span class="ms-lottie-fallback"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0847A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="anim-check" d="M4 12l5 5L20 6"/></svg></span>
+          </div>
         </div>
-        <h3>Direct from brands &amp; 3PLs</h3>
-        <p>No broker stack inflating the price. You see the source.</p>
+        <h3>Direct from brands and 3PLs</h3>
+        <p>No four-broker chain marking up the pallet. You see who the seller is once you're under NDA.</p>
       </div>
     </div>
   </div>
@@ -1319,7 +1365,8 @@
         </div>
         <div class="founder-name">Jose Palomino</div>
         <div class="founder-role">Cofounder, US ops</div>
-        <p class="founder-quote">"I spend half my week on US warehouse floors. If a lot makes it into our catalog, I've seen the pallets myself."</p>
+        <p class="founder-quote">"I'm in a different warehouse three days a week. If a pallet is on our catalog, I've opened it."</p>
+        <div class="founder-micro ms-lottie" data-lottie-src="https://assets4.lottiefiles.com/packages/lf20_dchqomgm.json" aria-hidden="true"></div>
       </div>
 
       <div class="founder-card tilt reveal reveal-delay-1">
@@ -1328,8 +1375,9 @@
           <span class="avatar-core">EG</span>
         </div>
         <div class="founder-name">Esteban Gonzalez</div>
-        <div class="founder-role">Cofounder, Tech &amp; data</div>
-        <p class="founder-quote">"I built the system that vets every manifest. We don't list what we can't verify."</p>
+        <div class="founder-role">Cofounder, tech and data</div>
+        <p class="founder-quote">"I wrote the system that reconciles every manifest line. If we can't verify a SKU, it doesn't go live."</p>
+        <div class="founder-micro ms-lottie" data-lottie-src="https://assets3.lottiefiles.com/packages/lf20_jcikwtux.json" aria-hidden="true"></div>
       </div>
     </div>
   </div>
@@ -1353,46 +1401,51 @@
         <div class="milestone">
           <div class="milestone-dot">
             <svg class="milestone-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M9 11V8a3 3 0 0 1 6 0v3"/></svg>
+            <div class="ms-lottie" data-lottie-src="https://assets9.lottiefiles.com/packages/lf20_kk62um5b.json" aria-hidden="true"></div>
           </div>
           <div class="milestone-day">Day 0</div>
           <h3 class="milestone-title">You request access</h3>
-          <p class="milestone-body">We review your export profile. Usually within 24 hours.</p>
+          <p class="milestone-body">We read your profile, check references, and reply within one business day.</p>
         </div>
 
         <div class="milestone">
           <div class="milestone-dot">
             <svg class="milestone-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 9h16M9 3v4M15 3v4"/></svg>
+            <div class="ms-lottie" data-lottie-src="https://assets10.lottiefiles.com/packages/lf20_yyjaansa.json" aria-hidden="true"></div>
           </div>
           <div class="milestone-day">Day 1</div>
           <h3 class="milestone-title">You see this week's lots</h3>
-          <p class="milestone-body">Full manifests in your account. No surprises, no teasers.</p>
+          <p class="milestone-body">Full manifests, SKU by SKU. The pallet photos were taken this week.</p>
         </div>
 
         <div class="milestone">
           <div class="milestone-dot">
             <svg class="milestone-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4M9 13h6M9 17h6"/></svg>
+            <div class="ms-lottie" data-lottie-src="https://assets3.lottiefiles.com/packages/lf20_jcikwtux.json" aria-hidden="true"></div>
           </div>
           <div class="milestone-day">Day 2</div>
           <h3 class="milestone-title">You pick a lot</h3>
-          <p class="milestone-body">Confirm pickup window and terms (Cash or Net-30).</p>
+          <p class="milestone-body">Lock the pickup window. Choose cash on pickup or Net-30 if you're approved.</p>
         </div>
 
         <div class="milestone">
           <div class="milestone-dot">
             <svg class="milestone-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v10H3z"/><path d="M14 10h4l3 3v4h-7z"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>
+            <div class="ms-lottie" data-lottie-src="https://assets4.lottiefiles.com/packages/lf20_dchqomgm.json" aria-hidden="true"></div>
           </div>
           <div class="milestone-day">Day 3 to 5</div>
-          <h3 class="milestone-title">Lot ships</h3>
-          <p class="milestone-body">Domestic pickup from US warehouse, or coordinated export.</p>
+          <h3 class="milestone-title">The pallets move</h3>
+          <p class="milestone-body">Your carrier picks up in the US, or we arrange the export drayage for you.</p>
         </div>
 
         <div class="milestone">
           <div class="milestone-dot">
             <svg class="milestone-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>
+            <div class="ms-lottie" data-lottie-src="https://assets1.lottiefiles.com/packages/lf20_touohxv0.json" aria-hidden="true"></div>
           </div>
           <div class="milestone-day">Day 30</div>
           <h3 class="milestone-title">Net-30 settles</h3>
-          <p class="milestone-body">Next lots are already waiting in your account.</p>
+          <p class="milestone-body">Wire clears. Next week's lots are already sitting in your account.</p>
         </div>
       </div>
     </div>
@@ -1404,8 +1457,8 @@
   <div class="max-w-6xl mx-auto px-5 sm:px-8 py-20 lg:py-24">
     <div class="text-center max-w-2xl mx-auto reveal">
       <p class="section-eyebrow">The flow</p>
-      <h2 class="mt-3 text-3xl sm:text-4xl font-extrabold tracking-tight text-ink">Where the volume moves.</h2>
-      <p class="mt-4 text-base text-gray-600">US-domestic only. We don't sell to end consumers.</p>
+      <h2 class="mt-3 text-3xl sm:text-4xl font-extrabold tracking-tight text-ink">Where the pallets move.</h2>
+      <p class="mt-4 text-base text-gray-600">US suppliers in, vetted catalog out, Tier-1 wholesale buyers across the Americas. We never sell to the end shopper.</p>
     </div>
 
     <div class="flow-wrap reveal">
@@ -1569,8 +1622,8 @@
   <div class="max-w-7xl mx-auto px-5 sm:px-8 py-20 lg:py-28">
     <div class="b-cta p-10 sm:p-14 lg:p-20 reveal">
       <div class="relative z-10 max-w-3xl">
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">Want to see this week's lots?</h2>
-        <p class="mt-5 text-lg text-blue-100 max-w-2xl">Request access. We review buyer profiles within two business days and unlock the live catalog once you're in.</p>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">Want to see this week's pallets?</h2>
+        <p class="mt-5 text-lg text-blue-100 max-w-2xl">Send the request form. We read every profile by hand and reply within one business day. If you're a fit, you're in the catalog the same week.</p>
         <div class="mt-8 flex flex-col sm:flex-row gap-3">
           <a href="/request-access.html" class="b-btn-primary">
             Request access
@@ -1724,6 +1777,72 @@
       card.addEventListener('mousemove', onMove);
       card.addEventListener('mouseleave', onLeave);
     });
+  })();
+
+  // Lazy Lottie loader: only inject lottie-player CDN once a .ms-lottie scrolls into view.
+  // Respects prefers-reduced-motion (skips entirely) and silently falls back to static SVG.
+  (function(){
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) return;
+    var nodes = document.querySelectorAll('.ms-lottie[data-lottie-src]');
+    if (!nodes.length) return;
+    var playerLoaded = false;
+    var playerPromise = null;
+    function loadPlayer(){
+      if (playerLoaded) return Promise.resolve();
+      if (playerPromise) return playerPromise;
+      playerPromise = new Promise(function(resolve, reject){
+        var s = document.createElement('script');
+        s.src = 'https://unpkg.com/@lottiefiles/lottie-player@2.0.4/dist/lottie-player.js';
+        s.async = true;
+        s.onload = function(){ playerLoaded = true; resolve(); };
+        s.onerror = function(){ reject(new Error('lottie-player failed')); };
+        document.head.appendChild(s);
+      });
+      return playerPromise;
+    }
+    function activate(node){
+      var src = node.getAttribute('data-lottie-src');
+      if (!src || node.getAttribute('data-lottie-init') === '1') return;
+      node.setAttribute('data-lottie-init', '1');
+      loadPlayer().then(function(){
+        try {
+          var lp = document.createElement('lottie-player');
+          lp.setAttribute('src', src);
+          lp.setAttribute('background', 'transparent');
+          lp.setAttribute('speed', node.getAttribute('data-lottie-speed') || '1');
+          lp.setAttribute('loop', '');
+          lp.setAttribute('autoplay', '');
+          lp.style.width = '100%';
+          lp.style.height = '100%';
+          lp.addEventListener('ready', function(){
+            node.setAttribute('data-lottie-loaded', '1');
+            var dot = node.closest('.milestone-dot');
+            if (dot) dot.classList.add('has-lottie');
+            var fn = node.closest('.flow-node');
+            if (fn) fn.classList.add('has-lottie');
+          });
+          lp.addEventListener('error', function(){
+            // leave fallback SVG visible
+            node.removeAttribute('data-lottie-loaded');
+          });
+          node.appendChild(lp);
+        } catch (e) { /* silent */ }
+      }).catch(function(){ /* CDN blocked: keep static fallback */ });
+    }
+    if (!('IntersectionObserver' in window)) {
+      nodes.forEach(activate);
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) {
+          activate(e.target);
+          io.unobserve(e.target);
+        }
+      });
+    }, { rootMargin: '200px 0px' });
+    nodes.forEach(function(n){ io.observe(n); });
   })();
 
   // Hero cursor-follow glow + dot pattern interactive mask
