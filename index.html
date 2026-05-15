@@ -350,7 +350,77 @@
     color: #fff; font-size: 9px; font-weight: 900; flex-shrink: 0;
   }
 
-  /* --- Pallet warehouse hero scene (custom SVG + CSS animations) --- */
+  /* --- Animated world map hero (21st.dev / MagicUI vanilla port) --- */
+  .world-map-scene {
+    width: 100%; max-width: 640px; margin: 0 auto;
+    position: relative; aspect-ratio: 800 / 420;
+  }
+  .world-map-scene .wm-svg { width: 100%; height: 100%; display: block; overflow: visible; }
+  .world-map-scene::before {
+    content: ""; position: absolute; inset: -5% -5%;
+    background: radial-gradient(ellipse at center, rgba(79,139,255,0.18) 0%, rgba(124,92,255,0.10) 40%, transparent 70%);
+    filter: blur(28px); z-index: 0; pointer-events: none;
+  }
+  .wm-svg { position: relative; z-index: 1; }
+  /* Continent dots (injected by JS) */
+  .wm-dot-bg { fill: rgba(255,255,255,0.22); }
+  /* Arcs draw-in animation. Each path's stroke-dasharray is set per-path
+     by JS based on its measured length so the draw is consistent. */
+  .wm-arc {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    opacity: 0;
+    animation: wm-arc-draw 7s ease-in-out infinite;
+  }
+  .wm-arc:nth-child(1) { animation-delay: 0s; }
+  .wm-arc:nth-child(2) { animation-delay: 1.0s; }
+  .wm-arc:nth-child(3) { animation-delay: 2.0s; }
+  .wm-arc:nth-child(4) { animation-delay: 3.0s; }
+  .wm-arc:nth-child(5) { animation-delay: 4.0s; }
+  @keyframes wm-arc-draw {
+    0%   { stroke-dashoffset: 1000; opacity: 0; }
+    10%  { opacity: 1; }
+    55%  { stroke-dashoffset: 0; opacity: 1; }
+    80%  { stroke-dashoffset: 0; opacity: 1; }
+    100% { stroke-dashoffset: 0; opacity: 0; }
+  }
+  /* Endpoints */
+  .wm-endpoint .wm-dot {
+    fill: #7CA6FF;
+    filter: drop-shadow(0 0 4px rgba(124,166,255,0.85));
+  }
+  .wm-endpoint.dest .wm-dot { fill: #B8A6FF; filter: drop-shadow(0 0 4px rgba(184,166,255,0.9)); }
+  .wm-endpoint .wm-ping {
+    fill: none;
+    stroke: rgba(124,166,255,0.7);
+    stroke-width: 1;
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: wm-ping 2.6s ease-out infinite;
+  }
+  .wm-endpoint.dest .wm-ping { stroke: rgba(184,166,255,0.7); }
+  .wm-endpoint:nth-child(2) .wm-ping { animation-delay: 0.4s; }
+  .wm-endpoint:nth-child(3) .wm-ping { animation-delay: 0.8s; }
+  .wm-endpoint:nth-child(4) .wm-ping { animation-delay: 1.2s; }
+  .wm-endpoint:nth-child(5) .wm-ping { animation-delay: 1.6s; }
+  .wm-endpoint:nth-child(6) .wm-ping { animation-delay: 2.0s; }
+  .wm-endpoint:nth-child(7) .wm-ping { animation-delay: 0.2s; }
+  .wm-endpoint:nth-child(8) .wm-ping { animation-delay: 0.6s; }
+  .wm-endpoint:nth-child(9) .wm-ping { animation-delay: 1.0s; }
+  @keyframes wm-ping {
+    0%   { transform: scale(0.6); opacity: 0.9; }
+    80%  { transform: scale(2.6); opacity: 0; }
+    100% { transform: scale(2.6); opacity: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .wm-arc { animation: none !important; stroke-dashoffset: 0; opacity: 0.7; }
+    .wm-endpoint .wm-ping { animation: none !important; opacity: 0; }
+  }
+  @media (max-width: 640px) {
+    .world-map-scene { max-width: 420px; }
+  }
+
+  /* --- (legacy) Pallet warehouse hero scene styles kept for fallback template --- */
   .pallet-scene { width: 100%; max-width: 560px; margin: 0 auto; position: relative; aspect-ratio: 5 / 4; }
   .pallet-scene svg { width: 100%; height: 100%; display: block; overflow: visible; }
   .pallet-scene .ps-glow {
@@ -784,9 +854,39 @@
   .value-card::after {
     content: "";
     position: absolute; inset: 0;
-    background: radial-gradient(420px 220px at var(--mx, 50%) var(--my, 0%), rgba(10,92,216,0.08), transparent 60%);
+    background: radial-gradient(circle 220px at var(--mx, 50%) var(--my, 50%), rgba(10,92,216,0.16), transparent 65%);
     opacity: 0; transition: opacity .3s ease;
     pointer-events: none;
+    z-index: 0;
+  }
+  .value-card > * { position: relative; z-index: 1; }
+  /* Border-beam on the primary (span-2) card: conic gradient rotates around the border. */
+  @property --vc-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  }
+  .value-card.span-2::before {
+    content: "";
+    position: absolute; inset: 0;
+    border-radius: inherit;
+    padding: 1.5px;
+    background: conic-gradient(from var(--vc-angle, 0deg), transparent 0deg, transparent 240deg, #4F8BFF 290deg, #7C5CFF 320deg, transparent 360deg);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+            mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    pointer-events: none;
+    animation: vc-border-spin 6s linear infinite;
+    z-index: 0;
+    opacity: 0.85;
+  }
+  @keyframes vc-border-spin {
+    0%   { --vc-angle: 0deg; }
+    100% { --vc-angle: 360deg; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .value-card.span-2::before { animation: none !important; opacity: 0.35; }
   }
   .value-card:hover {
     transform: translateY(-3px);
@@ -1115,13 +1215,32 @@
     display: inline-flex; align-items: center; justify-content: center;
   }
   .flow-path {
-    stroke: rgba(10,92,216,0.20);
+    stroke: rgba(10,92,216,0.18);
     stroke-width: 2;
     stroke-dasharray: 6 6;
     fill: none;
   }
-  .flow-bead {
-    fill: url(#flowGradient);
+  .flow-beam {
+    stroke: url(#flowGradient);
+    stroke-width: 3;
+    fill: none;
+    stroke-linecap: round;
+    stroke-dasharray: 14 220;
+    stroke-dashoffset: 0;
+    animation: flow-beam-travel 3.2s linear infinite;
+  }
+  .flow-beam.flow-beam-r { animation-delay: 1.6s; }
+  @keyframes flow-beam-travel {
+    0%   { stroke-dashoffset: 234; }
+    100% { stroke-dashoffset: 0; }
+  }
+  .flow-node {
+    animation: flow-node-pulse 4.2s ease-in-out infinite;
+  }
+  .flow-node.center { animation-delay: 1.4s; }
+  @keyframes flow-node-pulse {
+    0%, 100% { transform: scale(1); }
+    50%      { transform: scale(1.025); box-shadow: 0 18px 44px -14px rgba(10,92,216,0.42); }
   }
 
   /* ============================================
@@ -1206,7 +1325,7 @@
   @media (prefers-reduced-motion: reduce) {
     .avatar-ring, .timeline-svg path, .milestone, .milestone-dot::after,
     .anim-check, .anim-dollar, .anim-truck, .anim-lock,
-    .hero-cursor-glow, .tilt, .flow-bead {
+    .hero-cursor-glow, .tilt, .flow-bead, .flow-beam, .flow-node {
       animation: none !important;
       transition: none !important;
       transform: none !important;
@@ -1280,161 +1399,59 @@
         <p class="mt-5 text-sm text-slate-400 reveal reveal-delay-4">For importers, exporters, and pallet-buying wholesalers in LatAm. Onboarding our first cohort of buyers.</p>
       </div>
 
-      <!-- Hero illustration: custom warehouse-pallet scene (inline SVG + CSS animations) -->
+      <!-- Hero illustration: animated world map with cross-border arcs (21st.dev / MagicUI pattern, vanilla port) -->
       <div class="lg:col-span-6 reveal reveal-delay-2">
-        <div class="pallet-scene" role="img" aria-label="A wooden pallet stacked with cardboard boxes, marked with a green vetted checkmark and a manifest tag, representing US pallets inspected before they ship.">
-          <span class="ps-glow" aria-hidden="true"></span>
-          <svg class="ps-svg" viewBox="0 0 560 448" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <div class="world-map-scene" role="img" aria-label="Animated world map showing cross-border pallet flow from US origin points to LatAm destinations.">
+          <svg class="wm-svg" viewBox="0 0 800 420" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
             <defs>
-              <linearGradient id="boxFace" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#E8C589"/>
-                <stop offset="100%" stop-color="#C9A26A"/>
+              <linearGradient id="arcGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%"  stop-color="#4F8BFF"/>
+                <stop offset="55%" stop-color="#6E7AFF"/>
+                <stop offset="100%" stop-color="#7C5CFF"/>
               </linearGradient>
-              <linearGradient id="boxTop" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#F2D7A3"/>
-                <stop offset="100%" stop-color="#D9B47A"/>
-              </linearGradient>
-              <linearGradient id="palletWood" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#8B6B45"/>
-                <stop offset="100%" stop-color="#6B4F2E"/>
-              </linearGradient>
-              <linearGradient id="scanBeam" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stop-color="#4F8BFF" stop-opacity="0"/>
-                <stop offset="50%" stop-color="#7C5CFF" stop-opacity="0.65"/>
+              <radialGradient id="endpointGlow">
+                <stop offset="0%" stop-color="#7C5CFF" stop-opacity="0.85"/>
+                <stop offset="60%" stop-color="#4F8BFF" stop-opacity="0.25"/>
                 <stop offset="100%" stop-color="#4F8BFF" stop-opacity="0"/>
-              </linearGradient>
-              <linearGradient id="floorGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="rgba(79,139,255,0.18)"/>
-                <stop offset="100%" stop-color="rgba(79,139,255,0)"/>
-              </linearGradient>
+              </radialGradient>
+              <filter id="arcGlow" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="2.2" result="b"/>
+                <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
             </defs>
-
-            <!-- floor shadow ellipse -->
-            <ellipse cx="280" cy="380" rx="180" ry="18" fill="rgba(0,0,0,0.35)"/>
-
-            <!-- subtle floor grid -->
-            <g opacity="0.18" stroke="#7C5CFF" stroke-width="0.7">
-              <line x1="80"  y1="392" x2="480" y2="392"/>
-              <line x1="60"  y1="412" x2="500" y2="412"/>
+            <!-- Dot grid is injected by JS into #wmDots -->
+            <g id="wmDots"></g>
+            <!-- Arcs (drawn on top of dots) -->
+            <g class="wm-arcs" filter="url(#arcGlow)">
+              <!-- Origin endpoints (US): LA(190,170), Dallas(245,185), NYC(280,160), Miami(275,200) -->
+              <!-- Destinations (LatAm): MX(245,225), BOG(290,260), LIM(290,295), SCL(310,355), SAO(355,320) -->
+              <path class="wm-arc" d="M 190 170 Q 230 110 245 225"  stroke="url(#arcGrad)" fill="none" stroke-width="1.6" stroke-linecap="round"/>
+              <path class="wm-arc" d="M 280 160 Q 300 110 290 260"  stroke="url(#arcGrad)" fill="none" stroke-width="1.6" stroke-linecap="round"/>
+              <path class="wm-arc" d="M 275 200 Q 330 140 290 295"  stroke="url(#arcGrad)" fill="none" stroke-width="1.6" stroke-linecap="round"/>
+              <path class="wm-arc" d="M 245 185 Q 350 200 310 355"  stroke="url(#arcGrad)" fill="none" stroke-width="1.6" stroke-linecap="round"/>
+              <path class="wm-arc" d="M 280 160 Q 400 180 355 320"  stroke="url(#arcGrad)" fill="none" stroke-width="1.6" stroke-linecap="round"/>
             </g>
-
-            <!-- mini floating pallet icons (background depth) -->
-            <g class="ps-mini ps-mini-a" transform="translate(70,110)" opacity="0.5">
-              <rect x="0" y="14" width="42" height="6" rx="1" fill="#5a4124"/>
-              <rect x="2" y="20" width="4"  height="6" fill="#5a4124"/>
-              <rect x="19" y="20" width="4" height="6" fill="#5a4124"/>
-              <rect x="36" y="20" width="4" height="6" fill="#5a4124"/>
-              <rect x="6" y="0"  width="30" height="14" fill="url(#boxFace)"/>
+            <!-- Endpoint glow + ping pulses -->
+            <g class="wm-endpoints">
+              <!-- origins (US) -->
+              <g class="wm-endpoint origin" transform="translate(190,170)"><circle class="wm-ping" r="4"/><circle class="wm-dot" r="2.6"/></g>
+              <g class="wm-endpoint origin" transform="translate(245,185)"><circle class="wm-ping" r="4"/><circle class="wm-dot" r="2.6"/></g>
+              <g class="wm-endpoint origin" transform="translate(280,160)"><circle class="wm-ping" r="4"/><circle class="wm-dot" r="2.6"/></g>
+              <g class="wm-endpoint origin" transform="translate(275,200)"><circle class="wm-ping" r="4"/><circle class="wm-dot" r="2.6"/></g>
+              <!-- destinations (LatAm) -->
+              <g class="wm-endpoint dest" transform="translate(245,225)"><circle class="wm-ping" r="4"/><circle class="wm-dot" r="2.6"/></g>
+              <g class="wm-endpoint dest" transform="translate(290,260)"><circle class="wm-ping" r="4"/><circle class="wm-dot" r="2.6"/></g>
+              <g class="wm-endpoint dest" transform="translate(290,295)"><circle class="wm-ping" r="4"/><circle class="wm-dot" r="2.6"/></g>
+              <g class="wm-endpoint dest" transform="translate(310,355)"><circle class="wm-ping" r="4"/><circle class="wm-dot" r="2.6"/></g>
+              <g class="wm-endpoint dest" transform="translate(355,320)"><circle class="wm-ping" r="4"/><circle class="wm-dot" r="2.6"/></g>
             </g>
-            <g class="ps-mini ps-mini-b" transform="translate(460,80)" opacity="0.45">
-              <rect x="0" y="18" width="50" height="7" rx="1" fill="#5a4124"/>
-              <rect x="4" y="2"  width="42" height="16" fill="url(#boxFace)"/>
-              <line x1="25" y1="2" x2="25" y2="18" stroke="#a07a48" stroke-width="1"/>
-            </g>
-            <g class="ps-mini ps-mini-c" transform="translate(490,260)" opacity="0.4">
-              <rect x="0" y="12" width="36" height="5" rx="1" fill="#5a4124"/>
-              <rect x="3" y="0"  width="30" height="12" fill="url(#boxFace)"/>
-            </g>
-
-            <!-- MAIN STACK (pallet + boxes) -->
-            <g class="ps-stack">
-              <!-- Pallet -->
-              <g transform="translate(140,330)">
-                <!-- top deck planks -->
-                <rect x="0"   y="0"  width="280" height="10" fill="url(#palletWood)"/>
-                <rect x="0"   y="12" width="280" height="3"  fill="#3a2a17" opacity="0.4"/>
-                <!-- side blocks -->
-                <rect x="6"   y="15" width="22" height="22" fill="#5a4124"/>
-                <rect x="129" y="15" width="22" height="22" fill="#5a4124"/>
-                <rect x="252" y="15" width="22" height="22" fill="#5a4124"/>
-                <!-- bottom deck -->
-                <rect x="0"   y="37" width="280" height="8"  fill="url(#palletWood)"/>
-                <!-- plank seams on top -->
-                <line x1="56"  y1="0" x2="56"  y2="10" stroke="#3a2a17" stroke-width="1" opacity="0.5"/>
-                <line x1="112" y1="0" x2="112" y2="10" stroke="#3a2a17" stroke-width="1" opacity="0.5"/>
-                <line x1="168" y1="0" x2="168" y2="10" stroke="#3a2a17" stroke-width="1" opacity="0.5"/>
-                <line x1="224" y1="0" x2="224" y2="10" stroke="#3a2a17" stroke-width="1" opacity="0.5"/>
-              </g>
-
-              <!-- Bottom row: 2 large boxes -->
-              <g class="ps-box ps-box-l" transform="translate(150,230)">
-                <rect x="0" y="0"  width="125" height="100" fill="url(#boxFace)"/>
-                <polygon points="0,0 125,0 115,-12 10,-12" fill="url(#boxTop)"/>
-                <!-- box seam + tape -->
-                <line x1="62" y1="0" x2="62" y2="100" stroke="#8B6B45" stroke-width="2" opacity="0.55"/>
-                <rect x="0"  y="38" width="125" height="10" fill="#a07a48" opacity="0.55"/>
-                <!-- label rectangle -->
-                <rect x="14" y="58" width="50" height="28" fill="#FFFDF7" opacity="0.95" rx="1"/>
-                <line x1="20" y1="66" x2="56" y2="66" stroke="#6B4F2E" stroke-width="1.4"/>
-                <line x1="20" y1="72" x2="50" y2="72" stroke="#6B4F2E" stroke-width="1.4"/>
-                <line x1="20" y1="78" x2="44" y2="78" stroke="#6B4F2E" stroke-width="1.4"/>
-              </g>
-              <g class="ps-box ps-box-r" transform="translate(285,230)">
-                <rect x="0" y="0"  width="125" height="100" fill="url(#boxFace)"/>
-                <polygon points="0,0 125,0 115,-12 10,-12" fill="url(#boxTop)"/>
-                <line x1="62" y1="0" x2="62" y2="100" stroke="#8B6B45" stroke-width="2" opacity="0.55"/>
-                <rect x="0"  y="38" width="125" height="10" fill="#a07a48" opacity="0.55"/>
-                <!-- fragile arrows icon -->
-                <g transform="translate(78,58)" stroke="#6B4F2E" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M6 14 L12 4 L18 14"/>
-                  <path d="M12 4 L12 22"/>
-                </g>
-                <rect x="14" y="58" width="40" height="22" fill="#FFFDF7" opacity="0.9" rx="1"/>
-                <line x1="20" y1="66" x2="48" y2="66" stroke="#6B4F2E" stroke-width="1.4"/>
-                <line x1="20" y1="72" x2="42" y2="72" stroke="#6B4F2E" stroke-width="1.4"/>
-              </g>
-
-              <!-- Top row: 1 box centered with open flap -->
-              <g class="ps-box ps-box-top" transform="translate(210,150)">
-                <rect x="0" y="0"  width="140" height="80" fill="url(#boxFace)"/>
-                <!-- open top flaps -->
-                <polygon points="0,0 70,0 60,-22 -6,-14" fill="#D9B47A"/>
-                <polygon points="70,0 140,0 146,-14 80,-22" fill="#E8C589"/>
-                <!-- inside darkness -->
-                <polygon points="60,-22 80,-22 70,-4" fill="#3a2a17" opacity="0.7"/>
-                <line x1="70" y1="0" x2="70" y2="80" stroke="#8B6B45" stroke-width="2" opacity="0.55"/>
-                <rect x="0"  y="32" width="140" height="9" fill="#a07a48" opacity="0.5"/>
-                <!-- check stamp on box face -->
-                <g class="ps-stamp" transform="translate(82,46)">
-                  <circle cx="0" cy="0" r="20" fill="#22C55E"/>
-                  <circle cx="0" cy="0" r="20" fill="none" stroke="#fff" stroke-width="1.5" stroke-dasharray="2 3" opacity="0.85"/>
-                  <path d="M-8 0 L-2 7 L9 -6" stroke="#fff" stroke-width="3.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                </g>
-              </g>
-
-              <!-- Scan beam sweeping across the stack -->
-              <g class="ps-scan" opacity="0">
-                <rect x="180" y="130" width="6" height="220" fill="url(#scanBeam)"/>
-              </g>
-            </g>
-
-            <!-- Floating MANIFEST tag (independent of stack bob) -->
-            <g class="ps-manifest" transform="translate(370,90)">
-              <rect x="0" y="0" width="148" height="78" rx="10" fill="#0F1A33" stroke="#4F8BFF" stroke-width="1.4"/>
-              <rect x="0" y="0" width="148" height="22" rx="10" fill="#4F8BFF"/>
-              <rect x="0" y="14" width="148" height="8" fill="#4F8BFF"/>
-              <text x="12" y="16" font-family="Inter,system-ui,sans-serif" font-size="11" font-weight="800" fill="#fff" letter-spacing="1.5">MANIFEST</text>
-              <circle cx="132" cy="11" r="4" fill="#22C55E"/>
-              <!-- lines -->
-              <line x1="14" y1="36" x2="120" y2="36" stroke="#4F8BFF" stroke-width="1.6" opacity="0.7"/>
-              <line x1="14" y1="46" x2="100" y2="46" stroke="#7C5CFF" stroke-width="1.6" opacity="0.6"/>
-              <line x1="14" y1="56" x2="110" y2="56" stroke="#4F8BFF" stroke-width="1.6" opacity="0.5"/>
-              <line x1="14" y1="66" x2="80"  y2="66" stroke="#7C5CFF" stroke-width="1.6" opacity="0.5"/>
-              <!-- check tick at right edge -->
-              <g transform="translate(120,52)">
-                <circle r="10" fill="#22C55E"/>
-                <path d="M-4 0 L-1 3 L4 -3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-              </g>
-            </g>
-
-            <!-- Floor floor highlight under stack -->
-            <ellipse cx="280" cy="380" rx="120" ry="6" fill="url(#floorGrad)"/>
           </svg>
         </div>
       </div>
     </div>
   </div>
 </section>
+
 
 
 <!-- HOW IT WORKS -->
@@ -1649,19 +1666,17 @@
             <stop offset="0%" stop-color="#4F8BFF" />
             <stop offset="100%" stop-color="#7C5CFF" />
           </linearGradient>
+          <filter id="flowGlow" x="-20%" y="-50%" width="140%" height="200%">
+            <feGaussianBlur stdDeviation="2.4" result="b"/>
+            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
         </defs>
-        <path id="flowPathLeft" class="flow-path" d="M 120 80 Q 300 20 500 80" />
-        <path id="flowPathRight" class="flow-path" d="M 500 80 Q 700 140 880 80" />
-        <circle class="flow-bead" r="5">
-          <animateMotion dur="3.5s" repeatCount="indefinite" rotate="auto">
-            <mpath href="#flowPathLeft" />
-          </animateMotion>
-        </circle>
-        <circle class="flow-bead" r="5">
-          <animateMotion dur="3.5s" begin="1.75s" repeatCount="indefinite" rotate="auto">
-            <mpath href="#flowPathRight" />
-          </animateMotion>
-        </circle>
+        <!-- Base paths (dashed, static) -->
+        <path id="flowPathLeft"  class="flow-path"      d="M 120 80 Q 300 20 500 80" />
+        <path id="flowPathRight" class="flow-path"      d="M 500 80 Q 700 140 880 80" />
+        <!-- Highlight beams (animated dashoffset, gradient + glow) -->
+        <path class="flow-beam"  d="M 120 80 Q 300 20 500 80"  filter="url(#flowGlow)" />
+        <path class="flow-beam flow-beam-r" d="M 500 80 Q 700 140 880 80" filter="url(#flowGlow)" />
       </svg>
 
       <div class="flow-nodes">
@@ -2024,6 +2039,53 @@
       });
     }, { rootMargin: '200px 0px' });
     nodes.forEach(function(n){ io.observe(n); });
+  })();
+
+  // World-map dot grid: paint continent-shaped dots into #wmDots.
+  // Strategy: hardcoded ~32x16 bitmap of world landmass (very coarse, equirectangular)
+  // then per filled cell emit a tiny <circle>. Total dots ~350. Keeps payload tiny.
+  (function(){
+    var dotsHost = document.getElementById('wmDots');
+    if (!dotsHost) return;
+    // 32 cols x 16 rows. 1 = land, 0 = ocean. Hand-tuned to read like a world map.
+    var map = [
+      "00000000000000000000000000000000",
+      "00111111111111110011111111111100",
+      "01111111111111111111111111111110",
+      "01111111111111111111111111111100",
+      "00111111111111111111111111111000",
+      "00011111111111111111111111110000",
+      "00001111100111111111111111100000",
+      "00000111000011111111111011000000",
+      "00000010000011111110111000000000",
+      "00000010000001111110011000000000",
+      "00000011000001111100001000000000",
+      "00000001100001111100000000000000",
+      "00000000110000111100000000000000",
+      "00000000011000011100000000000000",
+      "00000000001000001000000000000000",
+      "00000000000000000000000000000000"
+    ];
+    var svgNS = 'http://www.w3.org/2000/svg';
+    // viewBox is 800x420. We draw dots across full canvas.
+    var cols = 32, rows = 16;
+    var cellW = 800 / cols, cellH = 420 / rows;
+    var frag = document.createDocumentFragment();
+    for (var r = 0; r < rows; r++) {
+      var row = map[r];
+      for (var c = 0; c < cols; c++) {
+        if (row.charAt(c) !== '1') continue;
+        var cx = (c + 0.5) * cellW;
+        var cy = (r + 0.5) * cellH;
+        var dot = document.createElementNS(svgNS, 'circle');
+        dot.setAttribute('cx', cx.toFixed(1));
+        dot.setAttribute('cy', cy.toFixed(1));
+        dot.setAttribute('r', '2.2');
+        dot.setAttribute('class', 'wm-dot-bg');
+        frag.appendChild(dot);
+      }
+    }
+    dotsHost.appendChild(frag);
   })();
 
   // Hero cursor-follow glow + dot pattern interactive mask
