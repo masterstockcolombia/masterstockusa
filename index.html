@@ -368,9 +368,9 @@
   .ps-box-l   { animation: ps-drop 1.2s cubic-bezier(.22,1.2,.36,1) 0.0s both; }
   .ps-box-r   { animation: ps-drop 1.2s cubic-bezier(.22,1.2,.36,1) 0.1s both; }
   @keyframes ps-drop {
-    0%   { transform: translateY(-30px); opacity: 0; }
-    60%  { transform: translateY(4px); opacity: 1; }
-    100% { transform: translateY(0); opacity: 1; }
+    0%   { opacity: 0; }
+    60%  { opacity: 1; }
+    100% { opacity: 1; }
   }
   /* Manifest tag floats independently */
   .ps-manifest { transform-box: fill-box; transform-origin: center;
@@ -1259,12 +1259,11 @@
   <div class="relative max-w-7xl mx-auto px-5 sm:px-8 pt-20 sm:pt-28 lg:pt-32 pb-24 lg:pb-32">
     <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
       <div class="lg:col-span-6">
-        <span class="b-eyebrow reveal"><span class="dot"></span>Cross-border wholesale, vetted in the US</span>
-        <h1 class="mt-6 font-extrabold reveal reveal-delay-1">
+        <h1 class="font-extrabold reveal reveal-delay-1">
           <span class="gradient-text">US pallets</span>, opened before they ship.
         </h1>
-        <p class="hero-subhead reveal reveal-delay-2">
-          <span class="verb">We buy.</span><span class="sep">/</span><span class="verb">We open.</span><span class="sep">/</span><span class="verb">We grade.</span><span class="sep">/</span><span class="verb">You ship.</span>
+        <p class="mt-6 text-lg sm:text-xl text-slate-300 max-w-xl leading-relaxed reveal reveal-delay-2">
+          We source US liquidation pallets (overstock, customer returns, brand-direct closeouts), open and grade every one in our warehouse, then sell them to wholesale buyers in LatAm with Net-30 terms.
         </p>
         <div class="hero-chips reveal reveal-delay-2">
           <span class="hero-chip"><span class="chip-check">&#10003;</span>Vetted manifests</span>
