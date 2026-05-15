@@ -350,74 +350,109 @@
     color: #fff; font-size: 9px; font-weight: 900; flex-shrink: 0;
   }
 
-  /* --- Animated world map hero (21st.dev / MagicUI vanilla port) --- */
-  .world-map-scene {
-    width: 100%; max-width: 640px; margin: 0 auto;
-    position: relative; aspect-ratio: 800 / 420;
+  /* --- Tailark hero-section-4 vanilla port: abstract image + categories marquee --- */
+  .hero-abstract-img {
+    pointer-events: none;
+    margin-left: auto;
+    height: 14rem;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.62;
+    mix-blend-mode: screen;
+    filter: saturate(1.1) hue-rotate(-10deg);
+    border-radius: 1rem;
   }
-  .world-map-scene .wm-svg { width: 100%; height: 100%; display: block; overflow: visible; }
-  .world-map-scene::before {
-    content: ""; position: absolute; inset: -5% -5%;
-    background: radial-gradient(ellipse at center, rgba(79,139,255,0.18) 0%, rgba(124,92,255,0.10) 40%, transparent 70%);
-    filter: blur(28px); z-index: 0; pointer-events: none;
+  @media (min-width: 640px) { .hero-abstract-img { height: 22rem; } }
+  @media (min-width: 1024px) {
+    .hero-abstract-img {
+      position: absolute;
+      top: -6rem;
+      right: -4rem;
+      height: auto;
+      width: 58%;
+      max-width: 780px;
+      object-fit: contain;
+      border-radius: 0;
+      opacity: 0.55;
+    }
   }
-  .wm-svg { position: relative; z-index: 1; }
-  /* Continent dots (injected by JS) */
-  .wm-dot-bg { fill: rgba(255,255,255,0.22); }
-  /* Arcs draw-in animation. Each path's stroke-dasharray is set per-path
-     by JS based on its measured length so the draw is consistent. */
-  .wm-arc {
-    stroke-dasharray: 1000;
-    stroke-dashoffset: 1000;
-    opacity: 0;
-    animation: wm-arc-draw 7s ease-in-out infinite;
+  /* Marquee with progressive blur edges */
+  .marquee-section {
+    position: relative;
+    background:
+      linear-gradient(180deg, rgba(11,27,53,0) 0%, rgba(11,27,53,1) 30%, rgba(11,27,53,1) 100%);
+    color: #fff;
+    padding: 1.25rem 0 3rem;
   }
-  .wm-arc:nth-child(1) { animation-delay: 0s; }
-  .wm-arc:nth-child(2) { animation-delay: 1.0s; }
-  .wm-arc:nth-child(3) { animation-delay: 2.0s; }
-  .wm-arc:nth-child(4) { animation-delay: 3.0s; }
-  .wm-arc:nth-child(5) { animation-delay: 4.0s; }
-  @keyframes wm-arc-draw {
-    0%   { stroke-dashoffset: 1000; opacity: 0; }
-    10%  { opacity: 1; }
-    55%  { stroke-dashoffset: 0; opacity: 1; }
-    80%  { stroke-dashoffset: 0; opacity: 1; }
-    100% { stroke-dashoffset: 0; opacity: 0; }
+  .marquee-eyebrow {
+    text-align: center;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #9fb1d4;
+    margin-bottom: 1.25rem;
   }
-  /* Endpoints */
-  .wm-endpoint .wm-dot {
-    fill: #7CA6FF;
-    filter: drop-shadow(0 0 4px rgba(124,166,255,0.85));
+  .marquee-wrap {
+    position: relative;
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
   }
-  .wm-endpoint.dest .wm-dot { fill: #B8A6FF; filter: drop-shadow(0 0 4px rgba(184,166,255,0.9)); }
-  .wm-endpoint .wm-ping {
-    fill: none;
-    stroke: rgba(124,166,255,0.7);
-    stroke-width: 1;
-    transform-box: fill-box;
-    transform-origin: center;
-    animation: wm-ping 2.6s ease-out infinite;
+  .marquee-track {
+    display: flex;
+    gap: 2.5rem;
+    width: max-content;
+    animation: msMarquee 42s linear infinite;
+    will-change: transform;
   }
-  .wm-endpoint.dest .wm-ping { stroke: rgba(184,166,255,0.7); }
-  .wm-endpoint:nth-child(2) .wm-ping { animation-delay: 0.4s; }
-  .wm-endpoint:nth-child(3) .wm-ping { animation-delay: 0.8s; }
-  .wm-endpoint:nth-child(4) .wm-ping { animation-delay: 1.2s; }
-  .wm-endpoint:nth-child(5) .wm-ping { animation-delay: 1.6s; }
-  .wm-endpoint:nth-child(6) .wm-ping { animation-delay: 2.0s; }
-  .wm-endpoint:nth-child(7) .wm-ping { animation-delay: 0.2s; }
-  .wm-endpoint:nth-child(8) .wm-ping { animation-delay: 0.6s; }
-  .wm-endpoint:nth-child(9) .wm-ping { animation-delay: 1.0s; }
-  @keyframes wm-ping {
-    0%   { transform: scale(0.6); opacity: 0.9; }
-    80%  { transform: scale(2.6); opacity: 0; }
-    100% { transform: scale(2.6); opacity: 0; }
+  .marquee-wrap:hover .marquee-track { animation-duration: 80s; }
+  @keyframes msMarquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  .marquee-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.55rem 1.1rem;
+    border-radius: 999px;
+    background: rgba(79,139,255,0.07);
+    border: 1px solid rgba(124,160,255,0.22);
+    color: #dbe6ff;
+    font-size: 0.92rem;
+    font-weight: 600;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .marquee-item svg {
+    width: 18px; height: 18px;
+    color: #7CA6FF;
+    flex-shrink: 0;
+  }
+  /* Progressive blur layer (subtle) */
+  .marquee-blur-l, .marquee-blur-r {
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 90px;
+    z-index: 2;
+    pointer-events: none;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+  .marquee-blur-l {
+    left: 0;
+    mask-image: linear-gradient(to right, #000 0%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, #000 0%, transparent 100%);
+  }
+  .marquee-blur-r {
+    right: 0;
+    mask-image: linear-gradient(to left, #000 0%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to left, #000 0%, transparent 100%);
   }
   @media (prefers-reduced-motion: reduce) {
-    .wm-arc { animation: none !important; stroke-dashoffset: 0; opacity: 0.7; }
-    .wm-endpoint .wm-ping { animation: none !important; opacity: 0; }
-  }
-  @media (max-width: 640px) {
-    .world-map-scene { max-width: 420px; }
+    .marquee-track { animation: none !important; }
   }
 
   /* --- (legacy) Pallet warehouse hero scene styles kept for fallback template --- */
@@ -1399,55 +1434,41 @@
         <p class="mt-5 text-sm text-slate-400 reveal reveal-delay-4">For importers, exporters, and pallet-buying wholesalers in LatAm. Onboarding our first cohort of buyers.</p>
       </div>
 
-      <!-- Hero illustration: animated world map with cross-border arcs (21st.dev / MagicUI pattern, vanilla port) -->
-      <div class="lg:col-span-6 reveal reveal-delay-2">
-        <div class="world-map-scene" role="img" aria-label="Animated world map showing cross-border pallet flow from US origin points to LatAm destinations.">
-          <svg class="wm-svg" viewBox="0 0 800 420" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
-            <defs>
-              <linearGradient id="arcGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%"  stop-color="#4F8BFF"/>
-                <stop offset="55%" stop-color="#6E7AFF"/>
-                <stop offset="100%" stop-color="#7C5CFF"/>
-              </linearGradient>
-              <radialGradient id="endpointGlow">
-                <stop offset="0%" stop-color="#7C5CFF" stop-opacity="0.85"/>
-                <stop offset="60%" stop-color="#4F8BFF" stop-opacity="0.25"/>
-                <stop offset="100%" stop-color="#4F8BFF" stop-opacity="0"/>
-              </radialGradient>
-              <filter id="arcGlow" x="-20%" y="-20%" width="140%" height="140%">
-                <feGaussianBlur stdDeviation="2.2" result="b"/>
-                <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-              </filter>
-            </defs>
-            <!-- Dot grid is injected by JS into #wmDots -->
-            <g id="wmDots"></g>
-            <!-- Arcs (drawn on top of dots) -->
-            <g class="wm-arcs" filter="url(#arcGlow)">
-              <!-- Origin endpoints (US): LA(190,170), Dallas(245,185), NYC(280,160), Miami(275,200) -->
-              <!-- Destinations (LatAm): MX(245,225), BOG(290,260), LIM(290,295), SCL(310,355), SAO(355,320) -->
-              <path class="wm-arc" d="M 190 170 Q 230 110 245 225"  stroke="url(#arcGrad)" fill="none" stroke-width="1.6" stroke-linecap="round"/>
-              <path class="wm-arc" d="M 280 160 Q 300 110 290 260"  stroke="url(#arcGrad)" fill="none" stroke-width="1.6" stroke-linecap="round"/>
-              <path class="wm-arc" d="M 275 200 Q 330 140 290 295"  stroke="url(#arcGrad)" fill="none" stroke-width="1.6" stroke-linecap="round"/>
-              <path class="wm-arc" d="M 245 185 Q 350 200 310 355"  stroke="url(#arcGrad)" fill="none" stroke-width="1.6" stroke-linecap="round"/>
-              <path class="wm-arc" d="M 280 160 Q 400 180 355 320"  stroke="url(#arcGrad)" fill="none" stroke-width="1.6" stroke-linecap="round"/>
-            </g>
-            <!-- Endpoint glow + ping pulses -->
-            <g class="wm-endpoints">
-              <!-- origins (US) -->
-              <g class="wm-endpoint origin" transform="translate(190,170)"><circle class="wm-ping" r="4"/><circle class="wm-dot" r="2.6"/></g>
-              <g class="wm-endpoint origin" transform="translate(245,185)"><circle class="wm-ping" r="4"/><circle class="wm-dot" r="2.6"/></g>
-              <g class="wm-endpoint origin" transform="translate(280,160)"><circle class="wm-ping" r="4"/><circle class="wm-dot" r="2.6"/></g>
-              <g class="wm-endpoint origin" transform="translate(275,200)"><circle class="wm-ping" r="4"/><circle class="wm-dot" r="2.6"/></g>
-              <!-- destinations (LatAm) -->
-              <g class="wm-endpoint dest" transform="translate(245,225)"><circle class="wm-ping" r="4"/><circle class="wm-dot" r="2.6"/></g>
-              <g class="wm-endpoint dest" transform="translate(290,260)"><circle class="wm-ping" r="4"/><circle class="wm-dot" r="2.6"/></g>
-              <g class="wm-endpoint dest" transform="translate(290,295)"><circle class="wm-ping" r="4"/><circle class="wm-dot" r="2.6"/></g>
-              <g class="wm-endpoint dest" transform="translate(310,355)"><circle class="wm-ping" r="4"/><circle class="wm-dot" r="2.6"/></g>
-              <g class="wm-endpoint dest" transform="translate(355,320)"><circle class="wm-ping" r="4"/><circle class="wm-dot" r="2.6"/></g>
-            </g>
-          </svg>
-        </div>
+      <!-- Hero abstract image (Tailark hero-section-4 pattern, vanilla port) -->
+      <div class="lg:col-span-6 reveal reveal-delay-2 relative">
+        <img class="hero-abstract-img" src="images/hero-abstract-bg.jpg" alt="" aria-hidden="true" loading="eager" decoding="async" />
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES MARQUEE -->
+<section class="marquee-section" aria-label="Categories we carry">
+  <p class="marquee-eyebrow">Categories we carry</p>
+  <div class="marquee-wrap">
+    <span class="marquee-blur-l" aria-hidden="true"></span>
+    <span class="marquee-blur-r" aria-hidden="true"></span>
+    <div class="marquee-track" id="categoriesMarquee">
+      <!-- Set A -->
+      <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/></svg>Apparel returns</span>
+      <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>Consumer electronics</span>
+      <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Home &amp; kitchen</span>
+      <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19.5 12.5a2.5 2.5 0 0 0 0-5h-.5V5a2 2 0 0 0-2-2h-2.5a2.5 2.5 0 0 0-5 0H7a2 2 0 0 0-2 2v2.5H5a2.5 2.5 0 0 0 0 5h.5V17a2 2 0 0 0 2 2H10a2.5 2.5 0 0 0 5 0h2a2 2 0 0 0 2-2v-4.5z"/></svg>Toys</span>
+      <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v3M5.6 5.6l2.1 2.1M3 12h3M5.6 18.4l2.1-2.1M12 18v3M16.3 16.3l2.1 2.1M18 12h3M16.3 7.7l2.1-2.1"/><circle cx="12" cy="12" r="3"/></svg>Health &amp; beauty</span>
+      <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>Tools &amp; hardware</span>
+      <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>Sporting goods</span>
+      <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.59 13.41 13.42 20.58a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>Brand-direct closeouts</span>
+      <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16.5 9.4 7.55 4.24"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>Overstock pallets</span>
+      <!-- Set B (duplicate for seamless loop) -->
+      <span class="marquee-item" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/></svg>Apparel returns</span>
+      <span class="marquee-item" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>Consumer electronics</span>
+      <span class="marquee-item" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Home &amp; kitchen</span>
+      <span class="marquee-item" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19.5 12.5a2.5 2.5 0 0 0 0-5h-.5V5a2 2 0 0 0-2-2h-2.5a2.5 2.5 0 0 0-5 0H7a2 2 0 0 0-2 2v2.5H5a2.5 2.5 0 0 0 0 5h.5V17a2 2 0 0 0 2 2H10a2.5 2.5 0 0 0 5 0h2a2 2 0 0 0 2-2v-4.5z"/></svg>Toys</span>
+      <span class="marquee-item" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M5.6 5.6l2.1 2.1M3 12h3M5.6 18.4l2.1-2.1M12 18v3M16.3 16.3l2.1 2.1M18 12h3M16.3 7.7l2.1-2.1"/><circle cx="12" cy="12" r="3"/></svg>Health &amp; beauty</span>
+      <span class="marquee-item" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>Tools &amp; hardware</span>
+      <span class="marquee-item" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>Sporting goods</span>
+      <span class="marquee-item" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41 13.42 20.58a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>Brand-direct closeouts</span>
+      <span class="marquee-item" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16.5 9.4 7.55 4.24"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>Overstock pallets</span>
     </div>
   </div>
 </section>
@@ -2039,53 +2060,6 @@
       });
     }, { rootMargin: '200px 0px' });
     nodes.forEach(function(n){ io.observe(n); });
-  })();
-
-  // World-map dot grid: paint continent-shaped dots into #wmDots.
-  // Strategy: hardcoded ~32x16 bitmap of world landmass (very coarse, equirectangular)
-  // then per filled cell emit a tiny <circle>. Total dots ~350. Keeps payload tiny.
-  (function(){
-    var dotsHost = document.getElementById('wmDots');
-    if (!dotsHost) return;
-    // 32 cols x 16 rows. 1 = land, 0 = ocean. Hand-tuned to read like a world map.
-    var map = [
-      "00000000000000000000000000000000",
-      "00111111111111110011111111111100",
-      "01111111111111111111111111111110",
-      "01111111111111111111111111111100",
-      "00111111111111111111111111111000",
-      "00011111111111111111111111110000",
-      "00001111100111111111111111100000",
-      "00000111000011111111111011000000",
-      "00000010000011111110111000000000",
-      "00000010000001111110011000000000",
-      "00000011000001111100001000000000",
-      "00000001100001111100000000000000",
-      "00000000110000111100000000000000",
-      "00000000011000011100000000000000",
-      "00000000001000001000000000000000",
-      "00000000000000000000000000000000"
-    ];
-    var svgNS = 'http://www.w3.org/2000/svg';
-    // viewBox is 800x420. We draw dots across full canvas.
-    var cols = 32, rows = 16;
-    var cellW = 800 / cols, cellH = 420 / rows;
-    var frag = document.createDocumentFragment();
-    for (var r = 0; r < rows; r++) {
-      var row = map[r];
-      for (var c = 0; c < cols; c++) {
-        if (row.charAt(c) !== '1') continue;
-        var cx = (c + 0.5) * cellW;
-        var cy = (r + 0.5) * cellH;
-        var dot = document.createElementNS(svgNS, 'circle');
-        dot.setAttribute('cx', cx.toFixed(1));
-        dot.setAttribute('cy', cy.toFixed(1));
-        dot.setAttribute('r', '2.2');
-        dot.setAttribute('class', 'wm-dot-bg');
-        frag.appendChild(dot);
-      }
-    }
-    dotsHost.appendChild(frag);
   })();
 
   // Hero cursor-follow glow + dot pattern interactive mask
