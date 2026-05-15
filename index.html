@@ -314,13 +314,104 @@
   .b-hero > .relative { position: relative; z-index: 1; }
 
   .b-hero h1 {
-    font-size: clamp(2.25rem, 5.2vw, 4.25rem);
-    line-height: 1.05;
+    font-size: clamp(2rem, 4.2vw, 3.5rem);
+    line-height: 1.06;
     letter-spacing: -0.02em;
     background: linear-gradient(180deg, #fff 0%, #cfd9ec 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+  }
+  .hero-subhead {
+    margin-top: 18px;
+    font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+    font-weight: 600;
+    color: #e8eefc;
+    letter-spacing: -0.005em;
+  }
+  .hero-subhead .verb { color: #fff; }
+  .hero-subhead .sep { color: rgba(255,255,255,0.28); margin: 0 8px; font-weight: 400; }
+  .hero-chips {
+    margin-top: 22px;
+    display: flex; flex-wrap: wrap; gap: 8px;
+  }
+  .hero-chip {
+    display: inline-flex; align-items: center; gap: 7px;
+    padding: 7px 13px; border-radius: 999px;
+    background: rgba(79,139,255,0.08);
+    border: 1px solid rgba(124,160,255,0.28);
+    color: #dbe6ff; font-size: 13px; font-weight: 600;
+    letter-spacing: 0.005em;
+  }
+  .hero-chip .chip-check {
+    width: 14px; height: 14px; border-radius: 999px;
+    background: linear-gradient(135deg,#4F8BFF,#7C5CFF);
+    display: inline-flex; align-items: center; justify-content: center;
+    color: #fff; font-size: 9px; font-weight: 900; flex-shrink: 0;
+  }
+
+  /* --- Pallet warehouse hero scene (custom SVG + CSS animations) --- */
+  .pallet-scene { width: 100%; max-width: 560px; margin: 0 auto; position: relative; aspect-ratio: 5 / 4; }
+  .pallet-scene svg { width: 100%; height: 100%; display: block; overflow: visible; }
+  .pallet-scene .ps-glow {
+    position: absolute; inset: 8% 12%; border-radius: 50%;
+    background: radial-gradient(ellipse at center, rgba(79,139,255,0.22) 0%, rgba(124,92,255,0.10) 35%, transparent 70%);
+    filter: blur(20px); z-index: 0; pointer-events: none;
+  }
+  .pallet-scene .ps-svg { position: relative; z-index: 1; }
+  /* Floating motion for whole pallet stack */
+  .ps-stack { transform-origin: 50% 80%; animation: ps-bob 6s ease-in-out infinite; }
+  @keyframes ps-bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+  /* Boxes drop in on load, then stay */
+  .ps-box { transform-box: fill-box; transform-origin: center bottom; }
+  .ps-box-top { animation: ps-drop 1.2s cubic-bezier(.22,1.2,.36,1) 0.2s both; }
+  .ps-box-l   { animation: ps-drop 1.2s cubic-bezier(.22,1.2,.36,1) 0.0s both; }
+  .ps-box-r   { animation: ps-drop 1.2s cubic-bezier(.22,1.2,.36,1) 0.1s both; }
+  @keyframes ps-drop {
+    0%   { transform: translateY(-30px); opacity: 0; }
+    60%  { transform: translateY(4px); opacity: 1; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+  /* Manifest tag floats independently */
+  .ps-manifest { transform-box: fill-box; transform-origin: center;
+    animation: ps-manifest-in 0.9s ease-out 1.4s both, ps-float 4.5s ease-in-out 2.3s infinite; }
+  @keyframes ps-manifest-in {
+    0% { opacity: 0; transform: translate(8px,-8px) scale(0.85); }
+    100% { opacity: 1; transform: translate(0,0) scale(1); }
+  }
+  @keyframes ps-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+  /* Vetting check stamp pulse */
+  .ps-stamp { transform-box: fill-box; transform-origin: center;
+    animation: ps-stamp-in 0.7s cubic-bezier(.22,1.4,.36,1) 1.7s both, ps-stamp-pulse 3s ease-in-out 2.5s infinite; }
+  @keyframes ps-stamp-in {
+    0% { opacity: 0; transform: scale(0.3) rotate(-20deg); }
+    100% { opacity: 1; transform: scale(1) rotate(-12deg); }
+  }
+  @keyframes ps-stamp-pulse {
+    0%,100% { filter: drop-shadow(0 0 0 rgba(34,197,94,0)); }
+    50%     { filter: drop-shadow(0 0 6px rgba(34,197,94,0.55)); }
+  }
+  /* Scan beam sweeps across the stack */
+  .ps-scan { animation: ps-scan 5s ease-in-out 2s infinite; }
+  @keyframes ps-scan {
+    0%, 100% { opacity: 0; transform: translateX(-40px); }
+    10%      { opacity: 0.55; }
+    50%      { transform: translateX(40px); opacity: 0.55; }
+    65%      { opacity: 0; }
+  }
+  /* Floating mini pallet icons around */
+  .ps-mini { transform-box: fill-box; transform-origin: center; opacity: 0.55; }
+  .ps-mini-a { animation: ps-mini-float 7s ease-in-out infinite; }
+  .ps-mini-b { animation: ps-mini-float 8s ease-in-out -2s infinite; }
+  .ps-mini-c { animation: ps-mini-float 9s ease-in-out -4s infinite; }
+  @keyframes ps-mini-float {
+    0%,100% { transform: translateY(0) rotate(0deg); }
+    50%     { transform: translateY(-10px) rotate(3deg); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ps-stack, .ps-box-top, .ps-box-l, .ps-box-r,
+    .ps-manifest, .ps-stamp, .ps-scan,
+    .ps-mini-a, .ps-mini-b, .ps-mini-c { animation: none !important; }
   }
   /* Animated gradient text on the highlight word */
   .gradient-text {
@@ -1168,13 +1259,18 @@
   <div class="relative max-w-7xl mx-auto px-5 sm:px-8 pt-20 sm:pt-28 lg:pt-32 pb-24 lg:pb-32">
     <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
       <div class="lg:col-span-6">
-        <span class="b-eyebrow reveal"><span class="dot"></span>Built for cross-border pallet buyers</span>
+        <span class="b-eyebrow reveal"><span class="dot"></span>Cross-border wholesale, vetted in the US</span>
         <h1 class="mt-6 font-extrabold reveal reveal-delay-1">
           <span class="gradient-text">US pallets</span>, opened before they ship.
         </h1>
-        <p class="mt-6 text-lg sm:text-xl text-slate-300 max-w-xl leading-relaxed reveal reveal-delay-2">
-          We source overstock, customer returns, and brand-direct closeouts in the US. Every lot is inspected in our warehouse before listing. Built for importers, exporters, and pallet-buying startups in LatAm who want real manifests, Net-30 after credit review, and no reseller chain between them and the source.
+        <p class="hero-subhead reveal reveal-delay-2">
+          <span class="verb">We buy.</span><span class="sep">/</span><span class="verb">We open.</span><span class="sep">/</span><span class="verb">We grade.</span><span class="sep">/</span><span class="verb">You ship.</span>
         </p>
+        <div class="hero-chips reveal reveal-delay-2">
+          <span class="hero-chip"><span class="chip-check">&#10003;</span>Vetted manifests</span>
+          <span class="hero-chip"><span class="chip-check">&#10003;</span>Net-30 terms</span>
+          <span class="hero-chip"><span class="chip-check">&#10003;</span>No reseller chain</span>
+        </div>
         <div class="mt-8 flex flex-col sm:flex-row gap-3 reveal reveal-delay-3">
           <a href="/request-access.html" class="b-btn-primary">
             Request access
@@ -1182,13 +1278,159 @@
           </a>
           <a href="/login.html" class="b-btn-secondary">Sign in</a>
         </div>
-        <p class="mt-5 text-sm text-slate-400 reveal reveal-delay-4">Onboarding our first cohort of buyers. Approved accounts see vetted lots inside their dashboard.</p>
+        <p class="mt-5 text-sm text-slate-400 reveal reveal-delay-4">For importers, exporters, and pallet-buying wholesalers in LatAm. Onboarding our first cohort of buyers.</p>
       </div>
 
-      <!-- Hero illustration (unDraw — Loading, warehouse handoff of boxes, recolored to brand cobalt) -->
+      <!-- Hero illustration: custom warehouse-pallet scene (inline SVG + CSS animations) -->
       <div class="lg:col-span-6 reveal reveal-delay-2">
-        <div class="hero-art ha-floating">
-          <img src="images/hero-illustration.svg" alt="Warehouse operators loading and handing off pallets of boxes" class="hero-illustration-img" loading="eager" decoding="async">
+        <div class="pallet-scene" role="img" aria-label="A wooden pallet stacked with cardboard boxes, marked with a green vetted checkmark and a manifest tag, representing US pallets inspected before they ship.">
+          <span class="ps-glow" aria-hidden="true"></span>
+          <svg class="ps-svg" viewBox="0 0 560 448" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="boxFace" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#E8C589"/>
+                <stop offset="100%" stop-color="#C9A26A"/>
+              </linearGradient>
+              <linearGradient id="boxTop" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#F2D7A3"/>
+                <stop offset="100%" stop-color="#D9B47A"/>
+              </linearGradient>
+              <linearGradient id="palletWood" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#8B6B45"/>
+                <stop offset="100%" stop-color="#6B4F2E"/>
+              </linearGradient>
+              <linearGradient id="scanBeam" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#4F8BFF" stop-opacity="0"/>
+                <stop offset="50%" stop-color="#7C5CFF" stop-opacity="0.65"/>
+                <stop offset="100%" stop-color="#4F8BFF" stop-opacity="0"/>
+              </linearGradient>
+              <linearGradient id="floorGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="rgba(79,139,255,0.18)"/>
+                <stop offset="100%" stop-color="rgba(79,139,255,0)"/>
+              </linearGradient>
+            </defs>
+
+            <!-- floor shadow ellipse -->
+            <ellipse cx="280" cy="380" rx="180" ry="18" fill="rgba(0,0,0,0.35)"/>
+
+            <!-- subtle floor grid -->
+            <g opacity="0.18" stroke="#7C5CFF" stroke-width="0.7">
+              <line x1="80"  y1="392" x2="480" y2="392"/>
+              <line x1="60"  y1="412" x2="500" y2="412"/>
+            </g>
+
+            <!-- mini floating pallet icons (background depth) -->
+            <g class="ps-mini ps-mini-a" transform="translate(70,110)" opacity="0.5">
+              <rect x="0" y="14" width="42" height="6" rx="1" fill="#5a4124"/>
+              <rect x="2" y="20" width="4"  height="6" fill="#5a4124"/>
+              <rect x="19" y="20" width="4" height="6" fill="#5a4124"/>
+              <rect x="36" y="20" width="4" height="6" fill="#5a4124"/>
+              <rect x="6" y="0"  width="30" height="14" fill="url(#boxFace)"/>
+            </g>
+            <g class="ps-mini ps-mini-b" transform="translate(460,80)" opacity="0.45">
+              <rect x="0" y="18" width="50" height="7" rx="1" fill="#5a4124"/>
+              <rect x="4" y="2"  width="42" height="16" fill="url(#boxFace)"/>
+              <line x1="25" y1="2" x2="25" y2="18" stroke="#a07a48" stroke-width="1"/>
+            </g>
+            <g class="ps-mini ps-mini-c" transform="translate(490,260)" opacity="0.4">
+              <rect x="0" y="12" width="36" height="5" rx="1" fill="#5a4124"/>
+              <rect x="3" y="0"  width="30" height="12" fill="url(#boxFace)"/>
+            </g>
+
+            <!-- MAIN STACK (pallet + boxes) -->
+            <g class="ps-stack">
+              <!-- Pallet -->
+              <g transform="translate(140,330)">
+                <!-- top deck planks -->
+                <rect x="0"   y="0"  width="280" height="10" fill="url(#palletWood)"/>
+                <rect x="0"   y="12" width="280" height="3"  fill="#3a2a17" opacity="0.4"/>
+                <!-- side blocks -->
+                <rect x="6"   y="15" width="22" height="22" fill="#5a4124"/>
+                <rect x="129" y="15" width="22" height="22" fill="#5a4124"/>
+                <rect x="252" y="15" width="22" height="22" fill="#5a4124"/>
+                <!-- bottom deck -->
+                <rect x="0"   y="37" width="280" height="8"  fill="url(#palletWood)"/>
+                <!-- plank seams on top -->
+                <line x1="56"  y1="0" x2="56"  y2="10" stroke="#3a2a17" stroke-width="1" opacity="0.5"/>
+                <line x1="112" y1="0" x2="112" y2="10" stroke="#3a2a17" stroke-width="1" opacity="0.5"/>
+                <line x1="168" y1="0" x2="168" y2="10" stroke="#3a2a17" stroke-width="1" opacity="0.5"/>
+                <line x1="224" y1="0" x2="224" y2="10" stroke="#3a2a17" stroke-width="1" opacity="0.5"/>
+              </g>
+
+              <!-- Bottom row: 2 large boxes -->
+              <g class="ps-box ps-box-l" transform="translate(150,230)">
+                <rect x="0" y="0"  width="125" height="100" fill="url(#boxFace)"/>
+                <polygon points="0,0 125,0 115,-12 10,-12" fill="url(#boxTop)"/>
+                <!-- box seam + tape -->
+                <line x1="62" y1="0" x2="62" y2="100" stroke="#8B6B45" stroke-width="2" opacity="0.55"/>
+                <rect x="0"  y="38" width="125" height="10" fill="#a07a48" opacity="0.55"/>
+                <!-- label rectangle -->
+                <rect x="14" y="58" width="50" height="28" fill="#FFFDF7" opacity="0.95" rx="1"/>
+                <line x1="20" y1="66" x2="56" y2="66" stroke="#6B4F2E" stroke-width="1.4"/>
+                <line x1="20" y1="72" x2="50" y2="72" stroke="#6B4F2E" stroke-width="1.4"/>
+                <line x1="20" y1="78" x2="44" y2="78" stroke="#6B4F2E" stroke-width="1.4"/>
+              </g>
+              <g class="ps-box ps-box-r" transform="translate(285,230)">
+                <rect x="0" y="0"  width="125" height="100" fill="url(#boxFace)"/>
+                <polygon points="0,0 125,0 115,-12 10,-12" fill="url(#boxTop)"/>
+                <line x1="62" y1="0" x2="62" y2="100" stroke="#8B6B45" stroke-width="2" opacity="0.55"/>
+                <rect x="0"  y="38" width="125" height="10" fill="#a07a48" opacity="0.55"/>
+                <!-- fragile arrows icon -->
+                <g transform="translate(78,58)" stroke="#6B4F2E" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M6 14 L12 4 L18 14"/>
+                  <path d="M12 4 L12 22"/>
+                </g>
+                <rect x="14" y="58" width="40" height="22" fill="#FFFDF7" opacity="0.9" rx="1"/>
+                <line x1="20" y1="66" x2="48" y2="66" stroke="#6B4F2E" stroke-width="1.4"/>
+                <line x1="20" y1="72" x2="42" y2="72" stroke="#6B4F2E" stroke-width="1.4"/>
+              </g>
+
+              <!-- Top row: 1 box centered with open flap -->
+              <g class="ps-box ps-box-top" transform="translate(210,150)">
+                <rect x="0" y="0"  width="140" height="80" fill="url(#boxFace)"/>
+                <!-- open top flaps -->
+                <polygon points="0,0 70,0 60,-22 -6,-14" fill="#D9B47A"/>
+                <polygon points="70,0 140,0 146,-14 80,-22" fill="#E8C589"/>
+                <!-- inside darkness -->
+                <polygon points="60,-22 80,-22 70,-4" fill="#3a2a17" opacity="0.7"/>
+                <line x1="70" y1="0" x2="70" y2="80" stroke="#8B6B45" stroke-width="2" opacity="0.55"/>
+                <rect x="0"  y="32" width="140" height="9" fill="#a07a48" opacity="0.5"/>
+                <!-- check stamp on box face -->
+                <g class="ps-stamp" transform="translate(82,46)">
+                  <circle cx="0" cy="0" r="20" fill="#22C55E"/>
+                  <circle cx="0" cy="0" r="20" fill="none" stroke="#fff" stroke-width="1.5" stroke-dasharray="2 3" opacity="0.85"/>
+                  <path d="M-8 0 L-2 7 L9 -6" stroke="#fff" stroke-width="3.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </g>
+              </g>
+
+              <!-- Scan beam sweeping across the stack -->
+              <g class="ps-scan" opacity="0">
+                <rect x="180" y="130" width="6" height="220" fill="url(#scanBeam)"/>
+              </g>
+            </g>
+
+            <!-- Floating MANIFEST tag (independent of stack bob) -->
+            <g class="ps-manifest" transform="translate(370,90)">
+              <rect x="0" y="0" width="148" height="78" rx="10" fill="#0F1A33" stroke="#4F8BFF" stroke-width="1.4"/>
+              <rect x="0" y="0" width="148" height="22" rx="10" fill="#4F8BFF"/>
+              <rect x="0" y="14" width="148" height="8" fill="#4F8BFF"/>
+              <text x="12" y="16" font-family="Inter,system-ui,sans-serif" font-size="11" font-weight="800" fill="#fff" letter-spacing="1.5">MANIFEST</text>
+              <circle cx="132" cy="11" r="4" fill="#22C55E"/>
+              <!-- lines -->
+              <line x1="14" y1="36" x2="120" y2="36" stroke="#4F8BFF" stroke-width="1.6" opacity="0.7"/>
+              <line x1="14" y1="46" x2="100" y2="46" stroke="#7C5CFF" stroke-width="1.6" opacity="0.6"/>
+              <line x1="14" y1="56" x2="110" y2="56" stroke="#4F8BFF" stroke-width="1.6" opacity="0.5"/>
+              <line x1="14" y1="66" x2="80"  y2="66" stroke="#7C5CFF" stroke-width="1.6" opacity="0.5"/>
+              <!-- check tick at right edge -->
+              <g transform="translate(120,52)">
+                <circle r="10" fill="#22C55E"/>
+                <path d="M-4 0 L-1 3 L4 -3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              </g>
+            </g>
+
+            <!-- Floor floor highlight under stack -->
+            <ellipse cx="280" cy="380" rx="120" ry="6" fill="url(#floorGrad)"/>
+          </svg>
         </div>
       </div>
     </div>
