@@ -39,4 +39,20 @@
     <priority>0.7</priority>
   </url>
 
+  <!-- Buyer platform: request access (Tier 1 exporters, wholesalers) -->
+  <url>
+    <loc>https://www.masterstockunitedstates.com/request-access.html</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Buyer platform: sign in (noindex, listed for discovery) -->
+  <url>
+    <loc>https://www.masterstockunitedstates.com/login.html</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
 </urlset>
