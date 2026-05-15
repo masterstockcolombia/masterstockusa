@@ -1056,21 +1056,39 @@
   .step-card:hover { box-shadow: 0 0 0 1px rgba(10,92,216,0.18), 0 20px 50px -20px rgba(10,92,216,0.2); }
   .cat-card:hover  { box-shadow: 0 0 0 1px rgba(10,92,216,0.18), 0 14px 35px -15px rgba(10,92,216,0.22); }
 
-  /* Glass header (option A) — semi-transparent + backdrop blur + subtle dual shadow */
+  /* Brand cobalt header */
   #site-header {
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: saturate(160%) blur(12px);
-    -webkit-backdrop-filter: saturate(160%) blur(12px);
-    border-bottom: 1px solid rgba(15, 23, 42, 0.06);
-    box-shadow: 0 1px 0 rgba(15, 23, 42, 0.04), 0 4px 24px rgba(37, 99, 235, 0.05);
-    transition: background-color .25s ease, border-color .25s ease, box-shadow .25s ease, backdrop-filter .25s ease;
+    background: #2563EB;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 1px 0 rgba(15, 23, 42, 0.08), 0 8px 24px rgba(37, 99, 235, 0.18);
+    transition: background-color .25s ease, box-shadow .25s ease;
   }
   #site-header.scrolled {
-    background: rgba(255, 255, 255, 0.92);
-    backdrop-filter: saturate(180%) blur(16px);
-    -webkit-backdrop-filter: saturate(180%) blur(16px);
-    border-bottom-color: rgba(15, 23, 42, 0.08);
-    box-shadow: 0 1px 0 rgba(15, 23, 42, 0.05), 0 8px 32px rgba(37, 99, 235, 0.08);
+    background: #1d4ed8;
+    box-shadow: 0 1px 0 rgba(15, 23, 42, 0.12), 0 10px 32px rgba(29, 78, 216, 0.32);
+  }
+  #site-header nav a {
+    color: rgba(255, 255, 255, 0.92);
+  }
+  #site-header nav a:hover {
+    background: rgba(255, 255, 255, 0.10) !important;
+    color: #fff;
+  }
+  #site-header nav > span[aria-hidden="true"] {
+    background: rgba(255, 255, 255, 0.20);
+  }
+  /* Request access button on blue header → white bg, cobalt text */
+  #site-header a[href="/request-access.html"] {
+    background: #ffffff !important;
+    color: #1d4ed8 !important;
+    border-color: #ffffff !important;
+  }
+  #site-header a[href="/request-access.html"]:hover {
+    background: #EFF6FF !important;
+  }
+  /* Logo: invert dark parts to white using brightness/contrast trick */
+  #site-header img[alt="MasterStock USA"] {
+    filter: brightness(0) invert(1);
   }
 
   /* Pre-footer CTA — subtle moving sheen */
