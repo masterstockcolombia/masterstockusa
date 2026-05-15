@@ -160,8 +160,11 @@
     --buyer-bg-2: #0A1628;
     --accent: #0A5CD8;
     --accent-2: #4F8BFF;
+    --accent-3: #7C5CFF;
     --status: #22c55e;
   }
+
+  html { scroll-behavior: smooth; }
 
   /* HERO */
   .b-hero {
@@ -173,17 +176,65 @@
       linear-gradient(180deg, #0A1628 0%, #0B1B35 60%, #0B1B35 100%);
     color: #fff;
   }
+  /* Dot pattern overlay with radial fade */
   .b-hero::before {
     content: "";
     position: absolute; inset: 0;
     background-image:
-      linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px);
-    background-size: 40px 40px;
-    mask-image: radial-gradient(ellipse at center, black 40%, transparent 75%);
-    -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 75%);
+      radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
+    background-size: 24px 24px;
+    mask-image: radial-gradient(ellipse at center, black 35%, transparent 78%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 35%, transparent 78%);
     pointer-events: none;
+    z-index: 0;
   }
+  /* Animated gradient orbs */
+  .hero-orbs {
+    position: absolute; inset: 0; overflow: hidden;
+    pointer-events: none; z-index: 0;
+  }
+  .hero-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.55;
+    will-change: transform;
+  }
+  .hero-orb.o1 {
+    width: 520px; height: 520px;
+    top: -120px; right: -80px;
+    background: radial-gradient(circle, #4F8BFF 0%, transparent 70%);
+    animation: orbFloat1 22s ease-in-out infinite alternate;
+  }
+  .hero-orb.o2 {
+    width: 480px; height: 480px;
+    bottom: -160px; left: -120px;
+    background: radial-gradient(circle, #7C5CFF 0%, transparent 70%);
+    animation: orbFloat2 26s ease-in-out infinite alternate;
+    opacity: 0.45;
+  }
+  .hero-orb.o3 {
+    width: 380px; height: 380px;
+    top: 45%; left: 40%;
+    background: radial-gradient(circle, #0A5CD8 0%, transparent 70%);
+    animation: orbFloat3 18s ease-in-out infinite alternate;
+    opacity: 0.35;
+  }
+  @keyframes orbFloat1 {
+    0%   { transform: translate(0,0) scale(1); }
+    100% { transform: translate(-60px, 50px) scale(1.15); }
+  }
+  @keyframes orbFloat2 {
+    0%   { transform: translate(0,0) scale(1); }
+    100% { transform: translate(80px, -40px) scale(1.1); }
+  }
+  @keyframes orbFloat3 {
+    0%   { transform: translate(0,0) scale(0.95); }
+    100% { transform: translate(-40px, -60px) scale(1.1); }
+  }
+  /* Make hero inner content stack above orbs */
+  .b-hero > .relative { position: relative; z-index: 1; }
+
   .b-hero h1 {
     font-size: clamp(2.25rem, 5.2vw, 4.25rem);
     line-height: 1.05;
@@ -192,6 +243,26 @@
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+  }
+  /* Animated gradient text on the highlight word */
+  .gradient-text {
+    background: linear-gradient(90deg, #4F8BFF 0%, #7C5CFF 50%, #4F8BFF 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradientShift 6s ease infinite;
+  }
+  @keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50%      { background-position: 100% 50%; }
+  }
+
+  /* Eyebrow pulse */
+  .b-eyebrow .dot { animation: pulseDot 2.4s ease-in-out infinite; }
+  @keyframes pulseDot {
+    0%, 100% { box-shadow: 0 0 0 4px rgba(34,197,94,0.18); opacity: 1; }
+    50%      { box-shadow: 0 0 0 8px rgba(34,197,94,0.05); opacity: 0.7; }
   }
   .b-eyebrow {
     display: inline-flex; align-items: center; gap: 8px;
@@ -424,6 +495,195 @@
     .lot-row { grid-template-columns: auto 1fr; }
     .lot-row .lot-status { grid-column: 2; justify-self: start; margin-top: 4px; }
   }
+
+  /* ===== POLISH PASS — wow factor ===== */
+
+  /* Shimmer sweep on primary CTA */
+  .b-btn-primary { position: relative; overflow: hidden; isolation: isolate; }
+  .b-btn-primary::after {
+    content: "";
+    position: absolute; top: 0; left: -120%;
+    width: 60%; height: 100%;
+    background: linear-gradient(100deg, transparent 0%, rgba(79,139,255,0.35) 50%, transparent 100%);
+    transform: skewX(-18deg);
+    animation: shimmerSweep 4.5s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .b-btn-primary > * { position: relative; z-index: 1; }
+  @keyframes shimmerSweep {
+    0%   { left: -120%; }
+    60%  { left: 120%; }
+    100% { left: 120%; }
+  }
+
+  /* Glassmorphism + border beam on catalog frame */
+  .catalog-frame {
+    position: relative;
+    background: linear-gradient(180deg, rgba(15,33,66,0.85) 0%, rgba(10,24,48,0.85) 100%);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .catalog-frame::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: 17px;
+    padding: 1px;
+    background: conic-gradient(from var(--beam-angle, 0deg),
+      transparent 0deg,
+      rgba(79,139,255,0.0) 60deg,
+      rgba(79,139,255,0.9) 90deg,
+      rgba(124,92,255,0.9) 110deg,
+      rgba(79,139,255,0.0) 140deg,
+      transparent 360deg);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+            mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    animation: beamRotate 6s linear infinite;
+    pointer-events: none;
+    z-index: 2;
+  }
+  @property --beam-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  }
+  @keyframes beamRotate {
+    to { --beam-angle: 360deg; }
+  }
+  /* Fallback for browsers without @property: rotate via transform on a wrapper */
+  @supports not (background: conic-gradient(from 0deg, red, blue)) {
+    .catalog-frame::before { display: none; }
+  }
+  /* Glass lot rows */
+  .lot-row {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: transform .25s ease, border-color .25s ease, background-color .25s ease;
+  }
+  .lot-row:hover {
+    transform: translateY(-1px);
+    background: rgba(255,255,255,0.05);
+    border-color: rgba(79,139,255,0.25);
+  }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1);
+    will-change: opacity, transform;
+  }
+  .reveal.reveal-in {
+    opacity: 1;
+    transform: none;
+  }
+  .reveal-delay-1 { transition-delay: .08s; }
+  .reveal-delay-2 { transition-delay: .16s; }
+  .reveal-delay-3 { transition-delay: .24s; }
+  .reveal-delay-4 { transition-delay: .32s; }
+
+  /* Section gradient divider */
+  .gradient-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(11,27,53,0.14), transparent);
+    border: 0;
+    margin: 0;
+  }
+
+  /* Bento grid for value props */
+  .bento {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: repeat(1, 1fr);
+  }
+  @media (min-width: 768px) {
+    .bento {
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: minmax(180px, auto);
+      gap: 20px;
+    }
+    .bento .value-card.span-2 { grid-column: span 2; grid-row: span 2; }
+  }
+  .value-card {
+    position: relative;
+    overflow: hidden;
+    transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+  }
+  .value-card::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: radial-gradient(420px 220px at var(--mx, 50%) var(--my, 0%), rgba(10,92,216,0.08), transparent 60%);
+    opacity: 0; transition: opacity .3s ease;
+    pointer-events: none;
+  }
+  .value-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(10,92,216,0.35);
+    box-shadow: 0 0 0 1px rgba(10,92,216,0.2), 0 24px 60px -20px rgba(10,92,216,0.28);
+  }
+  .value-card:hover::after { opacity: 1; }
+  .value-card.span-2 {
+    background:
+      radial-gradient(800px 300px at 100% 0%, rgba(10,92,216,0.07), transparent 60%),
+      #fff;
+  }
+  .value-card.span-2 h3 { font-size: 22px; }
+  .value-card.span-2 p { font-size: 16px; max-width: 38ch; }
+  .value-card .vc-icon {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: linear-gradient(135deg, #E8F0FE 0%, #d8e6ff 100%);
+    display: inline-flex; align-items: center; justify-content: center;
+    margin-bottom: 14px;
+    box-shadow: inset 0 0 0 1px rgba(10,92,216,0.12);
+  }
+
+  /* Step cards, cat cards lift */
+  .step-card, .cat-card { will-change: transform; }
+  .step-card:hover { box-shadow: 0 0 0 1px rgba(10,92,216,0.18), 0 20px 50px -20px rgba(10,92,216,0.2); }
+  .cat-card:hover  { box-shadow: 0 0 0 1px rgba(10,92,216,0.18), 0 14px 35px -15px rgba(10,92,216,0.22); }
+
+  /* Sticky nav scroll state */
+  #site-header { transition: background-color .25s ease, border-color .25s ease, box-shadow .25s ease, backdrop-filter .25s ease; }
+  #site-header.scrolled {
+    background: rgba(255,255,255,0.78);
+    backdrop-filter: saturate(140%) blur(20px);
+    -webkit-backdrop-filter: saturate(140%) blur(20px);
+    border-color: rgba(11,27,53,0.08);
+    box-shadow: 0 6px 24px -18px rgba(11,27,53,0.25);
+  }
+
+  /* Pre-footer CTA — subtle moving sheen */
+  .b-cta::before {
+    content: "";
+    position: absolute; inset: 0;
+    background: radial-gradient(380px 220px at var(--sx,30%) var(--sy,50%), rgba(255,255,255,0.12), transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+    animation: sheenDrift 14s ease-in-out infinite alternate;
+  }
+  @keyframes sheenDrift {
+    0%   { --sx: 20%; --sy: 30%; }
+    100% { --sx: 80%; --sy: 70%; }
+  }
+
+  /* Reduced motion: kill heavy animations */
+  @media (prefers-reduced-motion: reduce) {
+    .hero-orb, .gradient-text, .b-btn-primary::after, .catalog-frame::before,
+    .b-eyebrow .dot, .b-cta::before {
+      animation: none !important;
+    }
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+
+  /* Mobile: disable heaviest effects */
+  @media (max-width: 640px) {
+    .hero-orb { filter: blur(60px); opacity: 0.35; }
+    .hero-orb.o3 { display: none; }
+    .catalog-frame::before { animation-duration: 10s; }
+  }
 </style>
 </head>
 <body class="bg-white text-gray-900 antialiased">
@@ -455,28 +715,33 @@
 
 <!-- HERO -->
 <section class="b-hero">
+  <div class="hero-orbs" aria-hidden="true">
+    <span class="hero-orb o1"></span>
+    <span class="hero-orb o2"></span>
+    <span class="hero-orb o3"></span>
+  </div>
   <div class="relative max-w-7xl mx-auto px-5 sm:px-8 pt-20 sm:pt-28 lg:pt-32 pb-24 lg:pb-32">
     <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
       <div class="lg:col-span-6">
-        <span class="b-eyebrow"><span class="dot"></span>Onboarding buyers now</span>
-        <h1 class="mt-6 font-extrabold">
-          Real lots. Real manifests. Net-30 terms.
+        <span class="b-eyebrow reveal"><span class="dot"></span>Onboarding buyers now</span>
+        <h1 class="mt-6 font-extrabold reveal reveal-delay-1">
+          <span class="gradient-text">Real</span> lots. Real manifests. Net-30 terms.
         </h1>
-        <p class="mt-6 text-lg sm:text-xl text-slate-300 max-w-xl leading-relaxed">
+        <p class="mt-6 text-lg sm:text-xl text-slate-300 max-w-xl leading-relaxed reveal reveal-delay-2">
           You know the pain. Pallets show up, the manifest doesn't match, and your customer is waiting. We fix that. Every lot on MasterStock comes straight from US brands, distributors, and 3PLs &mdash; with the manifest you actually saw.
         </p>
-        <div class="mt-8 flex flex-col sm:flex-row gap-3">
+        <div class="mt-8 flex flex-col sm:flex-row gap-3 reveal reveal-delay-3">
           <a href="/request-access.html" class="b-btn-primary">
             Request access
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
           </a>
           <a href="/login.html" class="b-btn-secondary">Sign in</a>
         </div>
-        <p class="mt-5 text-sm text-slate-400">No mystery pallets. No broker stack. Pick up in the US, ship when you're ready.</p>
+        <p class="mt-5 text-sm text-slate-400 reveal reveal-delay-4">No mystery pallets. No broker stack. Pick up in the US, ship when you're ready.</p>
       </div>
 
       <!-- Catalog preview mock -->
-      <div class="lg:col-span-6">
+      <div class="lg:col-span-6 reveal reveal-delay-2">
         <div class="catalog-frame">
           <div class="catalog-titlebar">
             <span class="dots"><span></span><span></span><span></span></span>
@@ -558,13 +823,13 @@
 <!-- HOW IT WORKS -->
 <section id="how" class="bg-white">
   <div class="max-w-7xl mx-auto px-5 sm:px-8 py-24 lg:py-32">
-    <div class="max-w-3xl">
+    <div class="max-w-3xl reveal">
       <p class="section-eyebrow">How it works</p>
       <h2 class="mt-3 text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-ink">Three steps. No surprises.</h2>
     </div>
 
     <div class="mt-14 grid md:grid-cols-3 gap-6 lg:gap-8">
-      <div class="step-card">
+      <div class="step-card reveal">
         <div class="flex items-center gap-3 mb-5">
           <span class="step-num">1</span>
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0847A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 4v16"/></svg>
@@ -573,7 +838,7 @@
         <p class="mt-3 text-gray-600 leading-relaxed">Sourced direct from US brands, distributors, and 3PLs. Filter by category, region, and volume.</p>
       </div>
 
-      <div class="step-card">
+      <div class="step-card reveal">
         <div class="flex items-center gap-3 mb-5">
           <span class="step-num">2</span>
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0847A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg>
@@ -582,7 +847,7 @@
         <p class="mt-3 text-gray-600 leading-relaxed">SKU-level detail, condition grading, and pickup location. What you approve is what ships.</p>
       </div>
 
-      <div class="step-card">
+      <div class="step-card reveal">
         <div class="flex items-center gap-3 mb-5">
           <span class="step-num">3</span>
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0847A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h13l5 5v5h-2"/><path d="M3 7v10h2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg>
@@ -597,38 +862,38 @@
 <!-- WHAT YOU GET -->
 <section class="bg-gray-50 border-y border-gray-100">
   <div class="max-w-7xl mx-auto px-5 sm:px-8 py-24 lg:py-32">
-    <div class="max-w-3xl">
+    <div class="max-w-3xl reveal">
       <p class="section-eyebrow">What's different here</p>
       <h2 class="mt-3 text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-ink">What you actually get.</h2>
     </div>
 
-    <div class="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      <div class="value-card">
-        <div class="w-10 h-10 rounded-lg bg-brand-light flex items-center justify-center mb-4">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0847A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7L9 18l-5-5"/></svg>
+    <div class="mt-14 bento">
+      <div class="value-card span-2 reveal">
+        <div class="vc-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0847A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7L9 18l-5-5"/></svg>
         </div>
         <h3>No mystery pallets</h3>
-        <p>Every lot ships with the manifest you saw. If it's off, we make it right.</p>
+        <p>Every lot ships with the manifest you saw. SKU-level detail, condition grading, pickup location. If it's off at pickup, we make it right or you don't pay.</p>
       </div>
 
-      <div class="value-card">
-        <div class="w-10 h-10 rounded-lg bg-brand-light flex items-center justify-center mb-4">
+      <div class="value-card reveal reveal-delay-1">
+        <div class="vc-icon">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0847A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
         </div>
         <h3>Net-30 terms</h3>
         <p>Move volume without locking up your cash on every container.</p>
       </div>
 
-      <div class="value-card">
-        <div class="w-10 h-10 rounded-lg bg-brand-light flex items-center justify-center mb-4">
+      <div class="value-card reveal reveal-delay-2">
+        <div class="vc-icon">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0847A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
         </div>
         <h3>US-domestic pickup</h3>
         <p>Skip the import paperwork. Take title in the US and route the freight your way.</p>
       </div>
 
-      <div class="value-card">
-        <div class="w-10 h-10 rounded-lg bg-brand-light flex items-center justify-center mb-4">
+      <div class="value-card reveal reveal-delay-3">
+        <div class="vc-icon">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0847A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
         </div>
         <h3>Direct from brands &amp; 3PLs</h3>
@@ -641,56 +906,56 @@
 <!-- CATEGORIES -->
 <section id="categories" class="bg-white">
   <div class="max-w-7xl mx-auto px-5 sm:px-8 py-24 lg:py-32">
-    <div class="max-w-3xl">
+    <div class="max-w-3xl reveal">
       <p class="section-eyebrow">Categories</p>
       <h2 class="mt-3 text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-ink">What rotates through the catalog.</h2>
       <p class="mt-4 text-lg text-gray-600">Availability changes week to week. Sign in to see what's live right now.</p>
     </div>
 
     <div class="mt-12 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5">
-      <div class="cat-card">
+      <div class="cat-card reveal">
         <div class="w-10 h-10 rounded-lg bg-brand-light flex items-center justify-center mb-3">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0847A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46L16 2l-2 1-2-1-4.38 1.46a2 2 0 0 0-1.32 2.43l1.21 4.18a2 2 0 0 0 1.92 1.43H10v9a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2v-9h.57a2 2 0 0 0 1.92-1.43l1.21-4.18a2 2 0 0 0-1.32-2.43z"/></svg>
         </div>
         <h3 class="font-semibold text-ink">Apparel returns</h3>
       </div>
-      <div class="cat-card">
+      <div class="cat-card reveal">
         <div class="w-10 h-10 rounded-lg bg-brand-light flex items-center justify-center mb-3">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0847A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
         </div>
         <h3 class="font-semibold text-ink">Consumer electronics</h3>
       </div>
-      <div class="cat-card">
+      <div class="cat-card reveal">
         <div class="w-10 h-10 rounded-lg bg-brand-light flex items-center justify-center mb-3">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0847A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
         </div>
         <h3 class="font-semibold text-ink">Home &amp; kitchen</h3>
       </div>
-      <div class="cat-card">
+      <div class="cat-card reveal">
         <div class="w-10 h-10 rounded-lg bg-brand-light flex items-center justify-center mb-3">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0847A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
         </div>
         <h3 class="font-semibold text-ink">Toys &amp; games</h3>
       </div>
-      <div class="cat-card">
+      <div class="cat-card reveal">
         <div class="w-10 h-10 rounded-lg bg-brand-light flex items-center justify-center mb-3">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0847A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
         </div>
         <h3 class="font-semibold text-ink">Health &amp; beauty</h3>
       </div>
-      <div class="cat-card">
+      <div class="cat-card reveal">
         <div class="w-10 h-10 rounded-lg bg-brand-light flex items-center justify-center mb-3">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0847A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 1 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
         </div>
         <h3 class="font-semibold text-ink">Tools &amp; hardware</h3>
       </div>
-      <div class="cat-card">
+      <div class="cat-card reveal">
         <div class="w-10 h-10 rounded-lg bg-brand-light flex items-center justify-center mb-3">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0847A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>
         </div>
         <h3 class="font-semibold text-ink">Sporting goods</h3>
       </div>
-      <div class="cat-card">
+      <div class="cat-card reveal">
         <div class="w-10 h-10 rounded-lg bg-brand-light flex items-center justify-center mb-3">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0847A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/></svg>
         </div>
@@ -704,33 +969,33 @@
 <!-- FAQ -->
 <section id="faq" class="bg-gray-50 border-t border-gray-100">
   <div class="max-w-4xl mx-auto px-5 sm:px-8 py-24 lg:py-32">
-    <div class="text-center max-w-2xl mx-auto">
+    <div class="text-center max-w-2xl mx-auto reveal">
       <p class="section-eyebrow">FAQ</p>
       <h2 class="mt-3 text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-ink">Questions buyers actually ask.</h2>
     </div>
 
     <div class="mt-14">
-      <details class="faq">
+      <details class="faq reveal">
         <summary>How do you actually vet a lot?</summary>
         <p>We source straight from US brands, distributors, and 3PLs. Before a lot goes on the platform we walk the manifest line by line, confirm condition grading with the supplier, and reject anything that looks re-listed or repackaged. If we wouldn't buy it, you won't see it.</p>
       </details>
-      <details class="faq">
+      <details class="faq reveal">
         <summary>Will the lot match the manifest at pickup?</summary>
         <p>That's the whole point. The manifest you approve is the manifest that ships. If something is off at pickup, we make it right or you don't pay.</p>
       </details>
-      <details class="faq">
+      <details class="faq reveal">
         <summary>How do Net-30 terms work?</summary>
         <p>Once you're onboarded and credit-reviewed, you can take a lot on Net-30. You pick it up, you have 30 days to pay. Prepay and pay-at-pickup are also options on every lot.</p>
       </details>
-      <details class="faq">
+      <details class="faq reveal">
         <summary>Do you handle the export?</summary>
         <p>No. You take title in the US and route the freight yourself, or we'll introduce you to forwarders we work with. We don't act as importer of record abroad.</p>
       </details>
-      <details class="faq">
+      <details class="faq reveal">
         <summary>Do I need an account to see what's available?</summary>
         <p>Yes. Live inventory is gated so suppliers stay protected. Request access and we'll review your profile within two business days.</p>
       </details>
-      <details class="faq">
+      <details class="faq reveal">
         <summary>Is there a minimum order?</summary>
         <p>Minimums are set per lot and shown on the listing. Most lots are sized for a full or partial container.</p>
       </details>
@@ -741,7 +1006,7 @@
 <!-- PRE-FOOTER CTA -->
 <section class="bg-white">
   <div class="max-w-7xl mx-auto px-5 sm:px-8 py-20 lg:py-28">
-    <div class="b-cta p-10 sm:p-14 lg:p-20">
+    <div class="b-cta p-10 sm:p-14 lg:p-20 reveal">
       <div class="relative z-10 max-w-3xl">
         <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">Want to see this week's lots?</h2>
         <p class="mt-5 text-lg text-blue-100 max-w-2xl">Request access. We review buyer profiles within two business days and unlock the live catalog once you're in.</p>
@@ -801,5 +1066,57 @@
 </footer>
 
 </main>
+
+<script>
+  // Scroll reveal via IntersectionObserver
+  (function(){
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var els = document.querySelectorAll('.reveal');
+    if (reduce || !('IntersectionObserver' in window)) {
+      els.forEach(function(el){ el.classList.add('reveal-in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) {
+          e.target.classList.add('reveal-in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    els.forEach(function(el){ io.observe(el); });
+  })();
+
+  // Sticky header scroll state (throttled with rAF)
+  (function(){
+    var header = document.getElementById('site-header');
+    if (!header) return;
+    var ticking = false;
+    function onScroll(){
+      if (!ticking){
+        window.requestAnimationFrame(function(){
+          header.classList.toggle('scrolled', window.scrollY > 40);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+
+  // Value-card mouse glow tracking
+  (function(){
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (window.matchMedia('(max-width: 768px)').matches) return;
+    document.querySelectorAll('.value-card').forEach(function(card){
+      card.addEventListener('mousemove', function(e){
+        var r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%');
+        card.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100) + '%');
+      });
+    });
+  })();
+</script>
 </body>
 </html>
