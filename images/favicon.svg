@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <rect width="64" height="64" rx="12" fill="#ffffff"/>
+  <!-- Circular arrow loop (open on top-right) -->
+  <path d="M32 8 a24 24 0 1 0 17 7" stroke="#2563EB" stroke-width="5" stroke-linecap="round" fill="none"/>
+  <!-- Arrow head pointing into the loop -->
+  <path d="M49 15 L52 7 L43 11 Z" fill="#2563EB"/>
+  <!-- Pallet inside: 2 deck planks + 3 leg blocks -->
+  <rect x="18" y="30" width="28" height="4" rx="1" fill="#0B1B35"/>
+  <rect x="18" y="38" width="28" height="4" rx="1" fill="#0B1B35"/>
+  <rect x="20" y="42" width="4" height="5" fill="#0B1B35"/>
+  <rect x="30" y="42" width="4" height="5" fill="#0B1B35"/>
+  <rect x="40" y="42" width="4" height="5" fill="#0B1B35"/>
+  <!-- Subtle top plank divider lines -->
+  <line x1="27" y1="30" x2="27" y2="34" stroke="#ffffff" stroke-width="0.8" opacity="0.5"/>
+  <line x1="37" y1="30" x2="37" y2="34" stroke="#ffffff" stroke-width="0.8" opacity="0.5"/>
+  <line x1="27" y1="38" x2="27" y2="42" stroke="#ffffff" stroke-width="0.8" opacity="0.5"/>
+  <line x1="37" y1="38" x2="37" y2="42" stroke="#ffffff" stroke-width="0.8" opacity="0.5"/>
+</svg>
