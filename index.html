@@ -248,23 +248,32 @@
   .b-hero {
     position: relative;
     overflow: hidden;
-    background:
-      radial-gradient(1100px 600px at 85% -10%, rgba(79,139,255,0.22), transparent 60%),
-      radial-gradient(900px 500px at 10% 110%, rgba(10,92,216,0.18), transparent 60%),
-      linear-gradient(180deg, #0A1628 0%, #0B1B35 60%, #0B1B35 100%);
+    background: #0B1B35;
     color: #fff;
   }
-  /* Dot pattern overlay with radial fade */
-  .b-hero::before {
-    content: "";
+  /* BeamsBackground canvas (port from 21st.dev) */
+  .hero-beams-canvas {
     position: absolute; inset: 0;
-    background-image:
-      radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
-    background-size: 24px 24px;
-    mask-image: radial-gradient(ellipse at center, black 35%, transparent 78%);
-    -webkit-mask-image: radial-gradient(ellipse at center, black 35%, transparent 78%);
+    width: 100%; height: 100%;
+    filter: blur(15px);
     pointer-events: none;
     z-index: 0;
+  }
+  .hero-beams-overlay {
+    position: absolute; inset: 0;
+    background: rgba(11, 27, 53, 0.05);
+    backdrop-filter: blur(50px);
+    -webkit-backdrop-filter: blur(50px);
+    animation: hero-beams-pulse 10s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 1;
+  }
+  @keyframes hero-beams-pulse {
+    0%, 100% { opacity: 0.05; }
+    50%      { opacity: 0.15; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-beams-overlay { animation: none; }
   }
   /* Animated gradient orbs */
   .hero-orbs {
@@ -310,8 +319,10 @@
     0%   { transform: translate(0,0) scale(0.95); }
     100% { transform: translate(-40px, -60px) scale(1.1); }
   }
-  /* Make hero inner content stack above orbs */
-  .b-hero > .relative { position: relative; z-index: 1; }
+  /* Make hero inner content stack above beams + overlay */
+  .b-hero > .relative { position: relative; z-index: 2; }
+  .hero-orbs { z-index: 1; }
+  .hero-cursor-glow { z-index: 2; }
 
   .b-hero h1 {
     font-size: clamp(2rem, 4.2vw, 3.5rem);
@@ -1333,23 +1344,6 @@
     will-change: transform;
   }
 
-  /* ============================================
-     Dot pattern interactive mask
-     ============================================ */
-  .b-hero::before {
-    transition: mask-image .15s linear;
-  }
-  .b-hero.cursor-active::before {
-    -webkit-mask-image:
-      radial-gradient(150px circle at var(--cgx, 50%) var(--cgy, 50%), black 0%, rgba(0,0,0,0.4) 100%),
-      radial-gradient(ellipse at center, black 35%, transparent 78%);
-            mask-image:
-      radial-gradient(150px circle at var(--cgx, 50%) var(--cgy, 50%), black 0%, rgba(0,0,0,0.4) 100%),
-      radial-gradient(ellipse at center, black 35%, transparent 78%);
-    -webkit-mask-composite: source-over;
-            mask-composite: add;
-  }
-
   /* Section heading helpers reused */
   .founders-section, .timeline-section, .flow-section {
     background: #fff;
@@ -1404,6 +1398,8 @@
 
 <!-- HERO -->
 <section class="b-hero">
+  <canvas class="hero-beams-canvas" aria-hidden="true"></canvas>
+  <div class="hero-beams-overlay" aria-hidden="true"></div>
   <div class="hero-orbs" aria-hidden="true">
     <span class="hero-orb o1"></span>
     <span class="hero-orb o2"></span>
@@ -1411,33 +1407,26 @@
   </div>
   <div class="hero-cursor-glow" aria-hidden="true"></div>
   <div class="relative max-w-7xl mx-auto px-5 sm:px-8 pt-20 sm:pt-28 lg:pt-32 pb-24 lg:pb-32">
-    <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-      <div class="lg:col-span-6">
-        <h1 class="font-extrabold reveal reveal-delay-1">
-          <span class="gradient-text">US pallets</span>, opened before they ship.
-        </h1>
-        <p class="mt-6 text-lg sm:text-xl text-slate-300 max-w-xl leading-relaxed reveal reveal-delay-2">
-          We source US liquidation pallets (overstock, customer returns, brand-direct closeouts) and open, count, and grade every one in our warehouse before it hits the catalog. Built for wholesale buyers who want real manifests and Net-30 terms after credit review.
-        </p>
-        <div class="hero-chips reveal reveal-delay-2">
-          <span class="hero-chip"><span class="chip-check">&#10003;</span>Vetted manifests</span>
-          <span class="hero-chip"><span class="chip-check">&#10003;</span>Net-30 terms</span>
-          <span class="hero-chip"><span class="chip-check">&#10003;</span>No reseller chain</span>
-        </div>
-        <div class="mt-8 flex flex-col sm:flex-row gap-3 reveal reveal-delay-3">
-          <a href="/request-access.html" class="b-btn-primary">
-            Request access
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
-          </a>
-          <a href="/login.html" class="b-btn-secondary">Sign in</a>
-        </div>
-        <p class="mt-5 text-sm text-slate-400 reveal reveal-delay-4">For importers, exporters, and pallet-buying wholesalers in LatAm. Onboarding our first cohort of buyers.</p>
+    <div class="max-w-3xl mx-auto text-center">
+      <h1 class="font-extrabold reveal reveal-delay-1">
+        <span class="gradient-text">US pallets</span>, opened before they ship.
+      </h1>
+      <p class="mt-6 text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed reveal reveal-delay-2">
+        We source US liquidation pallets (overstock, customer returns, brand-direct closeouts) and open, count, and grade every one in our warehouse before it hits the catalog. Built for wholesale buyers who want real manifests and Net-30 terms after credit review.
+      </p>
+      <div class="hero-chips reveal reveal-delay-2" style="justify-content:center;">
+        <span class="hero-chip"><span class="chip-check">&#10003;</span>Vetted manifests</span>
+        <span class="hero-chip"><span class="chip-check">&#10003;</span>Net-30 terms</span>
+        <span class="hero-chip"><span class="chip-check">&#10003;</span>No reseller chain</span>
       </div>
-
-      <!-- Hero abstract image (Tailark hero-section-4 pattern, vanilla port) -->
-      <div class="lg:col-span-6 reveal reveal-delay-2 relative">
-        <img class="hero-abstract-img" src="images/hero-abstract-bg.jpg" alt="" aria-hidden="true" loading="eager" decoding="async" />
+      <div class="mt-8 flex flex-col sm:flex-row gap-3 reveal reveal-delay-3 justify-center">
+        <a href="/request-access.html" class="b-btn-primary">
+          Request access
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="/login.html" class="b-btn-secondary">Sign in</a>
       </div>
+      <p class="mt-5 text-sm text-slate-400 reveal reveal-delay-4">For importers, exporters, and pallet-buying wholesalers in LatAm. Onboarding our first cohort of buyers.</p>
     </div>
   </div>
 </section>
@@ -2090,6 +2079,161 @@
       hero.classList.remove('cursor-active');
       if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
     });
+  })();
+
+  // BeamsBackground canvas (port from 21st.dev BeamsBackground React component)
+  (function(){
+    var canvas = document.querySelector('.hero-beams-canvas');
+    if (!canvas) return;
+    var hero = canvas.parentElement;
+    var ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var isMobile = window.matchMedia('(max-width: 768px)').matches;
+    var MINIMUM_BEAMS = isMobile ? 12 : 20;
+    var TOTAL_BEAMS = Math.floor(MINIMUM_BEAMS * 1.5);
+    var OPACITY_MULT = 1; // intensity "strong"
+
+    var beams = [];
+    var rafId = null;
+    var running = false;
+    var dpr = Math.max(1, window.devicePixelRatio || 1);
+
+    function createBeam(width, height){
+      var angle = -35 + Math.random() * 10;
+      return {
+        x: Math.random() * width * 1.5 - width * 0.25,
+        y: Math.random() * height * 1.5 - height * 0.25,
+        width: 30 + Math.random() * 60,
+        length: height * 2.5,
+        angle: angle,
+        speed: 0.6 + Math.random() * 1.2,
+        opacity: 0.12 + Math.random() * 0.16,
+        hue: 190 + Math.random() * 70,
+        pulse: Math.random() * Math.PI * 2,
+        pulseSpeed: 0.02 + Math.random() * 0.03
+      };
+    }
+
+    function resetBeam(beam, index, total){
+      var w = canvas.width / dpr;
+      var h = canvas.height / dpr;
+      var column = index % 3;
+      var spacing = w / 3;
+      beam.y = h + 100;
+      beam.x = column * spacing + spacing / 2 + (Math.random() - 0.5) * spacing * 0.5;
+      beam.width = 100 + Math.random() * 100;
+      beam.speed = 0.5 + Math.random() * 0.4;
+      beam.hue = 190 + (index * 70) / total;
+      beam.opacity = 0.2 + Math.random() * 0.1;
+      return beam;
+    }
+
+    function drawBeam(beam){
+      ctx.save();
+      ctx.translate(beam.x, beam.y);
+      ctx.rotate((beam.angle * Math.PI) / 180);
+      var pulsing = beam.opacity * (0.8 + Math.sin(beam.pulse) * 0.2) * OPACITY_MULT;
+      var grad = ctx.createLinearGradient(0, 0, 0, beam.length);
+      grad.addColorStop(0,    'hsla(' + beam.hue + ', 85%, 65%, 0)');
+      grad.addColorStop(0.1,  'hsla(' + beam.hue + ', 85%, 65%, ' + (pulsing * 0.5) + ')');
+      grad.addColorStop(0.4,  'hsla(' + beam.hue + ', 85%, 65%, ' + pulsing + ')');
+      grad.addColorStop(0.6,  'hsla(' + beam.hue + ', 85%, 65%, ' + pulsing + ')');
+      grad.addColorStop(0.9,  'hsla(' + beam.hue + ', 85%, 65%, ' + (pulsing * 0.5) + ')');
+      grad.addColorStop(1,    'hsla(' + beam.hue + ', 85%, 65%, 0)');
+      ctx.fillStyle = grad;
+      ctx.fillRect(-beam.width / 2, 0, beam.width, beam.length);
+      ctx.restore();
+    }
+
+    function resize(){
+      dpr = Math.max(1, window.devicePixelRatio || 1);
+      var rect = hero.getBoundingClientRect();
+      var w = Math.max(1, Math.floor(rect.width));
+      var h = Math.max(1, Math.floor(rect.height));
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
+      canvas.style.width = w + 'px';
+      canvas.style.height = h + 'px';
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.scale(dpr, dpr);
+      // (Re)create beams sized to hero
+      beams = [];
+      for (var i = 0; i < TOTAL_BEAMS; i++){
+        beams.push(resetBeam(createBeam(w, h), i, TOTAL_BEAMS));
+      }
+    }
+
+    function frame(){
+      var w = canvas.width / dpr;
+      var h = canvas.height / dpr;
+      ctx.clearRect(0, 0, w, h);
+      ctx.filter = 'blur(35px)';
+      for (var i = 0; i < beams.length; i++){
+        var b = beams[i];
+        b.y -= b.speed;
+        b.pulse += b.pulseSpeed;
+        if (b.y + b.length < -100){
+          resetBeam(b, i, beams.length);
+        }
+        drawBeam(b);
+      }
+      ctx.filter = 'none';
+      if (running) rafId = requestAnimationFrame(frame);
+    }
+
+    function staticFrame(){
+      var w = canvas.width / dpr;
+      var h = canvas.height / dpr;
+      ctx.clearRect(0, 0, w, h);
+      ctx.filter = 'blur(35px)';
+      for (var i = 0; i < beams.length; i++) drawBeam(beams[i]);
+      ctx.filter = 'none';
+    }
+
+    function start(){
+      if (running || reduceMotion) return;
+      running = true;
+      rafId = requestAnimationFrame(frame);
+    }
+    function stop(){
+      running = false;
+      if (rafId){ cancelAnimationFrame(rafId); rafId = null; }
+    }
+
+    resize();
+    if (reduceMotion){
+      staticFrame();
+    } else {
+      start();
+    }
+
+    var resizeTimer = null;
+    window.addEventListener('resize', function(){
+      if (resizeTimer) clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function(){
+        var wasRunning = running;
+        stop();
+        resize();
+        if (reduceMotion) { staticFrame(); }
+        else if (wasRunning) { start(); }
+      }, 120);
+    });
+
+    // Pause when hero is offscreen
+    if ('IntersectionObserver' in window){
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if (e.isIntersecting){
+            if (!reduceMotion) start();
+          } else {
+            stop();
+          }
+        });
+      }, { threshold: 0 });
+      io.observe(hero);
+    }
   })();
 </script>
 </body>
