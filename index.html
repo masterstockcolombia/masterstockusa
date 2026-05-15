@@ -1056,11 +1056,10 @@
   .step-card:hover { box-shadow: 0 0 0 1px rgba(10,92,216,0.18), 0 20px 50px -20px rgba(10,92,216,0.2); }
   .cat-card:hover  { box-shadow: 0 0 0 1px rgba(10,92,216,0.18), 0 14px 35px -15px rgba(10,92,216,0.22); }
 
-  /* White header framed with cobalt accent lines top and bottom */
+  /* White header framed with cobalt accent lines on all 4 sides */
   header#site-header {
     background-color: #ffffff !important;
-    border-top: 2px solid #2563EB !important;
-    border-bottom: 2px solid #2563EB !important;
+    border: 2px solid #2563EB !important;
     box-shadow: 0 4px 20px -8px rgba(37, 99, 235, 0.18), 0 2px 6px -2px rgba(15, 23, 42, 0.06);
     transition: box-shadow .25s ease;
   }
@@ -1474,7 +1473,7 @@
   }
 </style>
 </head>
-<body class="bg-white text-gray-900 antialiased">
+<body class="bg-white text-gray-900 antialiased" style="overflow-x: hidden;">
 
 <a class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-white px-3 py-2 rounded" href="#main">Skip to content</a>
 
