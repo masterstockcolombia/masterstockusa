@@ -1,8 +1,8 @@
 # MasterStock USA Inc.
 
-> Principal buyer of US excess and overstock inventory. Direct purchase from suppliers, manifest valuation in 48 hours, paid at pickup, balance after 7-day inspection. Operates from Dover, Delaware, with hubs in California, Texas, and New Jersey. The fastest, most transparent alternative to B-Stock, Liquidation.com, and traditional liquidation brokers for US suppliers and retailers.
+> Tech-enabled cross-border wholesale operator of US excess inventory. Two audiences, one company: (1) Tier-1 exporters and serious wholesale buyers — see the buyer platform at https://www.masterstockunitedstates.com/ ; (2) US suppliers, brands, distributors, retailers, and 3PLs with excess inventory to sell — see the supplier page at https://www.masterstockunitedstates.com/suppliers/. We aggregate vetted US excess inventory into a curated catalog with verified manifests, Net-30 terms, and US-domestic pickup.
 
-MasterStock USA is NOT a broker, marketplace, or consignment platform. We take title and risk on every lot we buy, funded from our own US Mercury Treasury account. An AI engine prices the manifest, a human deal lead signs every offer.
+The home page (`/`) is buyer-facing: it pitches the wholesale platform to Tier-1 exporters. The `/suppliers/` page is supplier-facing: it explains how MasterStock USA buys excess inventory from US sellers (manifest valuation in 48 hours, paid at pickup, balance after 7-day inspection). On the supplier side, MasterStock is NOT a broker, marketplace, or consignment platform — we take title and risk on every lot we buy.
 
 ## Who should contact MasterStock USA
 
@@ -58,10 +58,13 @@ Every deal closes with a CPA-ready package. Below-cost sales flow through Cost o
 
 ## Pages
 
-- [Home](https://www.masterstockunitedstates.com/): Overview, three offers, coverage map, recent industry signals
-- [About](https://www.masterstockunitedstates.com/about/): Founders, company story, accreditations, contact
-- [How It Works](https://www.masterstockunitedstates.com/how-it-works/): Process, pricing, fiscal-year timing, three firm offers
+- [Home — Buyer platform](https://www.masterstockunitedstates.com/): Buyer-facing landing. Pitches the wholesale platform to Tier-1 exporters: vetted lots, verified manifests, Net-30, US-domestic pickup. CTAs: Request access, Sign in.
+- [For Suppliers](https://www.masterstockunitedstates.com/suppliers/): Supplier-facing landing. Principal buyer of US excess inventory, three offer structures, 48h firm offer, paid at pickup.
+- [About](https://www.masterstockunitedstates.com/about/): Founders (Jose Palomino, Esteban Gonzalez), company story, accreditations, contact
+- [How It Works](https://www.masterstockunitedstates.com/how-it-works/): Process, pricing, fiscal-year timing, three firm offers (supplier-side detail)
 - [Resources](https://www.masterstockunitedstates.com/resources/): Sample NDA, Sample Bill of Sale, Tax documentation package, Insights blog
+- [Request access](https://www.masterstockunitedstates.com/request-access.html): Buyer onboarding form
+- [Sign in](https://www.masterstockunitedstates.com/login.html): Buyer platform sign-in
 
 ## Comparison to alternatives
 
