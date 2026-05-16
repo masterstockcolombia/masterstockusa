@@ -2641,60 +2641,74 @@
       </a>
     </div>
 
-    <!-- COL 2: Corgi-style funnel — industry pains on the left squeeze through MS into standards on the right -->
+    <!-- COL 2: Funnel where each chip passes through MS and transforms -->
     <div class="ms-why-col ms-why-col-engine">
       <span class="ms-engine-eyebrow">What goes in vs what you get</span>
 
       <div class="ms-funnel">
-        <!-- Funnel hourglass background -->
+        <!-- Brand-cobalt hourglass background -->
         <svg class="ms-funnel-bg" viewBox="0 0 400 240" preserveAspectRatio="none" aria-hidden="true">
           <defs>
             <linearGradient id="funnelGrad" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%"  stop-color="#FCA5A5" stop-opacity="0.55"/>
-              <stop offset="25%" stop-color="#FECACA" stop-opacity="0.45"/>
-              <stop offset="50%" stop-color="#EFF6FF" stop-opacity="0.85"/>
-              <stop offset="75%" stop-color="#DBEAFE" stop-opacity="0.55"/>
-              <stop offset="100%" stop-color="#93C5FD" stop-opacity="0.55"/>
+              <stop offset="0%"  stop-color="#3B82F6" stop-opacity="0.55"/>
+              <stop offset="35%" stop-color="#60A5FA" stop-opacity="0.40"/>
+              <stop offset="50%" stop-color="#BFDBFE" stop-opacity="0.85"/>
+              <stop offset="65%" stop-color="#60A5FA" stop-opacity="0.40"/>
+              <stop offset="100%" stop-color="#1d4ed8" stop-opacity="0.55"/>
             </linearGradient>
           </defs>
-          <!-- Hourglass shape -->
+          <!-- Hourglass shape (top + bottom triangles meet at center) -->
           <path d="M0,0 L400,0 L400,80 Q220,120 200,120 Q180,120 0,80 Z" fill="url(#funnelGrad)"/>
           <path d="M0,240 L400,240 L400,160 Q220,120 200,120 Q180,120 0,160 Z" fill="url(#funnelGrad)"/>
         </svg>
 
-        <!-- Center MS logo node -->
+        <!-- Center MS node (chips pass behind it) -->
         <div class="ms-funnel-center">
           <span class="ms-funnel-center-halo" aria-hidden="true"></span>
           <img src="images/favicon.svg" alt="" class="ms-funnel-center-logo" />
         </div>
 
-        <!-- LEFT: industry pains scattered -->
-        <span class="ms-funnel-chip left-1" style="--x: 6%;  --y: 22%;" data-tip="Auctions">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m14 13-7.5 7.5c-.83.83-2.17.83-3 0 0 0 0 0 0 0a2.12 2.12 0 0 1 0-3L11 10"/><path d="m16 16 6-6"/><path d="m8 8 6-6"/><path d="m9 7 8 8"/><path d="m21 11-8-8"/></svg>
-        </span>
-        <span class="ms-funnel-chip left-2" style="--x: 16%; --y: 60%;" data-tip="Mystery lots">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-        </span>
-        <span class="ms-funnel-chip left-3" style="--x: 4%;  --y: 78%;" data-tip="Hidden costs">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-        </span>
-        <span class="ms-funnel-chip left-4" style="--x: 22%; --y: 18%;" data-tip="Silent broker">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="9" y1="10" x2="15" y2="10"/></svg>
-        </span>
-
-        <!-- RIGHT: MS standards scattered -->
-        <span class="ms-funnel-chip right-1 ms-funnel-chip-good" style="--x: 76%; --y: 20%;" data-tip="Verified manifest">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><polyline points="9 14 11 16 15 12"/></svg>
-        </span>
-        <span class="ms-funnel-chip right-2 ms-funnel-chip-good" style="--x: 88%; --y: 50%;" data-tip="Listed price">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 7v10"/><path d="M9 10h6"/></svg>
-        </span>
-        <span class="ms-funnel-chip right-3 ms-funnel-chip-good" style="--x: 70%; --y: 78%;" data-tip="Photographed">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-        </span>
-        <span class="ms-funnel-chip right-4 ms-funnel-chip-good" style="--x: 80%; --y: 80%;" data-tip="Direct match">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </span>
+        <!-- 5 chips, each travels the full path: left → MS → right, swapping icon mid-way -->
+        <div class="ms-fl-pill flow-1" aria-hidden="true">
+          <span class="ms-fl-face ms-fl-face-bad" data-tip="Silent broker">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="9" y1="10" x2="15" y2="10"/></svg>
+          </span>
+          <span class="ms-fl-face ms-fl-face-good" data-tip="Founder-signed">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </span>
+        </div>
+        <div class="ms-fl-pill flow-2" aria-hidden="true">
+          <span class="ms-fl-face ms-fl-face-bad" data-tip="Mystery lot">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </span>
+          <span class="ms-fl-face ms-fl-face-good" data-tip="Verified manifest">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><polyline points="9 14 11 16 15 12"/></svg>
+          </span>
+        </div>
+        <div class="ms-fl-pill flow-3" aria-hidden="true">
+          <span class="ms-fl-face ms-fl-face-bad" data-tip="Hidden costs">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </span>
+          <span class="ms-fl-face ms-fl-face-good" data-tip="Listed price">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 7v10"/><path d="M9 10h6"/></svg>
+          </span>
+        </div>
+        <div class="ms-fl-pill flow-4" aria-hidden="true">
+          <span class="ms-fl-face ms-fl-face-bad" data-tip="Auction war">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="14 9 17 6 14 3"/><path d="M3 6h14"/><polyline points="10 15 7 18 10 21"/><path d="M21 18H7"/></svg>
+          </span>
+          <span class="ms-fl-face ms-fl-face-good" data-tip="Direct match">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </div>
+        <div class="ms-fl-pill flow-5" aria-hidden="true">
+          <span class="ms-fl-face ms-fl-face-bad" data-tip="Inflated counts">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M3 12h12"/><path d="M3 18h6"/></svg>
+          </span>
+          <span class="ms-fl-face ms-fl-face-good" data-tip="Photographed">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+          </span>
+        </div>
 
         <!-- Side labels -->
         <span class="ms-funnel-side ms-funnel-side-bad">Industry today</span>
