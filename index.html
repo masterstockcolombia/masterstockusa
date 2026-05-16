@@ -1517,13 +1517,20 @@
       radial-gradient(700px 500px at 92% 88%, rgba(255, 255, 255, 0.10) 0%, transparent 65%);
     pointer-events: none;
   }
-  .ms-why-inner {
+  .ms-why-grid {
     position: relative;
-    max-width: 1100px;
+    max-width: 1180px;
     margin: 0 auto;
     padding: 0 24px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    align-items: center;
   }
-  .ms-why-head { max-width: 760px; }
+  @media (min-width: 1024px) {
+    .ms-why-grid { grid-template-columns: 1.1fr 1fr; gap: 56px; padding: 0 32px; }
+  }
+  .ms-why-text { max-width: 560px; }
   .ms-why-eyebrow {
     display: inline-block;
     font-size: 11px; font-weight: 700;
@@ -1555,52 +1562,108 @@
     max-width: 680px;
   }
 
-  /* 3 pillars row */
-  .ms-why-pillars {
-    margin-top: 44px;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-  @media (min-width: 768px) {
-    .ms-why-pillars { grid-template-columns: repeat(3, 1fr); gap: 24px; }
-  }
-  .ms-pillar {
-    background: rgba(255, 255, 255, 0.07);
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    border-radius: 16px;
-    padding: 22px 22px 20px;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    transition: transform .3s cubic-bezier(.16,1,.3,1), background-color .3s ease, border-color .3s ease;
-  }
-  .ms-pillar:hover {
-    transform: translateY(-3px);
-    background: rgba(255, 255, 255, 0.10);
-    border-color: rgba(255, 255, 255, 0.22);
-  }
-  .ms-pillar-icon {
-    width: 40px; height: 40px;
-    border-radius: 10px;
-    display: inline-flex; align-items: center; justify-content: center;
-    background: linear-gradient(135deg, #6EC6FF, #FFFFFF);
-    color: #1d4ed8;
-    margin-bottom: 14px;
-    box-shadow: 0 6px 20px -6px rgba(110, 198, 255, 0.5);
-  }
-  .ms-pillar-title {
-    font-size: 16px; font-weight: 700;
-    color: #ffffff; letter-spacing: -0.005em;
-    line-height: 1.25;
-  }
-  .ms-pillar-body {
-    margin-top: 8px;
-    font-size: 13.5px;
-    line-height: 1.55;
-    color: rgba(255, 255, 255, 0.78);
-  }
+  .ms-why-lead + .ms-why-lead { margin-top: 14px; }
+  .ms-why-cta { margin-top: 28px; }
 
-  .ms-why-foot { margin-top: 36px; }
+  /* Preview card on the right — "Curated for you" mock */
+  .ms-why-visual {
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .ms-preview {
+    width: 100%;
+    max-width: 440px;
+    background: rgba(255, 255, 255, 0.98);
+    border-radius: 20px;
+    padding: 22px 22px 20px;
+    box-shadow:
+      0 40px 80px -30px rgba(0, 0, 0, 0.45),
+      0 0 0 1px rgba(255, 255, 255, 0.15);
+    color: #0F172A;
+    transform: rotate(-1.2deg);
+    transition: transform .4s cubic-bezier(.16,1,.3,1);
+  }
+  .ms-preview:hover { transform: rotate(0deg) translateY(-4px); }
+  .ms-preview-head {
+    display: flex; align-items: center; gap: 8px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+    margin-bottom: 12px;
+  }
+  .ms-preview-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: #22C55E;
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.18);
+  }
+  .ms-preview-title {
+    font-size: 14px; font-weight: 700; color: #0F172A;
+    letter-spacing: -0.005em;
+  }
+  .ms-preview-week {
+    margin-left: auto;
+    font-size: 11px; font-weight: 600;
+    color: #64748B;
+    text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .ms-preview-row {
+    display: flex; align-items: center; justify-content: space-between; gap: 14px;
+    padding: 11px 0;
+    border-bottom: 1px dashed rgba(15, 23, 42, 0.07);
+  }
+  .ms-preview-row:last-of-type { border-bottom: none; }
+  .ms-preview-row-main {
+    display: flex; flex-direction: column; gap: 2px;
+    min-width: 0;
+  }
+  .ms-preview-sku {
+    font-size: 13.5px; font-weight: 700; color: #0F172A;
+    letter-spacing: -0.005em;
+  }
+  .ms-preview-cat {
+    font-size: 11.5px; color: #64748B;
+  }
+  .ms-preview-score {
+    display: inline-flex; flex-direction: column; align-items: flex-end;
+    background: linear-gradient(135deg, #2563EB, #1d4ed8);
+    color: #fff;
+    border-radius: 10px;
+    padding: 6px 10px 5px;
+    min-width: 56px;
+  }
+  .ms-preview-score-soft {
+    background: linear-gradient(135deg, #93C5FD, #60A5FA);
+  }
+  .ms-preview-score-val {
+    font-size: 16px; font-weight: 800; line-height: 1;
+    letter-spacing: -0.01em;
+  }
+  .ms-preview-score-label {
+    font-size: 9px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    opacity: 0.85; margin-top: 2px;
+  }
+  .ms-preview-foot {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(15, 23, 42, 0.08);
+  }
+  .ms-preview-metric {
+    display: flex; align-items: baseline; gap: 8px;
+    background: linear-gradient(90deg, rgba(34, 197, 94, 0.08), transparent);
+    padding: 8px 12px;
+    border-radius: 8px;
+    border-left: 3px solid #22C55E;
+  }
+  .ms-preview-metric-val {
+    font-size: 18px; font-weight: 800; color: #0F172A;
+    letter-spacing: -0.01em;
+  }
+  .ms-preview-metric-label {
+    font-size: 11.5px; color: #475569; line-height: 1.4;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ms-preview { transform: none !important; transition: none !important; }
+  }
   .ms-why-cta {
     display: inline-flex;
     align-items: center;
@@ -1928,46 +1991,70 @@
 <!-- WHAT IS MASTERSTOCK & WHY WE EXIST -->
 <section id="why-we-exist" class="ms-why-section">
   <div class="ms-why-bg" aria-hidden="true"></div>
-  <div class="ms-why-inner">
-    <div class="ms-why-head">
+  <div class="ms-why-grid">
+    <div class="ms-why-text">
       <span class="ms-why-eyebrow">What is MasterStock</span>
       <h2 class="ms-why-title">We make money <em>when your pallets sell.</em></h2>
       <p class="ms-why-lead">
-        MasterStock USA is a curation platform for cross-border wholesale buyers. We sit on your side of the table because our growth depends on yours. The more your lots actually move, the longer you stay, the better we get at picking for you.
+        MasterStock USA is a curation platform for cross-border wholesale buyers. Instead of pushing whatever excess inventory we have, we match pallets to your historical sell-through, defect rate, and returns.
       </p>
-    </div>
-
-    <div class="ms-why-pillars">
-      <div class="ms-pillar">
-        <div class="ms-pillar-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 6-6"/></svg>
-        </div>
-        <h3 class="ms-pillar-title">We curate to your data</h3>
-        <p class="ms-pillar-body">Every lot you buy logs SKU velocity, defect rate, and returns. The next pick is built from those signals.</p>
-      </div>
-
-      <div class="ms-pillar">
-        <div class="ms-pillar-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 11V7a4 4 0 0 1 8 0v4"/><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M12 16v2"/></svg>
-        </div>
-        <h3 class="ms-pillar-title">Aligned incentives</h3>
-        <p class="ms-pillar-body">We win on repeat buyers, not one-shot deals. A bad pallet costs us your next order, so we screen hard before listing.</p>
-      </div>
-
-      <div class="ms-pillar">
-        <div class="ms-pillar-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
-        </div>
-        <h3 class="ms-pillar-title">Each lot sharpens the next</h3>
-        <p class="ms-pillar-body">Your sell-through history compounds. By the third pallet, our pick fits your buyers better than any auction ever could.</p>
-      </div>
-    </div>
-
-    <div class="ms-why-foot">
+      <p class="ms-why-lead">
+        We only grow if you do. A bad pallet costs us your next order, so we screen hard before listing. By the third lot, our pick fits your buyers better than any auction ever could.
+      </p>
       <a href="/how-it-works/" class="ms-why-cta">
         See how it works
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
       </a>
+    </div>
+
+    <div class="ms-why-visual" aria-hidden="true">
+      <div class="ms-preview">
+        <div class="ms-preview-head">
+          <span class="ms-preview-dot"></span>
+          <span class="ms-preview-title">Curated for you</span>
+          <span class="ms-preview-week">This week</span>
+        </div>
+
+        <div class="ms-preview-row">
+          <div class="ms-preview-row-main">
+            <span class="ms-preview-sku">Lot #2024-0481</span>
+            <span class="ms-preview-cat">Apparel returns &middot; Grade A</span>
+          </div>
+          <div class="ms-preview-score">
+            <span class="ms-preview-score-val">94</span>
+            <span class="ms-preview-score-label">match</span>
+          </div>
+        </div>
+
+        <div class="ms-preview-row">
+          <div class="ms-preview-row-main">
+            <span class="ms-preview-sku">Lot #2024-0476</span>
+            <span class="ms-preview-cat">Home &amp; kitchen &middot; Brand-direct</span>
+          </div>
+          <div class="ms-preview-score">
+            <span class="ms-preview-score-val">87</span>
+            <span class="ms-preview-score-label">match</span>
+          </div>
+        </div>
+
+        <div class="ms-preview-row">
+          <div class="ms-preview-row-main">
+            <span class="ms-preview-sku">Lot #2024-0473</span>
+            <span class="ms-preview-cat">Tools &amp; hardware &middot; Grade A</span>
+          </div>
+          <div class="ms-preview-score ms-preview-score-soft">
+            <span class="ms-preview-score-val">71</span>
+            <span class="ms-preview-score-label">match</span>
+          </div>
+        </div>
+
+        <div class="ms-preview-foot">
+          <div class="ms-preview-metric">
+            <span class="ms-preview-metric-val">+12%</span>
+            <span class="ms-preview-metric-label">avg sell-through vs your last 5 lots</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
