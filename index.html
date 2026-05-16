@@ -1693,7 +1693,7 @@
     line-height: 1.4;
   }
 
-  /* Col 2 — Continuous feedback-loop diagram */
+  /* Col 2 — Transformation engine (bad pain → MS → good outcome, cycling) */
   .ms-why-col-engine {
     display: flex; flex-direction: column;
     background: linear-gradient(180deg, #FFFFFF 0%, #F4F8FF 100%);
@@ -1709,104 +1709,119 @@
   .ms-engine-stage {
     position: relative;
     width: 100%;
-    aspect-ratio: 360 / 240;
     flex: 1;
+    display: flex; flex-direction: column;
+    gap: 18px;
+    justify-content: center;
   }
-  .ms-eng-svg {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%;
-    overflow: visible;
-  }
-  /* Flowing dashed lines */
-  .ms-eng-flow {
-    fill: none;
-    stroke-width: 1.4;
-    stroke-linecap: round;
-    stroke-dasharray: 3 6;
-  }
-  .ms-eng-flow-in {
-    stroke: url(#engLineGrad);
-    animation: eng-dash-in 1.8s linear infinite;
-  }
-  .ms-eng-flow-out {
-    stroke: url(#engLineGrad);
-    animation: eng-dash-out 1.8s linear infinite;
-  }
-  .ms-eng-flow-back {
-    stroke: #22C55E;
-    stroke-width: 1.4;
-    stroke-dasharray: 3 6;
-    opacity: 0.7;
-    animation: eng-dash-back 2.6s linear infinite;
-  }
-  .ms-eng-arrow-head { filter: drop-shadow(0 0 3px rgba(34, 197, 94, 0.45)); }
-  @keyframes eng-dash-in   { to { stroke-dashoffset: -18; } }
-  @keyframes eng-dash-out  { to { stroke-dashoffset: -18; } }
-  @keyframes eng-dash-back { to { stroke-dashoffset: 54; } }
 
-  /* Chips */
-  .ms-eng-chip {
+  /* Column header labels */
+  .ms-eng-col-labels {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 12px;
+    padding: 0 4px;
+  }
+  .ms-eng-col-label {
+    font-size: 10px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.12em;
+  }
+  .ms-eng-col-label-bad  { color: #B91C1C; text-align: left; }
+  .ms-eng-col-label-good { color: #2563EB; text-align: right; }
+  .ms-eng-col-labels::before { content: ""; }
+
+  /* Tracks: left / middle / right */
+  .ms-eng-tracks {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 12px;
+    min-height: 160px;
+  }
+  .ms-eng-track {
+    position: relative;
+    height: 38px;
+  }
+  .ms-eng-track-bad  { justify-self: stretch; display: flex; justify-content: flex-end; }
+  .ms-eng-track-good { justify-self: stretch; display: flex; justify-content: flex-start; }
+
+  .ms-eng-pill {
     position: absolute;
-    transform: translateY(-50%);
-    padding: 5px 10px;
+    top: 50%; transform: translateY(-50%);
+    padding: 7px 13px;
     border-radius: 999px;
-    font-size: 11px; font-weight: 700;
+    font-size: 12px; font-weight: 700;
     letter-spacing: -0.005em;
     white-space: nowrap;
-    z-index: 3;
     line-height: 1;
+    opacity: 0;
+    will-change: transform, opacity;
   }
-  .ms-eng-chip strong { font-weight: 800; margin-left: 3px; font-feature-settings: "tnum"; }
-  .ms-eng-chip-in {
-    background: #FFFFFF;
-    border: 1px solid rgba(37, 99, 235, 0.18);
-    color: #1D4ED8;
-    box-shadow: 0 4px 10px -6px rgba(37, 99, 235, 0.18);
+  .ms-eng-pill-bad {
+    right: 0;
+    background: rgba(239, 68, 68, 0.08);
+    color: #B91C1C;
+    border: 1px solid rgba(239, 68, 68, 0.25);
+    box-shadow: 0 4px 12px -8px rgba(239, 68, 68, 0.25);
   }
-  .ms-eng-chip-out {
+  .ms-eng-pill-good {
+    left: 0;
     background: linear-gradient(135deg, #2563EB, #1d4ed8);
     color: #FFFFFF;
-    box-shadow: 0 6px 14px -8px rgba(37, 99, 235, 0.4);
-    border: 1px solid rgba(37, 99, 235, 0.0);
-  }
-  .ms-eng-chip-soft {
-    background: linear-gradient(135deg, #CBD5E1, #94A3B8);
-    color: #FFFFFF;
-    box-shadow: 0 6px 14px -8px rgba(100, 116, 139, 0.3);
+    box-shadow: 0 6px 16px -8px rgba(37, 99, 235, 0.5);
   }
 
-  /* Feedback label sitting on the bottom loop arc */
-  .ms-eng-feedback {
-    position: absolute;
-    left: 50%; bottom: 2%;
-    transform: translateX(-50%);
-    display: inline-flex; align-items: center; gap: 5px;
-    padding: 3px 9px;
-    background: #FFFFFF;
-    border: 1px solid rgba(34, 197, 94, 0.25);
-    color: #16A34A;
-    border-radius: 999px;
-    font-size: 10px; font-weight: 700;
-    letter-spacing: 0.02em;
-    box-shadow: 0 4px 10px -6px rgba(34, 197, 94, 0.2);
-    white-space: nowrap;
-    z-index: 4;
+  /* Bad chips: slide in from far left, settle, then fade out as they "enter" the engine */
+  @keyframes pill-bad-cycle {
+    0%   { opacity: 0; transform: translate(-30px, -50%); }
+    5%   { opacity: 1; transform: translate(0, -50%); }
+    16%  { opacity: 1; transform: translate(0, -50%); }
+    19%  { opacity: 0; transform: translate(20px, -50%) scale(.85); }
+    20%, 100% { opacity: 0; transform: translate(20px, -50%) scale(.85); }
+  }
+  /* Good chips: emerge from the engine after the bad fades (offset ~0.6s) */
+  @keyframes pill-good-cycle {
+    0%, 4%   { opacity: 0; transform: translate(-20px, -50%) scale(.85); }
+    8%       { opacity: 1; transform: translate(0, -50%) scale(1); }
+    16%      { opacity: 1; transform: translate(0, -50%) scale(1); }
+    20%      { opacity: 0; transform: translate(20px, -50%); }
+    100%     { opacity: 0; transform: translate(20px, -50%); }
   }
 
-  /* Center node */
-  .ms-eng-center {
-    position: absolute;
-    left: 50%; top: 46%;
-    transform: translate(-50%, -50%);
+  /* 5 pairs over 15s. Each pill animation = 15s, 3s window each, stagger -3s per index */
+  .bad-1, .good-1 { animation: var(--bad-anim, pill-bad-cycle) 15s linear infinite; animation-delay: 0s; }
+  .bad-2, .good-2 { animation: var(--bad-anim, pill-bad-cycle) 15s linear infinite; animation-delay: -3s; }
+  .bad-3, .good-3 { animation: var(--bad-anim, pill-bad-cycle) 15s linear infinite; animation-delay: -6s; }
+  .bad-4, .good-4 { animation: var(--bad-anim, pill-bad-cycle) 15s linear infinite; animation-delay: -9s; }
+  .bad-5, .good-5 { animation: var(--bad-anim, pill-bad-cycle) 15s linear infinite; animation-delay: -12s; }
+  .ms-eng-pill-good { --bad-anim: pill-good-cycle; }
+
+  /* Conduit (arrows + engine) */
+  .ms-eng-conduit {
+    display: flex; align-items: center; gap: 6px;
+  }
+  .ms-eng-arrow-l, .ms-eng-arrow-r { display: block; }
+  .ms-eng-arrow-flow {
+    stroke-dasharray: 3 4;
+    stroke-linecap: round;
+  }
+  .ms-eng-arrow-flow-in  { animation: ms-flow-l 1.2s linear infinite; }
+  .ms-eng-arrow-flow-out { animation: ms-flow-r 1.2s linear infinite; }
+  @keyframes ms-flow-l { to { stroke-dashoffset: -14; } }
+  @keyframes ms-flow-r { to { stroke-dashoffset: -14; } }
+
+  .ms-eng-engine {
+    position: relative;
     width: 64px; height: 64px;
     border-radius: 50%;
     background: #FFFFFF;
     border: 2.5px solid #2563EB;
-    display: flex; align-items: center; justify-content: center;
-    z-index: 5;
-    box-shadow: 0 0 0 6px rgba(37, 99, 235, 0.07), 0 14px 30px -14px rgba(37, 99, 235, 0.45);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    box-shadow: 0 0 0 6px rgba(37, 99, 235, 0.08), 0 14px 30px -14px rgba(37, 99, 235, 0.45);
+    flex-shrink: 0;
   }
-  .ms-eng-center-pulse {
+  .ms-eng-engine-pulse {
     position: absolute; inset: -6px;
     border-radius: 50%;
     background: rgba(37, 99, 235, 0.22);
@@ -1815,9 +1830,24 @@
   }
   @keyframes eng-pulse {
     0%   { transform: scale(0.9); opacity: 0.6; }
-    100% { transform: scale(1.55); opacity: 0; }
+    100% { transform: scale(1.5);  opacity: 0; }
   }
-  .ms-eng-center-logo { width: 24px; height: 24px; }
+  .ms-eng-engine-logo { width: 22px; height: 22px; }
+  .ms-eng-engine-label {
+    font-size: 7.5px; font-weight: 800;
+    color: #1D4ED8;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 1px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ms-eng-pill, .ms-eng-arrow-flow, .ms-eng-engine-pulse {
+      animation: none !important;
+    }
+    /* Show only the first pair statically */
+    .bad-1, .good-1 { opacity: 1 !important; transform: translateY(-50%) !important; }
+  }
 
   .ms-engine-foot {
     display: flex; align-items: center; gap: 8px;
@@ -2463,58 +2493,62 @@
       </a>
     </div>
 
-    <!-- COL 2: Continuous feedback-loop diagram (all visible at once) -->
+    <!-- COL 2: Transformation engine — industry pains in, MS standards out -->
     <div class="ms-why-col ms-why-col-engine">
-      <span class="ms-engine-eyebrow">The catalog learns you</span>
+      <span class="ms-engine-eyebrow">What goes in vs what you get</span>
 
       <div class="ms-engine-stage">
-        <svg class="ms-eng-svg" viewBox="0 0 360 240" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-          <defs>
-            <linearGradient id="engLineGrad" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%"  stop-color="#BFDBFE" stop-opacity="0.5"/>
-              <stop offset="100%" stop-color="#2563EB" stop-opacity="0.95"/>
-            </linearGradient>
-          </defs>
-          <!-- 3 input lines (left -> center) -->
-          <path class="ms-eng-flow ms-eng-flow-in" d="M60,50 C120,50 140,110 180,110"/>
-          <path class="ms-eng-flow ms-eng-flow-in" d="M60,110 L180,110"/>
-          <path class="ms-eng-flow ms-eng-flow-in" d="M60,170 C120,170 140,110 180,110"/>
-          <!-- 3 output lines (center -> right) -->
-          <path class="ms-eng-flow ms-eng-flow-out" d="M180,110 C220,110 240,50  300,50"/>
-          <path class="ms-eng-flow ms-eng-flow-out" d="M180,110 L300,110"/>
-          <path class="ms-eng-flow ms-eng-flow-out" d="M180,110 C220,110 240,170 300,170"/>
-          <!-- Feedback arc (clean ellipse below everything) -->
-          <path class="ms-eng-flow ms-eng-flow-back" d="M300,170 Q300,225 180,225 Q60,225 60,170"/>
-          <!-- Feedback arrow head at left end -->
-          <polygon class="ms-eng-arrow-head" points="60,170 67,164 67,176" fill="#22C55E"/>
-        </svg>
-
-        <!-- Center node -->
-        <div class="ms-eng-center">
-          <span class="ms-eng-center-pulse" aria-hidden="true"></span>
-          <img src="images/favicon.svg" alt="" class="ms-eng-center-logo" />
+        <!-- Column labels -->
+        <div class="ms-eng-col-labels">
+          <span class="ms-eng-col-label ms-eng-col-label-bad">Industry today</span>
+          <span class="ms-eng-col-label ms-eng-col-label-good">With MasterStock</span>
         </div>
 
-        <!-- Input chips (left side) -->
-        <span class="ms-eng-chip ms-eng-chip-in"  style="top:20%; left:0;">Sell-through</span>
-        <span class="ms-eng-chip ms-eng-chip-in"  style="top:46%; left:0;">Defect rate</span>
-        <span class="ms-eng-chip ms-eng-chip-in"  style="top:72%; left:0;">SKU velocity</span>
+        <div class="ms-eng-tracks">
+          <!-- LEFT TRACK: bad inputs (cycle) -->
+          <div class="ms-eng-track ms-eng-track-bad">
+            <span class="ms-eng-pill ms-eng-pill-bad bad-1">Blind listings</span>
+            <span class="ms-eng-pill ms-eng-pill-bad bad-2">Hidden costs</span>
+            <span class="ms-eng-pill ms-eng-pill-bad bad-3">Mystery lots</span>
+            <span class="ms-eng-pill ms-eng-pill-bad bad-4">Auction wars</span>
+            <span class="ms-eng-pill ms-eng-pill-bad bad-5">Silent broker</span>
+          </div>
 
-        <!-- Output chips (right side) — pallets matched -->
-        <span class="ms-eng-chip ms-eng-chip-out" style="top:20%; right:0;">0481 &middot; <strong>94</strong></span>
-        <span class="ms-eng-chip ms-eng-chip-out" style="top:46%; right:0;">0476 &middot; <strong>87</strong></span>
-        <span class="ms-eng-chip ms-eng-chip-out ms-eng-chip-soft" style="top:72%; right:0;">0473 &middot; <strong>71</strong></span>
+          <!-- CENTER: arrow + engine + arrow -->
+          <div class="ms-eng-conduit">
+            <svg class="ms-eng-arrow-l" width="40" height="14" viewBox="0 0 40 14" aria-hidden="true">
+              <line x1="0" y1="7" x2="34" y2="7" stroke="#CBD5E1" stroke-width="1.4" stroke-dasharray="3 4"/>
+              <line x1="0" y1="7" x2="34" y2="7" stroke="#EF4444" stroke-width="1.4" class="ms-eng-arrow-flow ms-eng-arrow-flow-in"/>
+              <polygon points="34,3 40,7 34,11" fill="#EF4444"/>
+            </svg>
 
-        <!-- Feedback label on the bottom arc -->
-        <span class="ms-eng-feedback">
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 4 23 10 17 10"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10"/></svg>
-          Your data feeds back
-        </span>
+            <div class="ms-eng-engine">
+              <span class="ms-eng-engine-pulse" aria-hidden="true"></span>
+              <img src="images/favicon.svg" alt="" class="ms-eng-engine-logo" />
+              <span class="ms-eng-engine-label">MasterStock</span>
+            </div>
+
+            <svg class="ms-eng-arrow-r" width="40" height="14" viewBox="0 0 40 14" aria-hidden="true">
+              <line x1="6" y1="7" x2="40" y2="7" stroke="#CBD5E1" stroke-width="1.4" stroke-dasharray="3 4"/>
+              <line x1="6" y1="7" x2="40" y2="7" stroke="#2563EB" stroke-width="1.4" class="ms-eng-arrow-flow ms-eng-arrow-flow-out"/>
+              <polygon points="34,3 40,7 34,11" fill="#2563EB"/>
+            </svg>
+          </div>
+
+          <!-- RIGHT TRACK: good outputs (cycle in sync) -->
+          <div class="ms-eng-track ms-eng-track-good">
+            <span class="ms-eng-pill ms-eng-pill-good good-1">Verified manifest</span>
+            <span class="ms-eng-pill ms-eng-pill-good good-2">Listed price</span>
+            <span class="ms-eng-pill ms-eng-pill-good good-3">Photographed pallet</span>
+            <span class="ms-eng-pill ms-eng-pill-good good-4">Direct match</span>
+            <span class="ms-eng-pill ms-eng-pill-good good-5">Founder-signed offer</span>
+          </div>
+        </div>
       </div>
 
       <div class="ms-engine-foot">
         <span class="ms-engine-foot-dot"></span>
-        <span class="ms-engine-foot-text"><strong>Every lot you buy</strong> &middot; sharpens the next match</span>
+        <span class="ms-engine-foot-text"><strong>Every industry pain</strong> &middot; rewritten as a standard</span>
       </div>
     </div>
 
