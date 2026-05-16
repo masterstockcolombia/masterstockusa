@@ -1502,64 +1502,180 @@
     .milestone-icon circle { stroke-dashoffset: 0; }
   }
 
-  /* === Why we exist — full cobalt section, single column with 3 pillars === */
+  /* === Why we exist — executive 3-column layout (Paraform-inspired) === */
   .ms-why-section {
     position: relative;
     overflow: hidden;
-    background: linear-gradient(135deg, #1d4ed8 0%, #2563EB 55%, #1e40af 100%);
-    color: #ffffff;
-    padding: 64px 0 72px;
+    background: #F9FAFB;
+    color: #0F172A;
+    padding: 88px 0 96px;
+    border-top: 1px solid rgba(15, 23, 42, 0.05);
+    border-bottom: 1px solid rgba(15, 23, 42, 0.05);
   }
   .ms-why-bg {
     position: absolute; inset: 0;
-    background:
-      radial-gradient(900px 600px at 12% 16%, rgba(110, 198, 255, 0.18) 0%, transparent 65%),
-      radial-gradient(700px 500px at 92% 88%, rgba(255, 255, 255, 0.10) 0%, transparent 65%);
+    background-image: radial-gradient(circle, rgba(15, 23, 42, 0.06) 1px, transparent 1px);
+    background-size: 22px 22px;
+    -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+            mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
     pointer-events: none;
+    opacity: 0.7;
   }
   .ms-why-grid {
     position: relative;
-    max-width: 1180px;
+    max-width: 1280px;
     margin: 0 auto;
     padding: 0 24px;
     display: grid;
     grid-template-columns: 1fr;
     gap: 40px;
-    align-items: center;
+    align-items: stretch;
   }
   @media (min-width: 1024px) {
-    .ms-why-grid { grid-template-columns: 1.1fr 1fr; gap: 56px; padding: 0 32px; }
+    .ms-why-grid {
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 28px;
+      padding: 0 32px;
+    }
   }
-  .ms-why-text { max-width: 560px; }
+  .ms-why-col {
+    background: #FFFFFF;
+    border: 1px solid rgba(15, 23, 42, 0.06);
+    border-radius: 18px;
+    padding: 36px 32px;
+    display: flex; flex-direction: column;
+    transition: transform .35s cubic-bezier(.16,1,.3,1), box-shadow .35s ease;
+  }
+  .ms-why-col:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 24px 50px -28px rgba(15, 23, 42, 0.18);
+  }
+  .ms-why-col-text { background: transparent; border: none; padding: 36px 0; }
+  @media (min-width: 1024px) {
+    .ms-why-col-text { padding: 36px 24px 36px 0; }
+  }
+  .ms-why-col-photo { padding: 0; overflow: hidden; }
+  .ms-why-col-quote { background: #FFFFFF; }
   .ms-why-eyebrow {
     display: inline-block;
     font-size: 11px; font-weight: 700;
     text-transform: uppercase; letter-spacing: 0.18em;
-    color: #BFDBFE;
-    margin-bottom: 14px;
+    color: #2563EB;
+    margin-bottom: 16px;
   }
   .ms-why-title {
-    font-size: clamp(1.9rem, 3.2vw, 2.6rem);
-    font-weight: 800;
-    line-height: 1.12;
-    letter-spacing: -0.02em;
-    color: #ffffff;
-    max-width: 720px;
-  }
-  .ms-why-title em {
-    font-style: normal;
-    background: linear-gradient(90deg, #BFE0FF, #FFFFFF);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    font-size: clamp(1.6rem, 2.2vw, 2.1rem);
+    font-weight: 700;
+    line-height: 1.18;
+    letter-spacing: -0.025em;
+    color: #0F172A;
   }
   .ms-why-lead {
-    margin-top: 16px;
-    font-size: 15.5px;
-    font-weight: 500;
+    margin-top: 18px;
+    font-size: 15px;
+    font-weight: 400;
     line-height: 1.6;
-    color: rgba(255, 255, 255, 0.88);
-    max-width: 680px;
+    color: #475569;
+  }
+  .ms-why-lead + .ms-why-lead { margin-top: 12px; }
+  .ms-why-cta-ghost {
+    display: inline-flex; align-items: center; gap: 8px;
+    margin-top: 28px;
+    padding: 10px 20px;
+    background: #0F172A;
+    color: #FFFFFF;
+    border-radius: 999px;
+    font-size: 13.5px; font-weight: 600;
+    text-decoration: none;
+    transition: background-color .2s ease, transform .2s ease;
+    align-self: flex-start;
+  }
+  .ms-why-cta-ghost:hover {
+    background: #1E293B;
+    transform: translateY(-1px);
+  }
+  .ms-why-cta-ghost svg { transition: transform .2s ease; }
+  .ms-why-cta-ghost:hover svg { transform: translateX(3px); }
+
+  /* Col 2 — Executive photo */
+  .ms-exec-photo {
+    margin: 0; height: 100%;
+    position: relative;
+    display: flex; flex-direction: column;
+    overflow: hidden;
+    border-radius: 18px;
+  }
+  .ms-exec-photo-img {
+    width: 100%; height: 100%; min-height: 360px;
+    object-fit: cover;
+    object-position: center 25%;
+    filter: grayscale(15%) contrast(1.02);
+  }
+  .ms-exec-photo-cap {
+    position: absolute;
+    left: 24px; bottom: 24px;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    padding: 12px 16px 10px;
+    border-radius: 10px;
+    display: flex; flex-direction: column; gap: 2px;
+    box-shadow: 0 12px 30px -16px rgba(15, 23, 42, 0.25);
+  }
+  .ms-exec-photo-name {
+    font-size: 14px; font-weight: 700; color: #0F172A;
+    letter-spacing: -0.005em;
+  }
+  .ms-exec-photo-role {
+    font-size: 11.5px; font-weight: 600; color: #2563EB;
+    text-transform: uppercase; letter-spacing: 0.08em;
+  }
+
+  /* Col 3 — Serif quote */
+  .ms-exec-brand {
+    display: flex; align-items: center; gap: 8px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+    margin-bottom: 24px;
+  }
+  .ms-exec-brand-mark {
+    width: 24px; height: 24px;
+    border-radius: 6px;
+  }
+  .ms-exec-brand-name {
+    font-size: 13.5px; font-weight: 700;
+    color: #0F172A;
+    letter-spacing: -0.005em;
+  }
+  .ms-exec-quote { margin: 0; flex: 1; }
+  .ms-exec-quote-text {
+    font-family: Georgia, "Times New Roman", "Charter", serif;
+    font-size: 19px;
+    line-height: 1.45;
+    color: #0F172A;
+    font-weight: 400;
+    letter-spacing: -0.005em;
+    margin: 0;
+  }
+  .ms-exec-attr {
+    display: flex; align-items: flex-start; gap: 10px;
+    margin-top: 28px;
+  }
+  .ms-exec-attr-dash {
+    color: #94A3B8;
+    font-size: 18px;
+    line-height: 1.4;
+    margin-top: -2px;
+  }
+  .ms-exec-attr-text {
+    display: flex; flex-direction: column; gap: 2px;
+  }
+  .ms-exec-attr-name {
+    font-size: 13.5px; font-weight: 700; color: #0F172A;
+    letter-spacing: -0.005em;
+  }
+  .ms-exec-attr-role {
+    font-size: 12px; font-weight: 500; color: #64748B;
   }
 
   .ms-why-lead + .ms-why-lead { margin-top: 14px; }
@@ -2071,36 +2187,49 @@
 <section id="why-we-exist" class="ms-why-section">
   <div class="ms-why-bg" aria-hidden="true"></div>
   <div class="ms-why-grid">
-    <div class="ms-why-text">
+
+    <!-- COL 1: Title + body -->
+    <div class="ms-why-col ms-why-col-text">
       <span class="ms-why-eyebrow">The platform</span>
-      <h2 class="ms-why-title">A pallet curation engine, <em>built on your data.</em></h2>
+      <h2 class="ms-why-title">A pallet curation engine for cross-border buyers.</h2>
       <p class="ms-why-lead">
-        MasterStock USA does not list inventory. We match US liquidation pallets to each buyer's historical sell-through, defect rate, and SKU velocity. Curation is the product.
+        We do not list inventory. We match US liquidation pallets to each buyer's historical sell-through, defect rate, and SKU velocity.
       </p>
-      <p class="ms-why-lead">
-        Our revenue compounds on yours. A pallet that does not sell costs us your next order, so every lot is opened, graded, and scored against your buyer profile before it reaches the catalog.
-      </p>
-      <a href="/how-it-works/" class="ms-why-cta">
+      <a href="/how-it-works/" class="ms-why-cta-ghost">
         See how it works
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
       </a>
     </div>
 
-    <div class="ms-why-visual">
-      <figure class="ms-quote-card">
-        <div class="ms-quote-photo-wrap">
-          <img src="images/founder-jose.jpeg" alt="Jose Palomino, founder of MasterStock USA" class="ms-quote-photo" loading="lazy" decoding="async" />
-        </div>
-        <blockquote class="ms-quote-body">
-          <svg class="ms-quote-mark" width="32" height="24" viewBox="0 0 32 24" fill="currentColor" aria-hidden="true"><path d="M0 24V14C0 6.27 4.93 1.07 12 0v5.6c-3.47 1.07-5.33 3.47-5.33 6.93H10c2.13 0 4 1.87 4 4V20c0 2.13-1.87 4-4 4H0zm18 0V14C18 6.27 22.93 1.07 30 0v5.6c-3.47 1.07-5.33 3.47-5.33 6.93H28c2.13 0 4 1.87 4 4V20c0 2.13-1.87 4-4 4H18z"/></svg>
-          <p class="ms-quote-text">If a pallet does not match the buyer it is going to, it does not leave the warehouse. The reputation we build with each lot is the only moat we have.</p>
-          <figcaption class="ms-quote-attr">
-            <span class="ms-quote-name">Jose Palomino</span>
-            <span class="ms-quote-role">Founder &middot; CEO, MasterStock USA</span>
-          </figcaption>
-        </blockquote>
+    <!-- COL 2: Founder photo card -->
+    <div class="ms-why-col ms-why-col-photo">
+      <figure class="ms-exec-photo">
+        <img src="images/founder-jose.jpeg" alt="Jose Palomino, founder and CEO of MasterStock USA" class="ms-exec-photo-img" loading="lazy" decoding="async" />
+        <figcaption class="ms-exec-photo-cap">
+          <span class="ms-exec-photo-name">Jose Palomino</span>
+          <span class="ms-exec-photo-role">Founder &middot; CEO</span>
+        </figcaption>
       </figure>
     </div>
+
+    <!-- COL 3: Serif quote -->
+    <div class="ms-why-col ms-why-col-quote">
+      <div class="ms-exec-brand">
+        <img src="images/favicon.svg" alt="MasterStock USA" class="ms-exec-brand-mark" />
+        <span class="ms-exec-brand-name">MasterStock USA</span>
+      </div>
+      <blockquote class="ms-exec-quote">
+        <p class="ms-exec-quote-text">&ldquo;If a pallet doesn't match the buyer it is going to, it doesn't leave the warehouse. The reputation we build with each lot is the only moat we have.&rdquo;</p>
+      </blockquote>
+      <div class="ms-exec-attr">
+        <span class="ms-exec-attr-dash" aria-hidden="true">&mdash;</span>
+        <div class="ms-exec-attr-text">
+          <span class="ms-exec-attr-name">Jose Palomino</span>
+          <span class="ms-exec-attr-role">Founder &amp; CEO, MasterStock USA</span>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
