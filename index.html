@@ -1056,9 +1056,16 @@
   .step-card:hover { box-shadow: 0 0 0 1px rgba(10,92,216,0.18), 0 20px 50px -20px rgba(10,92,216,0.2); }
   .cat-card:hover  { box-shadow: 0 0 0 1px rgba(10,92,216,0.18), 0 14px 35px -15px rgba(10,92,216,0.22); }
 
-  /* Header scroll state — mirrors suppliers page */
+  /* Header — flush full-width, integrated with the page */
+  header#site-header {
+    background: #FFFFFF !important;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.07) !important;
+    box-shadow: none !important;
+    transition: box-shadow .25s ease, border-color .25s ease;
+  }
   header#site-header.scrolled {
-    box-shadow: 0 4px 20px -8px rgba(15, 23, 42, 0.10);
+    border-bottom-color: rgba(15, 23, 42, 0.10) !important;
+    box-shadow: 0 1px 0 rgba(15, 23, 42, 0.04), 0 6px 20px -10px rgba(15, 23, 42, 0.08) !important;
   }
   header#site-header.scrolled {
     box-shadow: 0 8px 28px -10px rgba(37, 99, 235, 0.28), 0 2px 8px -2px rgba(15, 23, 42, 0.08);
@@ -2330,8 +2337,8 @@
 <a class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-white px-3 py-2 rounded" href="#main">Skip to content</a>
 
 <!-- HEADER - mirrored from suppliers page, adapted to buyer perspective -->
-<header id="site-header" class="fixed top-0 left-0 right-0 z-40 border-b border-gray-100 bg-white/90 backdrop-blur-lg transition-shadow duration-300">
-  <div class="max-w-6xl xl:max-w-[84rem] 2xl:max-w-[92rem] mx-auto px-5 sm:px-8 h-14 flex items-center gap-4 sm:gap-6">
+<header id="site-header" class="fixed top-0 left-0 right-0 z-40 bg-white transition-shadow duration-300">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 h-16 flex items-center gap-4 sm:gap-6">
     <a href="/" class="flex items-center shrink-0" aria-label="MasterStock USA Home">
       <img src="images/logo-final.png" alt="MasterStock USA" class="h-10 sm:h-11 w-auto object-contain" />
     </a>
@@ -2404,7 +2411,7 @@
   </div>
 </header>
 
-<main id="main" style="padding-top: 72px;">
+<main id="main" style="padding-top: 64px;">
 
 <!-- HERO -->
 <section class="b-hero">
