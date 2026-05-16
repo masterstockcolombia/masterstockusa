@@ -1709,7 +1709,7 @@
   .ms-engine-stage {
     position: relative;
     width: 100%;
-    aspect-ratio: 360 / 280;
+    aspect-ratio: 360 / 240;
     flex: 1;
   }
   .ms-eng-svg {
@@ -1720,70 +1720,75 @@
   /* Flowing dashed lines */
   .ms-eng-flow {
     fill: none;
-    stroke-width: 2;
+    stroke-width: 1.4;
     stroke-linecap: round;
-    stroke-dasharray: 5 7;
+    stroke-dasharray: 3 6;
   }
   .ms-eng-flow-in {
     stroke: url(#engLineGrad);
-    animation: eng-dash-in 1.6s linear infinite;
+    animation: eng-dash-in 1.8s linear infinite;
   }
   .ms-eng-flow-out {
     stroke: url(#engLineGrad);
-    animation: eng-dash-out 1.6s linear infinite;
+    animation: eng-dash-out 1.8s linear infinite;
   }
   .ms-eng-flow-back {
-    stroke: url(#engLineBack);
-    stroke-dasharray: 4 6;
-    opacity: 0.6;
-    animation: eng-dash-back 2.4s linear infinite;
+    stroke: #22C55E;
+    stroke-width: 1.4;
+    stroke-dasharray: 3 6;
+    opacity: 0.7;
+    animation: eng-dash-back 2.6s linear infinite;
   }
-  @keyframes eng-dash-in   { to { stroke-dashoffset: -24; } }
-  @keyframes eng-dash-out  { to { stroke-dashoffset: -24; } }
-  @keyframes eng-dash-back { to { stroke-dashoffset: 60; } }
+  .ms-eng-arrow-head { filter: drop-shadow(0 0 3px rgba(34, 197, 94, 0.45)); }
+  @keyframes eng-dash-in   { to { stroke-dashoffset: -18; } }
+  @keyframes eng-dash-out  { to { stroke-dashoffset: -18; } }
+  @keyframes eng-dash-back { to { stroke-dashoffset: 54; } }
 
   /* Chips */
   .ms-eng-chip {
     position: absolute;
     transform: translateY(-50%);
-    padding: 6px 11px;
+    padding: 5px 10px;
     border-radius: 999px;
-    font-size: 11.5px; font-weight: 700;
+    font-size: 11px; font-weight: 700;
     letter-spacing: -0.005em;
     white-space: nowrap;
     z-index: 3;
+    line-height: 1;
   }
   .ms-eng-chip strong { font-weight: 800; margin-left: 3px; font-feature-settings: "tnum"; }
   .ms-eng-chip-in {
     background: #FFFFFF;
-    border: 1px solid rgba(37, 99, 235, 0.22);
+    border: 1px solid rgba(37, 99, 235, 0.18);
     color: #1D4ED8;
-    box-shadow: 0 6px 14px -8px rgba(37, 99, 235, 0.25);
+    box-shadow: 0 4px 10px -6px rgba(37, 99, 235, 0.18);
   }
   .ms-eng-chip-out {
     background: linear-gradient(135deg, #2563EB, #1d4ed8);
     color: #FFFFFF;
-    box-shadow: 0 8px 20px -8px rgba(37, 99, 235, 0.55);
+    box-shadow: 0 6px 14px -8px rgba(37, 99, 235, 0.4);
+    border: 1px solid rgba(37, 99, 235, 0.0);
   }
   .ms-eng-chip-soft {
-    background: linear-gradient(135deg, #94A3B8, #64748B);
-    box-shadow: 0 8px 20px -8px rgba(100, 116, 139, 0.35);
+    background: linear-gradient(135deg, #CBD5E1, #94A3B8);
+    color: #FFFFFF;
+    box-shadow: 0 6px 14px -8px rgba(100, 116, 139, 0.3);
   }
 
   /* Feedback label sitting on the bottom loop arc */
   .ms-eng-feedback {
     position: absolute;
-    left: 50%; bottom: 6%;
+    left: 50%; bottom: 2%;
     transform: translateX(-50%);
     display: inline-flex; align-items: center; gap: 5px;
-    padding: 4px 10px;
+    padding: 3px 9px;
     background: #FFFFFF;
-    border: 1px solid rgba(34, 197, 94, 0.30);
+    border: 1px solid rgba(34, 197, 94, 0.25);
     color: #16A34A;
     border-radius: 999px;
-    font-size: 10.5px; font-weight: 700;
+    font-size: 10px; font-weight: 700;
     letter-spacing: 0.02em;
-    box-shadow: 0 6px 14px -6px rgba(34, 197, 94, 0.25);
+    box-shadow: 0 4px 10px -6px rgba(34, 197, 94, 0.2);
     white-space: nowrap;
     z-index: 4;
   }
@@ -1791,15 +1796,15 @@
   /* Center node */
   .ms-eng-center {
     position: absolute;
-    left: 50%; top: 50%;
+    left: 50%; top: 46%;
     transform: translate(-50%, -50%);
-    width: 78px; height: 78px;
+    width: 64px; height: 64px;
     border-radius: 50%;
     background: #FFFFFF;
-    border: 3px solid #2563EB;
+    border: 2.5px solid #2563EB;
     display: flex; align-items: center; justify-content: center;
     z-index: 5;
-    box-shadow: 0 0 0 8px rgba(37, 99, 235, 0.08), 0 18px 40px -16px rgba(37, 99, 235, 0.55);
+    box-shadow: 0 0 0 6px rgba(37, 99, 235, 0.07), 0 14px 30px -14px rgba(37, 99, 235, 0.45);
   }
   .ms-eng-center-pulse {
     position: absolute; inset: -6px;
@@ -1812,7 +1817,7 @@
     0%   { transform: scale(0.9); opacity: 0.6; }
     100% { transform: scale(1.55); opacity: 0; }
   }
-  .ms-eng-center-logo { width: 30px; height: 30px; }
+  .ms-eng-center-logo { width: 24px; height: 24px; }
 
   .ms-engine-foot {
     display: flex; align-items: center; gap: 8px;
@@ -2463,27 +2468,25 @@
       <span class="ms-engine-eyebrow">The catalog learns you</span>
 
       <div class="ms-engine-stage">
-        <svg class="ms-eng-svg" viewBox="0 0 360 280" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+        <svg class="ms-eng-svg" viewBox="0 0 360 240" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
           <defs>
             <linearGradient id="engLineGrad" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%"  stop-color="#93C5FD" stop-opacity="0.4"/>
+              <stop offset="0%"  stop-color="#BFDBFE" stop-opacity="0.5"/>
               <stop offset="100%" stop-color="#2563EB" stop-opacity="0.95"/>
             </linearGradient>
-            <linearGradient id="engLineBack" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%"  stop-color="#22C55E" stop-opacity="0.85"/>
-              <stop offset="100%" stop-color="#A7F3D0" stop-opacity="0.45"/>
-            </linearGradient>
           </defs>
-          <!-- 3 input lines (left -> center) flowing right -->
-          <path class="ms-eng-flow ms-eng-flow-in" d="M50,70 Q120,70 180,140"/>
-          <path class="ms-eng-flow ms-eng-flow-in" d="M50,140 L180,140"/>
-          <path class="ms-eng-flow ms-eng-flow-in" d="M50,210 Q120,210 180,140"/>
-          <!-- 3 output lines (center -> right) flowing right -->
-          <path class="ms-eng-flow ms-eng-flow-out" d="M180,140 Q240,70  310,70"/>
-          <path class="ms-eng-flow ms-eng-flow-out" d="M180,140 L310,140"/>
-          <path class="ms-eng-flow ms-eng-flow-out" d="M180,140 Q240,210 310,210"/>
-          <!-- Feedback arc (right outputs loop back to left inputs) -->
-          <path class="ms-eng-flow ms-eng-flow-back" d="M310,70  C355,70  355,260 180,260 C5,260 5,70 50,70"/>
+          <!-- 3 input lines (left -> center) -->
+          <path class="ms-eng-flow ms-eng-flow-in" d="M60,50 C120,50 140,110 180,110"/>
+          <path class="ms-eng-flow ms-eng-flow-in" d="M60,110 L180,110"/>
+          <path class="ms-eng-flow ms-eng-flow-in" d="M60,170 C120,170 140,110 180,110"/>
+          <!-- 3 output lines (center -> right) -->
+          <path class="ms-eng-flow ms-eng-flow-out" d="M180,110 C220,110 240,50  300,50"/>
+          <path class="ms-eng-flow ms-eng-flow-out" d="M180,110 L300,110"/>
+          <path class="ms-eng-flow ms-eng-flow-out" d="M180,110 C220,110 240,170 300,170"/>
+          <!-- Feedback arc (clean ellipse below everything) -->
+          <path class="ms-eng-flow ms-eng-flow-back" d="M300,170 Q300,225 180,225 Q60,225 60,170"/>
+          <!-- Feedback arrow head at left end -->
+          <polygon class="ms-eng-arrow-head" points="60,170 67,164 67,176" fill="#22C55E"/>
         </svg>
 
         <!-- Center node -->
@@ -2493,18 +2496,18 @@
         </div>
 
         <!-- Input chips (left side) -->
-        <span class="ms-eng-chip ms-eng-chip-in" style="top:18%; left:0;">Sell-through</span>
-        <span class="ms-eng-chip ms-eng-chip-in" style="top:46%; left:0;">Defect rate</span>
-        <span class="ms-eng-chip ms-eng-chip-in" style="top:74%; left:0;">SKU velocity</span>
+        <span class="ms-eng-chip ms-eng-chip-in"  style="top:20%; left:0;">Sell-through</span>
+        <span class="ms-eng-chip ms-eng-chip-in"  style="top:46%; left:0;">Defect rate</span>
+        <span class="ms-eng-chip ms-eng-chip-in"  style="top:72%; left:0;">SKU velocity</span>
 
         <!-- Output chips (right side) — pallets matched -->
-        <span class="ms-eng-chip ms-eng-chip-out" style="top:18%; right:0;">Lot 0481 &middot; <strong>94</strong></span>
-        <span class="ms-eng-chip ms-eng-chip-out" style="top:46%; right:0;">Lot 0476 &middot; <strong>87</strong></span>
-        <span class="ms-eng-chip ms-eng-chip-out ms-eng-chip-soft" style="top:74%; right:0;">Lot 0473 &middot; <strong>71</strong></span>
+        <span class="ms-eng-chip ms-eng-chip-out" style="top:20%; right:0;">0481 &middot; <strong>94</strong></span>
+        <span class="ms-eng-chip ms-eng-chip-out" style="top:46%; right:0;">0476 &middot; <strong>87</strong></span>
+        <span class="ms-eng-chip ms-eng-chip-out ms-eng-chip-soft" style="top:72%; right:0;">0473 &middot; <strong>71</strong></span>
 
-        <!-- Feedback label hovering at the bottom of the loop -->
+        <!-- Feedback label on the bottom arc -->
         <span class="ms-eng-feedback">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 4 23 10 17 10"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10"/></svg>
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 4 23 10 17 10"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10"/></svg>
           Your data feeds back
         </span>
       </div>
