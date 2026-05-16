@@ -1693,7 +1693,7 @@
     line-height: 1.4;
   }
 
-  /* Col 2 — Learning-loop animation (broad pool → buy → ranked) */
+  /* Col 2 — Continuous feedback-loop diagram */
   .ms-why-col-engine {
     display: flex; flex-direction: column;
     background: linear-gradient(180deg, #FFFFFF 0%, #F4F8FF 100%);
@@ -1712,32 +1712,88 @@
     aspect-ratio: 360 / 280;
     flex: 1;
   }
-
-  /* Phase labels — cross-fade through cycle */
-  .ms-eng-phase-label {
-    position: absolute;
-    top: 8px; left: 50%; transform: translateX(-50%);
-    font-size: 11px; font-weight: 700;
-    color: #64748B;
-    text-transform: uppercase; letter-spacing: 0.1em;
-    white-space: nowrap;
-    opacity: 0;
-    animation: eng-phase 12s linear infinite both;
+  .ms-eng-svg {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    overflow: visible;
   }
-  .ms-eng-phase-1 { animation-delay: 0s; }
-  .ms-eng-phase-2 { animation-delay: -8s; color: #16A34A; }
-  .ms-eng-phase-3 { animation-delay: -4s; color: #2563EB; }
-  @keyframes eng-phase {
-    0%, 25%   { opacity: 1; }
-    33%, 100% { opacity: 0; }
+  /* Flowing dashed lines */
+  .ms-eng-flow {
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-dasharray: 5 7;
+  }
+  .ms-eng-flow-in {
+    stroke: url(#engLineGrad);
+    animation: eng-dash-in 1.6s linear infinite;
+  }
+  .ms-eng-flow-out {
+    stroke: url(#engLineGrad);
+    animation: eng-dash-out 1.6s linear infinite;
+  }
+  .ms-eng-flow-back {
+    stroke: url(#engLineBack);
+    stroke-dasharray: 4 6;
+    opacity: 0.6;
+    animation: eng-dash-back 2.4s linear infinite;
+  }
+  @keyframes eng-dash-in   { to { stroke-dashoffset: -24; } }
+  @keyframes eng-dash-out  { to { stroke-dashoffset: -24; } }
+  @keyframes eng-dash-back { to { stroke-dashoffset: 60; } }
+
+  /* Chips */
+  .ms-eng-chip {
+    position: absolute;
+    transform: translateY(-50%);
+    padding: 6px 11px;
+    border-radius: 999px;
+    font-size: 11.5px; font-weight: 700;
+    letter-spacing: -0.005em;
+    white-space: nowrap;
+    z-index: 3;
+  }
+  .ms-eng-chip strong { font-weight: 800; margin-left: 3px; font-feature-settings: "tnum"; }
+  .ms-eng-chip-in {
+    background: #FFFFFF;
+    border: 1px solid rgba(37, 99, 235, 0.22);
+    color: #1D4ED8;
+    box-shadow: 0 6px 14px -8px rgba(37, 99, 235, 0.25);
+  }
+  .ms-eng-chip-out {
+    background: linear-gradient(135deg, #2563EB, #1d4ed8);
+    color: #FFFFFF;
+    box-shadow: 0 8px 20px -8px rgba(37, 99, 235, 0.55);
+  }
+  .ms-eng-chip-soft {
+    background: linear-gradient(135deg, #94A3B8, #64748B);
+    box-shadow: 0 8px 20px -8px rgba(100, 116, 139, 0.35);
+  }
+
+  /* Feedback label sitting on the bottom loop arc */
+  .ms-eng-feedback {
+    position: absolute;
+    left: 50%; bottom: 6%;
+    transform: translateX(-50%);
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 4px 10px;
+    background: #FFFFFF;
+    border: 1px solid rgba(34, 197, 94, 0.30);
+    color: #16A34A;
+    border-radius: 999px;
+    font-size: 10.5px; font-weight: 700;
+    letter-spacing: 0.02em;
+    box-shadow: 0 6px 14px -6px rgba(34, 197, 94, 0.25);
+    white-space: nowrap;
+    z-index: 4;
   }
 
   /* Center node */
   .ms-eng-center {
     position: absolute;
-    left: 50%; top: 52%;
+    left: 50%; top: 50%;
     transform: translate(-50%, -50%);
-    width: 76px; height: 76px;
+    width: 78px; height: 78px;
     border-radius: 50%;
     background: #FFFFFF;
     border: 3px solid #2563EB;
@@ -1748,7 +1804,7 @@
   .ms-eng-center-pulse {
     position: absolute; inset: -6px;
     border-radius: 50%;
-    background: rgba(37, 99, 235, 0.25);
+    background: rgba(37, 99, 235, 0.22);
     animation: eng-pulse 2.4s ease-out infinite;
     z-index: -1;
   }
@@ -1757,93 +1813,6 @@
     100% { transform: scale(1.55); opacity: 0; }
   }
   .ms-eng-center-logo { width: 30px; height: 30px; }
-
-  /* Phase 1: broad pool of lots scattered around center */
-  .ms-eng-pool {
-    position: absolute;
-    padding: 5px 10px;
-    background: #FFFFFF;
-    border: 1px solid rgba(15, 23, 42, 0.10);
-    border-radius: 999px;
-    font-size: 11px; font-weight: 600;
-    color: #475569;
-    letter-spacing: -0.005em;
-    box-shadow: 0 6px 14px -8px rgba(15, 23, 42, 0.18);
-    white-space: nowrap;
-    z-index: 2;
-    animation: eng-pool-cycle 12s ease-in-out infinite both;
-    will-change: transform, opacity;
-  }
-  /* Scatter the 8 lots around center (top, left in percentages) */
-  .pool-a { top: 18%;  left: 4%;  --orbit-x: -22px; --orbit-y: 8px;  animation-delay: 0s; }
-  .pool-b { top: 12%;  left: 38%; --orbit-x: 4px;   --orbit-y: -18px; animation-delay: -0.4s; }
-  .pool-c { top: 22%;  left: 72%; --orbit-x: 18px;  --orbit-y: 6px;  animation-delay: -0.8s; }
-  .pool-d { top: 52%;  left: 4%;  --orbit-x: -22px; --orbit-y: 0px;  animation-delay: -1.2s; }
-  .pool-e { top: 50%;  left: 78%; --orbit-x: 22px;  --orbit-y: 0px;  animation-delay: -1.6s; }
-  .pool-f { top: 80%;  left: 8%;  --orbit-x: -18px; --orbit-y: -6px; animation-delay: -2s; }
-  .pool-g { top: 86%;  left: 42%; --orbit-x: -4px;  --orbit-y: 12px; animation-delay: -2.4s; }
-  .pool-h { top: 78%;  left: 72%; --orbit-x: 22px;  --orbit-y: -6px; animation-delay: -2.8s; }
-
-  /* 12s cycle, 4s per phase. Pool shows phase 1 (0-33%), fades and re-enters phase 3 differently */
-  @keyframes eng-pool-cycle {
-    0%   { opacity: 0; transform: translate(0,0) scale(0.7); }
-    5%   { opacity: 1; transform: translate(0,0) scale(1); }
-    25%  { opacity: 1; transform: translate(var(--orbit-x), var(--orbit-y)) scale(1); }
-    32%  { opacity: 0; transform: translate(0,0) scale(0.8); }
-    100% { opacity: 0; transform: translate(0,0) scale(0.8); }
-  }
-
-  /* Phase 2: a "Bought" chip flies into the center */
-  .ms-eng-bought {
-    position: absolute;
-    left: 18%; top: 18%;
-    display: inline-flex; align-items: center; gap: 6px;
-    padding: 7px 12px;
-    background: #16A34A;
-    color: #FFFFFF;
-    border-radius: 999px;
-    font-size: 11.5px; font-weight: 800;
-    letter-spacing: -0.005em;
-    box-shadow: 0 10px 24px -8px rgba(22, 163, 74, 0.55);
-    white-space: nowrap;
-    z-index: 6;
-    opacity: 0;
-    animation: eng-bought 12s ease-in-out infinite both;
-  }
-  @keyframes eng-bought {
-    0%, 33%  { opacity: 0; transform: translate(0,0) scale(.7); }
-    38%      { opacity: 1; transform: translate(0,0) scale(1); }
-    55%      { opacity: 1; transform: translate(120%, 120%) scale(.55); }
-    60%, 100%{ opacity: 0; transform: translate(120%, 120%) scale(.55); }
-  }
-
-  /* Phase 3: ranked outputs (3 chips with match scores) */
-  .ms-eng-ranked {
-    position: absolute;
-    padding: 7px 13px;
-    border-radius: 999px;
-    font-size: 12px; font-weight: 700;
-    letter-spacing: -0.005em;
-    box-shadow: 0 10px 24px -8px rgba(37, 99, 235, 0.45);
-    white-space: nowrap;
-    z-index: 4;
-    opacity: 0;
-    animation: eng-ranked 12s ease-in-out infinite both;
-  }
-  .ms-eng-ranked strong {
-    margin-left: 4px;
-    font-weight: 800;
-    font-feature-settings: "tnum";
-  }
-  .rank-1 { top: 24%; right: 4%; background: linear-gradient(135deg, #2563EB, #1d4ed8); color: #FFFFFF; animation-delay: 0s; }
-  .rank-2 { top: 50%; right: 4%; background: linear-gradient(135deg, #2563EB, #1d4ed8); color: #FFFFFF; animation-delay: 0.18s; }
-  .rank-3 { top: 76%; right: 4%; background: linear-gradient(135deg, #94A3B8, #64748B); color: #FFFFFF; animation-delay: 0.36s; }
-  @keyframes eng-ranked {
-    0%, 60%   { opacity: 0; transform: translateY(-50%) translateX(20px); }
-    66%       { opacity: 1; transform: translateY(-50%) translateX(0); }
-    92%       { opacity: 1; transform: translateY(-50%) translateX(0); }
-    100%      { opacity: 0; transform: translateY(-50%) translateX(0); }
-  }
 
   .ms-engine-foot {
     display: flex; align-items: center; gap: 8px;
@@ -1862,11 +1831,7 @@
   .ms-engine-foot-text strong { color: #0F172A; font-weight: 700; }
 
   @media (prefers-reduced-motion: reduce) {
-    .ms-eng-pool, .ms-eng-bought, .ms-eng-ranked, .ms-eng-phase-label,
-    .ms-eng-center-pulse { animation: none !important; }
-    .ms-eng-pool { opacity: 1; }
-    .ms-eng-ranked { opacity: 1; transform: translateY(-50%); }
-    .ms-eng-phase-3 { opacity: 1; }
+    .ms-eng-flow, .ms-eng-center-pulse { animation: none !important; }
   }
 
   /* Col 3 — Serif quote */
@@ -2493,15 +2458,33 @@
       </a>
     </div>
 
-    <!-- COL 2: Learning loop — broad pool → buyer learns → sharper match -->
+    <!-- COL 2: Continuous feedback-loop diagram (all visible at once) -->
     <div class="ms-why-col ms-why-col-engine">
       <span class="ms-engine-eyebrow">The catalog learns you</span>
 
       <div class="ms-engine-stage">
-        <!-- Phase label (changes through the loop) -->
-        <span class="ms-eng-phase-label ms-eng-phase-1">Week 1 &middot; full catalog</span>
-        <span class="ms-eng-phase-label ms-eng-phase-2">You buy a lot</span>
-        <span class="ms-eng-phase-label ms-eng-phase-3">Week 3 &middot; ranked for you</span>
+        <svg class="ms-eng-svg" viewBox="0 0 360 280" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+          <defs>
+            <linearGradient id="engLineGrad" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%"  stop-color="#93C5FD" stop-opacity="0.4"/>
+              <stop offset="100%" stop-color="#2563EB" stop-opacity="0.95"/>
+            </linearGradient>
+            <linearGradient id="engLineBack" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%"  stop-color="#22C55E" stop-opacity="0.85"/>
+              <stop offset="100%" stop-color="#A7F3D0" stop-opacity="0.45"/>
+            </linearGradient>
+          </defs>
+          <!-- 3 input lines (left -> center) flowing right -->
+          <path class="ms-eng-flow ms-eng-flow-in" d="M50,70 Q120,70 180,140"/>
+          <path class="ms-eng-flow ms-eng-flow-in" d="M50,140 L180,140"/>
+          <path class="ms-eng-flow ms-eng-flow-in" d="M50,210 Q120,210 180,140"/>
+          <!-- 3 output lines (center -> right) flowing right -->
+          <path class="ms-eng-flow ms-eng-flow-out" d="M180,140 Q240,70  310,70"/>
+          <path class="ms-eng-flow ms-eng-flow-out" d="M180,140 L310,140"/>
+          <path class="ms-eng-flow ms-eng-flow-out" d="M180,140 Q240,210 310,210"/>
+          <!-- Feedback arc (right outputs loop back to left inputs) -->
+          <path class="ms-eng-flow ms-eng-flow-back" d="M310,70  C355,70  355,260 180,260 C5,260 5,70 50,70"/>
+        </svg>
 
         <!-- Center node -->
         <div class="ms-eng-center">
@@ -2509,26 +2492,21 @@
           <img src="images/favicon.svg" alt="" class="ms-eng-center-logo" />
         </div>
 
-        <!-- Broad pool (Phase 1): many anonymous lots around center -->
-        <span class="ms-eng-pool pool-a">Lot 0481</span>
-        <span class="ms-eng-pool pool-b">Lot 0476</span>
-        <span class="ms-eng-pool pool-c">Lot 0473</span>
-        <span class="ms-eng-pool pool-d">Lot 0468</span>
-        <span class="ms-eng-pool pool-e">Lot 0464</span>
-        <span class="ms-eng-pool pool-f">Lot 0461</span>
-        <span class="ms-eng-pool pool-g">Lot 0455</span>
-        <span class="ms-eng-pool pool-h">Lot 0452</span>
+        <!-- Input chips (left side) -->
+        <span class="ms-eng-chip ms-eng-chip-in" style="top:18%; left:0;">Sell-through</span>
+        <span class="ms-eng-chip ms-eng-chip-in" style="top:46%; left:0;">Defect rate</span>
+        <span class="ms-eng-chip ms-eng-chip-in" style="top:74%; left:0;">SKU velocity</span>
 
-        <!-- Bought signal (Phase 2): single chip flies into center with check -->
-        <span class="ms-eng-bought">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-          Bought Lot 0481
+        <!-- Output chips (right side) — pallets matched -->
+        <span class="ms-eng-chip ms-eng-chip-out" style="top:18%; right:0;">Lot 0481 &middot; <strong>94</strong></span>
+        <span class="ms-eng-chip ms-eng-chip-out" style="top:46%; right:0;">Lot 0476 &middot; <strong>87</strong></span>
+        <span class="ms-eng-chip ms-eng-chip-out ms-eng-chip-soft" style="top:74%; right:0;">Lot 0473 &middot; <strong>71</strong></span>
+
+        <!-- Feedback label hovering at the bottom of the loop -->
+        <span class="ms-eng-feedback">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 4 23 10 17 10"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10"/></svg>
+          Your data feeds back
         </span>
-
-        <!-- Ranked outputs (Phase 3): just 3 chips with match scores, lined up -->
-        <span class="ms-eng-ranked rank-1">Lot 0489 &middot; <strong>94</strong></span>
-        <span class="ms-eng-ranked rank-2">Lot 0492 &middot; <strong>87</strong></span>
-        <span class="ms-eng-ranked rank-3">Lot 0497 &middot; <strong>71</strong></span>
       </div>
 
       <div class="ms-engine-foot">
