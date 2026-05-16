@@ -1502,13 +1502,13 @@
     .milestone-icon circle { stroke-dashoffset: 0; }
   }
 
-  /* === Why we exist — full cobalt section, text left + visual right === */
+  /* === Why we exist — full cobalt section, single column with 3 pillars === */
   .ms-why-section {
     position: relative;
     overflow: hidden;
     background: linear-gradient(135deg, #1d4ed8 0%, #2563EB 55%, #1e40af 100%);
     color: #ffffff;
-    padding: 56px 0 64px;
+    padding: 64px 0 72px;
   }
   .ms-why-bg {
     position: absolute; inset: 0;
@@ -1517,55 +1517,90 @@
       radial-gradient(700px 500px at 92% 88%, rgba(255, 255, 255, 0.10) 0%, transparent 65%);
     pointer-events: none;
   }
-  .ms-why-grid {
+  .ms-why-inner {
     position: relative;
-    max-width: 1240px;
+    max-width: 1100px;
     margin: 0 auto;
     padding: 0 24px;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 40px;
-    align-items: center;
   }
-  @media (min-width: 1024px) {
-    .ms-why-grid { grid-template-columns: 1.05fr 1fr; gap: 64px; padding: 0 40px; }
+  .ms-why-head { max-width: 760px; }
+  .ms-why-eyebrow {
+    display: inline-block;
+    font-size: 11px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.18em;
+    color: #BFDBFE;
+    margin-bottom: 14px;
   }
   .ms-why-title {
-    font-size: clamp(1.6rem, 2.6vw, 2.25rem);
+    font-size: clamp(1.9rem, 3.2vw, 2.6rem);
     font-weight: 800;
-    line-height: 1.1;
+    line-height: 1.12;
     letter-spacing: -0.02em;
     color: #ffffff;
+    max-width: 720px;
   }
-  .ms-why-lead {
-    margin-top: 14px;
-    font-size: clamp(0.95rem, 1.15vw, 1.05rem);
-    font-weight: 500;
-    line-height: 1.45;
-    color: #E0EBFF;
-    max-width: 480px;
-  }
-  .ms-why-lead em {
+  .ms-why-title em {
     font-style: normal;
-    color: #BFE0FF;
-    font-weight: 600;
     background: linear-gradient(90deg, #BFE0FF, #FFFFFF);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
-  .ms-why-divider {
-    width: 48px; height: 2px;
-    margin: 18px 0;
-    background: rgba(255, 255, 255, 0.35);
-    border-radius: 2px;
-  }
-  .ms-why-body {
-    font-size: 14.5px;
+  .ms-why-lead {
+    margin-top: 16px;
+    font-size: 15.5px;
+    font-weight: 500;
     line-height: 1.6;
-    color: rgba(255, 255, 255, 0.85);
-    max-width: 500px;
+    color: rgba(255, 255, 255, 0.88);
+    max-width: 680px;
   }
+
+  /* 3 pillars row */
+  .ms-why-pillars {
+    margin-top: 44px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  @media (min-width: 768px) {
+    .ms-why-pillars { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  }
+  .ms-pillar {
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 16px;
+    padding: 22px 22px 20px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: transform .3s cubic-bezier(.16,1,.3,1), background-color .3s ease, border-color .3s ease;
+  }
+  .ms-pillar:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.10);
+    border-color: rgba(255, 255, 255, 0.22);
+  }
+  .ms-pillar-icon {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, #6EC6FF, #FFFFFF);
+    color: #1d4ed8;
+    margin-bottom: 14px;
+    box-shadow: 0 6px 20px -6px rgba(110, 198, 255, 0.5);
+  }
+  .ms-pillar-title {
+    font-size: 16px; font-weight: 700;
+    color: #ffffff; letter-spacing: -0.005em;
+    line-height: 1.25;
+  }
+  .ms-pillar-body {
+    margin-top: 8px;
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.78);
+  }
+
+  .ms-why-foot { margin-top: 36px; }
   .ms-why-cta {
     display: inline-flex;
     align-items: center;
@@ -1893,111 +1928,46 @@
 <!-- WHAT IS MASTERSTOCK & WHY WE EXIST -->
 <section id="why-we-exist" class="ms-why-section">
   <div class="ms-why-bg" aria-hidden="true"></div>
-  <div class="ms-why-grid">
-    <div class="ms-why-text">
-      <h2 class="ms-why-title">Stop guessing which pallet will sell.</h2>
+  <div class="ms-why-inner">
+    <div class="ms-why-head">
+      <span class="ms-why-eyebrow">What is MasterStock</span>
+      <h2 class="ms-why-title">We make money <em>when your pallets sell.</em></h2>
       <p class="ms-why-lead">
-        Most exporters buy blind. <em>$3-8K per pallet, 30% below manifest, 15% damaged, 10% wrong category.</em>
+        MasterStock USA is a curation platform for cross-border wholesale buyers. We sit on your side of the table because our growth depends on yours. The more your lots actually move, the longer you stay, the better we get at picking for you.
       </p>
-      <div class="ms-why-divider" aria-hidden="true"></div>
-      <p class="ms-why-body">
-        We curate pallets to your sell-through. Every lot you buy feeds the next pick: SKU-level inventory, velocity, defect rate, returns. The more you transact with us, the sharper the match.
-      </p>
+    </div>
+
+    <div class="ms-why-pillars">
+      <div class="ms-pillar">
+        <div class="ms-pillar-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 6-6"/></svg>
+        </div>
+        <h3 class="ms-pillar-title">We curate to your data</h3>
+        <p class="ms-pillar-body">Every lot you buy logs SKU velocity, defect rate, and returns. The next pick is built from those signals.</p>
+      </div>
+
+      <div class="ms-pillar">
+        <div class="ms-pillar-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 11V7a4 4 0 0 1 8 0v4"/><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M12 16v2"/></svg>
+        </div>
+        <h3 class="ms-pillar-title">Aligned incentives</h3>
+        <p class="ms-pillar-body">We win on repeat buyers, not one-shot deals. A bad pallet costs us your next order, so we screen hard before listing.</p>
+      </div>
+
+      <div class="ms-pillar">
+        <div class="ms-pillar-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+        </div>
+        <h3 class="ms-pillar-title">Each lot sharpens the next</h3>
+        <p class="ms-pillar-body">Your sell-through history compounds. By the third pallet, our pick fits your buyers better than any auction ever could.</p>
+      </div>
+    </div>
+
+    <div class="ms-why-foot">
       <a href="/how-it-works/" class="ms-why-cta">
         See how it works
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
       </a>
-    </div>
-
-    <div class="ms-why-visual" aria-hidden="true">
-      <div class="pallet-scene-cobalt">
-        <span class="ps2-glow"></span>
-        <svg class="ps2-svg" viewBox="0 0 480 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <defs>
-            <linearGradient id="ps2BoxFace" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#FFFFFF"/>
-              <stop offset="100%" stop-color="#DCE7FB"/>
-            </linearGradient>
-            <linearGradient id="ps2BoxTop" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#FFFFFF"/>
-              <stop offset="100%" stop-color="#E8F0FE"/>
-            </linearGradient>
-            <linearGradient id="ps2Wood" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#F1F5FF"/>
-              <stop offset="100%" stop-color="#B7C8E8"/>
-            </linearGradient>
-          </defs>
-
-          <!-- floor shadow -->
-          <ellipse cx="240" cy="340" rx="160" ry="14" fill="rgba(0,0,0,0.30)"/>
-
-          <!-- Main pallet stack -->
-          <g class="ps2-stack">
-            <!-- Pallet -->
-            <g transform="translate(110,290)">
-              <rect x="0"   y="0"  width="260" height="9"  fill="url(#ps2Wood)"/>
-              <rect x="0"   y="11" width="260" height="2.5" fill="#3B5BFF" opacity="0.35"/>
-              <rect x="6"   y="14" width="20" height="20" fill="#1E3A8A"/>
-              <rect x="120" y="14" width="20" height="20" fill="#1E3A8A"/>
-              <rect x="234" y="14" width="20" height="20" fill="#1E3A8A"/>
-              <rect x="0"   y="34" width="260" height="7"  fill="url(#ps2Wood)"/>
-              <line x1="55"  y1="0" x2="55"  y2="9" stroke="#3B5BFF" stroke-width="0.8" opacity="0.4"/>
-              <line x1="110" y1="0" x2="110" y2="9" stroke="#3B5BFF" stroke-width="0.8" opacity="0.4"/>
-              <line x1="165" y1="0" x2="165" y2="9" stroke="#3B5BFF" stroke-width="0.8" opacity="0.4"/>
-              <line x1="220" y1="0" x2="220" y2="9" stroke="#3B5BFF" stroke-width="0.8" opacity="0.4"/>
-            </g>
-
-            <!-- Bottom row 2 boxes -->
-            <g class="ps2-box ps2-box-l" transform="translate(125,200)">
-              <rect x="0" y="0"  width="110" height="90" fill="url(#ps2BoxFace)"/>
-              <polygon points="0,0 110,0 100,-10 8,-10" fill="url(#ps2BoxTop)"/>
-              <line x1="55" y1="0" x2="55" y2="90" stroke="#A9BFE5" stroke-width="1.6"/>
-              <rect x="0"  y="36" width="110" height="8" fill="#B6CCF0" opacity="0.55"/>
-              <rect x="14" y="56" width="44" height="22" fill="#FFFFFF" opacity="0.95" rx="1"/>
-              <line x1="20" y1="63" x2="50" y2="63" stroke="#3B5BFF" stroke-width="1.2"/>
-              <line x1="20" y1="69" x2="44" y2="69" stroke="#3B5BFF" stroke-width="1.2"/>
-              <line x1="20" y1="75" x2="38" y2="75" stroke="#3B5BFF" stroke-width="1.2"/>
-            </g>
-            <g class="ps2-box ps2-box-r" transform="translate(245,200)">
-              <rect x="0" y="0"  width="110" height="90" fill="url(#ps2BoxFace)"/>
-              <polygon points="0,0 110,0 100,-10 8,-10" fill="url(#ps2BoxTop)"/>
-              <line x1="55" y1="0" x2="55" y2="90" stroke="#A9BFE5" stroke-width="1.6"/>
-              <rect x="0"  y="36" width="110" height="8" fill="#B6CCF0" opacity="0.55"/>
-              <g transform="translate(68,52)" stroke="#3B5BFF" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M6 14 L12 4 L18 14"/>
-                <path d="M12 4 L12 22"/>
-              </g>
-            </g>
-
-            <!-- Top box (open with check stamp) -->
-            <g class="ps2-box ps2-box-top" transform="translate(185,124)">
-              <rect x="0" y="0"  width="120" height="76" fill="url(#ps2BoxFace)"/>
-              <polygon points="0,0 60,0 52,-20 -5,-12" fill="#D6E2F7"/>
-              <polygon points="60,0 120,0 125,-12 68,-20" fill="#E8F0FE"/>
-              <polygon points="52,-20 68,-20 60,-3" fill="#1E3A8A" opacity="0.85"/>
-              <line x1="60" y1="0" x2="60" y2="76" stroke="#A9BFE5" stroke-width="1.6"/>
-              <rect x="0"  y="32" width="120" height="8" fill="#B6CCF0" opacity="0.55"/>
-              <g class="ps2-stamp" transform="translate(70,42)">
-                <circle cx="0" cy="0" r="20" fill="#22C55E"/>
-                <circle cx="0" cy="0" r="20" fill="none" stroke="#fff" stroke-width="1.5" stroke-dasharray="2 3" opacity="0.85"/>
-                <path d="M-8 0 L-2 7 L9 -6" stroke="#fff" stroke-width="3.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-              </g>
-            </g>
-
-            <!-- Manifest tag floating to upper right -->
-            <g class="ps2-manifest" transform="translate(320,80)">
-              <rect x="0" y="0" width="120" height="62" rx="6" fill="#FFFFFF"/>
-              <rect x="0" y="0" width="120" height="16" rx="6" fill="#2563EB"/>
-              <text x="60" y="11.5" text-anchor="middle" fill="#FFFFFF" font-family="Inter, sans-serif" font-size="9" font-weight="800" letter-spacing="0.08em">MANIFEST</text>
-              <line x1="10" y1="28" x2="90" y2="28" stroke="#94A3B8" stroke-width="1.5"/>
-              <line x1="10" y1="36" x2="80" y2="36" stroke="#94A3B8" stroke-width="1.5"/>
-              <line x1="10" y1="44" x2="70" y2="44" stroke="#94A3B8" stroke-width="1.5"/>
-              <circle cx="100" cy="44" r="8" fill="#22C55E"/>
-              <path d="M95 44 L99 48 L106 41" stroke="#FFFFFF" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-            </g>
-          </g>
-        </svg>
-      </div>
     </div>
   </div>
 </section>
