@@ -1565,105 +1565,129 @@
   .ms-why-lead + .ms-why-lead { margin-top: 14px; }
   .ms-why-cta { margin-top: 28px; }
 
-  /* Preview card on the right — "Curated for you" mock */
+  /* Buyer profile panel on the right — professional B2B aesthetic */
   .ms-why-visual {
     position: relative;
     display: flex; align-items: center; justify-content: center;
   }
-  .ms-preview {
+  .ms-panel {
     width: 100%;
-    max-width: 440px;
-    background: rgba(255, 255, 255, 0.98);
-    border-radius: 20px;
-    padding: 22px 22px 20px;
-    box-shadow:
-      0 40px 80px -30px rgba(0, 0, 0, 0.45),
-      0 0 0 1px rgba(255, 255, 255, 0.15);
+    max-width: 460px;
+    background: #FFFFFF;
+    border-radius: 16px;
+    padding: 0;
     color: #0F172A;
-    transform: rotate(-1.2deg);
-    transition: transform .4s cubic-bezier(.16,1,.3,1);
+    box-shadow:
+      0 30px 60px -30px rgba(0, 0, 0, 0.4),
+      0 8px 16px -8px rgba(0, 0, 0, 0.2),
+      0 0 0 1px rgba(15, 23, 42, 0.06);
+    overflow: hidden;
   }
-  .ms-preview:hover { transform: rotate(0deg) translateY(-4px); }
-  .ms-preview-head {
-    display: flex; align-items: center; gap: 8px;
-    padding-bottom: 14px;
-    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
-    margin-bottom: 12px;
+  .ms-panel-head {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 22px 16px;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.06);
   }
-  .ms-preview-dot {
-    width: 8px; height: 8px; border-radius: 50%;
-    background: #22C55E;
-    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.18);
-  }
-  .ms-preview-title {
-    font-size: 14px; font-weight: 700; color: #0F172A;
-    letter-spacing: -0.005em;
-  }
-  .ms-preview-week {
-    margin-left: auto;
-    font-size: 11px; font-weight: 600;
+  .ms-panel-head-l { display: flex; flex-direction: column; gap: 2px; }
+  .ms-panel-eyebrow {
+    font-size: 10px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.12em;
     color: #64748B;
+  }
+  .ms-panel-name {
+    font-size: 15px; font-weight: 700; color: #0F172A;
+    letter-spacing: -0.01em;
+  }
+  .ms-panel-status {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 11px; font-weight: 700;
+    color: #16A34A;
+    background: rgba(34, 197, 94, 0.10);
+    padding: 4px 9px;
+    border-radius: 999px;
     text-transform: uppercase; letter-spacing: 0.08em;
   }
-  .ms-preview-row {
+  .ms-panel-status-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: #22C55E;
+    animation: panel-pulse 2s ease-in-out infinite;
+  }
+  @keyframes panel-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.5); }
+    50%      { box-shadow: 0 0 0 4px rgba(34, 197, 94, 0); }
+  }
+
+  .ms-panel-metrics {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+  }
+  .ms-panel-metric {
+    padding: 16px 22px;
+    border-right: 1px solid rgba(15, 23, 42, 0.06);
+  }
+  .ms-panel-metric:last-child { border-right: none; }
+  .ms-panel-metric-label {
+    font-size: 10.5px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    color: #64748B;
+  }
+  .ms-panel-metric-row {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    gap: 10px; margin-top: 6px;
+  }
+  .ms-panel-metric-val {
+    font-size: 26px; font-weight: 800; color: #0F172A;
+    letter-spacing: -0.02em; line-height: 1;
+    font-feature-settings: "tnum";
+  }
+  .ms-panel-metric-unit {
+    font-size: 16px; font-weight: 700; color: #94A3B8;
+    margin-left: 2px;
+  }
+  .ms-panel-spark {
+    width: 64px; height: 22px;
+  }
+
+  .ms-panel-section-label {
+    padding: 14px 22px 8px;
+    font-size: 10.5px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    color: #64748B;
+  }
+  .ms-panel-row {
     display: flex; align-items: center; justify-content: space-between; gap: 14px;
-    padding: 11px 0;
-    border-bottom: 1px dashed rgba(15, 23, 42, 0.07);
+    padding: 10px 22px;
+    transition: background-color .2s ease;
   }
-  .ms-preview-row:last-of-type { border-bottom: none; }
-  .ms-preview-row-main {
-    display: flex; flex-direction: column; gap: 2px;
-    min-width: 0;
-  }
-  .ms-preview-sku {
+  .ms-panel-row:hover { background: rgba(37, 99, 235, 0.04); }
+  .ms-panel-row + .ms-panel-row { border-top: 1px solid rgba(15, 23, 42, 0.04); }
+  .ms-panel-row:last-of-type { padding-bottom: 16px; }
+  .ms-panel-row-main { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+  .ms-panel-row-sku {
     font-size: 13.5px; font-weight: 700; color: #0F172A;
     letter-spacing: -0.005em;
+    font-feature-settings: "tnum";
   }
-  .ms-preview-cat {
+  .ms-panel-row-cat {
     font-size: 11.5px; color: #64748B;
   }
-  .ms-preview-score {
-    display: inline-flex; flex-direction: column; align-items: flex-end;
-    background: linear-gradient(135deg, #2563EB, #1d4ed8);
-    color: #fff;
-    border-radius: 10px;
-    padding: 6px 10px 5px;
-    min-width: 56px;
-  }
-  .ms-preview-score-soft {
-    background: linear-gradient(135deg, #93C5FD, #60A5FA);
-  }
-  .ms-preview-score-val {
-    font-size: 16px; font-weight: 800; line-height: 1;
-    letter-spacing: -0.01em;
-  }
-  .ms-preview-score-label {
-    font-size: 9px; font-weight: 700;
-    text-transform: uppercase; letter-spacing: 0.1em;
-    opacity: 0.85; margin-top: 2px;
-  }
-  .ms-preview-foot {
-    margin-top: 14px;
-    padding-top: 14px;
-    border-top: 1px solid rgba(15, 23, 42, 0.08);
-  }
-  .ms-preview-metric {
-    display: flex; align-items: baseline; gap: 8px;
-    background: linear-gradient(90deg, rgba(34, 197, 94, 0.08), transparent);
-    padding: 8px 12px;
+  .ms-panel-score {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-width: 44px; height: 30px;
     border-radius: 8px;
-    border-left: 3px solid #22C55E;
-  }
-  .ms-preview-metric-val {
-    font-size: 18px; font-weight: 800; color: #0F172A;
+    background: linear-gradient(135deg, #2563EB, #1d4ed8);
+    color: #FFFFFF;
+    font-size: 15px; font-weight: 800;
     letter-spacing: -0.01em;
+    font-feature-settings: "tnum";
+    box-shadow: 0 4px 10px -4px rgba(37, 99, 235, 0.6);
   }
-  .ms-preview-metric-label {
-    font-size: 11.5px; color: #475569; line-height: 1.4;
+  .ms-panel-score-soft {
+    background: linear-gradient(135deg, #94A3B8, #64748B);
+    box-shadow: 0 4px 10px -4px rgba(100, 116, 139, 0.4);
   }
-  @media (prefers-reduced-motion: reduce) {
-    .ms-preview { transform: none !important; transition: none !important; }
-  }
+  .ms-panel-divider { display: none; }
   .ms-why-cta {
     display: inline-flex;
     align-items: center;
@@ -1993,13 +2017,13 @@
   <div class="ms-why-bg" aria-hidden="true"></div>
   <div class="ms-why-grid">
     <div class="ms-why-text">
-      <span class="ms-why-eyebrow">What is MasterStock</span>
-      <h2 class="ms-why-title">We make money <em>when your pallets sell.</em></h2>
+      <span class="ms-why-eyebrow">The platform</span>
+      <h2 class="ms-why-title">A pallet curation engine, <em>built on your data.</em></h2>
       <p class="ms-why-lead">
-        MasterStock USA is a curation platform for cross-border wholesale buyers. Instead of pushing whatever excess inventory we have, we match pallets to your historical sell-through, defect rate, and returns.
+        MasterStock USA does not list inventory. We match US liquidation pallets to each buyer's historical sell-through, defect rate, and SKU velocity. Curation is the product.
       </p>
       <p class="ms-why-lead">
-        We only grow if you do. A bad pallet costs us your next order, so we screen hard before listing. By the third lot, our pick fits your buyers better than any auction ever could.
+        Our revenue compounds on yours. A pallet that does not sell costs us your next order, so every lot is opened, graded, and scored against your buyer profile before it reaches the catalog.
       </p>
       <a href="/how-it-works/" class="ms-why-cta">
         See how it works
@@ -2008,50 +2032,70 @@
     </div>
 
     <div class="ms-why-visual" aria-hidden="true">
-      <div class="ms-preview">
-        <div class="ms-preview-head">
-          <span class="ms-preview-dot"></span>
-          <span class="ms-preview-title">Curated for you</span>
-          <span class="ms-preview-week">This week</span>
+      <div class="ms-panel">
+        <div class="ms-panel-head">
+          <div class="ms-panel-head-l">
+            <span class="ms-panel-eyebrow">Buyer profile</span>
+            <span class="ms-panel-name">Importer #04</span>
+          </div>
+          <span class="ms-panel-status">
+            <span class="ms-panel-status-dot"></span>
+            Live
+          </span>
         </div>
 
-        <div class="ms-preview-row">
-          <div class="ms-preview-row-main">
-            <span class="ms-preview-sku">Lot #2024-0481</span>
-            <span class="ms-preview-cat">Apparel returns &middot; Grade A</span>
+        <div class="ms-panel-metrics">
+          <div class="ms-panel-metric">
+            <span class="ms-panel-metric-label">Sell-through</span>
+            <div class="ms-panel-metric-row">
+              <span class="ms-panel-metric-val">86<span class="ms-panel-metric-unit">%</span></span>
+              <svg class="ms-panel-spark" viewBox="0 0 80 24" preserveAspectRatio="none">
+                <polyline points="0,18 12,16 24,14 36,12 48,10 60,8 72,5 80,3" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <polyline points="0,18 12,16 24,14 36,12 48,10 60,8 72,5 80,3 80,24 0,24" fill="url(#sparkGrad1)" opacity="0.18"/>
+                <defs><linearGradient id="sparkGrad1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2563EB"/><stop offset="100%" stop-color="#2563EB" stop-opacity="0"/></linearGradient></defs>
+              </svg>
+            </div>
           </div>
-          <div class="ms-preview-score">
-            <span class="ms-preview-score-val">94</span>
-            <span class="ms-preview-score-label">match</span>
-          </div>
-        </div>
-
-        <div class="ms-preview-row">
-          <div class="ms-preview-row-main">
-            <span class="ms-preview-sku">Lot #2024-0476</span>
-            <span class="ms-preview-cat">Home &amp; kitchen &middot; Brand-direct</span>
-          </div>
-          <div class="ms-preview-score">
-            <span class="ms-preview-score-val">87</span>
-            <span class="ms-preview-score-label">match</span>
-          </div>
-        </div>
-
-        <div class="ms-preview-row">
-          <div class="ms-preview-row-main">
-            <span class="ms-preview-sku">Lot #2024-0473</span>
-            <span class="ms-preview-cat">Tools &amp; hardware &middot; Grade A</span>
-          </div>
-          <div class="ms-preview-score ms-preview-score-soft">
-            <span class="ms-preview-score-val">71</span>
-            <span class="ms-preview-score-label">match</span>
+          <div class="ms-panel-metric">
+            <span class="ms-panel-metric-label">Defect rate</span>
+            <div class="ms-panel-metric-row">
+              <span class="ms-panel-metric-val">2.4<span class="ms-panel-metric-unit">%</span></span>
+              <svg class="ms-panel-spark" viewBox="0 0 80 24" preserveAspectRatio="none">
+                <polyline points="0,8 12,9 24,11 36,10 48,13 60,15 72,17 80,19" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
           </div>
         </div>
 
-        <div class="ms-preview-foot">
-          <div class="ms-preview-metric">
-            <span class="ms-preview-metric-val">+12%</span>
-            <span class="ms-preview-metric-label">avg sell-through vs your last 5 lots</span>
+        <div class="ms-panel-divider"></div>
+
+        <div class="ms-panel-section-label">Next pick &middot; ranked by fit</div>
+
+        <div class="ms-panel-row">
+          <div class="ms-panel-row-main">
+            <span class="ms-panel-row-sku">Lot 24-0481</span>
+            <span class="ms-panel-row-cat">Apparel returns</span>
+          </div>
+          <div class="ms-panel-score">
+            <span class="ms-panel-score-val">94</span>
+          </div>
+        </div>
+        <div class="ms-panel-row">
+          <div class="ms-panel-row-main">
+            <span class="ms-panel-row-sku">Lot 24-0476</span>
+            <span class="ms-panel-row-cat">Home &amp; kitchen</span>
+          </div>
+          <div class="ms-panel-score">
+            <span class="ms-panel-score-val">87</span>
+          </div>
+        </div>
+        <div class="ms-panel-row">
+          <div class="ms-panel-row-main">
+            <span class="ms-panel-row-sku">Lot 24-0473</span>
+            <span class="ms-panel-row-cat">Tools &amp; hardware</span>
+          </div>
+          <div class="ms-panel-score ms-panel-score-soft">
+            <span class="ms-panel-score-val">71</span>
           </div>
         </div>
       </div>
