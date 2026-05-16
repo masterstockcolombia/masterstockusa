@@ -1693,7 +1693,7 @@
     line-height: 1.4;
   }
 
-  /* Col 2 — Animated curation engine */
+  /* Col 2 — Learning-loop animation (broad pool → buy → ranked) */
   .ms-why-col-engine {
     display: flex; flex-direction: column;
     background: linear-gradient(180deg, #FFFFFF 0%, #F4F8FF 100%);
@@ -1712,76 +1712,37 @@
     aspect-ratio: 360 / 280;
     flex: 1;
   }
-  .ms-engine-lines {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%;
-    overflow: visible;
-  }
-  .ms-eng-line {
-    fill: none;
-    stroke: url(#engLine);
-    stroke-width: 1.5;
-    stroke-dasharray: 4 4;
-    opacity: 0.55;
-  }
-  .ms-eng-line-out { stroke-dasharray: 4 4; }
-  .ms-eng-dot { filter: drop-shadow(0 0 5px rgba(37, 99, 235, 0.7)); }
 
-  /* Input chips (left) */
-  .ms-eng-node {
+  /* Phase labels — cross-fade through cycle */
+  .ms-eng-phase-label {
     position: absolute;
-    transform: translateY(-50%);
-    z-index: 2;
-  }
-  .ms-eng-chip {
-    display: inline-flex; align-items: center;
-    padding: 6px 11px;
-    background: #FFFFFF;
-    border: 1px solid rgba(37, 99, 235, 0.22);
-    border-radius: 999px;
-    font-size: 11.5px; font-weight: 700;
-    color: #1D4ED8;
-    letter-spacing: -0.005em;
-    box-shadow: 0 6px 16px -8px rgba(37, 99, 235, 0.25);
+    top: 8px; left: 50%; transform: translateX(-50%);
+    font-size: 11px; font-weight: 700;
+    color: #64748B;
+    text-transform: uppercase; letter-spacing: 0.1em;
     white-space: nowrap;
-    animation: eng-pop 0.6s cubic-bezier(.22,1.2,.36,1) both;
+    opacity: 0;
+    animation: eng-phase 12s linear infinite both;
   }
-  .ms-eng-node-input:nth-child(1) .ms-eng-chip { animation-delay: 0.1s; }
-  .ms-eng-node-input:nth-child(2) .ms-eng-chip { animation-delay: 0.25s; }
-  .ms-eng-node-input:nth-child(3) .ms-eng-chip { animation-delay: 0.4s; }
-
-  .ms-eng-chip-out {
-    background: linear-gradient(135deg, #2563EB, #1d4ed8);
-    color: #FFFFFF;
-    border-color: #1d4ed8;
-    box-shadow: 0 8px 20px -8px rgba(37, 99, 235, 0.5);
-    font-feature-settings: "tnum";
-  }
-  .ms-eng-chip-soft {
-    background: linear-gradient(135deg, #94A3B8, #64748B);
-    border-color: #64748B;
-    box-shadow: 0 8px 20px -8px rgba(100, 116, 139, 0.35);
-  }
-  .ms-eng-node-output:nth-of-type(1) .ms-eng-chip { animation-delay: 1.1s; }
-  .ms-eng-node-output:nth-of-type(2) .ms-eng-chip { animation-delay: 1.25s; }
-  .ms-eng-node-output:nth-of-type(3) .ms-eng-chip { animation-delay: 1.4s; }
-
-  @keyframes eng-pop {
-    0%   { opacity: 0; transform: translateY(-50%) scale(.7); }
-    100% { opacity: 1; transform: translateY(-50%) scale(1); }
+  .ms-eng-phase-1 { animation-delay: 0s; }
+  .ms-eng-phase-2 { animation-delay: -8s; color: #16A34A; }
+  .ms-eng-phase-3 { animation-delay: -4s; color: #2563EB; }
+  @keyframes eng-phase {
+    0%, 25%   { opacity: 1; }
+    33%, 100% { opacity: 0; }
   }
 
   /* Center node */
   .ms-eng-center {
     position: absolute;
-    left: 50%; top: 50%;
+    left: 50%; top: 52%;
     transform: translate(-50%, -50%);
-    width: 84px; height: 84px;
+    width: 76px; height: 76px;
     border-radius: 50%;
     background: #FFFFFF;
     border: 3px solid #2563EB;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    z-index: 3;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 5;
     box-shadow: 0 0 0 8px rgba(37, 99, 235, 0.08), 0 18px 40px -16px rgba(37, 99, 235, 0.55);
   }
   .ms-eng-center-pulse {
@@ -1793,15 +1754,95 @@
   }
   @keyframes eng-pulse {
     0%   { transform: scale(0.9); opacity: 0.6; }
-    100% { transform: scale(1.5); opacity: 0; }
+    100% { transform: scale(1.55); opacity: 0; }
   }
-  .ms-eng-center-logo { width: 28px; height: 28px; }
-  .ms-eng-center-label {
-    font-size: 9px; font-weight: 800;
-    color: #1D4ED8;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-top: 2px;
+  .ms-eng-center-logo { width: 30px; height: 30px; }
+
+  /* Phase 1: broad pool of lots scattered around center */
+  .ms-eng-pool {
+    position: absolute;
+    padding: 5px 10px;
+    background: #FFFFFF;
+    border: 1px solid rgba(15, 23, 42, 0.10);
+    border-radius: 999px;
+    font-size: 11px; font-weight: 600;
+    color: #475569;
+    letter-spacing: -0.005em;
+    box-shadow: 0 6px 14px -8px rgba(15, 23, 42, 0.18);
+    white-space: nowrap;
+    z-index: 2;
+    animation: eng-pool-cycle 12s ease-in-out infinite both;
+    will-change: transform, opacity;
+  }
+  /* Scatter the 8 lots around center (top, left in percentages) */
+  .pool-a { top: 18%;  left: 4%;  --orbit-x: -22px; --orbit-y: 8px;  animation-delay: 0s; }
+  .pool-b { top: 12%;  left: 38%; --orbit-x: 4px;   --orbit-y: -18px; animation-delay: -0.4s; }
+  .pool-c { top: 22%;  left: 72%; --orbit-x: 18px;  --orbit-y: 6px;  animation-delay: -0.8s; }
+  .pool-d { top: 52%;  left: 4%;  --orbit-x: -22px; --orbit-y: 0px;  animation-delay: -1.2s; }
+  .pool-e { top: 50%;  left: 78%; --orbit-x: 22px;  --orbit-y: 0px;  animation-delay: -1.6s; }
+  .pool-f { top: 80%;  left: 8%;  --orbit-x: -18px; --orbit-y: -6px; animation-delay: -2s; }
+  .pool-g { top: 86%;  left: 42%; --orbit-x: -4px;  --orbit-y: 12px; animation-delay: -2.4s; }
+  .pool-h { top: 78%;  left: 72%; --orbit-x: 22px;  --orbit-y: -6px; animation-delay: -2.8s; }
+
+  /* 12s cycle, 4s per phase. Pool shows phase 1 (0-33%), fades and re-enters phase 3 differently */
+  @keyframes eng-pool-cycle {
+    0%   { opacity: 0; transform: translate(0,0) scale(0.7); }
+    5%   { opacity: 1; transform: translate(0,0) scale(1); }
+    25%  { opacity: 1; transform: translate(var(--orbit-x), var(--orbit-y)) scale(1); }
+    32%  { opacity: 0; transform: translate(0,0) scale(0.8); }
+    100% { opacity: 0; transform: translate(0,0) scale(0.8); }
+  }
+
+  /* Phase 2: a "Bought" chip flies into the center */
+  .ms-eng-bought {
+    position: absolute;
+    left: 18%; top: 18%;
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 7px 12px;
+    background: #16A34A;
+    color: #FFFFFF;
+    border-radius: 999px;
+    font-size: 11.5px; font-weight: 800;
+    letter-spacing: -0.005em;
+    box-shadow: 0 10px 24px -8px rgba(22, 163, 74, 0.55);
+    white-space: nowrap;
+    z-index: 6;
+    opacity: 0;
+    animation: eng-bought 12s ease-in-out infinite both;
+  }
+  @keyframes eng-bought {
+    0%, 33%  { opacity: 0; transform: translate(0,0) scale(.7); }
+    38%      { opacity: 1; transform: translate(0,0) scale(1); }
+    55%      { opacity: 1; transform: translate(120%, 120%) scale(.55); }
+    60%, 100%{ opacity: 0; transform: translate(120%, 120%) scale(.55); }
+  }
+
+  /* Phase 3: ranked outputs (3 chips with match scores) */
+  .ms-eng-ranked {
+    position: absolute;
+    padding: 7px 13px;
+    border-radius: 999px;
+    font-size: 12px; font-weight: 700;
+    letter-spacing: -0.005em;
+    box-shadow: 0 10px 24px -8px rgba(37, 99, 235, 0.45);
+    white-space: nowrap;
+    z-index: 4;
+    opacity: 0;
+    animation: eng-ranked 12s ease-in-out infinite both;
+  }
+  .ms-eng-ranked strong {
+    margin-left: 4px;
+    font-weight: 800;
+    font-feature-settings: "tnum";
+  }
+  .rank-1 { top: 24%; right: 4%; background: linear-gradient(135deg, #2563EB, #1d4ed8); color: #FFFFFF; animation-delay: 0s; }
+  .rank-2 { top: 50%; right: 4%; background: linear-gradient(135deg, #2563EB, #1d4ed8); color: #FFFFFF; animation-delay: 0.18s; }
+  .rank-3 { top: 76%; right: 4%; background: linear-gradient(135deg, #94A3B8, #64748B); color: #FFFFFF; animation-delay: 0.36s; }
+  @keyframes eng-ranked {
+    0%, 60%   { opacity: 0; transform: translateY(-50%) translateX(20px); }
+    66%       { opacity: 1; transform: translateY(-50%) translateX(0); }
+    92%       { opacity: 1; transform: translateY(-50%) translateX(0); }
+    100%      { opacity: 0; transform: translateY(-50%) translateX(0); }
   }
 
   .ms-engine-foot {
@@ -1821,8 +1862,11 @@
   .ms-engine-foot-text strong { color: #0F172A; font-weight: 700; }
 
   @media (prefers-reduced-motion: reduce) {
-    .ms-eng-chip, .ms-eng-center-pulse { animation: none !important; }
-    .ms-eng-dot { display: none; }
+    .ms-eng-pool, .ms-eng-bought, .ms-eng-ranked, .ms-eng-phase-label,
+    .ms-eng-center-pulse { animation: none !important; }
+    .ms-eng-pool { opacity: 1; }
+    .ms-eng-ranked { opacity: 1; transform: translateY(-50%); }
+    .ms-eng-phase-3 { opacity: 1; }
   }
 
   /* Col 3 — Serif quote */
@@ -2449,69 +2493,47 @@
       </a>
     </div>
 
-    <!-- COL 2: Animated curation engine diagram -->
+    <!-- COL 2: Learning loop — broad pool → buyer learns → sharper match -->
     <div class="ms-why-col ms-why-col-engine">
-      <span class="ms-engine-eyebrow">How the engine picks</span>
-      <div class="ms-engine-stage">
-        <!-- Connection lines (drawn behind nodes) -->
-        <svg class="ms-engine-lines" viewBox="0 0 360 280" preserveAspectRatio="none" aria-hidden="true">
-          <defs>
-            <linearGradient id="engLine" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stop-color="#93C5FD" stop-opacity="0.45"/>
-              <stop offset="100%" stop-color="#2563EB" stop-opacity="0.9"/>
-            </linearGradient>
-          </defs>
-          <!-- Inputs -> center -->
-          <path class="ms-eng-line ms-eng-line-in" d="M52,52 Q120,52 180,140"/>
-          <path class="ms-eng-line ms-eng-line-in" d="M52,140 L180,140"/>
-          <path class="ms-eng-line ms-eng-line-in" d="M52,228 Q120,228 180,140"/>
-          <!-- Center -> outputs -->
-          <path class="ms-eng-line ms-eng-line-out" d="M180,140 Q240,52 308,52"/>
-          <path class="ms-eng-line ms-eng-line-out" d="M180,140 L308,140"/>
-          <path class="ms-eng-line ms-eng-line-out" d="M180,140 Q240,228 308,228"/>
-          <!-- Travelling dots -->
-          <circle r="3" fill="#2563EB" class="ms-eng-dot ms-eng-dot-1"><animateMotion dur="3.6s" begin="0s"   repeatCount="indefinite"><mpath href="#engPath1"/></animateMotion></circle>
-          <circle r="3" fill="#2563EB" class="ms-eng-dot ms-eng-dot-2"><animateMotion dur="3.6s" begin="1.2s" repeatCount="indefinite"><mpath href="#engPath2"/></animateMotion></circle>
-          <circle r="3" fill="#2563EB" class="ms-eng-dot ms-eng-dot-3"><animateMotion dur="3.6s" begin="2.4s" repeatCount="indefinite"><mpath href="#engPath3"/></animateMotion></circle>
-          <!-- Hidden full paths input->center->output for travelling dots -->
-          <path id="engPath1" d="M52,52  Q120,52  180,140 Q240,52  308,52"  fill="none" stroke="none"/>
-          <path id="engPath2" d="M52,140 L180,140 L308,140"                  fill="none" stroke="none"/>
-          <path id="engPath3" d="M52,228 Q120,228 180,140 Q240,228 308,228" fill="none" stroke="none"/>
-        </svg>
+      <span class="ms-engine-eyebrow">The catalog learns you</span>
 
-        <!-- Input nodes (left) -->
-        <div class="ms-eng-node ms-eng-node-input" style="top:14%; left:0;">
-          <span class="ms-eng-chip">Sell-through</span>
-        </div>
-        <div class="ms-eng-node ms-eng-node-input" style="top:46%; left:0;">
-          <span class="ms-eng-chip">Defect rate</span>
-        </div>
-        <div class="ms-eng-node ms-eng-node-input" style="top:78%; left:0;">
-          <span class="ms-eng-chip">SKU velocity</span>
-        </div>
+      <div class="ms-engine-stage">
+        <!-- Phase label (changes through the loop) -->
+        <span class="ms-eng-phase-label ms-eng-phase-1">Week 1 &middot; full catalog</span>
+        <span class="ms-eng-phase-label ms-eng-phase-2">You buy a lot</span>
+        <span class="ms-eng-phase-label ms-eng-phase-3">Week 3 &middot; ranked for you</span>
 
         <!-- Center node -->
         <div class="ms-eng-center">
           <span class="ms-eng-center-pulse" aria-hidden="true"></span>
           <img src="images/favicon.svg" alt="" class="ms-eng-center-logo" />
-          <span class="ms-eng-center-label">MasterStock</span>
         </div>
 
-        <!-- Output nodes (right) -->
-        <div class="ms-eng-node ms-eng-node-output" style="top:14%; right:0;">
-          <span class="ms-eng-chip ms-eng-chip-out">Lot 0481 &middot; 94</span>
-        </div>
-        <div class="ms-eng-node ms-eng-node-output" style="top:46%; right:0;">
-          <span class="ms-eng-chip ms-eng-chip-out">Lot 0476 &middot; 87</span>
-        </div>
-        <div class="ms-eng-node ms-eng-node-output" style="top:78%; right:0;">
-          <span class="ms-eng-chip ms-eng-chip-out ms-eng-chip-soft">Lot 0473 &middot; 71</span>
-        </div>
+        <!-- Broad pool (Phase 1): many anonymous lots around center -->
+        <span class="ms-eng-pool pool-a">Lot 0481</span>
+        <span class="ms-eng-pool pool-b">Lot 0476</span>
+        <span class="ms-eng-pool pool-c">Lot 0473</span>
+        <span class="ms-eng-pool pool-d">Lot 0468</span>
+        <span class="ms-eng-pool pool-e">Lot 0464</span>
+        <span class="ms-eng-pool pool-f">Lot 0461</span>
+        <span class="ms-eng-pool pool-g">Lot 0455</span>
+        <span class="ms-eng-pool pool-h">Lot 0452</span>
+
+        <!-- Bought signal (Phase 2): single chip flies into center with check -->
+        <span class="ms-eng-bought">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          Bought Lot 0481
+        </span>
+
+        <!-- Ranked outputs (Phase 3): just 3 chips with match scores, lined up -->
+        <span class="ms-eng-ranked rank-1">Lot 0489 &middot; <strong>94</strong></span>
+        <span class="ms-eng-ranked rank-2">Lot 0492 &middot; <strong>87</strong></span>
+        <span class="ms-eng-ranked rank-3">Lot 0497 &middot; <strong>71</strong></span>
       </div>
 
       <div class="ms-engine-foot">
         <span class="ms-engine-foot-dot"></span>
-        <span class="ms-engine-foot-text"><strong>Your data in</strong> &middot; matched pallets out</span>
+        <span class="ms-engine-foot-text"><strong>Every lot you buy</strong> &middot; sharpens the next match</span>
       </div>
     </div>
 
