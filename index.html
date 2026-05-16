@@ -1565,10 +1565,65 @@
   .ms-why-lead + .ms-why-lead { margin-top: 14px; }
   .ms-why-cta { margin-top: 28px; }
 
-  /* Buyer profile panel on the right — professional B2B aesthetic */
+  /* Founder quote card on the right — real photo, real signature */
   .ms-why-visual {
     position: relative;
     display: flex; align-items: center; justify-content: center;
+  }
+  .ms-quote-card {
+    width: 100%;
+    max-width: 440px;
+    background: #FFFFFF;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow:
+      0 30px 60px -30px rgba(0, 0, 0, 0.4),
+      0 8px 16px -8px rgba(0, 0, 0, 0.18),
+      0 0 0 1px rgba(15, 23, 42, 0.06);
+    display: flex; flex-direction: column;
+  }
+  .ms-quote-photo-wrap {
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: linear-gradient(135deg, #F1F5FF 0%, #DCE7FB 100%);
+    position: relative;
+  }
+  .ms-quote-photo {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center 28%;
+    filter: grayscale(8%) contrast(1.02);
+  }
+  .ms-quote-body {
+    padding: 24px 26px 26px;
+    margin: 0;
+    position: relative;
+  }
+  .ms-quote-mark {
+    color: #2563EB;
+    opacity: 0.20;
+    margin-bottom: 4px;
+  }
+  .ms-quote-text {
+    font-size: 16px;
+    line-height: 1.55;
+    color: #0F172A;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+    margin: 0 0 16px;
+  }
+  .ms-quote-attr {
+    display: flex; flex-direction: column; gap: 2px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(15, 23, 42, 0.08);
+  }
+  .ms-quote-name {
+    font-size: 14px; font-weight: 700; color: #0F172A;
+    letter-spacing: -0.005em;
+  }
+  .ms-quote-role {
+    font-size: 12px; font-weight: 600; color: #2563EB;
+    text-transform: uppercase; letter-spacing: 0.08em;
   }
   .ms-panel {
     width: 100%;
@@ -2031,74 +2086,20 @@
       </a>
     </div>
 
-    <div class="ms-why-visual" aria-hidden="true">
-      <div class="ms-panel">
-        <div class="ms-panel-head">
-          <div class="ms-panel-head-l">
-            <span class="ms-panel-eyebrow">Buyer profile</span>
-            <span class="ms-panel-name">Importer #04</span>
-          </div>
-          <span class="ms-panel-status">
-            <span class="ms-panel-status-dot"></span>
-            Live
-          </span>
+    <div class="ms-why-visual">
+      <figure class="ms-quote-card">
+        <div class="ms-quote-photo-wrap">
+          <img src="images/founder-jose.jpeg" alt="Jose Palomino, founder of MasterStock USA" class="ms-quote-photo" loading="lazy" decoding="async" />
         </div>
-
-        <div class="ms-panel-metrics">
-          <div class="ms-panel-metric">
-            <span class="ms-panel-metric-label">Sell-through</span>
-            <div class="ms-panel-metric-row">
-              <span class="ms-panel-metric-val">86<span class="ms-panel-metric-unit">%</span></span>
-              <svg class="ms-panel-spark" viewBox="0 0 80 24" preserveAspectRatio="none">
-                <polyline points="0,18 12,16 24,14 36,12 48,10 60,8 72,5 80,3" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <polyline points="0,18 12,16 24,14 36,12 48,10 60,8 72,5 80,3 80,24 0,24" fill="url(#sparkGrad1)" opacity="0.18"/>
-                <defs><linearGradient id="sparkGrad1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2563EB"/><stop offset="100%" stop-color="#2563EB" stop-opacity="0"/></linearGradient></defs>
-              </svg>
-            </div>
-          </div>
-          <div class="ms-panel-metric">
-            <span class="ms-panel-metric-label">Defect rate</span>
-            <div class="ms-panel-metric-row">
-              <span class="ms-panel-metric-val">2.4<span class="ms-panel-metric-unit">%</span></span>
-              <svg class="ms-panel-spark" viewBox="0 0 80 24" preserveAspectRatio="none">
-                <polyline points="0,8 12,9 24,11 36,10 48,13 60,15 72,17 80,19" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-          </div>
-        </div>
-
-        <div class="ms-panel-divider"></div>
-
-        <div class="ms-panel-section-label">Next pick &middot; ranked by fit</div>
-
-        <div class="ms-panel-row">
-          <div class="ms-panel-row-main">
-            <span class="ms-panel-row-sku">Lot 24-0481</span>
-            <span class="ms-panel-row-cat">Apparel returns</span>
-          </div>
-          <div class="ms-panel-score">
-            <span class="ms-panel-score-val">94</span>
-          </div>
-        </div>
-        <div class="ms-panel-row">
-          <div class="ms-panel-row-main">
-            <span class="ms-panel-row-sku">Lot 24-0476</span>
-            <span class="ms-panel-row-cat">Home &amp; kitchen</span>
-          </div>
-          <div class="ms-panel-score">
-            <span class="ms-panel-score-val">87</span>
-          </div>
-        </div>
-        <div class="ms-panel-row">
-          <div class="ms-panel-row-main">
-            <span class="ms-panel-row-sku">Lot 24-0473</span>
-            <span class="ms-panel-row-cat">Tools &amp; hardware</span>
-          </div>
-          <div class="ms-panel-score ms-panel-score-soft">
-            <span class="ms-panel-score-val">71</span>
-          </div>
-        </div>
-      </div>
+        <blockquote class="ms-quote-body">
+          <svg class="ms-quote-mark" width="32" height="24" viewBox="0 0 32 24" fill="currentColor" aria-hidden="true"><path d="M0 24V14C0 6.27 4.93 1.07 12 0v5.6c-3.47 1.07-5.33 3.47-5.33 6.93H10c2.13 0 4 1.87 4 4V20c0 2.13-1.87 4-4 4H0zm18 0V14C18 6.27 22.93 1.07 30 0v5.6c-3.47 1.07-5.33 3.47-5.33 6.93H28c2.13 0 4 1.87 4 4V20c0 2.13-1.87 4-4 4H18z"/></svg>
+          <p class="ms-quote-text">If a pallet does not match the buyer it is going to, it does not leave the warehouse. The reputation we build with each lot is the only moat we have.</p>
+          <figcaption class="ms-quote-attr">
+            <span class="ms-quote-name">Jose Palomino</span>
+            <span class="ms-quote-role">Founder &middot; CEO, MasterStock USA</span>
+          </figcaption>
+        </blockquote>
+      </figure>
     </div>
   </div>
 </section>
