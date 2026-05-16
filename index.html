@@ -1693,7 +1693,7 @@
     line-height: 1.4;
   }
 
-  /* Col 2 — Transformation engine (bad pain → MS → good outcome, cycling) */
+  /* Col 2 — Single-pill transformation: pill enters left red, passes through MS, exits right blue */
   .ms-why-col-engine {
     display: flex; flex-direction: column;
     background: linear-gradient(180deg, #FFFFFF 0%, #F4F8FF 100%);
@@ -1710,143 +1710,150 @@
     position: relative;
     width: 100%;
     flex: 1;
+    min-height: 220px;
     display: flex; flex-direction: column;
-    gap: 18px;
     justify-content: center;
   }
 
-  /* Column header labels */
-  .ms-eng-col-labels {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    align-items: center;
-    gap: 12px;
-    padding: 0 4px;
-  }
-  .ms-eng-col-label {
-    font-size: 10px; font-weight: 700;
-    text-transform: uppercase; letter-spacing: 0.12em;
-  }
-  .ms-eng-col-label-bad  { color: #B91C1C; text-align: left; }
-  .ms-eng-col-label-good { color: #2563EB; text-align: right; }
-  .ms-eng-col-labels::before { content: ""; }
-
-  /* Tracks: left / middle / right */
-  .ms-eng-tracks {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    align-items: center;
-    gap: 12px;
-    min-height: 160px;
-  }
-  .ms-eng-track {
+  /* Single track on which the pill travels */
+  .ms-tf-track {
     position: relative;
-    height: 38px;
+    width: 100%;
+    height: 90px;
   }
-  .ms-eng-track-bad  { justify-self: stretch; display: flex; justify-content: flex-end; }
-  .ms-eng-track-good { justify-self: stretch; display: flex; justify-content: flex-start; }
-
-  .ms-eng-pill {
+  .ms-tf-guide {
     position: absolute;
-    top: 50%; transform: translateY(-50%);
-    padding: 7px 13px;
-    border-radius: 999px;
-    font-size: 12px; font-weight: 700;
-    letter-spacing: -0.005em;
-    white-space: nowrap;
-    line-height: 1;
-    opacity: 0;
-    will-change: transform, opacity;
-  }
-  .ms-eng-pill-bad {
-    right: 0;
-    background: rgba(239, 68, 68, 0.08);
-    color: #B91C1C;
-    border: 1px solid rgba(239, 68, 68, 0.25);
-    box-shadow: 0 4px 12px -8px rgba(239, 68, 68, 0.25);
-  }
-  .ms-eng-pill-good {
-    left: 0;
-    background: linear-gradient(135deg, #2563EB, #1d4ed8);
-    color: #FFFFFF;
-    box-shadow: 0 6px 16px -8px rgba(37, 99, 235, 0.5);
+    left: 4%; right: 4%; top: 50%;
+    height: 2px;
+    background: linear-gradient(90deg,
+      rgba(239, 68, 68, 0.0)  0%,
+      rgba(239, 68, 68, 0.35) 12%,
+      rgba(239, 68, 68, 0.35) 42%,
+      rgba(15, 23, 42, 0.10)  50%,
+      rgba(37, 99, 235, 0.35) 58%,
+      rgba(37, 99, 235, 0.35) 88%,
+      rgba(37, 99, 235, 0.0) 100%
+    );
+    transform: translateY(-50%);
+    border-radius: 2px;
   }
 
-  /* Bad chips: slide in from far left, settle, then fade out as they "enter" the engine */
-  @keyframes pill-bad-cycle {
-    0%   { opacity: 0; transform: translate(-30px, -50%); }
-    5%   { opacity: 1; transform: translate(0, -50%); }
-    16%  { opacity: 1; transform: translate(0, -50%); }
-    19%  { opacity: 0; transform: translate(20px, -50%) scale(.85); }
-    20%, 100% { opacity: 0; transform: translate(20px, -50%) scale(.85); }
-  }
-  /* Good chips: emerge from the engine after the bad fades (offset ~0.6s) */
-  @keyframes pill-good-cycle {
-    0%, 4%   { opacity: 0; transform: translate(-20px, -50%) scale(.85); }
-    8%       { opacity: 1; transform: translate(0, -50%) scale(1); }
-    16%      { opacity: 1; transform: translate(0, -50%) scale(1); }
-    20%      { opacity: 0; transform: translate(20px, -50%); }
-    100%     { opacity: 0; transform: translate(20px, -50%); }
-  }
-
-  /* 5 pairs over 15s. Each pill animation = 15s, 3s window each, stagger -3s per index */
-  .bad-1, .good-1 { animation: var(--bad-anim, pill-bad-cycle) 15s linear infinite; animation-delay: 0s; }
-  .bad-2, .good-2 { animation: var(--bad-anim, pill-bad-cycle) 15s linear infinite; animation-delay: -3s; }
-  .bad-3, .good-3 { animation: var(--bad-anim, pill-bad-cycle) 15s linear infinite; animation-delay: -6s; }
-  .bad-4, .good-4 { animation: var(--bad-anim, pill-bad-cycle) 15s linear infinite; animation-delay: -9s; }
-  .bad-5, .good-5 { animation: var(--bad-anim, pill-bad-cycle) 15s linear infinite; animation-delay: -12s; }
-  .ms-eng-pill-good { --bad-anim: pill-good-cycle; }
-
-  /* Conduit (arrows + engine) */
-  .ms-eng-conduit {
-    display: flex; align-items: center; gap: 6px;
-  }
-  .ms-eng-arrow-l, .ms-eng-arrow-r { display: block; }
-  .ms-eng-arrow-flow {
-    stroke-dasharray: 3 4;
-    stroke-linecap: round;
-  }
-  .ms-eng-arrow-flow-in  { animation: ms-flow-l 1.2s linear infinite; }
-  .ms-eng-arrow-flow-out { animation: ms-flow-r 1.2s linear infinite; }
-  @keyframes ms-flow-l { to { stroke-dashoffset: -14; } }
-  @keyframes ms-flow-r { to { stroke-dashoffset: -14; } }
-
-  .ms-eng-engine {
-    position: relative;
+  /* Engine static in the middle */
+  .ms-tf-engine {
+    position: absolute;
+    left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
     width: 64px; height: 64px;
     border-radius: 50%;
     background: #FFFFFF;
     border: 2.5px solid #2563EB;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    display: flex; align-items: center; justify-content: center;
     box-shadow: 0 0 0 6px rgba(37, 99, 235, 0.08), 0 14px 30px -14px rgba(37, 99, 235, 0.45);
-    flex-shrink: 0;
+    z-index: 10;
   }
-  .ms-eng-engine-pulse {
+  .ms-tf-engine-pulse {
     position: absolute; inset: -6px;
     border-radius: 50%;
     background: rgba(37, 99, 235, 0.22);
-    animation: eng-pulse 2.4s ease-out infinite;
+    animation: tf-pulse 2s ease-out infinite;
     z-index: -1;
   }
-  @keyframes eng-pulse {
-    0%   { transform: scale(0.9); opacity: 0.6; }
-    100% { transform: scale(1.5);  opacity: 0; }
+  @keyframes tf-pulse {
+    0%   { transform: scale(0.9); opacity: 0.65; }
+    100% { transform: scale(1.55); opacity: 0; }
   }
-  .ms-eng-engine-logo { width: 22px; height: 22px; }
-  .ms-eng-engine-label {
-    font-size: 7.5px; font-weight: 800;
-    color: #1D4ED8;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-top: 1px;
+  .ms-tf-engine-logo { width: 26px; height: 26px; }
+
+  /* The pill that travels */
+  .ms-tf-pill {
+    position: absolute;
+    top: 50%; left: 4%;
+    transform: translate(0, -50%);
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 12.5px; font-weight: 700;
+    letter-spacing: -0.005em;
+    white-space: nowrap;
+    line-height: 1;
+    opacity: 0;
+    background: rgba(239, 68, 68, 0.10);
+    color: #B91C1C;
+    border: 1px solid rgba(239, 68, 68, 0.35);
+    box-shadow: 0 6px 14px -8px rgba(239, 68, 68, 0.25);
+    z-index: 5;
+    will-change: transform, opacity, background, color, border-color;
+    animation: tf-pill-pass 15s linear infinite both;
   }
+  .ms-tf-face {
+    transition: opacity .15s ease;
+  }
+  .ms-tf-face-good {
+    position: absolute; left: 14px; right: 14px; top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    text-align: center;
+  }
+  .ms-tf-pill .ms-tf-face-bad { opacity: 1; }
+
+  /* Stagger 5 pills over 15s cycle */
+  .pair-1 { animation-delay: 0s; }
+  .pair-2 { animation-delay: -3s; }
+  .pair-3 { animation-delay: -6s; }
+  .pair-4 { animation-delay: -9s; }
+  .pair-5 { animation-delay: -12s; }
+
+  /* Pill pass animation: window 0-20% (3s of 15s) */
+  @keyframes tf-pill-pass {
+    /* Hidden start */
+    0%   { opacity: 0; left: 0%; background: rgba(239,68,68,0.10); color: #B91C1C; border-color: rgba(239,68,68,0.35); }
+    /* Enter from left, red, bad text */
+    2%   { opacity: 1; left: 4%; background: rgba(239,68,68,0.10); color: #B91C1C; border-color: rgba(239,68,68,0.35); }
+    /* Travel toward center */
+    8%   { opacity: 1; left: 28%; background: rgba(239,68,68,0.10); color: #B91C1C; border-color: rgba(239,68,68,0.35); }
+    /* Reach engine — pill ducks behind */
+    10%  { opacity: 0; left: 44%; }
+    /* Inside engine (invisible) */
+    12%  { opacity: 0; left: 50%; }
+    /* Emerge transformed — blue, good text */
+    14%  { opacity: 1; left: 56%; background: linear-gradient(135deg,#2563EB,#1d4ed8); color: #FFFFFF; border-color: #1d4ed8; box-shadow: 0 8px 18px -8px rgba(37,99,235,0.55); }
+    /* Travel out to right */
+    18%  { opacity: 1; left: 72%; background: linear-gradient(135deg,#2563EB,#1d4ed8); color: #FFFFFF; border-color: #1d4ed8; }
+    20%  { opacity: 1; left: 88%; background: linear-gradient(135deg,#2563EB,#1d4ed8); color: #FFFFFF; border-color: #1d4ed8; }
+    /* Fade out */
+    23%, 100% { opacity: 0; left: 96%; }
+  }
+  /* Swap text faces when pill emerges (12-13% mark of 15s cycle = ~1.95s) */
+  @keyframes tf-face-swap-bad {
+    0%, 12%  { opacity: 1; }
+    13%, 100%{ opacity: 0; }
+  }
+  @keyframes tf-face-swap-good {
+    0%, 12%  { opacity: 0; }
+    14%, 22% { opacity: 1; }
+    23%, 100%{ opacity: 0; }
+  }
+  .ms-tf-pill .ms-tf-face-bad  { animation: tf-face-swap-bad 15s linear infinite both; animation-delay: inherit; }
+  .ms-tf-pill .ms-tf-face-good { animation: tf-face-swap-good 15s linear infinite both; animation-delay: inherit; }
+  .pair-2 .ms-tf-face { animation-delay: -3s !important; }
+  .pair-3 .ms-tf-face { animation-delay: -6s !important; }
+  .pair-4 .ms-tf-face { animation-delay: -9s !important; }
+  .pair-5 .ms-tf-face { animation-delay: -12s !important; }
+
+  /* Side labels */
+  .ms-tf-side-labels {
+    display: flex; justify-content: space-between;
+    padding: 8px 6% 0;
+  }
+  .ms-tf-side {
+    font-size: 10px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.14em;
+  }
+  .ms-tf-side-bad  { color: #B91C1C; }
+  .ms-tf-side-good { color: #2563EB; }
 
   @media (prefers-reduced-motion: reduce) {
-    .ms-eng-pill, .ms-eng-arrow-flow, .ms-eng-engine-pulse {
-      animation: none !important;
-    }
-    /* Show only the first pair statically */
-    .bad-1, .good-1 { opacity: 1 !important; transform: translateY(-50%) !important; }
+    .ms-tf-pill, .ms-tf-face, .ms-tf-engine-pulse { animation: none !important; }
+    .pair-1 { opacity: 1; }
   }
 
   .ms-engine-foot {
@@ -2493,56 +2500,48 @@
       </a>
     </div>
 
-    <!-- COL 2: Transformation engine — industry pains in, MS standards out -->
+    <!-- COL 2: Single-pill transformation — pill passes through MS and morphs -->
     <div class="ms-why-col ms-why-col-engine">
       <span class="ms-engine-eyebrow">What goes in vs what you get</span>
 
       <div class="ms-engine-stage">
-        <!-- Column labels -->
-        <div class="ms-eng-col-labels">
-          <span class="ms-eng-col-label ms-eng-col-label-bad">Industry today</span>
-          <span class="ms-eng-col-label ms-eng-col-label-good">With MasterStock</span>
+        <div class="ms-tf-track">
+          <!-- Static guide line -->
+          <span class="ms-tf-guide" aria-hidden="true"></span>
+
+          <!-- Static engine in the middle (sits above the pill during transformation) -->
+          <div class="ms-tf-engine">
+            <span class="ms-tf-engine-pulse" aria-hidden="true"></span>
+            <img src="images/favicon.svg" alt="" class="ms-tf-engine-logo" />
+          </div>
+
+          <!-- 5 pills, each crosses the track, transforms at the engine -->
+          <div class="ms-tf-pill pair-1" aria-hidden="true">
+            <span class="ms-tf-face ms-tf-face-bad">Blind listings</span>
+            <span class="ms-tf-face ms-tf-face-good">Verified manifest</span>
+          </div>
+          <div class="ms-tf-pill pair-2" aria-hidden="true">
+            <span class="ms-tf-face ms-tf-face-bad">Hidden costs</span>
+            <span class="ms-tf-face ms-tf-face-good">Listed price</span>
+          </div>
+          <div class="ms-tf-pill pair-3" aria-hidden="true">
+            <span class="ms-tf-face ms-tf-face-bad">Mystery lots</span>
+            <span class="ms-tf-face ms-tf-face-good">Photographed pallet</span>
+          </div>
+          <div class="ms-tf-pill pair-4" aria-hidden="true">
+            <span class="ms-tf-face ms-tf-face-bad">Auction wars</span>
+            <span class="ms-tf-face ms-tf-face-good">Direct match</span>
+          </div>
+          <div class="ms-tf-pill pair-5" aria-hidden="true">
+            <span class="ms-tf-face ms-tf-face-bad">Silent broker</span>
+            <span class="ms-tf-face ms-tf-face-good">Founder-signed offer</span>
+          </div>
         </div>
 
-        <div class="ms-eng-tracks">
-          <!-- LEFT TRACK: bad inputs (cycle) -->
-          <div class="ms-eng-track ms-eng-track-bad">
-            <span class="ms-eng-pill ms-eng-pill-bad bad-1">Blind listings</span>
-            <span class="ms-eng-pill ms-eng-pill-bad bad-2">Hidden costs</span>
-            <span class="ms-eng-pill ms-eng-pill-bad bad-3">Mystery lots</span>
-            <span class="ms-eng-pill ms-eng-pill-bad bad-4">Auction wars</span>
-            <span class="ms-eng-pill ms-eng-pill-bad bad-5">Silent broker</span>
-          </div>
-
-          <!-- CENTER: arrow + engine + arrow -->
-          <div class="ms-eng-conduit">
-            <svg class="ms-eng-arrow-l" width="40" height="14" viewBox="0 0 40 14" aria-hidden="true">
-              <line x1="0" y1="7" x2="34" y2="7" stroke="#CBD5E1" stroke-width="1.4" stroke-dasharray="3 4"/>
-              <line x1="0" y1="7" x2="34" y2="7" stroke="#EF4444" stroke-width="1.4" class="ms-eng-arrow-flow ms-eng-arrow-flow-in"/>
-              <polygon points="34,3 40,7 34,11" fill="#EF4444"/>
-            </svg>
-
-            <div class="ms-eng-engine">
-              <span class="ms-eng-engine-pulse" aria-hidden="true"></span>
-              <img src="images/favicon.svg" alt="" class="ms-eng-engine-logo" />
-              <span class="ms-eng-engine-label">MasterStock</span>
-            </div>
-
-            <svg class="ms-eng-arrow-r" width="40" height="14" viewBox="0 0 40 14" aria-hidden="true">
-              <line x1="6" y1="7" x2="40" y2="7" stroke="#CBD5E1" stroke-width="1.4" stroke-dasharray="3 4"/>
-              <line x1="6" y1="7" x2="40" y2="7" stroke="#2563EB" stroke-width="1.4" class="ms-eng-arrow-flow ms-eng-arrow-flow-out"/>
-              <polygon points="34,3 40,7 34,11" fill="#2563EB"/>
-            </svg>
-          </div>
-
-          <!-- RIGHT TRACK: good outputs (cycle in sync) -->
-          <div class="ms-eng-track ms-eng-track-good">
-            <span class="ms-eng-pill ms-eng-pill-good good-1">Verified manifest</span>
-            <span class="ms-eng-pill ms-eng-pill-good good-2">Listed price</span>
-            <span class="ms-eng-pill ms-eng-pill-good good-3">Photographed pallet</span>
-            <span class="ms-eng-pill ms-eng-pill-good good-4">Direct match</span>
-            <span class="ms-eng-pill ms-eng-pill-good good-5">Founder-signed offer</span>
-          </div>
+        <!-- Side labels -->
+        <div class="ms-tf-side-labels">
+          <span class="ms-tf-side ms-tf-side-bad">Industry today</span>
+          <span class="ms-tf-side ms-tf-side-good">With MasterStock</span>
         </div>
       </div>
 
