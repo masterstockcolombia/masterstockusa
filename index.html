@@ -1838,6 +1838,73 @@
     .ms-funnel-chip { transform: translate(-50%, -50%) !important; }
   }
 
+  /* === Funnel travelling pills — smooth GPU-accelerated transform animation === */
+  .ms-fl-pill {
+    position: absolute;
+    left: 8%; top: 50%;
+    width: 56px; height: 56px;
+    z-index: 5;
+    opacity: 0;
+    transform: translate(0, -50%);
+    will-change: transform, opacity;
+  }
+  .ms-fl-face {
+    position: absolute; inset: 0;
+    border-radius: 50%;
+    background: #FFFFFF;
+    display: inline-flex; align-items: center; justify-content: center;
+    box-shadow: 0 8px 22px -8px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.12);
+  }
+  .ms-fl-face svg { width: 22px; height: 22px; }
+  .ms-fl-face::after {
+    content: attr(data-tip);
+    position: absolute;
+    top: calc(100% + 8px); left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px; font-weight: 700;
+    color: rgba(255, 255, 255, 0.85);
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    pointer-events: none;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  }
+  .ms-fl-face-bad  { color: #B91C1C; }
+  .ms-fl-face-good { color: #2563EB; opacity: 0; }
+
+  /* The pill travels from x=0 to x=380px (the available track width minus chip width).
+     Single transform on translate, no `left` animation. */
+  @keyframes fl-pass {
+    0%    { opacity: 0; transform: translate(0px, -50%) scale(0.85); }
+    8%    { opacity: 1; transform: translate(20px, -50%) scale(1); }
+    40%   { opacity: 1; transform: translate(180px, -50%) scale(1); }
+    46%   { opacity: 0; transform: translate(210px, -50%) scale(0.5); }
+    54%   { opacity: 0; transform: translate(230px, -50%) scale(0.5); }
+    60%   { opacity: 1; transform: translate(260px, -50%) scale(1); }
+    92%   { opacity: 1; transform: translate(420px, -50%) scale(1); }
+    100%  { opacity: 0; transform: translate(460px, -50%) scale(0.85); }
+  }
+  @keyframes fl-face-swap-bad  { 0%, 47% { opacity: 1; } 50%, 100% { opacity: 0; } }
+  @keyframes fl-face-swap-good { 0%, 52% { opacity: 0; } 56%, 96% { opacity: 1; } 100% { opacity: 0; } }
+
+  /* 5 pills cycle over 20s with ease-in-out for smooth motion, stagger every 4s */
+  .flow-1 { animation: fl-pass 20s cubic-bezier(0.4, 0, 0.2, 1) infinite both; animation-delay: 0s; }
+  .flow-2 { animation: fl-pass 20s cubic-bezier(0.4, 0, 0.2, 1) infinite both; animation-delay: -4s; }
+  .flow-3 { animation: fl-pass 20s cubic-bezier(0.4, 0, 0.2, 1) infinite both; animation-delay: -8s; }
+  .flow-4 { animation: fl-pass 20s cubic-bezier(0.4, 0, 0.2, 1) infinite both; animation-delay: -12s; }
+  .flow-5 { animation: fl-pass 20s cubic-bezier(0.4, 0, 0.2, 1) infinite both; animation-delay: -16s; }
+
+  .ms-fl-pill .ms-fl-face-bad  { animation: fl-face-swap-bad 20s linear infinite both; animation-delay: inherit; }
+  .ms-fl-pill .ms-fl-face-good { animation: fl-face-swap-good 20s linear infinite both; animation-delay: inherit; }
+  .flow-2 .ms-fl-face { animation-delay: -4s !important; }
+  .flow-3 .ms-fl-face { animation-delay: -8s !important; }
+  .flow-4 .ms-fl-face { animation-delay: -12s !important; }
+  .flow-5 .ms-fl-face { animation-delay: -16s !important; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ms-fl-pill, .ms-fl-face { animation: none !important; }
+    .flow-3 { opacity: 1; transform: translate(230px, -50%) !important; }
+  }
+
   /* === Legacy CSS below (kept for backwards compat with orphan classes) === */
   /* Old single-pill transformation track (replaced by funnel) */
   .ms-why-col-engine {
@@ -2727,56 +2794,79 @@
   </div>
 </section>
 
-<!-- FOUNDERS — real photos, mirrors /about/ -->
-<section id="team" class="py-20 sm:py-24 bg-gradient-to-b from-gray-50 via-blue-50/30 to-white">
-  <div class="max-w-5xl mx-auto px-5 sm:px-8">
-    <div class="text-center max-w-2xl mx-auto">
-      <span class="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.2em] text-brand" style="color:#2563EB;">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-        Two founders. One signature.
-      </span>
-      <h2 class="mt-3 text-3xl sm:text-4xl font-extrabold tracking-tight">You always know <span class="bg-gradient-to-r from-[#6EC6FF] to-[#3A87FF] bg-clip-text text-transparent">who's on the other side of the deal.</span></h2>
-      <p class="mt-5 text-base text-gray-600 leading-relaxed max-w-xl mx-auto">Every offer that goes out is reviewed and signed by one of us. No sales reps, no junior associates, no escalation chains. The AI engine does the manifest math. We do the call.</p>
-    </div>
+<!-- GET STARTED — Corgi-inspired two-path CTA for buyers -->
+<section id="get-started" class="ms-cta-section">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <h2 class="ms-cta-h2">
+      <span class="ms-cta-h2-accent">Request access instantly</span> or book a call with a founder
+    </h2>
 
-    <div class="mt-14 grid grid-cols-1 md:grid-cols-2 gap-6">
-      <!-- Founder 1: Jose Palomino -->
-      <article class="founder-card">
-        <div class="founder-photo-wrap">
-          <img src="images/founder-jose.jpeg" alt="Jose Palomino — CEO &amp; Founder of MasterStock USA" class="founder-photo" loading="lazy" decoding="async" />
+    <div class="ms-cta-grid">
+      <!-- LEFT: form preview card (cobalt frame, white inner) -->
+      <div class="ms-cta-form-frame">
+        <div class="ms-cta-form-card">
+          <div class="ms-cta-form-head">
+            <h3 class="ms-cta-form-title">Buyer profile</h3>
+            <p class="ms-cta-form-sub">Tell us about your import operation.</p>
+          </div>
+
+          <div class="ms-cta-form-row">
+            <label class="ms-cta-label">Country</label>
+            <select class="ms-cta-input" disabled>
+              <option>Select country</option>
+            </select>
+          </div>
+
+          <div class="ms-cta-form-row ms-cta-form-row-grid">
+            <div>
+              <label class="ms-cta-label">Categories you import</label>
+              <div class="ms-cta-chips">
+                <span class="ms-cta-chip">Apparel</span>
+                <span class="ms-cta-chip">Electronics</span>
+                <span class="ms-cta-chip ms-cta-chip-on">Home &amp; kitchen</span>
+                <span class="ms-cta-chip">Toys</span>
+                <span class="ms-cta-chip">Tools</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="ms-cta-form-row">
+            <label class="ms-cta-label">Typical lot size</label>
+            <div class="ms-cta-pills">
+              <span class="ms-cta-pill">&lt;$5K</span>
+              <span class="ms-cta-pill ms-cta-pill-on">$5K-$25K</span>
+              <span class="ms-cta-pill">$25K-$100K</span>
+              <span class="ms-cta-pill">$100K+</span>
+            </div>
+          </div>
+
+          <button type="button" data-open-modal="request-access" class="ms-cta-submit">
+            Request access
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+          </button>
         </div>
-        <div class="founder-body">
-          <h3 class="founder-name">Jose Palomino</h3>
-          <p class="founder-role">CEO &middot; Founder</p>
-          <p class="founder-bio">Reviews and signs every offer personally. Coordinates sourcing and pickup across the California, New Jersey, and Texas hubs.</p>
-          <a href="https://www.linkedin.com/in/jose-palomino-52781224a/" target="_blank" rel="noopener" class="founder-linkedin" aria-label="Jose Palomino on LinkedIn">
-            <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.339 18.337v-8.59H5.667v8.59h2.672zM7.003 8.575a1.55 1.55 0 1 0 0-3.1 1.55 1.55 0 0 0 0 3.1zm11.335 9.762v-4.708c0-2.474-1.338-3.625-3.123-3.625-1.44 0-2.086.792-2.446 1.348v-1.157h-2.715a40.534 40.534 0 0 1 .036 2.855v5.287h2.715V13.54c0-.244.017-.488.089-.662.196-.488.642-.993 1.391-.993.981 0 1.373.749 1.373 1.846v4.606h2.68z"/></svg>
-            <span>LinkedIn</span>
+      </div>
+
+      <!-- RIGHT: two-path value props -->
+      <div class="ms-cta-paths">
+        <div class="ms-cta-path">
+          <h4 class="ms-cta-path-title">Self-serve: Apply, get approved, browse same-week.</h4>
+          <p class="ms-cta-path-body">Fill the form on the left. We review your profile by hand and reply within one business day. Approved buyers see this week&rsquo;s vetted lots inside the catalog.</p>
+          <p class="ms-cta-path-best"><strong>Best for:</strong></p>
+          <p class="ms-cta-path-best-body">Importers and pallet-buying wholesalers who already know the category they need and want a fast, frictionless start.</p>
+        </div>
+
+        <div class="ms-cta-divider"></div>
+
+        <div class="ms-cta-path">
+          <h4 class="ms-cta-path-title">Talk to a founder: Walk through volume, terms, and timing.</h4>
+          <p class="ms-cta-path-body">Book 25 minutes with Jose or Esteban. Bring your last 12 months of import history and we will tell you, before you commit, if this is a fit.</p>
+          <a href="mailto:partnerships@masterstockunitedstates.com?subject=Book%20a%20call%20-%20MasterStock%20buyer%20intro" class="ms-cta-secondary">
+            Book a call
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
           </a>
         </div>
-      </article>
-
-      <!-- Founder 2: Esteban -->
-      <article class="founder-card">
-        <div class="founder-photo-wrap">
-          <img src="images/founder-Esteban.png" alt="Esteban Gonzalez — Founder of MasterStock USA" class="founder-photo" loading="lazy" decoding="async" />
-        </div>
-        <div class="founder-body">
-          <h3 class="founder-name">Esteban Gonzalez</h3>
-          <p class="founder-role">Founder &middot; Capital &amp; Ops</p>
-          <p class="founder-bio">Runs every wire from the Mercury Treasury account. Handles supplier onboarding, NDAs, and the paper trail.</p>
-          <a href="https://www.linkedin.com/in/efrain-esteban-gonz%C3%A1lez-655066405" target="_blank" rel="noopener" class="founder-linkedin" aria-label="Esteban Gonzalez on LinkedIn">
-            <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.339 18.337v-8.59H5.667v8.59h2.672zM7.003 8.575a1.55 1.55 0 1 0 0-3.1 1.55 1.55 0 0 0 0 3.1zm11.335 9.762v-4.708c0-2.474-1.338-3.625-3.123-3.625-1.44 0-2.086.792-2.446 1.348v-1.157h-2.715a40.534 40.534 0 0 1 .036 2.855v5.287h2.715V13.54c0-.244.017-.488.089-.662.196-.488.642-.993 1.391-.993.981 0 1.373.749 1.373 1.846v4.606h2.68z"/></svg>
-            <span>LinkedIn</span>
-          </a>
-        </div>
-      </article>
-    </div>
-
-    <div class="mt-10 text-center">
-      <p class="text-sm text-gray-600 leading-relaxed max-w-2xl mx-auto">
-        <strong class="text-gray-900">Direct lines.</strong> <a href="mailto:partnerships@masterstockunitedstates.com" class="font-semibold hover:underline" style="color:#2563EB;">partnerships@masterstockunitedstates.com</a> gets to one of us inside the hour during business days.
-      </p>
+      </div>
     </div>
   </div>
 </section>
