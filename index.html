@@ -1594,6 +1594,39 @@
     color: #475569;
   }
   .ms-why-lead + .ms-why-lead { margin-top: 12px; }
+
+  /* Bulleted points */
+  .ms-why-points {
+    list-style: none;
+    margin: 24px 0 0;
+    padding: 0;
+    display: flex; flex-direction: column;
+    gap: 14px;
+  }
+  .ms-why-points li {
+    display: flex; gap: 12px;
+    align-items: flex-start;
+  }
+  .ms-why-point-icon {
+    flex-shrink: 0;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: rgba(37, 99, 235, 0.10);
+    color: #2563EB;
+    display: inline-flex; align-items: center; justify-content: center;
+    margin-top: 1px;
+  }
+  .ms-why-point-icon svg { width: 13px; height: 13px; }
+  .ms-why-points li > div { display: flex; flex-direction: column; gap: 2px; }
+  .ms-why-points strong {
+    font-size: 14.5px; font-weight: 700; color: #0F172A;
+    letter-spacing: -0.005em;
+    line-height: 1.35;
+  }
+  .ms-why-points span {
+    font-size: 13.5px; color: #475569; line-height: 1.5;
+  }
+
   .ms-why-cta-ghost {
     display: inline-flex; align-items: center; gap: 8px;
     margin-top: 28px;
@@ -1879,17 +1912,18 @@
   .ms-fl-face-bad  { color: #DC2626; }
   .ms-fl-face-good { color: #2563EB; transform: rotateY(180deg); }
 
-  /* Pill traverse: smooth translate, scale subtle, opacity fades only on edges */
+  /* Pill traverse: visible only 30% of cycle (no right-edge pileup) */
   @keyframes fl-pass {
-    0%    { opacity: 0; transform: translate(0px, -50%) scale(0.9); }
-    8%    { opacity: 1; transform: translate(20px, -50%) scale(1); }
-    92%   { opacity: 1; transform: translate(420px, -50%) scale(1); }
-    100%  { opacity: 0; transform: translate(460px, -50%) scale(0.9); }
+    0%    { opacity: 0; transform: translate(0px, -50%) scale(0.85); }
+    3%    { opacity: 1; transform: translate(15px, -50%) scale(1); }
+    27%   { opacity: 1; transform: translate(420px, -50%) scale(1); }
+    30%   { opacity: 0; transform: translate(460px, -50%) scale(0.85); }
+    100%  { opacity: 0; transform: translate(460px, -50%) scale(0.85); }
   }
-  /* Inner flip happens around mid-cycle (the engine zone). Smooth rotateY. */
+  /* Inner flip happens at the center of the visible window (~15%) */
   @keyframes fl-flip {
-    0%, 38%   { transform: rotateY(0deg); }
-    52%       { transform: rotateY(180deg); }
+    0%, 12%   { transform: rotateY(0deg); }
+    18%       { transform: rotateY(180deg); }
     100%      { transform: rotateY(180deg); }
   }
 
@@ -2707,9 +2741,37 @@
       <p class="ms-why-lead">
         Auctions push you whatever is open. Brokers pass through whatever they hold. We do the opposite: we match US liquidation pallets to each buyer's sell-through, defect rate, and SKU velocity.
       </p>
-      <p class="ms-why-lead">
-        That is the whole difference. The catalog you see is built for you, not for the seller.
-      </p>
+
+      <ul class="ms-why-points">
+        <li>
+          <span class="ms-why-point-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </span>
+          <div>
+            <strong>Curated, not listed.</strong>
+            <span>Every lot is scored against your buyer profile before it ever reaches the catalog.</span>
+          </div>
+        </li>
+        <li>
+          <span class="ms-why-point-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </span>
+          <div>
+            <strong>Aligned on outcomes.</strong>
+            <span>If your lot doesn't sell, we lose your next order. So we screen hard before listing.</span>
+          </div>
+        </li>
+        <li>
+          <span class="ms-why-point-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </span>
+          <div>
+            <strong>Every transaction sharpens the next.</strong>
+            <span>Your sell-through history compounds. By the third pallet, the match fits your channels better than any auction could.</span>
+          </div>
+        </li>
+      </ul>
+
       <a href="/how-it-works/" class="ms-why-cta-ghost">
         See how it works
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
