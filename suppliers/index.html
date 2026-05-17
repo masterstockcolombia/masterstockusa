@@ -18,7 +18,7 @@
 <meta property="og:image" content="https://www.masterstockunitedstates.com/images/logo-final.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="MasterStock USA Inc. — Principal buyer of US excess inventory" />
+<meta property="og:image:alt" content="MasterStock USA Inc. Principal buyer of US excess inventory" />
 <meta property="og:locale" content="en_US" />
 
 <!-- ============ Twitter / X Card ============ -->
@@ -28,7 +28,7 @@
 <meta name="twitter:image" content="https://www.masterstockunitedstates.com/images/logo-final.png" />
 <meta name="twitter:image:alt" content="MasterStock USA Inc." />
 
-<!-- ============ Resource hints — early connection to CDNs ============ -->
+<!-- ============ Resource hints, early connection to CDNs ============ -->
 <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin />
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
 <link rel="dns-prefetch" href="https://cdn.tailwindcss.com" />
@@ -299,41 +299,414 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/home.css">
+
+<!-- ============ Shared MasterStock brand design system (synced with index.html) ============ -->
+<style id="ms-brand-system">
+  :root {
+    --ms-brand: #0A5CD8;
+    --ms-brand-dark: #0847A8;
+    --ms-cyan: #6EC6FF;
+    --ms-ink: #0B1B35;
+    --ms-muted: #475569;
+    --ms-border: #E2E8F0;
+    --ms-bg-soft: #F8FAFC;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; }
+
+  /* Gradient brand accent (matches index.html .gradient-text) */
+  .gradient-text {
+    background: linear-gradient(135deg, #0A5CD8 0%, #6EC6FF 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Primary / secondary buttons (brand gradient + rounded) */
+  .b-btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 13px 22px; border-radius: 12px;
+    background: linear-gradient(135deg, #0A5CD8 0%, #0847A8 100%);
+    color: #fff; font-weight: 700; font-size: 15px;
+    box-shadow: 0 10px 30px -10px rgba(10, 92, 216, 0.55);
+    transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+  }
+  .b-btn-primary:hover { filter: brightness(1.05); transform: translateY(-1px); box-shadow: 0 14px 34px -10px rgba(10, 92, 216, 0.6); }
+  .b-btn-secondary {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 13px 22px; border-radius: 12px;
+    background: transparent;
+    border: 1px solid rgba(10, 92, 216, 0.45);
+    color: #0A5CD8; font-weight: 600; font-size: 15px;
+    transition: background-color .18s ease, transform .18s ease, border-color .18s ease;
+  }
+  .b-btn-secondary:hover { background: rgba(10, 92, 216, 0.06); border-color: #0A5CD8; transform: translateY(-1px); }
+
+  /* === Nav dropdowns with chevrons (matches index.html .nav-dd) === */
+  .nav-dd { position: relative; }
+  .nav-dd-trigger {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.375rem;
+    color: inherit;
+    transition: background-color .15s ease, color .15s ease;
+  }
+  .nav-dd-trigger:hover { background: rgba(15, 23, 42, 0.04); }
+  .nav-dd-caret { color: #94A3B8; transition: transform .2s ease, color .2s ease; }
+  .nav-dd:hover .nav-dd-caret,
+  .nav-dd:focus-within .nav-dd-caret { color: #0A5CD8; transform: rotate(180deg); }
+  .nav-dd::after { content: ""; position: absolute; top: 100%; left: 0; right: 0; height: 12px; pointer-events: none; }
+  .nav-dd:hover::after, .nav-dd:focus-within::after { pointer-events: auto; }
+
+  /* ============ MEGAMENU (Scale/Stripe-style) ============ */
+  .nav-mega {
+    position: fixed;
+    top: 64px; left: 0; right: 0;
+    background: #FFFFFF;
+    border-top: 1px solid rgba(15, 23, 42, 0.06);
+    box-shadow: 0 30px 60px -20px rgba(15, 23, 42, 0.18);
+    opacity: 0; visibility: hidden;
+    transform: translateY(-6px);
+    pointer-events: none;
+    transition: opacity .2s ease, transform .2s ease, visibility .2s ease;
+    z-index: 90;
+  }
+  .nav-dd:hover .nav-mega,
+  .nav-dd:focus-within .nav-mega {
+    opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto;
+  }
+  .nav-mega-inner {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 36px 32px 40px;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 56px;
+  }
+  .nav-mega-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  .nav-mega-col-h {
+    font-size: 11px; font-weight: 800;
+    text-transform: uppercase; letter-spacing: 0.14em;
+    color: #94A3B8;
+    margin-bottom: 14px;
+  }
+  .nav-mega-item {
+    display: flex; flex-direction: column; gap: 2px;
+    padding: 9px 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background .15s ease;
+    margin: 0 -12px;
+  }
+  .nav-mega-item:hover { background: rgba(10, 92, 216, 0.05); }
+  .nav-mega-item-title { font-size: 14px; font-weight: 700; color: #0B1B35; }
+  .nav-mega-item:hover .nav-mega-item-title { color: #0A5CD8; }
+  .nav-mega-item-desc { font-size: 12.5px; color: #64748B; line-height: 1.45; }
+
+  .nav-mega-feature {
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    min-height: 240px;
+    padding: 24px;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    text-decoration: none;
+    color: #FFFFFF;
+    background: #0F2547;
+  }
+  .nav-mega-feature-img {
+    position: absolute; inset: 0;
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+  }
+  .nav-mega-feature-img::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(7,20,42,0.35) 0%, rgba(7,20,42,0.90) 100%);
+  }
+  .nav-mega-feature > *:not(.nav-mega-feature-img) { position: relative; z-index: 1; }
+  .nav-mega-feature-eyebrow { font-size: 10.5px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: #6EC6FF; margin-bottom: 8px; }
+  .nav-mega-feature-title { font-size: 19px; font-weight: 800; margin: 0 0 6px; letter-spacing: -0.01em; }
+  .nav-mega-feature-body { font-size: 13px; color: rgba(255,255,255,0.82); margin: 0 0 14px; line-height: 1.5; }
+  .nav-mega-feature-cta { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; color: #6EC6FF; }
+  .nav-mega-feature:hover .nav-mega-feature-cta { color: #FFFFFF; }
+  .nav-mega-feature-cta svg { transition: transform .18s ease; }
+  .nav-mega-feature:hover .nav-mega-feature-cta svg { transform: translateX(3px); }
+
+  @media (max-width: 900px) {
+    .nav-mega { display: none; }
+  }
+
+  .nav-dd-panel {
+    position: absolute; top: calc(100% + 8px); left: -8px;
+    min-width: 280px;
+    background: #FFFFFF;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 12px;
+    padding: 6px;
+    box-shadow: 0 24px 48px -16px rgba(15, 23, 42, 0.18), 0 8px 16px -8px rgba(15, 23, 42, 0.08);
+    opacity: 0; transform: translateY(-6px); visibility: hidden; pointer-events: none;
+    transition: opacity .18s ease, transform .18s ease, visibility .18s ease;
+    z-index: 100;
+  }
+  .nav-dd:hover .nav-dd-panel,
+  .nav-dd:focus-within .nav-dd-panel { opacity: 1; transform: translateY(0); visibility: visible; pointer-events: auto; }
+  .nav-dd-item {
+    display: flex; flex-direction: column; gap: 2px;
+    padding: 10px 12px; border-radius: 8px;
+    transition: background-color .12s ease;
+  }
+  .nav-dd-item:hover { background: rgba(10, 92, 216, 0.06); }
+  .nav-dd-item-title { font-size: 13.5px; font-weight: 700; color: #0F172A; letter-spacing: -0.005em; }
+  .nav-dd-item:hover .nav-dd-item-title { color: #0A5CD8; }
+  .nav-dd-item-desc { font-size: 11.5px; font-weight: 400; color: #64748B; line-height: 1.4; }
+
+  /* === Header CTA gradient (Send Manifest / Request access) === */
+  .ms-header-cta {
+    display: inline-flex; align-items: center; gap: 6px;
+    margin-left: 4px;
+    padding: 8px 14px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #0A5CD8 0%, #0847A8 100%);
+    color: #fff;
+    font-size: 12.5px; font-weight: 600;
+    box-shadow: 0 8px 20px -8px rgba(10, 92, 216, 0.45);
+    transition: filter .18s ease, transform .18s ease, box-shadow .18s ease;
+  }
+  .ms-header-cta:hover { filter: brightness(1.06); transform: translateY(-1px); box-shadow: 0 12px 26px -10px rgba(10, 92, 216, 0.55); }
+
+  /* === Footer (light minimal, copied from index.html .ms-footer) === */
+  .ms-footer { background: #FFFFFF; color: #475569; padding: 80px 0 28px; border-top: 1px solid #E2E8F0; }
+  .ms-footer a { color: inherit; text-decoration: none; transition: color .15s ease; }
+  .ms-footer a:hover { color: #0B1B35; }
+  .ms-footer-contact-card {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 24px 48px;
+    padding: 32px 36px;
+    border-radius: 16px;
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    width: 100%;
+  }
+  @media (max-width: 480px) { .ms-footer-contact-card { grid-template-columns: 1fr; padding: 24px; } }
+  .ms-footer-contact-title { font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #0B1B35; margin-bottom: 16px; }
+  .ms-footer-contact-item { display: flex; align-items: center; gap: 10px; font-size: 14px; color: #475569; margin-bottom: 12px; transition: color .15s ease; white-space: nowrap; }
+  .ms-footer-contact-item:last-of-type { margin-bottom: 0; }
+  .ms-footer-contact-item svg { color: #0A5CD8; flex: 0 0 auto; }
+  .ms-footer-contact-item:hover { color: #0A5CD8; }
+  .ms-footer-contact-hq { font-size: 12.5px; color: #64748B; margin-top: 16px; padding-top: 14px; border-top: 1px solid #E2E8F0; }
+  .ms-footer-sep { height: 1px; background: #E2E8F0; margin: 56px 0; }
+  .ms-footer-explore { display: grid; grid-template-columns: 220px 1fr; gap: 40px; align-items: start; }
+  @media (max-width: 820px) { .ms-footer-explore { grid-template-columns: 1fr; gap: 24px; } }
+  .ms-footer-main { display: grid; grid-template-columns: 1fr 560px; gap: 56px; align-items: start; }
+  @media (max-width: 1100px) { .ms-footer-main { grid-template-columns: 1fr; } }
+  .ms-footer-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px 32px; }
+  @media (max-width: 640px) { .ms-footer-cols { grid-template-columns: repeat(2, 1fr); gap: 24px; } }
+  .ms-footer-col-title { font-size: 14px; font-weight: 700; color: #0B1B35; margin-bottom: 16px; }
+  .ms-footer-col ul { list-style: none; padding: 0; margin: 0; }
+  .ms-footer-col li { margin-bottom: 10px; }
+  .ms-footer-col a { font-size: 13.5px; color: #64748B; }
+  .ms-footer-bottom { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  .ms-footer-bottom-left { display: flex; align-items: center; gap: 16px; }
+  .ms-footer-logo { height: 32px; width: auto; }
+  .ms-footer-copy { font-size: 13px; color: #475569; }
+  .ms-footer-addr { font-size: 11.5px; color: #94A3B8; margin-top: 2px; }
+  .ms-footer-bottom-right { display: flex; gap: 8px; }
+  .ms-footer-social { width: 34px; height: 34px; border-radius: 8px; display: grid; place-items: center; background: #F8FAFC; border: 1px solid #E2E8F0; color: #64748B; transition: all .15s ease; }
+  .ms-footer-social:hover { background: rgba(10, 92, 216, 0.08); border-color: rgba(10, 92, 216, 0.3); color: #0A5CD8; }
+
+/* === ms-scrollbar (injected) === */
+html, body { overflow-x: hidden; max-width: 100%; }
+html { scrollbar-width: auto; scrollbar-color: #94A3B8 #F1F5F9; }
+html::-webkit-scrollbar, body::-webkit-scrollbar, *::-webkit-scrollbar { width: 18px; height: 0; }
+html::-webkit-scrollbar-track, body::-webkit-scrollbar-track, *::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+html::-webkit-scrollbar-thumb, body::-webkit-scrollbar-thumb, *::-webkit-scrollbar-thumb {
+  background: #94A3B8;
+  border-radius: 999px;
+  border: 4px solid #F1F5F9;
+  background-clip: padding-box;
+  min-height: 80px;
+}
+html::-webkit-scrollbar-thumb:hover, body::-webkit-scrollbar-thumb:hover, *::-webkit-scrollbar-thumb:hover {
+  background: #64748B;
+  background-clip: padding-box;
+}
+html::-webkit-scrollbar:horizontal, body::-webkit-scrollbar:horizontal, *::-webkit-scrollbar:horizontal {
+  height: 0;
+  display: none;
+}
+
+
+
+</style>
 </head>
 <body class="bg-white text-gray-900 antialiased">
 
 <a class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-white px-3 py-2 rounded" href="#main">Skip to content</a>
 
-<!-- HEADER - frozen at top, search bar included -->
-<header id="site-header" class="fixed top-0 left-0 right-0 z-40 border-b border-gray-100 bg-white/90 backdrop-blur-lg transition-shadow duration-300">
-  <div class="max-w-6xl xl:max-w-[84rem] 2xl:max-w-[92rem] mx-auto px-5 sm:px-8 h-14 flex items-center gap-4 sm:gap-6">
-    <a href="#" class="flex items-center shrink-0" aria-label="MasterStock USA Home">
-      <img src="/images/logo-final.png" alt="MasterStock USA" class="h-10 sm:h-11 w-auto object-contain" />
+<!-- HEADER - shared brand design, copied from index.html -->
+<header id="site-header" class="fixed top-0 left-0 right-0 z-40 bg-white transition-shadow duration-300">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 h-16 flex items-center gap-4 sm:gap-6">
+    <a href="/" class="ms-logo-link flex items-center shrink-0" aria-label="MasterStock USA Home">
+      <img src="/images/logo-final.png" alt="MasterStock USA" class="ms-logo-img h-10 sm:h-11 w-auto object-contain" draggable="false" />
     </a>
 
-    <!-- SEARCH BAR -->
-    <div class="site-search relative flex-1 max-w-md hidden md:block">
-      <div class="relative">
-        <svg class="site-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input type="search" id="site-search-input" class="site-search-input" placeholder="Search FAQ, categories, policies..." autocomplete="off" aria-label="Search the site" aria-expanded="false" aria-controls="site-search-results" role="combobox" />
-        <kbd class="site-search-kbd" aria-hidden="true">/</kbd>
-      </div>
-      <div id="site-search-results" class="site-search-results hidden" role="listbox" aria-label="Search results"></div>
-    </div>
-
+    <nav class="flex items-center gap-1 text-sm font-medium ml-6 flex-1"></nav>
     <nav class="flex items-center gap-1 text-sm font-medium ml-auto">
-      <a href="/" class="px-3 py-2 rounded-md hover:bg-gray-50 hidden md:inline text-gray-600">For buyers &rarr;</a>
-      <a href="#what-we-buy" class="px-3 py-2 rounded-md hover:bg-gray-50 hidden lg:inline">What We Buy</a>
-      <a href="/how-it-works/#suppliers" class="px-3 py-2 rounded-md hover:bg-gray-50 hidden lg:inline">How it Works</a>
-      <a href="/resources/" class="px-3 py-2 rounded-md hover:bg-gray-50 hidden xl:inline">Resources</a>
-      <a href="/about/" class="px-3 py-2 rounded-md hover:bg-gray-50 hidden lg:inline">About</a>
+      <div class="nav-dd hidden lg:inline-block">
+        <a href="/how-it-works/" class="nav-dd-trigger" aria-haspopup="true" aria-expanded="false">
+          Solutions
+          <svg class="nav-dd-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </a>
+        <div class="nav-mega" role="menu">
+          <div class="nav-mega-inner">
+            <div class="nav-mega-cols">
+              <div>
+                <div class="nav-mega-col-h">Pick a side</div>
+                <a href="/how-it-works/#buyers" class="nav-mega-item" role="menuitem">
+                  <span class="nav-mega-item-title">For buyers</span>
+                  <span class="nav-mega-item-desc">From request access to first lot in about a week.</span>
+                </a>
+                <a href="/how-it-works/#suppliers" class="nav-mega-item" role="menuitem">
+                  <span class="nav-mega-item-title">For suppliers</span>
+                  <span class="nav-mega-item-desc">From manifest to wired funds in 10-14 days.</span>
+                </a>
+                <a href="/how-it-works/" class="nav-mega-item" role="menuitem">
+                  <span class="nav-mega-item-title">Both flows, side by side</span>
+                  <span class="nav-mega-item-desc">Same desk, same diligence, two intake doors.</span>
+                </a>
+              </div>
+              <div>
+                <div class="nav-mega-col-h">Operational deep dives</div>
+                <a href="/how-it-works/#buyer-process" class="nav-mega-item" role="menuitem">
+                  <span class="nav-mega-item-title">The 6-step buyer flow</span>
+                  <span class="nav-mega-item-desc">Request, approval, catalog, lot, pickup, recourse.</span>
+                </a>
+                <a href="/how-it-works/#lot-anatomy" class="nav-mega-item" role="menuitem">
+                  <span class="nav-mega-item-title">Anatomy of a lot</span>
+                  <span class="nav-mega-item-desc">Manifest fields, photo standards, cherry-picking, MOQ.</span>
+                </a>
+                <a href="/how-it-works/#logistics-lanes" class="nav-mega-item" role="menuitem">
+                  <span class="nav-mega-item-title">Logistics lanes</span>
+                  <span class="nav-mega-item-desc">Domestic pickup or coordinated export drayage.</span>
+                </a>
+              </div>
+            </div>
+            <a href="/how-it-works/" class="nav-mega-feature">
+              <div class="nav-mega-feature-img" style="background-image: url('https://images.unsplash.com/photo-1496171367470-9ed9a91ea931?w=900&auto=format&fit=crop&q=80');"></div>
+              <div class="nav-mega-feature-eyebrow">Featured</div>
+              <h4 class="nav-mega-feature-title">Inside the buyer flow</h4>
+              <p class="nav-mega-feature-body">The operating manual: what an actual lot looks like, what sits in a manifest, how recourse works.</p>
+              <span class="nav-mega-feature-cta">Read the guide <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-dd hidden lg:inline-block">
+        <a href="#what-we-buy" class="nav-dd-trigger" aria-haspopup="true" aria-expanded="false">
+          Categories
+          <svg class="nav-dd-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </a>
+        <div class="nav-mega" role="menu">
+          <div class="nav-mega-inner">
+            <div class="nav-mega-cols">
+              <div>
+                <div class="nav-mega-col-h">Apparel &amp; lifestyle</div>
+                <a href="/#categories" class="nav-mega-item"><span class="nav-mega-item-title">Apparel</span><span class="nav-mega-item-desc">Clothing, activewear, seasonal fashion.</span></a>
+                <a href="/#categories" class="nav-mega-item"><span class="nav-mega-item-title">Accessories</span><span class="nav-mega-item-desc">Handbags, watches, luggage, travel.</span></a>
+                <a href="/#categories" class="nav-mega-item"><span class="nav-mega-item-title">Toys &amp; Baby</span><span class="nav-mega-item-desc">LEGO, strollers, educational toys.</span></a>
+              </div>
+              <div>
+                <div class="nav-mega-col-h">Home &amp; tech</div>
+                <a href="/#categories" class="nav-mega-item"><span class="nav-mega-item-title">Home &amp; Kitchen</span><span class="nav-mega-item-desc">Cookware, small appliances, tabletop.</span></a>
+                <a href="/#categories" class="nav-mega-item"><span class="nav-mega-item-title">Tools &amp; Home</span><span class="nav-mega-item-desc">Power tools, hardware, gardening.</span></a>
+                <a href="/#categories" class="nav-mega-item"><span class="nav-mega-item-title">Technology</span><span class="nav-mega-item-desc">Laptops, networking, peripherals.</span></a>
+              </div>
+            </div>
+            <a href="/request-access.html" data-open-modal="request-access" class="nav-mega-feature">
+              <div class="nav-mega-feature-img" style="background-image: url('https://images.unsplash.com/photo-1601598851547-4302969d0614?w=900&auto=format&fit=crop&q=80');"></div>
+              <div class="nav-mega-feature-eyebrow">This week</div>
+              <h4 class="nav-mega-feature-title">See what's open right now</h4>
+              <p class="nav-mega-feature-body">Approved buyers get the catalog link with full SKU manifests and pallet photos.</p>
+              <span class="nav-mega-feature-cta">Request access <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-dd hidden lg:inline-block">
+        <a href="/resources/" class="nav-dd-trigger" aria-haspopup="true" aria-expanded="false">
+          Resources
+          <svg class="nav-dd-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </a>
+        <div class="nav-mega" role="menu">
+          <div class="nav-mega-inner">
+            <div class="nav-mega-cols">
+              <div>
+                <div class="nav-mega-col-h">Read &amp; learn</div>
+                <a href="/resources/" class="nav-mega-item"><span class="nav-mega-item-title">Guides &amp; playbooks</span><span class="nav-mega-item-desc">How to read a manifest, vet a lot, price a deal.</span></a>
+                <a href="/resources/#docs" class="nav-mega-item"><span class="nav-mega-item-title">Sample NDA</span><span class="nav-mega-item-desc">Mutual NDA used pre-catalog disclosure.</span></a>
+                <a href="/resources/#docs" class="nav-mega-item"><span class="nav-mega-item-title">Sample Bill of Sale</span><span class="nav-mega-item-desc">Plain-English BoS with manifest schedule.</span></a>
+              </div>
+              <div>
+                <div class="nav-mega-col-h">For machines</div>
+                <a href="/llms.txt" class="nav-mega-item"><span class="nav-mega-item-title">For AI agents</span><span class="nav-mega-item-desc">Machine-readable index of the platform.</span></a>
+                <a href="/resources/#rep" class="nav-mega-item"><span class="nav-mega-item-title">Tax documentation</span><span class="nav-mega-item-desc">W-9, COI, resale cert workflow.</span></a>
+                <a href="/sitemap.xml" class="nav-mega-item"><span class="nav-mega-item-title">Sitemap</span><span class="nav-mega-item-desc">All public pages, structured.</span></a>
+              </div>
+            </div>
+            <a href="/resources/" class="nav-mega-feature">
+              <div class="nav-mega-feature-img" style="background-image: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?w=900&auto=format&fit=crop&q=80');"></div>
+              <div class="nav-mega-feature-eyebrow">Featured</div>
+              <h4 class="nav-mega-feature-title">The MasterStock playbook</h4>
+              <p class="nav-mega-feature-body">Every doc a buyer or supplier needs, in one library. NDA, BoS, manifest spec, tax pack.</p>
+              <span class="nav-mega-feature-cta">Open the library <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-dd hidden lg:inline-block">
+        <a href="/about/" class="nav-dd-trigger" aria-haspopup="true" aria-expanded="false">
+          Company
+          <svg class="nav-dd-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </a>
+        <div class="nav-mega" role="menu">
+          <div class="nav-mega-inner">
+            <div class="nav-mega-cols">
+              <div>
+                <div class="nav-mega-col-h">About us</div>
+                <a href="/about/#story" class="nav-mega-item"><span class="nav-mega-item-title">Our story</span><span class="nav-mega-item-desc">Why we built a cross-border wholesale operator.</span></a>
+                <a href="/about/#team" class="nav-mega-item"><span class="nav-mega-item-title">The team</span><span class="nav-mega-item-desc">Jose and Esteban. Every offer is signed by one of us.</span></a>
+                <a href="/about/#trust" class="nav-mega-item"><span class="nav-mega-item-title">Credentials</span><span class="nav-mega-item-desc">D-U-N-S, Delaware incorporation, US banking.</span></a>
+              </div>
+              <div>
+                <div class="nav-mega-col-h">Talk to us</div>
+                <a href="/about/#partnerships" class="nav-mega-item"><span class="nav-mega-item-title">Partnerships</span><span class="nav-mega-item-desc">Suppliers, forwarders, brokers, banks.</span></a>
+                <a href="/about/#contact" class="nav-mega-item"><span class="nav-mega-item-title">General contact</span><span class="nav-mega-item-desc">One business day reply.</span></a>
+                <a href="/about/#press" class="nav-mega-item"><span class="nav-mega-item-title">Press</span><span class="nav-mega-item-desc">Logos, founder bios, brand kit.</span></a>
+              </div>
+            </div>
+            <a href="/about/#team" class="nav-mega-feature">
+              <div class="nav-mega-feature-img" style="background-image: url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1200&auto=format&fit=crop&q=80');"></div>
+              <div class="nav-mega-feature-eyebrow">Founders</div>
+              <h4 class="nav-mega-feature-title">Meet the founders of MasterStock</h4>
+              <p class="nav-mega-feature-body">Two operators running the desk end to end. Every offer carries one of our names.</p>
+              <span class="nav-mega-feature-cta">See the team <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>
+            </a>
+          </div>
+        </div>
+      </div>
       <span class="hidden sm:inline-block w-px h-5 bg-gray-200 mx-1" aria-hidden="true"></span>
-      <a href="/login.html" class="px-3 py-2 rounded-md text-gray-700 hover:bg-gray-50 hidden sm:inline">Sign in</a>
-      <a href="/request-access.html" class="ml-1 inline-flex items-center gap-1.5 rounded-lg border border-gray-900 bg-gray-900 px-3.5 py-2 text-white text-xs font-semibold hover:bg-black transition-all">
-        Request access
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
-      </a>
-      <button type="button" data-open-modal class="ml-2 hidden md:inline-flex items-center gap-1.5 rounded-lg bg-brand px-3.5 py-2 text-white text-xs font-semibold shadow-md shadow-brand/20 hover:bg-brand-dark hover:shadow-lg hover:shadow-brand/30 transition-all">
+      <a href="/login.html" class="px-3 py-2 rounded-md text-gray-700 hover:bg-gray-50 hidden sm:inline">Log in</a>
+      <button type="button" data-open-modal class="ms-header-cta">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
         Send Manifest
       </button>
@@ -341,7 +714,7 @@
   </div>
 </header>
 
-<main id="main" style="padding-top: 72px;">
+<main id="main" style="padding-top: 64px;">
 
 <!-- HERO -->
 <section class="hero-wrap">
@@ -576,7 +949,7 @@
                 </div>
               </div>
 
-              <!-- Slide 2: Trust badges (HIDDEN — slide 1 already shows these prominently) -->
+              <!-- Slide 2: Trust badges (HIDDEN, slide 1 already shows these prominently) -->
               <div class="mt-6 pt-5 border-t border-white/10 hidden" aria-label="Official accreditations">
                 <div class="inline-flex items-center gap-3 mb-3">
                   <span class="h-px w-6 bg-white/30" aria-hidden="true"></span>
@@ -622,7 +995,7 @@
                   Included
                 </span>
 
-                <!-- Real warehouse footage (Pexels · royalty-free · no attribution required) — replaces previous AI-looking animated WebP. Poster auto-extracted from frame 30. -->
+                <!-- Real warehouse footage (Pexels · royalty-free · no attribution required), replaces previous AI-looking animated WebP. Poster auto-extracted from frame 30. -->
                 <div class="absolute inset-4 rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-[#0B1B35]" style="contain: strict; aspect-ratio: 16 / 9;">
                   <video
                     class="w-full h-full object-cover"
@@ -632,7 +1005,7 @@
                     playsinline
                     preload="metadata"
                     poster="images/logistics-poster.jpg"
-                    aria-label="Warehouse worker handling pallets — real operations footage"
+                    aria-label="Warehouse worker handling pallets, real operations footage"
                     style="transform: translateZ(0); backface-visibility: hidden; will-change: transform;"
                   >
                     <source src="/images/logistics.mp4" type="video/mp4" />
@@ -881,7 +1254,7 @@
   </div>
 </section>
 
-<!-- CREDENTIALS (clean 3-pillar — mirror of about.html) -->
+<!-- CREDENTIALS (clean 3-pillar, mirror of about.html) -->
 <section id="trust" class="py-20 sm:py-24 bg-gradient-to-b from-white to-blue-50/30 border-t border-gray-100">
   <div class="max-w-6xl xl:max-w-[84rem] mx-auto px-5 sm:px-8">
     <div class="text-center max-w-2xl mx-auto">
@@ -918,7 +1291,7 @@
       </div>
     </div>
 
-    <!-- Closing line — procurement signal -->
+    <!-- Closing line, procurement signal -->
     <div class="mt-12 max-w-3xl mx-auto bg-gradient-to-br from-[#0A5CD8] to-[#0A3F8F] rounded-2xl p-6 sm:p-8 text-white relative overflow-hidden">
       <div class="absolute -top-16 -right-16 w-48 h-48 rounded-full bg-[#6EC6FF]/15 blur-3xl pointer-events-none"></div>
       <div class="relative flex items-start gap-4">
@@ -1423,7 +1796,7 @@
   </div>
 </section>
 
-<!-- NATIONWIDE COVERAGE — Animated USA map -->
+<!-- NATIONWIDE COVERAGE, Animated USA map -->
 <section id="coverage" class="relative overflow-hidden py-20 sm:py-24 border-t border-gray-100" style="background: linear-gradient(180deg, #07101F 0%, #0A1B36 60%, #07101F 100%); color: #FFFFFF;">
   <!-- Ambient background -->
   <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
@@ -1789,101 +2162,116 @@
   </div>
 </section>
 
-<footer class="border-t border-gray-200 bg-white pb-28 md:pb-0">
-  <div class="max-w-6xl xl:max-w-[84rem] 2xl:max-w-[92rem] mx-auto px-5 sm:px-8 py-14">
-    <div class="grid grid-cols-1 md:grid-cols-5 gap-10">
-      <div class="md:col-span-1">
-        <a href="#" class="flex items-center" aria-label="MasterStock USA">
-          <img src="/images/logo-final.png" alt="MasterStock USA" class="h-10 w-auto object-contain" />
-        </a>
-        <p class="mt-3 text-xs text-gray-500 leading-relaxed">MasterStock USA Inc. Cash offers for excess inventory.</p>
-      </div>
-      <nav aria-label="About">
-        <h4 class="text-xs font-bold uppercase tracking-wider text-gray-900">About</h4>
-        <ul class="mt-4 space-y-2 text-sm text-gray-600">
-          <li><a href="/about/" class="hover:text-gray-900">Who we are</a></li>
-          <li><a href="#compare" class="hover:text-gray-900">Compare us</a></li>
-          <li><a href="#faq" class="hover:text-gray-900">FAQ</a></li>
-          <li><a href="/about/#trust" class="hover:text-gray-900">Trust &amp; compliance</a></li>
-          <li><a href="#what-we-buy" class="hover:text-gray-900">What We Buy</a></li>
-        </ul>
-      </nav>
-      <div class="md:col-span-2">
-        <h4 class="text-xs font-bold uppercase tracking-wider text-gray-900">Join the <span class="text-brand">Supplier Brief</span></h4>
-        <p class="mt-3 text-sm text-gray-600 leading-relaxed max-w-md">A short weekly note on active categories, real-time benchmarks, and one case study per drop.</p>
-        <form id="newsletter-form" class="mt-4 flex flex-col sm:flex-row gap-2 max-w-md" novalidate>
-          <label for="newsletter-email" class="sr-only">Email</label>
-          <input type="email" id="newsletter-email" required placeholder="you@company.com" class="flex-1 rounded-md border border-gray-300 px-3 py-2.5 text-sm focus:border-brand focus:ring-brand">
-          <button type="submit" class="rounded-md bg-ink px-4 py-2.5 text-sm font-semibold text-white hover:bg-slate2 transition">Subscribe</button>
-        </form>
-        <p class="mt-2 text-xs text-gray-500">First manifest valuation is <span class="font-bold text-brand">free</span> when you subscribe.</p>
-        <p id="newsletter-success" class="hidden mt-2 text-xs text-success font-medium">Subscribed.</p>
-      </div>
-      <nav aria-label="Resources">
-        <h4 class="text-xs font-bold uppercase tracking-wider text-gray-900">Resources</h4>
-        <ul class="mt-4 space-y-2 text-sm text-gray-600">
-          <li><a href="/resources/#insights" class="hover:text-gray-900">Insights blog</a></li>
-          <li><a href="/resources/#nda" class="hover:text-gray-900">Sample NDA</a></li>
-          <li><a href="/resources/#bill-of-sale" class="hover:text-gray-900">Sample bill of sale</a></li>
-          <li><a href="/resources/#irs-165" class="hover:text-gray-900">IRS &sect;165 primer</a></li>
-        </ul>
-        <h4 class="mt-6 text-xs font-bold uppercase tracking-wider text-gray-900">For buyers</h4>
-        <ul class="mt-4 space-y-2 text-sm text-gray-600">
-          <li><a href="/login.html" class="hover:text-gray-900">Sign in</a></li>
-          <li><a href="/request-access.html" class="hover:text-gray-900">Request access</a></li>
-        </ul>
-      </nav>
-    </div>
-    <div class="mt-12 pt-8 border-t border-gray-100">
-      <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6">
-        <div>
-          <h4 class="text-xs font-bold uppercase tracking-wider text-gray-900">Contact</h4>
-          <ul class="mt-3 space-y-2 text-sm text-gray-600">
-            <li>
-              <span class="text-gray-500">General inquiries</span>
-              <span class="mx-1.5 text-gray-400">·</span>
-              <a href="mailto:info@masterstockunitedstates.com" class="font-medium text-gray-900 hover:text-brand">info@masterstockunitedstates.com</a>
-            </li>
-            <li>
-              <span class="text-gray-500">Partnerships</span>
-              <span class="mx-1.5 text-gray-400">&nbsp;&nbsp;&nbsp;·</span>
-              <a href="mailto:partnerships@masterstockunitedstates.com" class="font-medium text-gray-900 hover:text-brand">partnerships@masterstockunitedstates.com</a>
-            </li>
+<!-- FOOTER -->
+<footer class="ms-footer">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+
+    <div class="ms-footer-main">
+      <div class="ms-footer-cols">
+        <div class="ms-footer-col">
+          <div class="ms-footer-col-title">Platform</div>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/#value">What we sell</a></li>
+            <li><a href="/#categories">Categories</a></li>
+            <li><a href="/how-it-works/">How it works</a></li>
+            <li><a href="/#get-started">Request access</a></li>
+            <li><a href="/login.html">Sign in</a></li>
           </ul>
         </div>
-        <div>
-          <h4 class="text-xs font-bold uppercase tracking-wider text-gray-900">Follow</h4>
-          <div class="mt-3 flex items-center gap-2">
-            <a href="https://x.com/masterstock_usa?s=21" target="_blank" rel="noopener" class="footer-social" aria-label="X / Twitter">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            </a>
-            <a href="https://www.linkedin.com/company/masterstock-usa/" target="_blank" rel="noopener" class="footer-social" aria-label="LinkedIn">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.339 18.337v-8.59H5.667v8.59h2.672zM7.003 8.575a1.55 1.55 0 1 0 0-3.1 1.55 1.55 0 0 0 0 3.1zm11.335 9.762v-4.708c0-2.474-1.338-3.625-3.123-3.625-1.44 0-2.086.792-2.446 1.348v-1.157h-2.715a40.534 40.534 0 0 1 .036 2.855v5.287h2.715V13.54c0-.244.017-.488.089-.662.196-.488.642-.993 1.391-.993.981 0 1.373.749 1.373 1.846v4.606h2.68z"/></svg>
-            </a>
-            <a href="https://www.threads.com/@masterstock_usa?igshid=NTc4MTIwNjQ2YQ==" target="_blank" rel="noopener" class="footer-social" aria-label="Instagram / Threads">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-            </a>
-          </div>
+        <div class="ms-footer-col">
+          <div class="ms-footer-col-title">For Buyers</div>
+          <ul>
+            <li><a href="/how-it-works/#buyers">Buyer flow</a></li>
+            <li><a href="/#categories">Browse lots</a></li>
+            <li><a href="/request-access.html">Request access</a></li>
+            <li><a href="/how-it-works/#buyers">Recourse policy</a></li>
+            <li><a href="/resources/">Manifest samples</a></li>
+          </ul>
+        </div>
+        <div class="ms-footer-col">
+          <div class="ms-footer-col-title">For Suppliers</div>
+          <ul>
+            <li><a href="/how-it-works/#suppliers">Supplier flow</a></li>
+            <li><a href="/how-it-works/#suppliers">48-hour offer</a></li>
+            <li><a href="/how-it-works/#suppliers">Offer structures</a></li>
+            <li><a href="/how-it-works/#suppliers">Pickup hubs</a></li>
+            <li><a href="mailto:info@masterstockunitedstates.com?subject=Manifest%20submission">Send manifest</a></li>
+          </ul>
+        </div>
+        <div class="ms-footer-col">
+          <div class="ms-footer-col-title">Resources</div>
+          <ul>
+            <li><a href="/resources/">Resource library</a></li>
+            <li><a href="/how-it-works/">How it works</a></li>
+            <li><a href="/about/#trust">Credentials</a></li>
+            <li><a href="/privacy.html">Privacy</a></li>
+            <li><a href="/terms.html">Terms</a></li>
+          </ul>
+        </div>
+        <div class="ms-footer-col">
+          <div class="ms-footer-col-title">Company</div>
+          <ul>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/about/#team">The team</a></li>
+            <li><a href="mailto:partnerships@masterstockunitedstates.com">Partnerships</a></li>
+            <li><a href="mailto:info@masterstockunitedstates.com">Contact</a></li>
+            <li><a href="https://www.linkedin.com/company/masterstock-usa">LinkedIn</a></li>
+          </ul>
         </div>
       </div>
+      <aside class="ms-footer-contact-card ms-footer-contact-card-main">
+        <div class="ms-footer-contact-col">
+          <div class="ms-footer-contact-title">Contact</div>
+          <a href="mailto:info@masterstockunitedstates.com" class="ms-footer-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+            <span>info@masterstockunitedstates.com</span>
+          </a>
+          <a href="/about/#trust" class="ms-footer-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 0 20M12 2a15.3 15.3 0 0 0 0 20"/></svg>
+            <span>Global Hubs</span>
+          </a>
+          <span class="ms-footer-contact-item ms-footer-contact-item-static">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>8 The Green, Suite A, Dover, DE 19901</span>
+          </span>
+        </div>
+        <div class="ms-footer-contact-col">
+          <div class="ms-footer-contact-title">Get Started</div>
+          <a href="/request-access.html" data-open-modal="request-access" class="ms-footer-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span>Request Access</span>
+          </a>
+          <a href="mailto:partnerships@masterstockunitedstates.com?subject=Founder%20call%20-%20MasterStock" class="ms-footer-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 11h-6M19 8v6"/></svg>
+            <span>Call a Founder</span>
+          </a>
+          <a href="mailto:info@masterstockunitedstates.com?subject=Manifest%20submission" class="ms-footer-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
+            <span>Send Manifest</span>
+          </a>
+          <div class="ms-footer-contact-hq">Dover, DE · United States</div>
+        </div>
+      </aside>
     </div>
-  </div>
-  <div class="border-t border-gray-200 bg-gray-50">
-    <div class="max-w-6xl xl:max-w-[84rem] 2xl:max-w-[92rem] mx-auto px-5 sm:px-8 py-6">
-      <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 text-xs text-gray-500">
-        <div class="space-y-1">
-          <div class="font-bold text-gray-900">MasterStock USA Inc.</div>
-          <div class="text-gray-500">8 The Green, Ste A &middot; Dover, DE 19901</div>
-        </div>
-        <div class="flex flex-wrap items-center gap-x-5 gap-y-2 md:justify-end">
-          <a href="#privacy" class="hover:text-gray-900">Privacy Policy</a>
-          <a href="#terms" class="hover:text-gray-900">Terms of Service</a>
-          <a href="#dmca" class="hover:text-gray-900">DMCA</a>
-          <a href="#do-not-sell" class="hover:text-gray-900">Do not sell my personal information</a>
+
+    <div class="ms-footer-sep" aria-hidden="true"></div>
+
+    <div class="ms-footer-bottom">
+      <div class="ms-footer-bottom-left">
+        <img src="/images/logo-final.png" alt="MasterStock USA" class="ms-footer-logo" />
+        <div>
+          <div class="ms-footer-copy">&copy; <span data-year>2026</span> MasterStock USA Inc.</div>
+          <div class="ms-footer-addr">8 The Green, Suite A · Dover, DE 19901 · United States</div>
         </div>
       </div>
-      <div class="mt-4 pt-4 border-t border-gray-200 text-xs text-gray-500 text-center md:text-left">
-        &copy; <span id="year"></span> MasterStock USA Inc. All rights reserved.
+      <div class="ms-footer-bottom-right">
+        <a href="https://www.linkedin.com/company/masterstock-usa" aria-label="LinkedIn" class="ms-footer-social">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.05-1.86-3.05-1.86 0-2.15 1.45-2.15 2.95v5.67H9.34V9h3.41v1.56h.05c.47-.9 1.63-1.86 3.35-1.86 3.59 0 4.25 2.36 4.25 5.43v6.32zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+        </a>
+        <a href="mailto:info@masterstockunitedstates.com" aria-label="Email" class="ms-footer-social">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+        </a>
       </div>
     </div>
   </div>
@@ -1891,7 +2279,7 @@
 
 <div class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-gray-200 shadow-[0_-4px_20px_rgba(0,0,0,.08)] px-4 py-3">
   <div class="flex gap-2">
-    <a href="/request-access.html" class="flex-1 inline-flex items-center justify-center gap-1.5 rounded-xl bg-gray-900 px-3 py-3 text-white font-semibold text-sm hover:bg-black transition">Request access &rarr;</a>
+    <a href="/request-access.html" class="flex-1 inline-flex items-center justify-center gap-1.5 rounded-xl px-3 py-3 text-white font-semibold text-sm transition" style="background: linear-gradient(135deg, #0A5CD8 0%, #0847A8 100%);">Request access &rarr;</a>
     <a href="/login.html" class="inline-flex items-center justify-center rounded-xl border border-gray-300 bg-white px-3 py-3 text-gray-900 font-semibold text-sm hover:bg-gray-50 transition">Sign in</a>
     <button type="button" data-open-modal class="inline-flex items-center justify-center gap-1.5 rounded-xl bg-brand px-3 py-3 text-white font-semibold text-sm hover:bg-brand-dark transition" aria-label="Send Manifest">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
@@ -1903,9 +2291,9 @@
   </div>
 </div>
 
-<!-- Floating Send Manifest removed — CTA now permanent in top nav -->
+<!-- Floating Send Manifest removed, CTA now permanent in top nav -->
 
-<!-- CHAT WIDGET — Supplier Desk assistant -->
+<!-- CHAT WIDGET, Supplier Desk assistant -->
 <div id="chat-widget" class="chat-widget" role="region" aria-label="Supplier Desk chat">
   <button type="button" id="chat-toggle" class="chat-toggle" aria-label="Open supplier chat" aria-expanded="false" aria-controls="chat-panel">
     <span class="chat-toggle-badge" aria-hidden="true"></span>
@@ -2499,7 +2887,7 @@ document.querySelectorAll('[data-close-intell]').forEach(b=>b.addEventListener('
 if(intellModal){ intellModal.addEventListener('click',e=>{if(e.target===intellModal)closeIntellModal();}); }
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&intellModal&&!intellModal.classList.contains('hidden'))closeIntellModal();});
 
-// Intell form submit — email validation + success state
+// Intell form submit, email validation + success state
 const intellForm = document.getElementById('intell-form');
 if (intellForm) {
   const blockedDomains = ['gmail.com','yahoo.com','hotmail.com','outlook.com','live.com','aol.com','icloud.com','protonmail.com','mailinator.com','guerrillamail.com','10minutemail.com','tempmail.com','yopmail.com'];
@@ -2805,7 +3193,7 @@ if(pulseForm){
 })();
 
 // HERO SLIDER
-// Dynamic intell freshness — show "New" only if issue is < 72h old
+// Dynamic intell freshness, show "New" only if issue is < 72h old
 (function initIntellFreshness(){
   // TODO: Replace with actual publish date when you publish each week
   const ISSUE_PUBLISH_DATE = new Date('2026-04-20T00:00:00'); // Latest issue date
@@ -2825,11 +3213,11 @@ if(pulseForm){
     issueDate.textContent = months[ISSUE_PUBLISH_DATE.getMonth()] + ' ' + ISSUE_PUBLISH_DATE.getDate();
   }
 
-  // Freshness badge — rules:
-  //   < 24h = "Just published"
-  //   < 72h = "New"
-  //   < 7 days = "This week"
-  //   otherwise: show relative date "Apr 17" and change badge color
+  // Freshness badge, rules:
+  // < 24h = "Just published"
+  // < 72h = "New"
+  // < 7 days = "This week"
+  // otherwise: show relative date "Apr 17" and change badge color
   const freshnessWrap = document.getElementById('hero-intell-freshness');
   const freshnessLabel = document.getElementById('hero-intell-freshness-label');
   if (freshnessWrap && freshnessLabel) {
@@ -2843,7 +3231,7 @@ if(pulseForm){
       freshnessWrap.classList.add('bg-[#6EC6FF]');
       freshnessWrap.style.color = '#0A1628';
     } else {
-      // Older — show date instead of NEW
+      // Older, show date instead of NEW
       freshnessLabel.textContent = months[ISSUE_PUBLISH_DATE.getMonth()] + ' ' + ISSUE_PUBLISH_DATE.getDate();
       freshnessWrap.classList.remove('bg-emerald-500');
       freshnessWrap.classList.add('bg-slate-500');
@@ -2943,7 +3331,7 @@ if(pulseForm){
 (function initPremiumInteractions(){
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // Scroll progress bar (runs even if reduced motion — it's a static UI element)
+  // Scroll progress bar (runs even if reduced motion, it's a static UI element)
   (function initScrollProgress(){
     const bar = document.createElement('div');
     bar.className = 'scroll-progress';
@@ -3052,7 +3440,7 @@ if(pulseForm){
   const suggestionsList = document.getElementById('chat-suggestions-list');
   if (!widget || !toggle || !panel || !body || !form || !input) return;
 
-  // Knowledge base — keyword-matched FAQs
+  // Knowledge base, keyword-matched FAQs
   const KB = [
     {
       keys: ['how do you work','how does it work','how does this work','how does your business work','process','explain the process','walk me through','overview','how it works','step by step','steps','what happens','what is the process','tell me how','explain how','workflow','flow','end to end'],
@@ -3280,12 +3668,12 @@ if(pulseForm){
 
   // Conversation state
   const chatState = {
-    lastEntries: [],          // last 2 KB entries answered (for follow-up context)
-    consecutiveFallbacks: 0,  // how many unanswered queries in a row
-    askedForHuman: false      // did the user explicitly ask for email/contact?
+    lastEntries: [], // last 2 KB entries answered (for follow-up context)
+    consecutiveFallbacks: 0, // how many unanswered queries in a row
+    askedForHuman: false // did the user explicitly ask for email/contact?
   };
 
-  // Normalize query — strip punctuation, lowercase, collapse whitespace
+  // Normalize query, strip punctuation, lowercase, collapse whitespace
   function normalize(s){
     return s.toLowerCase()
       .replace(/[?!,.;:'"`(){}\[\]\/\\]+/g, ' ')
@@ -3331,7 +3719,7 @@ if(pulseForm){
   // Follow-up detection (when user says "more", "examples", "tell me more", "what else", "ok but")
   const FOLLOWUP_RE = /^(more|tell me more|tell me (more\s?)?about|what else|and|go on|continue|elaborate|expand|explain more|details|examples?|why|how come|keep going|ok but|but what|and then|then what|otra|más|sigue)\b/i;
 
-  // Explicit human/contact request detection — only then surface email
+  // Explicit human/contact request detection, only then surface email
   const HUMAN_REQUEST_RE = /\b(talk\s+to\s+(a\s+)?human|talk\s+to\s+(a\s+)?person|real\s+person|speak\s+to\s+(a\s+)?human|speak\s+to\s+(a\s+)?person|live\s+(agent|person|chat)|human\s+agent|call\s+me|email\s+(me|us|someone)|contact\s+info|send\s+email|your\s+email|phone\s+number|reach\s+someone|get\s+(a\s+)?rep|talk\s+to\s+(a\s+)?rep|customer\s+(service|support)|hablar\s+con\s+(alguien|humano|persona))\b/i;
 
   function scoreEntry(entry, q, qTokenSet){
@@ -3460,7 +3848,7 @@ if(pulseForm){
     // 5) No matches: escalate softly. Only surface email after multiple fallbacks.
     chatState.consecutiveFallbacks += 1;
     if (chatState.consecutiveFallbacks >= 3) {
-      // User is stuck — now offer the human path
+      // User is stuck, now offer the human path
       chatState.consecutiveFallbacks = 0;
       return "Looks like this one is outside what I can answer well. Best to go straight to the team: email <a href='mailto:info@masterstockunitedstates.com'>info@masterstockunitedstates.com</a> (general) or <a href='mailto:partnerships@masterstockunitedstates.com'>partnerships@masterstockunitedstates.com</a> (programs). Or <a href='#' data-chat-open-manifest>send your manifest</a> and we'll reply within 48 hours.";
     }
@@ -3488,7 +3876,7 @@ if(pulseForm){
     if (!text || !text.trim()) return;
     addMessage(text, 'user');
     input.value = '';
-    // Suggestions stay visible — user can always pick from common questions
+    // Suggestions stay visible, user can always pick from common questions
     showTyping();
     setTimeout(() => {
       hideTyping();

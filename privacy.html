@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Privacy Policy | MasterStock USA</title>
+<link rel="icon" type="image/png" href="images/logo-final.png" />
+<link rel="apple-touch-icon" href="images/logo-final.png" />
+<meta name="description" content="MasterStock USA privacy policy. How we collect, use, and protect data from buyers, suppliers, and visitors." />
+<link rel="canonical" href="https://www.masterstockunitedstates.com/privacy.html" />
+<meta name="robots" content="index,follow" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --ink: #0B1B35;
+    --muted: #475569;
+    --soft: #64748B;
+    --brand: #0A5CD8;
+    --brand-dark: #0847A8;
+    --brand-cyan: #6EC6FF;
+    --border: #E2E8F0;
+    --bg: #FFFFFF;
+    --bg-soft: #F8FAFC;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--brand); text-decoration: none; }
+  a:hover { color: var(--brand-dark); text-decoration: underline; }
+
+  /* Header */
+  .lg-header {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+  .lg-header-inner {
+    max-width: 1200px; margin: 0 auto;
+    padding: 14px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .lg-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .lg-logo img { height: 36px; width: auto; }
+  .lg-nav { display: flex; align-items: center; gap: 18px; font-size: 14px; font-weight: 500; }
+  .lg-nav a { color: #334155; text-decoration: none; }
+  .lg-nav a:hover { color: var(--ink); }
+  .lg-cta {
+    background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 100%);
+    color: #FFFFFF !important;
+    padding: 8px 16px; border-radius: 8px;
+    font-weight: 700; font-size: 13px;
+    text-decoration: none;
+  }
+  .lg-cta:hover { filter: brightness(1.08); text-decoration: none; }
+
+  /* Hero */
+  .lg-hero {
+    padding: 80px 24px 56px;
+    background: linear-gradient(180deg, #F4F8FF 0%, #FFFFFF 100%);
+    border-bottom: 1px solid var(--border);
+  }
+  .lg-hero-inner { max-width: 880px; margin: 0 auto; }
+  .lg-eyebrow {
+    display: inline-block;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--brand);
+    margin-bottom: 14px;
+  }
+  .lg-h1 {
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 800; line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin: 0 0 12px;
+  }
+  .lg-h1-accent {
+    background: linear-gradient(135deg, var(--brand) 0%, var(--brand-cyan) 100%);
+    -webkit-background-clip: text; background-clip: text;
+    color: transparent;
+  }
+  .lg-meta { font-size: 14px; color: var(--soft); }
+
+  /* Body */
+  .lg-body {
+    max-width: 880px; margin: 0 auto;
+    padding: 56px 24px 80px;
+  }
+  .lg-body h2 {
+    font-size: 22px; font-weight: 700;
+    color: var(--ink);
+    margin: 40px 0 14px;
+    letter-spacing: -0.01em;
+  }
+  .lg-body h2:first-child { margin-top: 0; }
+  .lg-body h3 {
+    font-size: 16px; font-weight: 700;
+    color: var(--ink);
+    margin: 24px 0 8px;
+  }
+  .lg-body p, .lg-body li {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+  .lg-body ul { padding-left: 22px; margin: 10px 0 16px; }
+  .lg-body li { margin-bottom: 6px; }
+  .lg-body strong { color: var(--ink); font-weight: 600; }
+
+  .lg-toc {
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px 26px;
+    margin-bottom: 40px;
+  }
+  .lg-toc-title {
+    font-size: 12px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--soft);
+    margin-bottom: 10px;
+  }
+  .lg-toc ol { padding-left: 20px; margin: 0; }
+  .lg-toc li { font-size: 14px; color: var(--muted); margin-bottom: 4px; }
+  .lg-toc a { color: var(--ink); }
+
+  .lg-contact-card {
+    margin-top: 40px;
+    background: linear-gradient(135deg, rgba(10,92,216,0.06) 0%, rgba(110,198,255,0.05) 100%);
+    border: 1px solid rgba(10,92,216,0.18);
+    border-radius: 14px;
+    padding: 24px 28px;
+  }
+  .lg-contact-card h3 {
+    font-size: 17px; margin: 0 0 6px;
+  }
+  .lg-contact-card p {
+    font-size: 14px; margin: 4px 0;
+  }
+
+  /* Footer */
+  .lg-footer {
+    background: #FFFFFF;
+    border-top: 1px solid var(--border);
+    padding: 32px 24px;
+    text-align: center;
+  }
+  .lg-footer-inner { max-width: 1200px; margin: 0 auto; }
+  .lg-footer p { font-size: 13px; color: var(--soft); margin: 4px 0; }
+  .lg-footer-links { display: flex; justify-content: center; gap: 18px; margin-bottom: 10px; }
+  .lg-footer-links a { color: var(--soft); font-size: 13px; }
+
+/* === ms-scrollbar (injected) === */
+html, body { overflow-x: hidden; max-width: 100%; }
+html { scrollbar-width: auto; scrollbar-color: #94A3B8 #F1F5F9; }
+html::-webkit-scrollbar, body::-webkit-scrollbar, *::-webkit-scrollbar { width: 18px; height: 0; }
+html::-webkit-scrollbar-track, body::-webkit-scrollbar-track, *::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+html::-webkit-scrollbar-thumb, body::-webkit-scrollbar-thumb, *::-webkit-scrollbar-thumb {
+  background: #94A3B8;
+  border-radius: 999px;
+  border: 4px solid #F1F5F9;
+  background-clip: padding-box;
+  min-height: 80px;
+}
+html::-webkit-scrollbar-thumb:hover, body::-webkit-scrollbar-thumb:hover, *::-webkit-scrollbar-thumb:hover {
+  background: #64748B;
+  background-clip: padding-box;
+}
+html::-webkit-scrollbar:horizontal, body::-webkit-scrollbar:horizontal, *::-webkit-scrollbar:horizontal {
+  height: 0;
+  display: none;
+}
+
+
+
+</style>
+</head>
+<body>
+
+<header class="lg-header">
+  <div class="lg-header-inner">
+    <a href="/" class="lg-logo">
+      <img src="images/logo-final.png" alt="MasterStock USA" />
+    </a>
+    <nav class="lg-nav">
+      <a href="/#categories">Categories</a>
+      <a href="/about/">About</a>
+      <a href="/request-access.html" class="lg-cta">Request access</a>
+    </nav>
+  </div>
+</header>
+
+<section class="lg-hero">
+  <div class="lg-hero-inner">
+    <span class="lg-eyebrow">Legal</span>
+    <h1 class="lg-h1">Privacy <span class="lg-h1-accent">Policy</span></h1>
+    <p class="lg-meta">Last updated: May 16, 2026 &middot; Effective immediately</p>
+  </div>
+</section>
+
+<main class="lg-body">
+
+  <div class="lg-toc">
+    <div class="lg-toc-title">Contents</div>
+    <ol>
+      <li><a href="#who-we-are">Who we are</a></li>
+      <li><a href="#what-we-collect">What we collect</a></li>
+      <li><a href="#how-we-use">How we use it</a></li>
+      <li><a href="#sharing">Who we share with</a></li>
+      <li><a href="#retention">How long we keep it</a></li>
+      <li><a href="#your-rights">Your rights</a></li>
+      <li><a href="#security">Security</a></li>
+      <li><a href="#cookies">Cookies and tracking</a></li>
+      <li><a href="#international">International transfers</a></li>
+      <li><a href="#changes">Changes to this policy</a></li>
+      <li><a href="#contact">Contact us</a></li>
+    </ol>
+  </div>
+
+  <h2 id="who-we-are">1. Who we are</h2>
+  <p>
+    MasterStock USA Inc. (&ldquo;<strong>MasterStock</strong>,&rdquo; &ldquo;<strong>we</strong>,&rdquo; &ldquo;<strong>us</strong>&rdquo;) is a Delaware corporation that operates a B2B platform connecting US-based suppliers of excess inventory with vetted wholesale buyers, primarily in Latin America. Our registered address is 8 The Green, Suite A, Dover, DE 19901, United States.
+  </p>
+  <p>
+    This Privacy Policy explains what personal data we collect when you use our website, request buyer access, submit a supplier inquiry, or otherwise interact with us, and how we use, share, and protect that data.
+  </p>
+
+  <h2 id="what-we-collect">2. What we collect</h2>
+  <p>We only collect information that is necessary to run the platform and serve you:</p>
+  <h3>You give us directly</h3>
+  <ul>
+    <li><strong>Buyer profile:</strong> company name, country, categories you import, typical lot size, contact email, WhatsApp or phone, and any notes you add.</li>
+    <li><strong>Supplier inquiry:</strong> company name, contact details, categories sold, manifest documents, and any commercial terms you share with us.</li>
+    <li><strong>Wishlist requests:</strong> SKU, category, volume, condition, and budget you specify.</li>
+    <li><strong>Account credentials:</strong> if you receive access to the buyer catalog, your login email and a hashed password.</li>
+  </ul>
+  <h3>Collected automatically</h3>
+  <ul>
+    <li><strong>Usage data:</strong> pages viewed, lots opened, time on page, and basic device or browser information.</li>
+    <li><strong>Technical data:</strong> IP address, approximate location at the country or region level, and referral source.</li>
+  </ul>
+  <p>We do not knowingly collect data from anyone under 18. The platform is strictly B2B.</p>
+
+  <h2 id="how-we-use">3. How we use it</h2>
+  <ul>
+    <li>To review buyer applications and decide whether your operation is a fit for the platform.</li>
+    <li>To match available lots with your declared categories, lot size, and channel mix.</li>
+    <li>To communicate about specific lots, manifests, and shipping logistics.</li>
+    <li>To process supplier inquiries, evaluate inventory, and coordinate pickup or settlement.</li>
+    <li>To send transactional emails (lot alerts, manifest deliveries, payment confirmations).</li>
+    <li>To send occasional product or category updates. You can opt out at any time.</li>
+    <li>To detect fraud, prevent abuse, and comply with US trade, tax, and KYC requirements.</li>
+  </ul>
+
+  <h2 id="sharing">4. Who we share with</h2>
+  <p>We do not sell your personal data. We share limited information only with parties that need it to deliver the service:</p>
+  <ul>
+    <li><strong>Suppliers:</strong> when you commit to a lot, the supplier receives the company name and shipping coordinates needed to fulfill the order. No payment or sensitive contact data beyond that.</li>
+    <li><strong>Logistics and freight forwarders:</strong> to coordinate pickup, export documentation, and delivery.</li>
+    <li><strong>Payment and banking partners:</strong> to process invoices, wires, and trade credit (only the data they require by law).</li>
+    <li><strong>Service providers:</strong> hosting (cloud infrastructure), email delivery, analytics, and customer support tools. All bound by data processing agreements.</li>
+    <li><strong>Authorities:</strong> when required by law, court order, or to protect our legal rights.</li>
+  </ul>
+
+  <h2 id="retention">5. How long we keep it</h2>
+  <ul>
+    <li>Buyer profile and order history: kept while your account is active and for 7 years after closure, to satisfy US tax and trade record-keeping requirements.</li>
+    <li>Supplier inquiries that did not become transactions: 24 months, then deleted or anonymized.</li>
+    <li>Marketing email lists: until you unsubscribe, plus a short grace period.</li>
+    <li>Server logs: 90 days.</li>
+  </ul>
+
+  <h2 id="your-rights">6. Your rights</h2>
+  <p>Depending on your jurisdiction, you may have the right to:</p>
+  <ul>
+    <li>Access the personal data we hold about you.</li>
+    <li>Correct inaccurate data.</li>
+    <li>Delete your data, subject to legal retention obligations.</li>
+    <li>Object to or restrict certain processing.</li>
+    <li>Request a portable copy of the data you provided.</li>
+    <li>Withdraw consent for marketing communications.</li>
+  </ul>
+  <p>
+    To exercise any of these, write to <a href="mailto:privacy@masterstockunitedstates.com">privacy@masterstockunitedstates.com</a>. We will respond within 30 days.
+  </p>
+
+  <h2 id="security">7. Security</h2>
+  <p>
+    We protect data with HTTPS in transit, encryption at rest for sensitive fields, role-based access controls, regular dependency audits, and least-privilege access for our team. We use reputable cloud providers with SOC 2 or equivalent certifications. No system is 100% secure, but we treat your data as carefully as our own commercial information.
+  </p>
+
+  <h2 id="cookies">8. Cookies and tracking</h2>
+  <p>
+    We use a small number of cookies for essential functions (session, login) and for first-party analytics (which pages help buyers convert). We do not run third-party advertising cookies or sell tracking data. You can disable cookies in your browser; the site will still work, but you will need to log in more often.
+  </p>
+
+  <h2 id="international">9. International transfers</h2>
+  <p>
+    Our infrastructure is hosted in the United States. If you contact us from outside the US, your data will be transferred to and processed in the US under safeguards (standard contractual clauses or equivalent) appropriate to your jurisdiction.
+  </p>
+
+  <h2 id="changes">10. Changes to this policy</h2>
+  <p>
+    We may update this policy as the platform evolves. Material changes will be announced by email to active users at least 14 days before they take effect. The &ldquo;Last updated&rdquo; date at the top of this page always reflects the current version.
+  </p>
+
+  <h2 id="contact">11. Contact us</h2>
+  <div class="lg-contact-card">
+    <h3>MasterStock USA Inc.</h3>
+    <p>8 The Green, Suite A, Dover, DE 19901, United States</p>
+    <p>Privacy inquiries: <a href="mailto:privacy@masterstockunitedstates.com">privacy@masterstockunitedstates.com</a></p>
+    <p>General: <a href="mailto:info@masterstockunitedstates.com">info@masterstockunitedstates.com</a></p>
+  </div>
+
+</main>
+
+<footer class="lg-footer">
+  <div class="lg-footer-inner">
+    <div class="lg-footer-links">
+      <a href="/">Home</a>
+      <a href="/about/">About</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/terms.html">Terms</a>
+    </div>
+    <p>&copy; 2026 MasterStock USA Inc. All rights reserved.</p>
+    <p>8 The Green, Suite A, Dover, DE 19901, United States</p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Terms of Service | MasterStock USA</title>
+<link rel="icon" type="image/png" href="images/logo-final.png" />
+<link rel="apple-touch-icon" href="images/logo-final.png" />
+<meta name="description" content="MasterStock USA terms of service. Rules of engagement for buyers, suppliers, and visitors using our B2B wholesale platform." />
+<link rel="canonical" href="https://www.masterstockunitedstates.com/terms.html" />
+<meta name="robots" content="index,follow" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --ink: #0B1B35;
+    --muted: #475569;
+    --soft: #64748B;
+    --brand: #0A5CD8;
+    --brand-dark: #0847A8;
+    --brand-cyan: #6EC6FF;
+    --border: #E2E8F0;
+    --bg: #FFFFFF;
+    --bg-soft: #F8FAFC;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--brand); text-decoration: none; }
+  a:hover { color: var(--brand-dark); text-decoration: underline; }
+
+  .lg-header {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+  .lg-header-inner {
+    max-width: 1200px; margin: 0 auto;
+    padding: 14px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .lg-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .lg-logo img { height: 36px; width: auto; }
+  .lg-nav { display: flex; align-items: center; gap: 18px; font-size: 14px; font-weight: 500; }
+  .lg-nav a { color: #334155; text-decoration: none; }
+  .lg-nav a:hover { color: var(--ink); }
+  .lg-cta {
+    background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 100%);
+    color: #FFFFFF !important;
+    padding: 8px 16px; border-radius: 8px;
+    font-weight: 700; font-size: 13px;
+    text-decoration: none;
+  }
+  .lg-cta:hover { filter: brightness(1.08); text-decoration: none; }
+
+  .lg-hero {
+    padding: 80px 24px 56px;
+    background: linear-gradient(180deg, #F4F8FF 0%, #FFFFFF 100%);
+    border-bottom: 1px solid var(--border);
+  }
+  .lg-hero-inner { max-width: 880px; margin: 0 auto; }
+  .lg-eyebrow {
+    display: inline-block;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--brand);
+    margin-bottom: 14px;
+  }
+  .lg-h1 {
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 800; line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin: 0 0 12px;
+  }
+  .lg-h1-accent {
+    background: linear-gradient(135deg, var(--brand) 0%, var(--brand-cyan) 100%);
+    -webkit-background-clip: text; background-clip: text;
+    color: transparent;
+  }
+  .lg-meta { font-size: 14px; color: var(--soft); }
+
+  .lg-body {
+    max-width: 880px; margin: 0 auto;
+    padding: 56px 24px 80px;
+  }
+  .lg-body h2 {
+    font-size: 22px; font-weight: 700;
+    color: var(--ink);
+    margin: 40px 0 14px;
+    letter-spacing: -0.01em;
+  }
+  .lg-body h2:first-child { margin-top: 0; }
+  .lg-body h3 {
+    font-size: 16px; font-weight: 700;
+    color: var(--ink);
+    margin: 24px 0 8px;
+  }
+  .lg-body p, .lg-body li {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+  .lg-body ul { padding-left: 22px; margin: 10px 0 16px; }
+  .lg-body li { margin-bottom: 6px; }
+  .lg-body strong { color: var(--ink); font-weight: 600; }
+
+  .lg-toc {
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px 26px;
+    margin-bottom: 40px;
+  }
+  .lg-toc-title {
+    font-size: 12px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--soft);
+    margin-bottom: 10px;
+  }
+  .lg-toc ol { padding-left: 20px; margin: 0; }
+  .lg-toc li { font-size: 14px; color: var(--muted); margin-bottom: 4px; }
+  .lg-toc a { color: var(--ink); }
+
+  .lg-callout {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.08) 0%, rgba(245, 158, 11, 0.04) 100%);
+    border: 1px solid rgba(245, 158, 11, 0.25);
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin: 18px 0;
+  }
+  .lg-callout p { font-size: 14px; color: #92400E; margin: 0; }
+  .lg-callout strong { color: #78350F; }
+
+  .lg-contact-card {
+    margin-top: 40px;
+    background: linear-gradient(135deg, rgba(10,92,216,0.06) 0%, rgba(110,198,255,0.05) 100%);
+    border: 1px solid rgba(10,92,216,0.18);
+    border-radius: 14px;
+    padding: 24px 28px;
+  }
+  .lg-contact-card h3 { font-size: 17px; margin: 0 0 6px; }
+  .lg-contact-card p { font-size: 14px; margin: 4px 0; }
+
+  .lg-footer {
+    background: #FFFFFF;
+    border-top: 1px solid var(--border);
+    padding: 32px 24px;
+    text-align: center;
+  }
+  .lg-footer-inner { max-width: 1200px; margin: 0 auto; }
+  .lg-footer p { font-size: 13px; color: var(--soft); margin: 4px 0; }
+  .lg-footer-links { display: flex; justify-content: center; gap: 18px; margin-bottom: 10px; }
+  .lg-footer-links a { color: var(--soft); font-size: 13px; }
+
+/* === ms-scrollbar (injected) === */
+html, body { overflow-x: hidden; max-width: 100%; }
+html { scrollbar-width: auto; scrollbar-color: #94A3B8 #F1F5F9; }
+html::-webkit-scrollbar, body::-webkit-scrollbar, *::-webkit-scrollbar { width: 18px; height: 0; }
+html::-webkit-scrollbar-track, body::-webkit-scrollbar-track, *::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+html::-webkit-scrollbar-thumb, body::-webkit-scrollbar-thumb, *::-webkit-scrollbar-thumb {
+  background: #94A3B8;
+  border-radius: 999px;
+  border: 4px solid #F1F5F9;
+  background-clip: padding-box;
+  min-height: 80px;
+}
+html::-webkit-scrollbar-thumb:hover, body::-webkit-scrollbar-thumb:hover, *::-webkit-scrollbar-thumb:hover {
+  background: #64748B;
+  background-clip: padding-box;
+}
+html::-webkit-scrollbar:horizontal, body::-webkit-scrollbar:horizontal, *::-webkit-scrollbar:horizontal {
+  height: 0;
+  display: none;
+}
+
+
+
+</style>
+</head>
+<body>
+
+<header class="lg-header">
+  <div class="lg-header-inner">
+    <a href="/" class="lg-logo">
+      <img src="images/logo-final.png" alt="MasterStock USA" />
+    </a>
+    <nav class="lg-nav">
+      <a href="/#categories">Categories</a>
+      <a href="/about/">About</a>
+      <a href="/request-access.html" class="lg-cta">Request access</a>
+    </nav>
+  </div>
+</header>
+
+<section class="lg-hero">
+  <div class="lg-hero-inner">
+    <span class="lg-eyebrow">Legal</span>
+    <h1 class="lg-h1">Terms of <span class="lg-h1-accent">Service</span></h1>
+    <p class="lg-meta">Last updated: May 16, 2026 &middot; Effective immediately</p>
+  </div>
+</section>
+
+<main class="lg-body">
+
+  <div class="lg-toc">
+    <div class="lg-toc-title">Contents</div>
+    <ol>
+      <li><a href="#acceptance">Acceptance of terms</a></li>
+      <li><a href="#eligibility">Eligibility</a></li>
+      <li><a href="#accounts">Accounts and access</a></li>
+      <li><a href="#platform">The platform</a></li>
+      <li><a href="#orders">Lots, orders, and payment</a></li>
+      <li><a href="#shipping">Shipping and risk of loss</a></li>
+      <li><a href="#returns">Returns and disputes</a></li>
+      <li><a href="#suppliers">Supplier terms</a></li>
+      <li><a href="#prohibited">Prohibited conduct</a></li>
+      <li><a href="#ip">Intellectual property</a></li>
+      <li><a href="#disclaimers">Disclaimers</a></li>
+      <li><a href="#liability">Limitation of liability</a></li>
+      <li><a href="#indemnity">Indemnification</a></li>
+      <li><a href="#termination">Termination</a></li>
+      <li><a href="#law">Governing law</a></li>
+      <li><a href="#changes">Changes</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ol>
+  </div>
+
+  <h2 id="acceptance">1. Acceptance of terms</h2>
+  <p>
+    These Terms of Service (&ldquo;<strong>Terms</strong>&rdquo;) govern your access to and use of the MasterStock USA website, buyer catalog, and supplier intake (the &ldquo;<strong>Platform</strong>&rdquo;), operated by MasterStock USA Inc. (&ldquo;<strong>MasterStock</strong>,&rdquo; &ldquo;<strong>we</strong>,&rdquo; &ldquo;<strong>us</strong>&rdquo;), a Delaware corporation. By requesting access, creating an account, or transacting with us, you agree to be bound by these Terms.
+  </p>
+
+  <h2 id="eligibility">2. Eligibility</h2>
+  <p>
+    The Platform is for businesses only. To use it you must:
+  </p>
+  <ul>
+    <li>Be a legally registered business in your jurisdiction.</li>
+    <li>Be at least 18 years old and authorized to bind your company.</li>
+    <li>Comply with all applicable export, import, and trade laws in the United States and your country of operation.</li>
+    <li>Not appear on any US sanctions list (OFAC, Entity List) or equivalent in your jurisdiction.</li>
+  </ul>
+  <p>We reserve the right to verify your identity, business registration, and trade history, and to decline access at our discretion.</p>
+
+  <h2 id="accounts">3. Accounts and access</h2>
+  <ul>
+    <li>You are responsible for maintaining the confidentiality of your login credentials and for all activity under your account.</li>
+    <li>Access is granted per company, not per individual. You may add team members but must keep us informed of who is authorized.</li>
+    <li>We may suspend or revoke access at any time for breach of these Terms, suspected fraud, or violation of trade law.</li>
+  </ul>
+
+  <h2 id="platform">4. The platform</h2>
+  <p>
+    MasterStock operates as an aggregator and intermediary between US-based suppliers of excess inventory and wholesale buyers, primarily in Latin America. We curate lots, verify manifests, photograph inventory, and coordinate logistics. We are <strong>not</strong> the original manufacturer of the goods listed.
+  </p>
+  <p>
+    All lots are pre-vetted, but condition varies (sealed new, open-box, customer returns, refurbished). The condition of each lot is disclosed in the manifest and listing. You must read the manifest before committing.
+  </p>
+
+  <h2 id="orders">5. Lots, orders, and payment</h2>
+  <ul>
+    <li><strong>Listing prices</strong> are firm. No bidding. Prices include the lot value only and do not include freight, duties, taxes, or insurance unless explicitly stated.</li>
+    <li><strong>Commitment:</strong> when you accept a lot, a binding sales order is created. Cancellation after commitment may incur a restocking fee (typically 10% of lot value).</li>
+    <li><strong>Payment terms:</strong> standard terms are wire transfer prior to release. Net-30 trade credit may be extended to qualified buyers at our sole discretion, subject to a separate credit agreement.</li>
+    <li><strong>Invoicing currency:</strong> all invoices issued in USD.</li>
+    <li><strong>Taxes:</strong> you are responsible for all import duties, VAT, IVA, customs fees, and taxes in your destination country.</li>
+  </ul>
+
+  <div class="lg-callout">
+    <p><strong>Plain English:</strong> when you confirm a lot, you are buying it. Read the manifest first. Freight, duty, and tax in your country are on you.</p>
+  </div>
+
+  <h2 id="shipping">6. Shipping and risk of loss</h2>
+  <ul>
+    <li>Default Incoterm is <strong>FCA origin warehouse</strong> unless otherwise agreed in writing. Title and risk of loss transfer to you when the goods are loaded onto your nominated carrier at the US origin warehouse.</li>
+    <li>We can arrange freight, customs brokerage, and consolidation as a separate service.</li>
+    <li>Pickup or pickup window is communicated in the order confirmation. Storage fees may apply if pickup is delayed beyond 5 business days.</li>
+  </ul>
+
+  <h2 id="returns">7. Returns and disputes</h2>
+  <p>
+    Excess and liquidation inventory is sold <strong>as-is, where-is</strong>. Returns are not accepted once title transfers, except in cases of manifest fraud (i.e., the lot received does not match the manifest in a material way).
+  </p>
+  <p>
+    To open a dispute, notify us in writing within 7 days of receipt with photo evidence and a description of the discrepancy. We will investigate with the supplier and propose a remedy (credit, partial refund, or replacement lot) within 14 business days. Disputes filed after 7 days are at our discretion.
+  </p>
+
+  <h2 id="suppliers">8. Supplier terms</h2>
+  <p>If you sell inventory to or through MasterStock, additional supplier terms apply:</p>
+  <ul>
+    <li>Manifests must be accurate. Material misrepresentation is grounds for immediate suspension and clawback.</li>
+    <li>You warrant that you have clear title to the inventory and the right to sell it.</li>
+    <li>You warrant that the goods do not infringe any third-party trademark, patent, or copyright.</li>
+    <li>Settlement is made on the terms specified in the supplier agreement (typically Net-10 to Net-14 from buyer payment).</li>
+  </ul>
+
+  <h2 id="prohibited">9. Prohibited conduct</h2>
+  <p>You will not:</p>
+  <ul>
+    <li>Use the Platform for any purpose that is illegal in the US or your jurisdiction.</li>
+    <li>Re-export goods to sanctioned countries or entities.</li>
+    <li>Resell inventory in a way that misrepresents origin, condition, or authenticity.</li>
+    <li>Scrape, crawl, or attempt to extract bulk data without written permission.</li>
+    <li>Share login credentials outside your authorized team.</li>
+    <li>Attempt to circumvent the Platform by contacting suppliers directly to bypass our role.</li>
+  </ul>
+
+  <h2 id="ip">10. Intellectual property</h2>
+  <p>
+    The Platform, its design, code, content, photography, logos, and brand are owned by MasterStock USA Inc. or our licensors. You receive a limited, non-exclusive, revocable license to use the Platform to evaluate and transact for legitimate business purposes only. All other rights are reserved.
+  </p>
+  <p>
+    Photographs of lots and SKU manifests provided to you are for your internal sourcing use only and may not be republished publicly without our written consent.
+  </p>
+
+  <h2 id="disclaimers">11. Disclaimers</h2>
+  <p>
+    The Platform is provided <strong>&ldquo;as is&rdquo;</strong> and <strong>&ldquo;as available.&rdquo;</strong> We do our best to verify manifests, count units, and grade condition, but we make no warranty of merchantability, fitness for a particular purpose, or non-infringement beyond what is expressly stated in a written sales agreement for a specific lot.
+  </p>
+  <p>
+    Lot photographs are representative. Minor variations in color, packaging, and presentation may occur. The manifest is the authoritative description.
+  </p>
+
+  <h2 id="liability">12. Limitation of liability</h2>
+  <p>
+    To the maximum extent permitted by law, MasterStock&rsquo;s aggregate liability arising out of or related to your use of the Platform or any lot purchased is limited to the amount you paid us for the specific lot giving rise to the claim, in the 12 months prior to the claim.
+  </p>
+  <p>
+    We are not liable for indirect, incidental, consequential, special, or punitive damages, including lost profits, lost sales, or business interruption, even if advised of the possibility.
+  </p>
+
+  <h2 id="indemnity">13. Indemnification</h2>
+  <p>
+    You agree to indemnify and hold harmless MasterStock, its officers, employees, and affiliates from any claim, loss, or expense (including reasonable attorneys&rsquo; fees) arising out of: your breach of these Terms, your violation of any law, your downstream sale or distribution of inventory purchased through us, or any third-party claim related to your business.
+  </p>
+
+  <h2 id="termination">14. Termination</h2>
+  <p>
+    You may stop using the Platform at any time. We may suspend or terminate your access immediately for material breach, suspected fraud, sanctions exposure, or repeated violation of these Terms. Sections 5 (open orders), 10 (IP), 11&ndash;13 (disclaimers, liability, indemnity), and 15 (governing law) survive termination.
+  </p>
+
+  <h2 id="law">15. Governing law</h2>
+  <p>
+    These Terms are governed by the laws of the State of Delaware, United States, without regard to conflict-of-law principles. Any dispute will be resolved exclusively in the state or federal courts located in New Castle County, Delaware, and you consent to personal jurisdiction there. If you require a different venue under your local consumer-protection law, that statutory right is preserved.
+  </p>
+
+  <h2 id="changes">16. Changes</h2>
+  <p>
+    We may update these Terms as the business evolves. Material changes are announced by email to active users at least 14 days before they take effect. Continued use after the effective date constitutes acceptance.
+  </p>
+
+  <h2 id="contact">17. Contact</h2>
+  <div class="lg-contact-card">
+    <h3>MasterStock USA Inc.</h3>
+    <p>8 The Green, Suite A, Dover, DE 19901, United States</p>
+    <p>Legal: <a href="mailto:legal@masterstockunitedstates.com">legal@masterstockunitedstates.com</a></p>
+    <p>General: <a href="mailto:info@masterstockunitedstates.com">info@masterstockunitedstates.com</a></p>
+  </div>
+
+</main>
+
+<footer class="lg-footer">
+  <div class="lg-footer-inner">
+    <div class="lg-footer-links">
+      <a href="/">Home</a>
+      <a href="/about/">About</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/terms.html">Terms</a>
+    </div>
+    <p>&copy; 2026 MasterStock USA Inc. All rights reserved.</p>
+    <p>8 The Green, Suite A, Dover, DE 19901, United States</p>
+  </div>
+</footer>
+
+</body>
+</html>

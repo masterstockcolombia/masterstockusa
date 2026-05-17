@@ -49,6 +49,32 @@
     .ms-lottie .ms-lottie-fallback { display: inline-block !important; }
     .ms-lottie[data-lottie-loaded="1"] > .ms-lottie-fallback { display: inline-block !important; }
   }
+
+/* === ms-scrollbar (injected) === */
+html, body { overflow-x: hidden; max-width: 100%; }
+html { scrollbar-width: auto; scrollbar-color: #94A3B8 #F1F5F9; }
+html::-webkit-scrollbar, body::-webkit-scrollbar, *::-webkit-scrollbar { width: 18px; height: 0; }
+html::-webkit-scrollbar-track, body::-webkit-scrollbar-track, *::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+html::-webkit-scrollbar-thumb, body::-webkit-scrollbar-thumb, *::-webkit-scrollbar-thumb {
+  background: #94A3B8;
+  border-radius: 999px;
+  border: 4px solid #F1F5F9;
+  background-clip: padding-box;
+  min-height: 80px;
+}
+html::-webkit-scrollbar-thumb:hover, body::-webkit-scrollbar-thumb:hover, *::-webkit-scrollbar-thumb:hover {
+  background: #64748B;
+  background-clip: padding-box;
+}
+html::-webkit-scrollbar:horizontal, body::-webkit-scrollbar:horizontal, *::-webkit-scrollbar:horizontal {
+  height: 0;
+  display: none;
+}
+
+
+
 </style>
 <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
 <link rel="apple-touch-icon" href="images/favicon.svg" />
@@ -295,15 +321,15 @@
   }
   .hero-orb.o3 { display: none; }
   @keyframes orbFloat1 {
-    0%   { transform: translate(0,0) scale(1); }
+    0% { transform: translate(0,0) scale(1); }
     100% { transform: translate(-60px, 50px) scale(1.15); }
   }
   @keyframes orbFloat2 {
-    0%   { transform: translate(0,0) scale(1); }
+    0% { transform: translate(0,0) scale(1); }
     100% { transform: translate(80px, -40px) scale(1.1); }
   }
   @keyframes orbFloat3 {
-    0%   { transform: translate(0,0) scale(0.95); }
+    0% { transform: translate(0,0) scale(0.95); }
     100% { transform: translate(-40px, -60px) scale(1.1); }
   }
   /* Make hero inner content stack above beams + overlay */
@@ -517,7 +543,7 @@
   .marquee-wrap:hover .marquee-track { animation-duration: 80s; }
   @keyframes msMarquee {
     from { transform: translateX(0); }
-    to   { transform: translateX(-50%); }
+    to { transform: translateX(-50%); }
   }
   .marquee-item {
     display: inline-flex;
@@ -577,11 +603,11 @@
   /* Boxes drop in on load, then stay */
   .ps-box { transform-box: fill-box; transform-origin: center bottom; }
   .ps-box-top { animation: ps-drop 1.2s cubic-bezier(.22,1.2,.36,1) 0.2s both; }
-  .ps-box-l   { animation: ps-drop 1.2s cubic-bezier(.22,1.2,.36,1) 0.0s both; }
-  .ps-box-r   { animation: ps-drop 1.2s cubic-bezier(.22,1.2,.36,1) 0.1s both; }
+  .ps-box-l { animation: ps-drop 1.2s cubic-bezier(.22,1.2,.36,1) 0.0s both; }
+  .ps-box-r { animation: ps-drop 1.2s cubic-bezier(.22,1.2,.36,1) 0.1s both; }
   @keyframes ps-drop {
-    0%   { opacity: 0; }
-    60%  { opacity: 1; }
+    0% { opacity: 0; }
+    60% { opacity: 1; }
     100% { opacity: 1; }
   }
   /* Manifest tag floats independently */
@@ -601,15 +627,15 @@
   }
   @keyframes ps-stamp-pulse {
     0%,100% { filter: drop-shadow(0 0 0 rgba(34,197,94,0)); }
-    50%     { filter: drop-shadow(0 0 6px rgba(34,197,94,0.55)); }
+    50% { filter: drop-shadow(0 0 6px rgba(34,197,94,0.55)); }
   }
   /* Scan beam sweeps across the stack */
   .ps-scan { animation: ps-scan 5s ease-in-out 2s infinite; }
   @keyframes ps-scan {
     0%, 100% { opacity: 0; transform: translateX(-40px); }
-    10%      { opacity: 0.55; }
-    50%      { transform: translateX(40px); opacity: 0.55; }
-    65%      { opacity: 0; }
+    10% { opacity: 0.55; }
+    50% { transform: translateX(40px); opacity: 0.55; }
+    65% { opacity: 0; }
   }
   /* Floating mini pallet icons around */
   .ps-mini { transform-box: fill-box; transform-origin: center; opacity: 0.55; }
@@ -618,7 +644,7 @@
   .ps-mini-c { animation: ps-mini-float 9s ease-in-out -4s infinite; }
   @keyframes ps-mini-float {
     0%,100% { transform: translateY(0) rotate(0deg); }
-    50%     { transform: translateY(-10px) rotate(3deg); }
+    50% { transform: translateY(-10px) rotate(3deg); }
   }
   @media (prefers-reduced-motion: reduce) {
     .ps-stack, .ps-box-top, .ps-box-l, .ps-box-r,
@@ -636,14 +662,14 @@
   }
   @keyframes gradientShift {
     0%, 100% { background-position: 0% 50%; }
-    50%      { background-position: 100% 50%; }
+    50% { background-position: 100% 50%; }
   }
 
   /* Eyebrow pulse */
   .b-eyebrow .dot { animation: pulseDot 2.4s ease-in-out infinite; }
   @keyframes pulseDot {
     0%, 100% { box-shadow: 0 0 0 4px rgba(34,197,94,0.18); opacity: 1; }
-    50%      { box-shadow: 0 0 0 8px rgba(34,197,94,0.05); opacity: 0.7; }
+    50% { box-shadow: 0 0 0 8px rgba(34,197,94,0.05); opacity: 0.7; }
   }
   .b-eyebrow {
     display: inline-flex; align-items: center; gap: 8px;
@@ -676,7 +702,7 @@
   }
   .b-btn-secondary:hover { background: rgba(37, 99, 235, 0.06); border-color: #2563EB; transform: translateY(-1px); }
 
-  /* CATALOG MOCK — make it look like a real app screenshot */
+  /* CATALOG MOCK - make it look like a real app screenshot */
   .catalog-frame {
     background: #0F2142;
     border: 1px solid rgba(255,255,255,0.10);
@@ -877,7 +903,7 @@
     .lot-row .lot-status { grid-column: 2; justify-self: start; margin-top: 4px; }
   }
 
-  /* ===== POLISH PASS — wow factor ===== */
+  /* ===== POLISH PASS - wow factor ===== */
 
   /* Shimmer sweep on primary CTA */
   .b-btn-primary { position: relative; overflow: hidden; isolation: isolate; }
@@ -893,8 +919,8 @@
   }
   .b-btn-primary > * { position: relative; z-index: 1; }
   @keyframes shimmerSweep {
-    0%   { left: -120%; }
-    60%  { left: 120%; }
+    0% { left: -120%; }
+    60% { left: 120%; }
     100% { left: 120%; }
   }
 
@@ -1024,7 +1050,7 @@
     opacity: 0.85;
   }
   @keyframes vc-border-spin {
-    0%   { --vc-angle: 0deg; }
+    0% { --vc-angle: 0deg; }
     100% { --vc-angle: 360deg; }
   }
   @media (prefers-reduced-motion: reduce) {
@@ -1054,9 +1080,9 @@
   /* Step cards, cat cards lift */
   .step-card, .cat-card { will-change: transform; }
   .step-card:hover { box-shadow: 0 0 0 1px rgba(10,92,216,0.18), 0 20px 50px -20px rgba(10,92,216,0.2); }
-  .cat-card:hover  { box-shadow: 0 0 0 1px rgba(10,92,216,0.18), 0 14px 35px -15px rgba(10,92,216,0.22); }
+  .cat-card:hover { box-shadow: 0 0 0 1px rgba(10,92,216,0.18), 0 14px 35px -15px rgba(10,92,216,0.22); }
 
-  /* Header — flush full-width, integrated with the page */
+  /* Header - flush full-width, integrated with the page */
   header#site-header {
     background: #FFFFFF !important;
     border-bottom: 1px solid rgba(15, 23, 42, 0.07) !important;
@@ -1080,7 +1106,7 @@
     box-shadow: 0 8px 28px -10px rgba(37, 99, 235, 0.28), 0 2px 8px -2px rgba(15, 23, 42, 0.08);
   }
 
-  /* Pre-footer CTA — subtle moving sheen */
+  /* Pre-footer CTA - subtle moving sheen */
   .b-cta::before {
     content: "";
     position: absolute; inset: 0;
@@ -1090,7 +1116,7 @@
     animation: sheenDrift 14s ease-in-out infinite alternate;
   }
   @keyframes sheenDrift {
-    0%   { --sx: 20%; --sy: 30%; }
+    0% { --sx: 20%; --sy: 30%; }
     100% { --sx: 80%; --sy: 70%; }
   }
 
@@ -1336,7 +1362,7 @@
   .timeline.in-view .milestone:nth-child(4) .milestone-dot::after { animation-delay: 1.05s; }
   .timeline.in-view .milestone:nth-child(5) .milestone-dot::after { animation-delay: 1.3s; }
   @keyframes dotPing {
-    0%   { opacity: 0.5; transform: scale(1); }
+    0% { opacity: 0.5; transform: scale(1); }
     100% { opacity: 0; transform: scale(1.9); }
   }
   .milestone-icon path,
@@ -1434,7 +1460,7 @@
   }
   .flow-beam.flow-beam-r { animation-delay: 1.6s; }
   @keyframes flow-beam-travel {
-    0%   { stroke-dashoffset: 234; }
+    0% { stroke-dashoffset: 234; }
     100% { stroke-dashoffset: 0; }
   }
   .flow-node {
@@ -1443,7 +1469,7 @@
   .flow-node.center { animation-delay: 1.4s; }
   @keyframes flow-node-pulse {
     0%, 100% { transform: scale(1); }
-    50%      { transform: scale(1.025); box-shadow: 0 18px 44px -14px rgba(10,92,216,0.42); }
+    50% { transform: scale(1.025); box-shadow: 0 18px 44px -14px rgba(10,92,216,0.42); }
   }
 
   /* ============================================
@@ -1518,7 +1544,7 @@
     .milestone-icon circle { stroke-dashoffset: 0; }
   }
 
-  /* === Why we exist — executive 3-column layout (Paraform-inspired) === */
+  /* === Why we exist - executive 3-column layout (Paraform-inspired) === */
   .ms-why-section {
     position: relative;
     overflow: hidden;
@@ -1627,26 +1653,49 @@
     font-size: 13.5px; color: #475569; line-height: 1.5;
   }
 
+  .ms-why-cta-row {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 12px;
+    margin-top: 28px;
+  }
+  .ms-why-cta-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 13px 26px;
+    background: linear-gradient(135deg, #0A5CD8 0%, #0847A8 100%);
+    color: #FFFFFF;
+    border-radius: 999px;
+    font-size: 14.5px; font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 10px 24px -10px rgba(10, 92, 216, 0.55), 0 0 0 1px rgba(10, 92, 216, 0.3);
+    transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+  }
+  .ms-why-cta-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 14px 28px -10px rgba(10, 92, 216, 0.7), 0 0 0 1px rgba(10, 92, 216, 0.4);
+    filter: brightness(1.05);
+  }
+  .ms-why-cta-primary svg { transition: transform .2s ease; }
+  .ms-why-cta-primary:hover svg { transform: translateX(3px); }
+
   .ms-why-cta-ghost {
     display: inline-flex; align-items: center; gap: 8px;
-    margin-top: 28px;
-    padding: 10px 20px;
-    background: #0F172A;
-    color: #FFFFFF;
+    padding: 12px 20px;
+    background: transparent;
+    color: #0B1B35;
     border-radius: 999px;
     font-size: 13.5px; font-weight: 600;
     text-decoration: none;
-    transition: background-color .2s ease, transform .2s ease;
-    align-self: flex-start;
+    border: 1px solid rgba(11, 27, 53, 0.18);
+    transition: background-color .2s ease, transform .2s ease, border-color .2s ease;
   }
   .ms-why-cta-ghost:hover {
-    background: #1E293B;
+    background: rgba(10, 92, 216, 0.06);
+    border-color: rgba(10, 92, 216, 0.35);
     transform: translateY(-1px);
   }
   .ms-why-cta-ghost svg { transition: transform .2s ease; }
   .ms-why-cta-ghost:hover svg { transform: translateX(3px); }
 
-  /* Col 2 — Executive photo */
+  /* Col 2 - Executive photo */
   .ms-exec-photo {
     margin: 0; height: 100%;
     position: relative;
@@ -1697,6 +1746,99 @@
   .nav-dd:hover .nav-dd-caret,
   .nav-dd:focus-within .nav-dd-caret { color: #2563EB; transform: rotate(180deg); }
 
+  /* Invisible bridge so cursor can travel from trigger to panel without losing hover */
+  .nav-dd::after {
+    content: '';
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    height: 12px;
+    pointer-events: none;
+  }
+  .nav-dd:hover::after, .nav-dd:focus-within::after { pointer-events: auto; }
+
+  /* ============ MEGAMENU (Scale/Stripe-style) ============ */
+  .nav-mega {
+    position: fixed;
+    top: 64px; left: 0; right: 0;
+    background: #FFFFFF;
+    border-top: 1px solid rgba(15, 23, 42, 0.06);
+    box-shadow: 0 30px 60px -20px rgba(15, 23, 42, 0.18);
+    opacity: 0; visibility: hidden;
+    transform: translateY(-6px);
+    pointer-events: none;
+    transition: opacity .2s ease, transform .2s ease, visibility .2s ease;
+    z-index: 90;
+  }
+  .nav-dd:hover .nav-mega,
+  .nav-dd:focus-within .nav-mega {
+    opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto;
+  }
+  .nav-mega-inner {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 36px 32px 40px;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 56px;
+  }
+  .nav-mega-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  .nav-mega-col-h {
+    font-size: 11px; font-weight: 800;
+    text-transform: uppercase; letter-spacing: 0.14em;
+    color: #94A3B8;
+    margin-bottom: 14px;
+  }
+  .nav-mega-item {
+    display: flex; flex-direction: column; gap: 2px;
+    padding: 9px 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background .15s ease;
+    margin: 0 -12px;
+  }
+  .nav-mega-item:hover { background: rgba(10, 92, 216, 0.05); }
+  .nav-mega-item-title { font-size: 14px; font-weight: 700; color: #0B1B35; }
+  .nav-mega-item:hover .nav-mega-item-title { color: #0A5CD8; }
+  .nav-mega-item-desc { font-size: 12.5px; color: #64748B; line-height: 1.45; }
+
+  .nav-mega-feature {
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    min-height: 240px;
+    padding: 24px;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    text-decoration: none;
+    color: #FFFFFF;
+    background: #0F2547;
+  }
+  .nav-mega-feature-img {
+    position: absolute; inset: 0;
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+  }
+  .nav-mega-feature-img::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(7,20,42,0.35) 0%, rgba(7,20,42,0.90) 100%);
+  }
+  .nav-mega-feature > *:not(.nav-mega-feature-img) { position: relative; z-index: 1; }
+  .nav-mega-feature-eyebrow { font-size: 10.5px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: #6EC6FF; margin-bottom: 8px; }
+  .nav-mega-feature-title { font-size: 19px; font-weight: 800; margin: 0 0 6px; letter-spacing: -0.01em; }
+  .nav-mega-feature-body { font-size: 13px; color: rgba(255,255,255,0.82); margin: 0 0 14px; line-height: 1.5; }
+  .nav-mega-feature-cta { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; color: #6EC6FF; }
+  .nav-mega-feature:hover .nav-mega-feature-cta { color: #FFFFFF; }
+  .nav-mega-feature-cta svg { transition: transform .18s ease; }
+  .nav-mega-feature:hover .nav-mega-feature-cta svg { transform: translateX(3px); }
+
+  @media (max-width: 900px) {
+    .nav-mega { display: none; }
+  }
   .nav-dd-panel {
     position: absolute;
     top: calc(100% + 8px);
@@ -1742,7 +1884,7 @@
     line-height: 1.4;
   }
 
-  /* Col 2 — Corgi-style funnel with chips flowing through MS engine */
+  /* Col 2 - Corgi-style funnel with chips flowing through MS engine */
   .ms-why-col-engine {
     display: flex; flex-direction: column;
     background: linear-gradient(180deg, #FFFFFF 0%, #F4F8FF 100%);
@@ -1759,13 +1901,39 @@
     position: relative;
     width: 100%;
     aspect-ratio: 16 / 10;
-    background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+    background:
+      radial-gradient(ellipse 35% 55% at 50% 50%, rgba(110, 198, 255, 0.28) 0%, transparent 65%),
+      linear-gradient(180deg, #0B1B35 0%, #07142A 100%);
     border-radius: 20px;
     overflow: hidden;
     flex: 1;
     min-height: 320px;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
   }
-  /* Hourglass background — coloured rays squeezing into the center */
+  /* Warehouse dot grid + soft floor wash */
+  .ms-funnel::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+    background-size: 22px 22px;
+    background-position: 0 0;
+    mask-image: radial-gradient(ellipse 75% 80% at 50% 55%, #000 30%, transparent 90%);
+    -webkit-mask-image: radial-gradient(ellipse 75% 80% at 50% 55%, #000 30%, transparent 90%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  /* Subtle conveyor accent lines at top/bottom converging visually toward center */
+  .ms-funnel::after {
+    content: '';
+    position: absolute; left: 0; right: 0; top: 0; bottom: 0;
+    background:
+      linear-gradient(90deg, transparent 0%, rgba(110, 198, 255, 0.18) 35%, rgba(110, 198, 255, 0.18) 65%, transparent 100%) top / 100% 1px no-repeat,
+      linear-gradient(90deg, transparent 0%, rgba(110, 198, 255, 0.18) 35%, rgba(110, 198, 255, 0.18) 65%, transparent 100%) bottom / 100% 1px no-repeat;
+    pointer-events: none;
+    z-index: 0;
+  }
+  /* Hourglass background - coloured rays squeezing into the center */
   .ms-funnel-bg {
     position: absolute; inset: 0;
     width: 100%; height: 100%;
@@ -1776,12 +1944,12 @@
     position: absolute;
     left: 50%; top: 50%;
     transform: translate(-50%, -50%);
-    width: 92px; height: 92px;
+    width: 150px; height: 150px;
     border-radius: 50%;
-    background: #FFFFFF;
+    background: transparent;
     display: flex; align-items: center; justify-content: center;
     z-index: 10;
-    box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.08), 0 0 80px rgba(110, 198, 255, 0.35), 0 20px 50px -16px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 80px rgba(110, 198, 255, 0.45), 0 20px 50px -16px rgba(0, 0, 0, 0.6);
   }
   .ms-funnel-center-halo {
     position: absolute; inset: -10px;
@@ -1792,9 +1960,9 @@
   }
   @keyframes funnel-halo {
     0%, 100% { opacity: 0.55; transform: scale(1); }
-    50%      { opacity: 0.9;  transform: scale(1.15); }
+    50% { opacity: 0.9; transform: scale(1.15); }
   }
-  .ms-funnel-center-logo { width: 42px; height: 42px; }
+  .ms-funnel-center-logo { width: 150px; height: 150px; border-radius: 50%; }
 
   /* Floating chips */
   .ms-funnel-chip {
@@ -1827,24 +1995,24 @@
 
   /* Animations: bad chips flow inward (toward center), good chips flow outward */
   @keyframes funnel-flow-in {
-    0%   { opacity: 0; transform: translate(-50%, -50%) translateX(-40px) scale(.7); }
-    12%  { opacity: 1; transform: translate(-50%, -50%) translateX(0) scale(1); }
-    72%  { opacity: 1; transform: translate(-50%, -50%) translateX(80px) scale(.85); }
-    85%  { opacity: 0; transform: translate(-50%, -50%) translateX(120px) scale(.5); }
+    0% { opacity: 0; transform: translate(-50%, -50%) translateX(-40px) scale(.7); }
+    12% { opacity: 1; transform: translate(-50%, -50%) translateX(0) scale(1); }
+    72% { opacity: 1; transform: translate(-50%, -50%) translateX(80px) scale(.85); }
+    85% { opacity: 0; transform: translate(-50%, -50%) translateX(120px) scale(.5); }
     100% { opacity: 0; transform: translate(-50%, -50%) translateX(120px) scale(.5); }
   }
   @keyframes funnel-flow-out {
-    0%   { opacity: 0; transform: translate(-50%, -50%) translateX(-80px) scale(.5); }
-    15%  { opacity: 0; transform: translate(-50%, -50%) translateX(-80px) scale(.5); }
-    28%  { opacity: 1; transform: translate(-50%, -50%) translateX(-40px) scale(.85); }
-    50%  { opacity: 1; transform: translate(-50%, -50%) translateX(0) scale(1); }
-    88%  { opacity: 1; transform: translate(-50%, -50%) translateX(20px) scale(1); }
+    0% { opacity: 0; transform: translate(-50%, -50%) translateX(-80px) scale(.5); }
+    15% { opacity: 0; transform: translate(-50%, -50%) translateX(-80px) scale(.5); }
+    28% { opacity: 1; transform: translate(-50%, -50%) translateX(-40px) scale(.85); }
+    50% { opacity: 1; transform: translate(-50%, -50%) translateX(0) scale(1); }
+    88% { opacity: 1; transform: translate(-50%, -50%) translateX(20px) scale(1); }
     100% { opacity: 0; transform: translate(-50%, -50%) translateX(40px) scale(.7); }
   }
-  .left-1  { animation: funnel-flow-in 9s ease-in-out infinite both; animation-delay: 0s; }
-  .left-2  { animation: funnel-flow-in 9s ease-in-out infinite both; animation-delay: -2.2s; }
-  .left-3  { animation: funnel-flow-in 9s ease-in-out infinite both; animation-delay: -4.5s; }
-  .left-4  { animation: funnel-flow-in 9s ease-in-out infinite both; animation-delay: -6.7s; }
+  .left-1 { animation: funnel-flow-in 9s ease-in-out infinite both; animation-delay: 0s; }
+  .left-2 { animation: funnel-flow-in 9s ease-in-out infinite both; animation-delay: -2.2s; }
+  .left-3 { animation: funnel-flow-in 9s ease-in-out infinite both; animation-delay: -4.5s; }
+  .left-4 { animation: funnel-flow-in 9s ease-in-out infinite both; animation-delay: -6.7s; }
   .right-1 { animation: funnel-flow-out 9s ease-in-out infinite both; animation-delay: 0s; }
   .right-2 { animation: funnel-flow-out 9s ease-in-out infinite both; animation-delay: -2.2s; }
   .right-3 { animation: funnel-flow-out 9s ease-in-out infinite both; animation-delay: -4.5s; }
@@ -1863,7 +2031,7 @@
     border: 1px solid rgba(255, 255, 255, 0.12);
     z-index: 8;
   }
-  .ms-funnel-side-bad  { left: 16px; }
+  .ms-funnel-side-bad { left: 16px; }
   .ms-funnel-side-good { right: 16px; }
 
   @media (prefers-reduced-motion: reduce) {
@@ -1871,7 +2039,7 @@
     .ms-funnel-chip { transform: translate(-50%, -50%) !important; }
   }
 
-  /* === Funnel travelling pills — 3D flip transformation at center === */
+  /* === Funnel travelling pills - 3D flip transformation at center === */
   .ms-fl-pill {
     position: absolute;
     left: 8%; top: 50%;
@@ -1909,39 +2077,63 @@
     pointer-events: none;
     text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
   }
-  .ms-fl-face-bad  { color: #DC2626; }
+  .ms-fl-face-bad { color: #DC2626; }
   .ms-fl-face-good { color: #2563EB; transform: rotateY(180deg); }
-
-  /* Pill traverse: visible only 30% of cycle. Center reached at ~15.5%. */
-  @keyframes fl-pass {
-    0%    { opacity: 0; transform: translate(0px, -50%) scale(0.85); }
-    3%    { opacity: 1; transform: translate(15px, -50%) scale(1); }
-    14%   { transform: translate(210px, -50%) scale(1); }
-    15.5% { transform: translate(230px, -50%) scale(1.08); }
-    17%   { transform: translate(250px, -50%) scale(1); }
-    27%   { opacity: 1; transform: translate(420px, -50%) scale(1); }
-    30%   { opacity: 0; transform: translate(460px, -50%) scale(1); }
-    100%  { opacity: 0; transform: translate(460px, -50%) scale(1); }
+  /* Hide caption while the pill crosses the MS bubble so text doesn't peek */
+  @keyframes fl-tip-fade {
+    0%, 21% { opacity: 1; }
+    22%, 27% { opacity: 0; }
+    28%, 100% { opacity: 1; }
   }
-  /* Inner flip happens RIGHT at the center crossing (15-16% window) */
+
+  /* Pill traverse: enters, HOLDS for ~1.5s so user can read, then crosses
+     center, holds briefly on the right, exits. Visible ~50% of cycle so
+     2-3 pills overlap onscreen at any moment. Center crossing at 24%. */
+  @keyframes fl-pass {
+    0% { opacity: 0; transform: translate(0px, calc(-50% + var(--dy-in, 0px))) scale(0.85); }
+    3% { opacity: 1; transform: translate(15px, calc(-50% + var(--dy-in, 0px) * 0.95)) scale(1); }
+    11% { opacity: 1; transform: translate(35px, calc(-50% + var(--dy-in, 0px) * 0.85)) scale(1); }
+    22% { transform: translate(225px, calc(-50% + var(--dy-in, 0px) * 0.08)) scale(1); }
+    24% { transform: translate(245px, -50%) scale(1.08); }
+    26% { transform: translate(265px, calc(-50% + var(--dy-out, 0px) * 0.08)) scale(1); }
+    38% { opacity: 1; transform: translate(420px, calc(-50% + var(--dy-out, 0px) * 0.85)) scale(1); }
+    46% { opacity: 1; transform: translate(440px, calc(-50% + var(--dy-out, 0px) * 0.95)) scale(1); }
+    50% { opacity: 0; transform: translate(460px, calc(-50% + var(--dy-out, 0px))) scale(1); }
+    100% { opacity: 0; transform: translate(460px, calc(-50% + var(--dy-out, 0px))) scale(1); }
+  }
+  /* Inner flip happens RIGHT at the center crossing (23-25% window) */
   @keyframes fl-flip {
-    0%, 14.5% { transform: rotateY(0deg); }
-    16.5%     { transform: rotateY(180deg); }
-    100%      { transform: rotateY(180deg); }
+    0%, 23% { transform: rotateY(0deg); }
+    25% { transform: rotateY(180deg); }
+    100% { transform: rotateY(180deg); }
   }
 
   /* 5 pills cycle over 20s with ease-in-out for smooth motion, stagger every 4s */
-  .flow-1 { animation: fl-pass 20s cubic-bezier(0.4, 0, 0.2, 1) infinite both; animation-delay: 0s; }
-  .flow-2 { animation: fl-pass 20s cubic-bezier(0.4, 0, 0.2, 1) infinite both; animation-delay: -4s; }
-  .flow-3 { animation: fl-pass 20s cubic-bezier(0.4, 0, 0.2, 1) infinite both; animation-delay: -8s; }
-  .flow-4 { animation: fl-pass 20s cubic-bezier(0.4, 0, 0.2, 1) infinite both; animation-delay: -12s; }
-  .flow-5 { animation: fl-pass 20s cubic-bezier(0.4, 0, 0.2, 1) infinite both; animation-delay: -16s; }
+  .flow-1 { animation: fl-pass 18s cubic-bezier(0.4, 0, 0.2, 1) infinite both; animation-delay: 0s; --dy-in: -150px; --dy-out: 130px; }
+  .flow-2 { animation: fl-pass 18s cubic-bezier(0.4, 0, 0.2, 1) infinite both; animation-delay: -2.25s; --dy-in: 140px; --dy-out: -140px; }
+  .flow-3 { animation: fl-pass 18s cubic-bezier(0.4, 0, 0.2, 1) infinite both; animation-delay: -4.5s; --dy-in: -80px; --dy-out: 90px; }
+  .flow-4 { animation: fl-pass 18s cubic-bezier(0.4, 0, 0.2, 1) infinite both; animation-delay: -6.75s; --dy-in: 160px; --dy-out: 120px; }
+  .flow-5 { animation: fl-pass 18s cubic-bezier(0.4, 0, 0.2, 1) infinite both; animation-delay: -9s; --dy-in: -130px; --dy-out: -95px; }
+  .flow-6 { animation: fl-pass 18s cubic-bezier(0.4, 0, 0.2, 1) infinite both; animation-delay: -11.25s; --dy-in: 90px; --dy-out: 150px; }
+  .flow-7 { animation: fl-pass 18s cubic-bezier(0.4, 0, 0.2, 1) infinite both; animation-delay: -13.5s; --dy-in: -100px; --dy-out: 60px; }
+  .flow-8 { animation: fl-pass 18s cubic-bezier(0.4, 0, 0.2, 1) infinite both; animation-delay: -15.75s; --dy-in: 40px; --dy-out: -120px; }
 
-  .ms-fl-pill .ms-fl-pill-inner { animation: fl-flip 20s cubic-bezier(0.65, 0, 0.35, 1) infinite both; animation-delay: inherit; }
-  .flow-2 .ms-fl-pill-inner { animation-delay: -4s !important; }
-  .flow-3 .ms-fl-pill-inner { animation-delay: -8s !important; }
-  .flow-4 .ms-fl-pill-inner { animation-delay: -12s !important; }
-  .flow-5 .ms-fl-pill-inner { animation-delay: -16s !important; }
+  .ms-fl-pill .ms-fl-pill-inner { animation: fl-flip 18s cubic-bezier(0.65, 0, 0.35, 1) infinite both; animation-delay: inherit; }
+  .flow-2 .ms-fl-pill-inner { animation-delay: -2.25s !important; }
+  .flow-3 .ms-fl-pill-inner { animation-delay: -4.5s !important; }
+  .flow-4 .ms-fl-pill-inner { animation-delay: -6.75s !important; }
+  .flow-5 .ms-fl-pill-inner { animation-delay: -9s !important; }
+  .flow-6 .ms-fl-pill-inner { animation-delay: -11.25s !important; }
+  .flow-7 .ms-fl-pill-inner { animation-delay: -13.5s !important; }
+  .flow-8 .ms-fl-pill-inner { animation-delay: -15.75s !important; }
+  .ms-fl-face::after { animation: fl-tip-fade 18s linear infinite both; animation-delay: inherit; }
+  .flow-2 .ms-fl-face::after { animation-delay: -2.25s !important; }
+  .flow-3 .ms-fl-face::after { animation-delay: -4.5s !important; }
+  .flow-4 .ms-fl-face::after { animation-delay: -6.75s !important; }
+  .flow-5 .ms-fl-face::after { animation-delay: -9s !important; }
+  .flow-6 .ms-fl-face::after { animation-delay: -11.25s !important; }
+  .flow-7 .ms-fl-face::after { animation-delay: -13.5s !important; }
+  .flow-8 .ms-fl-face::after { animation-delay: -15.75s !important; }
 
   @media (prefers-reduced-motion: reduce) {
     .ms-fl-pill, .ms-fl-pill-inner { animation: none !important; }
@@ -1982,10 +2174,10 @@
     left: 4%; right: 4%; top: 50%;
     height: 2px;
     background: linear-gradient(90deg,
-      rgba(239, 68, 68, 0.0)  0%,
+      rgba(239, 68, 68, 0.0) 0%,
       rgba(239, 68, 68, 0.35) 12%,
       rgba(239, 68, 68, 0.35) 42%,
-      rgba(15, 23, 42, 0.10)  50%,
+      rgba(15, 23, 42, 0.10) 50%,
       rgba(37, 99, 235, 0.35) 58%,
       rgba(37, 99, 235, 0.35) 88%,
       rgba(37, 99, 235, 0.0) 100%
@@ -2015,7 +2207,7 @@
     z-index: -1;
   }
   @keyframes tf-pulse {
-    0%   { transform: scale(0.9); opacity: 0.65; }
+    0% { transform: scale(0.9); opacity: 0.65; }
     100% { transform: scale(1.55); opacity: 0; }
   }
   .ms-tf-engine-logo { width: 26px; height: 26px; }
@@ -2063,34 +2255,34 @@
   /* Pill pass animation: window 0-20% (3s of 15s) */
   @keyframes tf-pill-pass {
     /* Hidden start */
-    0%   { opacity: 0; left: 0%; background: rgba(239,68,68,0.10); color: #B91C1C; border-color: rgba(239,68,68,0.35); }
+    0% { opacity: 0; left: 0%; background: rgba(239,68,68,0.10); color: #B91C1C; border-color: rgba(239,68,68,0.35); }
     /* Enter from left, red, bad text */
-    2%   { opacity: 1; left: 4%; background: rgba(239,68,68,0.10); color: #B91C1C; border-color: rgba(239,68,68,0.35); }
+    2% { opacity: 1; left: 4%; background: rgba(239,68,68,0.10); color: #B91C1C; border-color: rgba(239,68,68,0.35); }
     /* Travel toward center */
-    8%   { opacity: 1; left: 28%; background: rgba(239,68,68,0.10); color: #B91C1C; border-color: rgba(239,68,68,0.35); }
-    /* Reach engine — pill ducks behind */
-    10%  { opacity: 0; left: 44%; }
+    8% { opacity: 1; left: 28%; background: rgba(239,68,68,0.10); color: #B91C1C; border-color: rgba(239,68,68,0.35); }
+    /* Reach engine - pill ducks behind */
+    10% { opacity: 0; left: 44%; }
     /* Inside engine (invisible) */
-    12%  { opacity: 0; left: 50%; }
-    /* Emerge transformed — blue, good text */
-    14%  { opacity: 1; left: 56%; background: linear-gradient(135deg,#2563EB,#1d4ed8); color: #FFFFFF; border-color: #1d4ed8; box-shadow: 0 8px 18px -8px rgba(37,99,235,0.55); }
+    12% { opacity: 0; left: 50%; }
+    /* Emerge transformed - blue, good text */
+    14% { opacity: 1; left: 56%; background: linear-gradient(135deg,#2563EB,#1d4ed8); color: #FFFFFF; border-color: #1d4ed8; box-shadow: 0 8px 18px -8px rgba(37,99,235,0.55); }
     /* Travel out to right */
-    18%  { opacity: 1; left: 72%; background: linear-gradient(135deg,#2563EB,#1d4ed8); color: #FFFFFF; border-color: #1d4ed8; }
-    20%  { opacity: 1; left: 88%; background: linear-gradient(135deg,#2563EB,#1d4ed8); color: #FFFFFF; border-color: #1d4ed8; }
+    18% { opacity: 1; left: 72%; background: linear-gradient(135deg,#2563EB,#1d4ed8); color: #FFFFFF; border-color: #1d4ed8; }
+    20% { opacity: 1; left: 88%; background: linear-gradient(135deg,#2563EB,#1d4ed8); color: #FFFFFF; border-color: #1d4ed8; }
     /* Fade out */
     23%, 100% { opacity: 0; left: 96%; }
   }
   /* Swap text faces when pill emerges (12-13% mark of 15s cycle = ~1.95s) */
   @keyframes tf-face-swap-bad {
-    0%, 12%  { opacity: 1; }
+    0%, 12% { opacity: 1; }
     13%, 100%{ opacity: 0; }
   }
   @keyframes tf-face-swap-good {
-    0%, 12%  { opacity: 0; }
+    0%, 12% { opacity: 0; }
     14%, 22% { opacity: 1; }
     23%, 100%{ opacity: 0; }
   }
-  .ms-tf-pill .ms-tf-face-bad  { animation: tf-face-swap-bad 15s linear infinite both; animation-delay: inherit; }
+  .ms-tf-pill .ms-tf-face-bad { animation: tf-face-swap-bad 15s linear infinite both; animation-delay: inherit; }
   .ms-tf-pill .ms-tf-face-good { animation: tf-face-swap-good 15s linear infinite both; animation-delay: inherit; }
   .pair-2 .ms-tf-face { animation-delay: -3s !important; }
   .pair-3 .ms-tf-face { animation-delay: -6s !important; }
@@ -2106,7 +2298,7 @@
     font-size: 10px; font-weight: 700;
     text-transform: uppercase; letter-spacing: 0.14em;
   }
-  .ms-tf-side-bad  { color: #B91C1C; }
+  .ms-tf-side-bad { color: #B91C1C; }
   .ms-tf-side-good { color: #2563EB; }
 
   @media (prefers-reduced-motion: reduce) {
@@ -2134,7 +2326,7 @@
     .ms-eng-flow, .ms-eng-center-pulse { animation: none !important; }
   }
 
-  /* Col 3 — Serif quote */
+  /* Col 3 - Serif quote */
   .ms-exec-brand {
     display: flex; align-items: center; gap: 8px;
     padding-bottom: 24px;
@@ -2184,7 +2376,7 @@
   .ms-why-lead + .ms-why-lead { margin-top: 14px; }
   .ms-why-cta { margin-top: 28px; }
 
-  /* Founder quote card on the right — real photo, real signature */
+  /* Founder quote card on the right - real photo, real signature */
   .ms-why-visual {
     position: relative;
     display: flex; align-items: center; justify-content: center;
@@ -2288,7 +2480,7 @@
   }
   @keyframes panel-pulse {
     0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.5); }
-    50%      { box-shadow: 0 0 0 4px rgba(34, 197, 94, 0); }
+    50% { box-shadow: 0 0 0 4px rgba(34, 197, 94, 0); }
   }
 
   .ms-panel-metrics {
@@ -2385,7 +2577,7 @@
   .ms-why-cta svg { transition: transform .25s ease; }
   .ms-why-cta:hover svg { transform: translateX(3px); }
 
-  /* Visual on the right — pallet stack on cobalt */
+  /* Visual on the right - pallet stack on cobalt */
   .ms-why-visual { position: relative; min-height: 280px; display: flex; align-items: center; justify-content: center; }
   .pallet-scene-cobalt {
     position: relative;
@@ -2407,11 +2599,11 @@
   }
   @keyframes ps2-bob {
     0%, 100% { transform: translateY(0); }
-    50%      { transform: translateY(-5px); }
+    50% { transform: translateY(-5px); }
   }
   .ps2-box { transform-box: fill-box; transform-origin: center bottom; }
-  .ps2-box-l   { animation: ps2-fade 1.2s cubic-bezier(.22,1.2,.36,1) 0.0s both; }
-  .ps2-box-r   { animation: ps2-fade 1.2s cubic-bezier(.22,1.2,.36,1) 0.1s both; }
+  .ps2-box-l { animation: ps2-fade 1.2s cubic-bezier(.22,1.2,.36,1) 0.0s both; }
+  .ps2-box-r { animation: ps2-fade 1.2s cubic-bezier(.22,1.2,.36,1) 0.1s both; }
   .ps2-box-top { animation: ps2-fade 1.2s cubic-bezier(.22,1.2,.36,1) 0.2s both; }
   @keyframes ps2-fade { 0% { opacity: 0; } 100% { opacity: 1; } }
   .ps2-stamp {
@@ -2419,31 +2611,31 @@
     animation: ps2-stamp-in 0.7s cubic-bezier(.22,1.4,.36,1) 1.4s both, ps2-stamp-pulse 3s ease-in-out 2.2s infinite;
   }
   @keyframes ps2-stamp-in {
-    0%   { opacity: 0; transform: scale(0.3) rotate(-20deg); }
+    0% { opacity: 0; transform: scale(0.3) rotate(-20deg); }
     100% { opacity: 1; transform: scale(1) rotate(-12deg); }
   }
   @keyframes ps2-stamp-pulse {
     0%,100% { filter: drop-shadow(0 0 0 rgba(34,197,94,0)); }
-    50%     { filter: drop-shadow(0 0 8px rgba(34,197,94,0.7)); }
+    50% { filter: drop-shadow(0 0 8px rgba(34,197,94,0.7)); }
   }
   .ps2-manifest {
     transform-box: fill-box; transform-origin: center;
     animation: ps2-manifest-in 0.9s ease-out 1.6s both, ps2-float 4.5s ease-in-out 2.5s infinite;
   }
   @keyframes ps2-manifest-in {
-    0%   { opacity: 0; transform: translate(8px,-8px) scale(0.85); }
+    0% { opacity: 0; transform: translate(8px,-8px) scale(0.85); }
     100% { opacity: 1; transform: translate(0,0) scale(1); }
   }
   @keyframes ps2-float {
     0%,100% { transform: translateY(0); }
-    50%     { transform: translateY(-4px); }
+    50% { transform: translateY(-4px); }
   }
   @media (prefers-reduced-motion: reduce) {
     .ps2-stack, .ps2-box-l, .ps2-box-r, .ps2-box-top,
     .ps2-stamp, .ps2-manifest { animation: none !important; }
   }
 
-  /* === Compare table — extra compact === */
+  /* === Compare table - extra compact === */
   #compare { padding-top: 2rem !important; padding-bottom: 2rem !important; }
   #compare h2 { font-size: 1.875rem !important; line-height: 1.15 !important; }
   #compare .sec-sub, #compare > div > div > p { font-size: 0.875rem !important; margin-top: 0.5rem !important; }
@@ -2463,6 +2655,440 @@
     .compare-value { font-size: 12px !important; }
     .compare-col-title { font-size: 13px !important; }
   }
+
+  /* === Footer (light minimal + VAST structure) === */
+  .ms-footer { background: #FFFFFF; color: #475569; padding: 80px 0 28px; border-top: 1px solid #E2E8F0; }
+  .ms-footer a { color: inherit; text-decoration: none; transition: color .15s ease; }
+  .ms-footer a:hover { color: #0B1B35; }
+  .ms-footer-contact-card {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 24px 48px;
+    padding: 32px 36px;
+    border-radius: 16px;
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    width: 100%;
+  }
+  @media (max-width: 480px) { .ms-footer-contact-card { grid-template-columns: 1fr; padding: 24px; } }
+  .ms-footer-contact-title { font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #0B1B35; margin-bottom: 16px; }
+  .ms-footer-contact-item { display: flex; align-items: center; gap: 10px; font-size: 14px; color: #475569; margin-bottom: 12px; transition: color .15s ease; white-space: nowrap; }
+  .ms-footer-contact-item:last-of-type { margin-bottom: 0; }
+  .ms-footer-contact-item svg { color: #0A5CD8; flex: 0 0 auto; }
+  .ms-footer-contact-item:hover { color: #0A5CD8; }
+  .ms-footer-contact-hq { font-size: 12.5px; color: #64748B; margin-top: 16px; padding-top: 14px; border-top: 1px solid #E2E8F0; }
+  .ms-footer-sep { height: 1px; background: #E2E8F0; margin: 56px 0; }
+  .ms-footer-explore { display: grid; grid-template-columns: 220px 1fr; gap: 40px; align-items: start; }
+  @media (max-width: 820px) { .ms-footer-explore { grid-template-columns: 1fr; gap: 24px; } }
+  .ms-footer-main { display: grid; grid-template-columns: 1fr 560px; gap: 56px; align-items: start; }
+  @media (max-width: 1100px) { .ms-footer-main { grid-template-columns: 1fr; } }
+  .ms-footer-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px 32px; }
+  @media (max-width: 640px) { .ms-footer-cols { grid-template-columns: repeat(2, 1fr); gap: 24px; } }
+  .ms-footer-col-title { font-size: 14px; font-weight: 700; color: #0B1B35; margin-bottom: 16px; }
+  .ms-footer-col ul { list-style: none; padding: 0; margin: 0; }
+  .ms-footer-col li { margin-bottom: 10px; }
+  .ms-footer-col a { font-size: 13.5px; color: #64748B; }
+  .ms-footer-bottom { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  .ms-footer-bottom-left { display: flex; align-items: center; gap: 16px; }
+  .ms-footer-logo { height: 32px; width: auto; }
+  .ms-footer-copy { font-size: 13px; color: #475569; }
+  .ms-footer-addr { font-size: 11.5px; color: #94A3B8; margin-top: 2px; }
+  .ms-footer-bottom-right { display: flex; gap: 8px; }
+  .ms-footer-social { width: 34px; height: 34px; border-radius: 8px; display: grid; place-items: center; background: #F8FAFC; border: 1px solid #E2E8F0; color: #64748B; transition: all .15s ease; }
+  .ms-footer-social:hover { background: rgba(10, 92, 216, 0.08); border-color: rgba(10, 92, 216, 0.3); color: #0A5CD8; }
+
+  /* === What We Sell (Bilt-style dark cards) === */
+  .ws-section {
+    position: relative;
+    padding: 96px 0 110px;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, #0F2547 0%, #07142A 60%, #050D1E 100%);
+    color: #FFFFFF;
+    overflow: hidden;
+  }
+  .ws-bg {
+    position: absolute; inset: 0;
+    background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 26px 26px;
+    mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, #000 30%, transparent 95%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, #000 30%, transparent 95%);
+    pointer-events: none;
+  }
+  .ws-kicker {
+    display: inline-block;
+    font-size: 11px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.18em;
+    color: #6EC6FF;
+    margin-bottom: 16px;
+  }
+  .ws-h2 {
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 800; line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: #FFFFFF;
+    margin: 0;
+  }
+  .ws-h2-accent {
+    background: linear-gradient(135deg, #6EC6FF 0%, #0A5CD8 100%);
+    -webkit-background-clip: text; background-clip: text;
+    color: transparent;
+  }
+  .ws-lead {
+    margin-top: 18px;
+    font-size: 17px; line-height: 1.55;
+    color: rgba(255,255,255,0.65);
+  }
+
+  .ws-grid {
+    margin-top: 56px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  @media (max-width: 1000px) { .ws-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 640px) { .ws-grid { grid-template-columns: 1fr; gap: 22px; } }
+
+  .ws-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    transition: transform .25s ease;
+  }
+  .ws-card:hover { transform: translateY(-4px); }
+  .ws-card:hover .ws-card-media { box-shadow: 0 30px 60px -20px rgba(10, 92, 216, 0.45); }
+
+  .ws-card-media {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border-radius: 18px;
+    background-size: cover;
+    background-position: center;
+    background-color: #0F2547;
+    overflow: hidden;
+    box-shadow: 0 18px 40px -20px rgba(0,0,0,0.6);
+    transition: box-shadow .25s ease;
+  }
+  .ws-card-media::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(7,20,42,0.25) 0%, rgba(7,20,42,0.55) 100%);
+    pointer-events: none;
+  }
+
+  /* Floating glass-morphism overlays on the photo */
+  .ws-overlay {
+    position: absolute;
+    z-index: 2;
+    background: rgba(20, 28, 48, 0.72);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 12px;
+    padding: 12px 14px;
+    color: #FFFFFF;
+    font-size: 13px;
+    box-shadow: 0 10px 24px -10px rgba(0,0,0,0.5);
+    min-width: 150px;
+  }
+  .ws-overlay-tl { top: 16px; left: 16px; }
+  .ws-overlay-br { bottom: 16px; right: 16px; min-width: 0; }
+  .ws-overlay-stack { display: flex; flex-direction: column; gap: 8px; padding: 0; background: transparent; border: none; backdrop-filter: none; -webkit-backdrop-filter: none; box-shadow: none; }
+
+  .ws-overlay-row { display: flex; justify-content: space-between; gap: 16px; padding: 2px 0; }
+  .ws-overlay-row + .ws-overlay-row { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 6px; margin-top: 4px; }
+  .ws-overlay-key { color: rgba(255,255,255,0.6); font-size: 12px; }
+  .ws-overlay-val { color: #FFFFFF; font-weight: 700; font-size: 13.5px; }
+
+  .ws-overlay-title { font-weight: 700; font-size: 13.5px; margin-bottom: 2px; }
+  .ws-overlay-num { font-size: 22px; font-weight: 800; line-height: 1.1; margin: 4px 0 2px; }
+  .ws-overlay-mini { font-size: 11.5px; color: rgba(255,255,255,0.62); }
+
+  .ws-overlay-pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(20, 28, 48, 0.78);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 999px;
+    padding: 7px 14px;
+    font-size: 12.5px; font-weight: 600;
+    color: #FFFFFF;
+    box-shadow: 0 8px 20px -10px rgba(0,0,0,0.5);
+  }
+  .ws-dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+  .ws-dot-green { background: #34D399; box-shadow: 0 0 8px rgba(52,211,153,0.6); }
+  .ws-dot-amber { background: #F59E0B; box-shadow: 0 0 8px rgba(245,158,11,0.6); }
+  .ws-dot-blue { background: #6EC6FF; box-shadow: 0 0 8px rgba(110,198,255,0.6); }
+
+  .ws-badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(52, 211, 153, 0.18);
+    border: 1px solid rgba(52, 211, 153, 0.4);
+    color: #34D399;
+    font-size: 11.5px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.04em;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  .ws-badge-blue {
+    background: rgba(110, 198, 255, 0.18);
+    border-color: rgba(110, 198, 255, 0.4);
+    color: #6EC6FF;
+  }
+
+  .ws-card-title {
+    margin: 22px 0 8px;
+    font-size: 22px; font-weight: 700;
+    color: #FFFFFF;
+    letter-spacing: -0.01em;
+  }
+  .ws-card-desc {
+    font-size: 14.5px; line-height: 1.55;
+    color: #FFFFFF;
+    margin: 0;
+  }
+
+  /* Override default light-section text colors that follow */
+  .ws-section + section { background: #FFFFFF; }
+
+  /* Sourcing/wishlist banner (sits inside dark ws-section) */
+  .ws-sourcing {
+    position: relative;
+    margin-top: 64px;
+    border-radius: 22px;
+    overflow: hidden;
+    background:
+      linear-gradient(135deg, rgba(10, 92, 216, 0.18) 0%, rgba(110, 198, 255, 0.10) 100%),
+      rgba(15, 37, 71, 0.6);
+    border: 1px solid rgba(110, 198, 255, 0.18);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 30px 60px -25px rgba(10, 92, 216, 0.45);
+  }
+  .ws-sourcing-glow {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 40% 80% at 0% 50%, rgba(110, 198, 255, 0.18) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 90% at 100% 50%, rgba(10, 92, 216, 0.25) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .ws-sourcing-inner {
+    position: relative;
+    padding: 40px 44px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .ws-sourcing-text { max-width: 640px; flex: 1 1 320px; }
+  .ws-sourcing-title {
+    font-size: clamp(22px, 2.4vw, 30px);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: #FFFFFF;
+    margin: 0;
+  }
+  .ws-sourcing-accent {
+    background: linear-gradient(135deg, #6EC6FF 0%, #0A5CD8 100%);
+    -webkit-background-clip: text; background-clip: text;
+    color: transparent;
+  }
+  .ws-sourcing-desc {
+    margin-top: 12px;
+    font-size: 15.5px; line-height: 1.6;
+    color: #FFFFFF;
+  }
+  .ws-sourcing-cta {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 16px 28px;
+    background: linear-gradient(135deg, #0A5CD8 0%, #0847A8 100%);
+    color: #FFFFFF;
+    border-radius: 14px;
+    font-size: 15px; font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 14px 30px -10px rgba(10, 92, 216, 0.7);
+    transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+    white-space: nowrap;
+  }
+  .ws-sourcing-cta:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 18px 36px -10px rgba(10, 92, 216, 0.85);
+    filter: brightness(1.07);
+  }
+  .ws-sourcing-cta svg { transition: transform .2s ease; }
+  .ws-sourcing-cta:hover svg { transform: translateX(3px); }
+  @media (max-width: 720px) {
+    .ws-sourcing-inner { padding: 28px 24px; }
+  }
+
+  /* === Request access CTA section === */
+  .ms-cta-section {
+    padding: 80px 0;
+    background: linear-gradient(180deg, #F4F8FF 0%, #FFFFFF 100%);
+  }
+  .ms-cta-h2 {
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    color: #0B1B35;
+    max-width: 880px;
+    margin: 0 auto 48px;
+    text-align: center;
+  }
+  .ms-cta-h2-accent {
+    background: linear-gradient(135deg, #0A5CD8 0%, #0847A8 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .ms-cta-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 40px;
+    align-items: stretch;
+  }
+  @media (max-width: 900px) {
+    .ms-cta-grid { grid-template-columns: 1fr; gap: 28px; }
+  }
+
+  /* LEFT: framed form card */
+  .ms-cta-form-frame {
+    background: linear-gradient(135deg, #0A5CD8 0%, #0847A8 100%);
+    border-radius: 24px;
+    padding: 18px;
+    box-shadow: 0 30px 60px -30px rgba(10, 92, 216, 0.55);
+  }
+  .ms-cta-form-card {
+    background: #FFFFFF;
+    border-radius: 16px;
+    padding: 32px;
+    display: flex; flex-direction: column; gap: 22px;
+    height: 100%;
+  }
+  .ms-cta-form-head { display: flex; flex-direction: column; gap: 4px; }
+  .ms-cta-form-title { font-size: 22px; font-weight: 700; color: #0B1B35; margin: 0; }
+  .ms-cta-form-sub { font-size: 14px; color: #64748B; margin: 0; }
+
+  .ms-cta-form-row { display: flex; flex-direction: column; gap: 8px; }
+  .ms-cta-form-row-grid > div { display: flex; flex-direction: column; gap: 8px; }
+  .ms-cta-label {
+    font-size: 12.5px; font-weight: 600; color: #0B1B35;
+    text-transform: none; letter-spacing: 0;
+  }
+  .ms-cta-input {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1px solid #E2E8F0;
+    border-radius: 10px;
+    font-size: 14px;
+    color: #0B1B35;
+    background: #F8FAFC;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2364748B' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+  }
+
+  .ms-cta-chips, .ms-cta-pills {
+    display: flex; flex-wrap: wrap; gap: 8px;
+  }
+  .ms-cta-chip, .ms-cta-pill {
+    display: inline-flex; align-items: center;
+    padding: 8px 14px;
+    border: 1px solid #E2E8F0;
+    border-radius: 999px;
+    font-size: 13px; font-weight: 600;
+    color: #475569;
+    background: #FFFFFF;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all .15s ease;
+  }
+  .ms-cta-chip:hover, .ms-cta-pill:hover {
+    border-color: #0A5CD8;
+    color: #0847A8;
+    background: #F4F8FF;
+  }
+  .ms-cta-chip-on, .ms-cta-pill-on,
+  .ms-cta-chip-on:hover, .ms-cta-pill-on:hover {
+    background: linear-gradient(135deg, #E8F0FE 0%, #DBEAFE 100%);
+    border-color: #0A5CD8;
+    color: #0847A8;
+  }
+  .ms-cta-input:focus {
+    outline: none;
+    border-color: #0A5CD8;
+    box-shadow: 0 0 0 3px rgba(10, 92, 216, 0.15);
+  }
+
+  .ms-cta-submit {
+    margin-top: 4px;
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 14px 24px;
+    background: linear-gradient(135deg, #0A5CD8 0%, #0847A8 100%);
+    color: #FFFFFF;
+    border: none;
+    border-radius: 12px;
+    font-size: 15px; font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 10px 24px -10px rgba(10, 92, 216, 0.6);
+    transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+  }
+  .ms-cta-submit:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 14px 28px -10px rgba(10, 92, 216, 0.75);
+    filter: brightness(1.05);
+  }
+  .ms-cta-submit svg { transition: transform .2s ease; }
+  .ms-cta-submit:hover svg { transform: translateX(3px); }
+
+  /* RIGHT: two-path value props */
+  .ms-cta-paths {
+    display: flex; flex-direction: column;
+    justify-content: center;
+    gap: 28px;
+    padding: 8px 8px 8px 16px;
+  }
+  @media (max-width: 900px) { .ms-cta-paths { padding: 0; } }
+  .ms-cta-path { display: flex; flex-direction: column; gap: 10px; }
+  .ms-cta-path-title {
+    font-size: 19px; font-weight: 700; color: #0B1B35; margin: 0;
+    line-height: 1.35;
+  }
+  .ms-cta-path-body {
+    font-size: 15px; color: #475569; line-height: 1.6; margin: 0;
+  }
+  .ms-cta-path-best { font-size: 14px; color: #0B1B35; margin: 8px 0 0; }
+  .ms-cta-path-best strong { font-weight: 700; }
+  .ms-cta-path-best-body { font-size: 14.5px; color: #475569; line-height: 1.55; margin: 0; }
+
+  .ms-cta-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, #E2E8F0 50%, transparent 100%);
+    margin: 4px 0;
+  }
+
+  .ms-cta-secondary {
+    align-self: flex-start;
+    display: inline-flex; align-items: center; gap: 7px;
+    margin-top: 6px;
+    padding: 10px 18px;
+    background: #FFFFFF;
+    color: #0847A8;
+    border: 1.5px solid #0A5CD8;
+    border-radius: 999px;
+    font-size: 14px; font-weight: 700;
+    text-decoration: none;
+    transition: background-color .2s ease, transform .2s ease;
+  }
+  .ms-cta-secondary:hover {
+    background: #E8F0FE;
+    transform: translateY(-1px);
+  }
+  .ms-cta-secondary svg { transition: transform .2s ease; }
+  .ms-cta-secondary:hover svg { transform: translateX(3px); }
 
   /* === MS Modal (Request access / Wishlist) === */
   .ms-modal-overlay {
@@ -2505,7 +3131,8 @@
     transition: background .15s ease, color .15s ease;
   }
   .ms-modal-close:hover { background: #E2E8F0; color: #0F172A; }
-  .ms-modal-body { padding: 18px 22px; overflow-y: auto; }
+  .ms-modal-body-form { display: flex; flex-direction: column; flex: 1 1 auto; min-height: 0; overflow: hidden; }
+  .ms-modal-body { padding: 18px 22px; overflow-y: auto; flex: 1 1 auto; min-height: 0; -webkit-overflow-scrolling: touch; }
   .ms-modal-body .ms-field { margin-bottom: 14px; }
   .ms-modal-body label.ms-label { display: block; font-size: 12.5px; font-weight: 600; color: #0F172A; margin-bottom: 6px; letter-spacing: -0.005em; }
   .ms-modal-body label.ms-label .ms-req { color: #DC2626; margin-left: 2px; }
@@ -2544,6 +3171,7 @@
     background: rgba(10,92,216,.06); border-color: #0A5CD8; color: #0A5CD8;
   }
   .ms-modal-footer {
+    flex: 0 0 auto;
     padding: 14px 22px 18px; border-top: 1px solid #F1F5F9;
     display: flex; justify-content: flex-end; gap: 10px;
     background: #FAFBFC;
@@ -2601,34 +3229,112 @@
           Solutions
           <svg class="nav-dd-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
         </a>
-        <div class="nav-dd-panel" role="menu">
-          <a href="/how-it-works/" class="nav-dd-item" role="menuitem">
-            <span class="nav-dd-item-title">For buyers</span>
-            <span class="nav-dd-item-desc">From request access to first lot in about a week.</span>
-          </a>
-          <a href="/how-it-works/#suppliers" class="nav-dd-item" role="menuitem">
-            <span class="nav-dd-item-title">For suppliers</span>
-            <span class="nav-dd-item-desc">From manifest to wired funds in 10-14 days.</span>
-          </a>
+        <div class="nav-mega" role="menu">
+          <div class="nav-mega-inner">
+            <div class="nav-mega-cols">
+              <div>
+                <div class="nav-mega-col-h">Pick a side</div>
+                <a href="/how-it-works/#buyers" class="nav-mega-item" role="menuitem">
+                  <span class="nav-mega-item-title">For buyers</span>
+                  <span class="nav-mega-item-desc">From request access to first lot in about a week.</span>
+                </a>
+                <a href="/how-it-works/#suppliers" class="nav-mega-item" role="menuitem">
+                  <span class="nav-mega-item-title">For suppliers</span>
+                  <span class="nav-mega-item-desc">From manifest to wired funds in 10-14 days.</span>
+                </a>
+                <a href="/how-it-works/" class="nav-mega-item" role="menuitem">
+                  <span class="nav-mega-item-title">Both flows, side by side</span>
+                  <span class="nav-mega-item-desc">Same desk, same diligence, two intake doors.</span>
+                </a>
+              </div>
+              <div>
+                <div class="nav-mega-col-h">Operational deep dives</div>
+                <a href="/how-it-works/#buyer-process" class="nav-mega-item" role="menuitem">
+                  <span class="nav-mega-item-title">The 6-step buyer flow</span>
+                  <span class="nav-mega-item-desc">Request, approval, catalog, lot, pickup, recourse.</span>
+                </a>
+                <a href="/how-it-works/#lot-anatomy" class="nav-mega-item" role="menuitem">
+                  <span class="nav-mega-item-title">Anatomy of a lot</span>
+                  <span class="nav-mega-item-desc">Manifest fields, photo standards, cherry-picking, MOQ.</span>
+                </a>
+                <a href="/how-it-works/#logistics-lanes" class="nav-mega-item" role="menuitem">
+                  <span class="nav-mega-item-title">Logistics lanes</span>
+                  <span class="nav-mega-item-desc">Domestic pickup or coordinated export drayage.</span>
+                </a>
+              </div>
+            </div>
+            <a href="/how-it-works/" class="nav-mega-feature">
+              <div class="nav-mega-feature-img" style="background-image: url('https://images.unsplash.com/photo-1496171367470-9ed9a91ea931?w=900&auto=format&fit=crop&q=80');"></div>
+              <div class="nav-mega-feature-eyebrow">Featured</div>
+              <h4 class="nav-mega-feature-title">Inside the buyer flow</h4>
+              <p class="nav-mega-feature-body">The operating manual: what an actual lot looks like, what sits in a manifest, how recourse works.</p>
+              <span class="nav-mega-feature-cta">Read the guide <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>
+            </a>
+          </div>
         </div>
       </div>
 
-      <a href="#categories" class="px-3 py-2 rounded-md hover:bg-gray-50 hidden lg:inline">Customers</a>
+      <div class="nav-dd hidden lg:inline-block">
+        <a href="/#categories" class="nav-dd-trigger" aria-haspopup="true" aria-expanded="false">
+          Categories
+          <svg class="nav-dd-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </a>
+        <div class="nav-mega" role="menu">
+          <div class="nav-mega-inner">
+            <div class="nav-mega-cols">
+              <div>
+                <div class="nav-mega-col-h">Apparel &amp; lifestyle</div>
+                <a href="/#categories" class="nav-mega-item"><span class="nav-mega-item-title">Apparel</span><span class="nav-mega-item-desc">Clothing, activewear, seasonal fashion.</span></a>
+                <a href="/#categories" class="nav-mega-item"><span class="nav-mega-item-title">Accessories</span><span class="nav-mega-item-desc">Handbags, watches, luggage, travel.</span></a>
+                <a href="/#categories" class="nav-mega-item"><span class="nav-mega-item-title">Toys &amp; Baby</span><span class="nav-mega-item-desc">LEGO, strollers, educational toys.</span></a>
+              </div>
+              <div>
+                <div class="nav-mega-col-h">Home &amp; tech</div>
+                <a href="/#categories" class="nav-mega-item"><span class="nav-mega-item-title">Home &amp; Kitchen</span><span class="nav-mega-item-desc">Cookware, small appliances, tabletop.</span></a>
+                <a href="/#categories" class="nav-mega-item"><span class="nav-mega-item-title">Tools &amp; Home</span><span class="nav-mega-item-desc">Power tools, hardware, gardening.</span></a>
+                <a href="/#categories" class="nav-mega-item"><span class="nav-mega-item-title">Technology</span><span class="nav-mega-item-desc">Laptops, networking, peripherals.</span></a>
+              </div>
+            </div>
+            <a href="/request-access.html" data-open-modal="request-access" class="nav-mega-feature">
+              <div class="nav-mega-feature-img" style="background-image: url('https://images.unsplash.com/photo-1601598851547-4302969d0614?w=900&auto=format&fit=crop&q=80');"></div>
+              <div class="nav-mega-feature-eyebrow">This week</div>
+              <h4 class="nav-mega-feature-title">See what's open right now</h4>
+              <p class="nav-mega-feature-body">Approved buyers get the catalog link with full SKU manifests and pallet photos.</p>
+              <span class="nav-mega-feature-cta">Request access <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>
+            </a>
+          </div>
+        </div>
+      </div>
 
       <div class="nav-dd hidden lg:inline-block">
         <a href="/resources/" class="nav-dd-trigger" aria-haspopup="true" aria-expanded="false">
           Resources
           <svg class="nav-dd-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
         </a>
-        <div class="nav-dd-panel" role="menu">
-          <a href="/resources/" class="nav-dd-item" role="menuitem">
-            <span class="nav-dd-item-title">Guides &amp; playbooks</span>
-            <span class="nav-dd-item-desc">How to read a manifest, vet a lot, and price a deal.</span>
-          </a>
-          <a href="/llms.txt" class="nav-dd-item" role="menuitem">
-            <span class="nav-dd-item-title">For AI agents</span>
-            <span class="nav-dd-item-desc">Machine-readable index of the platform.</span>
-          </a>
+        <div class="nav-mega" role="menu">
+          <div class="nav-mega-inner">
+            <div class="nav-mega-cols">
+              <div>
+                <div class="nav-mega-col-h">Read &amp; learn</div>
+                <a href="/resources/" class="nav-mega-item"><span class="nav-mega-item-title">Guides &amp; playbooks</span><span class="nav-mega-item-desc">How to read a manifest, vet a lot, price a deal.</span></a>
+                <a href="/resources/#docs" class="nav-mega-item"><span class="nav-mega-item-title">Sample NDA</span><span class="nav-mega-item-desc">Mutual NDA used pre-catalog disclosure.</span></a>
+                <a href="/resources/#docs" class="nav-mega-item"><span class="nav-mega-item-title">Sample Bill of Sale</span><span class="nav-mega-item-desc">Plain-English BoS with manifest schedule.</span></a>
+              </div>
+              <div>
+                <div class="nav-mega-col-h">For machines</div>
+                <a href="/llms.txt" class="nav-mega-item"><span class="nav-mega-item-title">For AI agents</span><span class="nav-mega-item-desc">Machine-readable index of the platform.</span></a>
+                <a href="/resources/#rep" class="nav-mega-item"><span class="nav-mega-item-title">Tax documentation</span><span class="nav-mega-item-desc">W-9, COI, resale cert workflow.</span></a>
+                <a href="/sitemap.xml" class="nav-mega-item"><span class="nav-mega-item-title">Sitemap</span><span class="nav-mega-item-desc">All public pages, structured.</span></a>
+              </div>
+            </div>
+            <a href="/resources/" class="nav-mega-feature">
+              <div class="nav-mega-feature-img" style="background-image: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?w=900&auto=format&fit=crop&q=80');"></div>
+              <div class="nav-mega-feature-eyebrow">Featured</div>
+              <h4 class="nav-mega-feature-title">The MasterStock playbook</h4>
+              <p class="nav-mega-feature-body">Every doc a buyer or supplier needs, in one library. NDA, BoS, manifest spec, tax pack.</p>
+              <span class="nav-mega-feature-cta">Open the library <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>
+            </a>
+          </div>
         </div>
       </div>
 
@@ -2637,19 +3343,30 @@
           Company
           <svg class="nav-dd-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
         </a>
-        <div class="nav-dd-panel" role="menu">
-          <a href="/about/#team" class="nav-dd-item" role="menuitem">
-            <span class="nav-dd-item-title">The team</span>
-            <span class="nav-dd-item-desc">Two founders. Every offer is signed by one of us.</span>
-          </a>
-          <a href="/about/#trust" class="nav-dd-item" role="menuitem">
-            <span class="nav-dd-item-title">Credentials</span>
-            <span class="nav-dd-item-desc">D-U-N-S, Delaware incorporation, US banking.</span>
-          </a>
-          <a href="mailto:partnerships@masterstockunitedstates.com" class="nav-dd-item" role="menuitem">
-            <span class="nav-dd-item-title">Contact</span>
-            <span class="nav-dd-item-desc">Direct line to a founder.</span>
-          </a>
+        <div class="nav-mega" role="menu">
+          <div class="nav-mega-inner">
+            <div class="nav-mega-cols">
+              <div>
+                <div class="nav-mega-col-h">About us</div>
+                <a href="/about/#story" class="nav-mega-item"><span class="nav-mega-item-title">Our story</span><span class="nav-mega-item-desc">Why we built a cross-border wholesale operator.</span></a>
+                <a href="/about/#team" class="nav-mega-item"><span class="nav-mega-item-title">The team</span><span class="nav-mega-item-desc">Jose and Esteban. Every offer is signed by one of us.</span></a>
+                <a href="/about/#trust" class="nav-mega-item"><span class="nav-mega-item-title">Credentials</span><span class="nav-mega-item-desc">D-U-N-S, Delaware incorporation, US banking.</span></a>
+              </div>
+              <div>
+                <div class="nav-mega-col-h">Talk to us</div>
+                <a href="/about/#partnerships" class="nav-mega-item"><span class="nav-mega-item-title">Partnerships</span><span class="nav-mega-item-desc">Suppliers, forwarders, brokers, banks.</span></a>
+                <a href="/about/#contact" class="nav-mega-item"><span class="nav-mega-item-title">General contact</span><span class="nav-mega-item-desc">One business day reply.</span></a>
+                <a href="/about/#press" class="nav-mega-item"><span class="nav-mega-item-title">Press</span><span class="nav-mega-item-desc">Logos, founder bios, brand kit.</span></a>
+              </div>
+            </div>
+            <a href="/about/#team" class="nav-mega-feature">
+              <div class="nav-mega-feature-img" style="background-image: url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1200&auto=format&fit=crop&q=80');"></div>
+              <div class="nav-mega-feature-eyebrow">Founders</div>
+              <h4 class="nav-mega-feature-title">Meet the founders of MasterStock</h4>
+              <p class="nav-mega-feature-body">Two operators running the desk end to end. Every offer carries one of our names.</p>
+              <span class="nav-mega-feature-cta">See the team <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>
+            </a>
+          </div>
         </div>
       </div>
       <span class="hidden sm:inline-block w-px h-5 bg-gray-200 mx-1" aria-hidden="true"></span>
@@ -2732,6 +3449,116 @@
   </div>
 </section>
 
+<!-- ============ REVIEWS WALL (auction floors warning) ============ -->
+<style>
+  .ms-reviews-wall { padding: 96px 0; background: #FFFFFF; }
+  .ms-reviews-wall .ms-rev-head-wrap { max-width: 760px; margin: 0 auto; text-align: center; }
+  .ms-reviews-wall .ms-rev-eyebrow { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.18em; color: #0A5CD8; margin-bottom: 14px; }
+  .ms-reviews-wall .ms-rev-h2 { font-size: clamp(28px, 4.2vw, 44px); font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; color: #0B1B35; margin: 0 0 18px; }
+  .ms-reviews-wall .ms-rev-h2-accent { background: linear-gradient(135deg, #0A5CD8 0%, #6EC6FF 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .ms-reviews-wall .ms-rev-lead { font-size: 15.5px; line-height: 1.6; color: #475569; margin: 0; }
+  .ms-reviews-wall .ms-rev-grid { margin-top: 56px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1180px; margin-left: auto; margin-right: auto; }
+  @media (max-width: 1024px) { .ms-reviews-wall .ms-rev-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 640px)  { .ms-reviews-wall .ms-rev-grid { grid-template-columns: 1fr; } }
+  .ms-reviews-wall .ms-rev-card { background: #fff; border: 1px solid #E2E8F0; border-radius: 14px; padding: 22px; aspect-ratio: 1 / 1; display: flex; flex-direction: column; transition: transform .25s cubic-bezier(0.16,1,0.3,1), box-shadow .25s ease, border-color .25s ease; overflow: hidden; }
+  .ms-reviews-wall .ms-rev-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -20px rgba(15,23,42,0.18); border-color: rgba(10,92,216,0.25); }
+  @media (max-width: 640px) { .ms-reviews-wall .ms-rev-card { aspect-ratio: auto; } }
+  .ms-reviews-wall .ms-rev-card-head { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+  .ms-reviews-wall .ms-rev-avatar { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; font-size: 13px; font-weight: 800; color: #fff; flex: 0 0 auto; }
+  .ms-reviews-wall .ms-rev-meta { flex: 1; min-width: 0; }
+  .ms-reviews-wall .ms-rev-name { font-size: 13.5px; font-weight: 700; color: #0B1B35; line-height: 1.2; }
+  .ms-reviews-wall .ms-rev-sub  { font-size: 11.5px; color: #94A3B8; margin-top: 2px; }
+  .ms-reviews-wall .ms-rev-date { font-size: 11.5px; color: #94A3B8; flex: 0 0 auto; }
+  .ms-reviews-wall .ms-rev-stars { display: inline-flex; gap: 2px; margin-bottom: 10px; }
+  .ms-reviews-wall .ms-rev-stars span { width: 14px; height: 14px; background: #E2E8F0; clip-path: polygon(50% 0, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); }
+  .ms-reviews-wall .ms-rev-stars span.on { background: #EF4444; }
+  .ms-reviews-wall .ms-rev-title { font-size: 14.5px; font-weight: 700; color: #0B1B35; margin-bottom: 8px; line-height: 1.35; letter-spacing: -0.01em; }
+  .ms-reviews-wall .ms-rev-body  { font-size: 12.5px; line-height: 1.55; color: #475569; overflow: hidden; }
+  .ms-reviews-wall .ms-redacted { display: inline-block; background: #0B1B35; color: #0B1B35; padding: 0 8px; border-radius: 3px; user-select: none; -webkit-user-select: none; vertical-align: baseline; letter-spacing: 0.04em; }
+  .ms-reviews-wall .ms-rev-footnote { margin-top: 36px; text-align: center; font-size: 14px; color: #475569; }
+  .ms-reviews-wall .ms-rev-footnote a { color: #0A5CD8; font-weight: 600; }
+  .ms-reviews-wall .ms-rev-footnote a:hover { text-decoration: underline; }
+</style>
+<section class="ms-reviews-wall">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="ms-rev-head-wrap">
+      <span class="ms-rev-eyebrow">Why this market needed a different operator</span>
+      <h2 class="ms-rev-h2">Real reviews. Real buyers. <span class="ms-rev-h2-accent">Burned by the auction floors.</span></h2>
+      <p class="ms-rev-lead">A sample of what procurement teams say about today&rsquo;s liquidation marketplaces. Company names redacted. This is the gap MasterStock was built to close.</p>
+    </div>
+
+    <div class="ms-rev-grid">
+      <article class="ms-rev-card">
+        <header class="ms-rev-card-head">
+          <span class="ms-rev-avatar" style="background:#94A3B8;">a</span>
+          <div class="ms-rev-meta"><div class="ms-rev-name">antodedo</div><div class="ms-rev-sub">IT &middot; 3 reviews</div></div>
+          <span class="ms-rev-date">6 days ago</span>
+        </header>
+        <div class="ms-rev-stars" aria-label="1 of 5 stars"><span class="on"></span><span></span><span></span><span></span><span></span></div>
+        <h3 class="ms-rev-title">I won an auction 18025</h3>
+        <p class="ms-rev-body">I won an auction, but no one shipped anything, no refund, no reply, no explanations, after many emails. Now after more than a month they said the seller didn&rsquo;t have the items to ship. I spoke to the seller, the said <span class="ms-redacted">[ marketplace ]</span> closed wrongly the timing of the auction. Result i found myself with no money, no items to sell.</p>
+      </article>
+
+      <article class="ms-rev-card">
+        <header class="ms-rev-card-head">
+          <span class="ms-rev-avatar" style="background:#FBCFE8; color:#9D174D;">MM</span>
+          <div class="ms-rev-meta"><div class="ms-rev-name">Marie Mori</div><div class="ms-rev-sub">US &middot; 1 review</div></div>
+          <span class="ms-rev-date">Apr 9, 2026</span>
+        </header>
+        <div class="ms-rev-stars" aria-label="1 of 5 stars"><span class="on"></span><span></span><span></span><span></span><span></span></div>
+        <h3 class="ms-rev-title"><span class="ms-redacted">[ marketplace ]</span> is about money, they don&rsquo;t care about the Buyers!!!</h3>
+        <p class="ms-rev-body">Bought Amazon 6 pallets, one missing and the other five not mine. They located my order in New York and just closed my dispute. Got Target 4 pallets and 48% stolen items, all Dysons and good stuff was not in the pallets. Costco had 2 pallets said good, that product was trash and dirty, nasty and broken. I am done with them.</p>
+      </article>
+
+      <article class="ms-rev-card">
+        <header class="ms-rev-card-head">
+          <span class="ms-rev-avatar" style="background:#86EFAC; color:#14532D;">T</span>
+          <div class="ms-rev-meta"><div class="ms-rev-name">Tim Andow</div><div class="ms-rev-sub">2 reviews</div></div>
+          <span class="ms-rev-date">5 days ago</span>
+        </header>
+        <div class="ms-rev-stars" aria-label="1 of 5 stars"><span class="on"></span><span></span><span></span><span></span><span></span></div>
+        <h3 class="ms-rev-title">Cherry-picked, every single time.</h3>
+        <p class="ms-rev-body"><span class="ms-redacted">[ broker ]</span> has become a complete waste of time and money. The quality of their pallets keeps getting worse and worse. It feels like they are cherry-picking all the good and valuable items before the lot is even listed.</p>
+      </article>
+
+      <article class="ms-rev-card">
+        <header class="ms-rev-card-head">
+          <span class="ms-rev-avatar" style="background:#CBD5E1; color:#0F172A;">S</span>
+          <div class="ms-rev-meta"><div class="ms-rev-name">Shane Gorum</div><div class="ms-rev-sub">1 review</div></div>
+          <span class="ms-rev-date">Dec 7, 2025</span>
+        </header>
+        <div class="ms-rev-stars" aria-label="1 of 5 stars"><span class="on"></span><span></span><span></span><span></span><span></span></div>
+        <h3 class="ms-rev-title">&ldquo;Untested&rdquo; means junk.</h3>
+        <p class="ms-rev-body">Untested means junk. The manifest is a lie. They will short you. Support is trash. They cherry-pick everything to put on <span class="ms-redacted">[ sister site ]</span> (their other company) and if you buy from <span class="ms-redacted">[ sister site ]</span> &ldquo;new&rdquo; it&rsquo;s actually a return.</p>
+      </article>
+
+      <article class="ms-rev-card">
+        <header class="ms-rev-card-head">
+          <span class="ms-rev-avatar" style="background:#FED7AA; color:#7C2D12;">LR</span>
+          <div class="ms-rev-meta"><div class="ms-rev-name">Lonnie Frank Rudd</div><div class="ms-rev-sub">4 reviews</div></div>
+          <span class="ms-rev-date">Dec 13, 2025</span>
+        </header>
+        <div class="ms-rev-stars" aria-label="2 of 5 stars"><span class="on"></span><span class="on"></span><span></span><span></span><span></span></div>
+        <h3 class="ms-rev-title">Hidden requirements at pickup.</h3>
+        <p class="ms-rev-body">I bought 3 pallets, 2 of air conditioners and one of humidifiers/dehumidifiers. First, they don&rsquo;t disclose that you need a &ldquo;dock-high&rdquo; truck to pick up your pallets. So instead of spending $150 in gas, I spent $600 chasing a truck no one warned me about.</p>
+      </article>
+
+      <article class="ms-rev-card">
+        <header class="ms-rev-card-head">
+          <span class="ms-rev-avatar" style="background:#FDE68A; color:#78350F;">EL</span>
+          <div class="ms-rev-meta"><div class="ms-rev-name">Elina Lewis</div><div class="ms-rev-sub">1 review</div></div>
+          <span class="ms-rev-date">May 25, 2025</span>
+        </header>
+        <div class="ms-rev-stars" aria-label="1 of 5 stars"><span class="on"></span><span></span><span></span><span></span><span></span></div>
+        <h3 class="ms-rev-title">Wait 2 hours, drive home empty.</h3>
+        <p class="ms-rev-body">The Fort Worth Texas location is horrible. They never have orders ready on time, you sit around and wait up to 2 hours. They are always missing a pallet and then tell you to come back another day, to someone else, to a different dock. Total mess.</p>
+      </article>
+    </div>
+
+    <p class="ms-rev-footnote">That&rsquo;s why we built an <strong>operator</strong>, not another marketplace. <a href="/about/#story">See how it started &rarr;</a></p>
+  </div>
+</section>
+
 <!-- WHAT IS MASTERSTOCK & WHY WE EXIST -->
 <section id="why-we-exist" class="ms-why-section">
   <div class="ms-why-bg" aria-hidden="true"></div>
@@ -2775,10 +3602,16 @@
         </li>
       </ul>
 
-      <a href="/how-it-works/" class="ms-why-cta-ghost">
-        See how it works
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
-      </a>
+      <div class="ms-why-cta-row">
+        <a href="/request-access.html" data-open-modal="request-access" class="ms-why-cta-primary">
+          Request access
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="/how-it-works/" class="ms-why-cta-ghost">
+          See how it works
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
     </div>
 
     <!-- COL 2: Funnel where each chip passes through MS and transforms -->
@@ -2786,76 +3619,93 @@
       <span class="ms-engine-eyebrow">What goes in vs what you get</span>
 
       <div class="ms-funnel">
-        <!-- Brand-cobalt hourglass background -->
-        <svg class="ms-funnel-bg" viewBox="0 0 400 240" preserveAspectRatio="none" aria-hidden="true">
-          <defs>
-            <linearGradient id="funnelGrad" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%"  stop-color="#3B82F6" stop-opacity="0.55"/>
-              <stop offset="35%" stop-color="#60A5FA" stop-opacity="0.40"/>
-              <stop offset="50%" stop-color="#BFDBFE" stop-opacity="0.85"/>
-              <stop offset="65%" stop-color="#60A5FA" stop-opacity="0.40"/>
-              <stop offset="100%" stop-color="#1d4ed8" stop-opacity="0.55"/>
-            </linearGradient>
-          </defs>
-          <!-- Hourglass shape (top + bottom triangles meet at center) -->
-          <path d="M0,0 L400,0 L400,80 Q220,120 200,120 Q180,120 0,80 Z" fill="url(#funnelGrad)"/>
-          <path d="M0,240 L400,240 L400,160 Q220,120 200,120 Q180,120 0,160 Z" fill="url(#funnelGrad)"/>
-        </svg>
+        <!-- Background handled by .ms-funnel ::before/::after (warehouse grid + glow) -->
 
         <!-- Center MS node (chips pass behind it) -->
         <div class="ms-funnel-center">
           <span class="ms-funnel-center-halo" aria-hidden="true"></span>
-          <img src="images/favicon.svg" alt="" class="ms-funnel-center-logo" />
+          <img src="images/pallet-engine.png" alt="" class="ms-funnel-center-logo" />
         </div>
 
         <!-- 5 chips, each travels left→right and flips at center to reveal transformation -->
         <div class="ms-fl-pill flow-1" aria-hidden="true">
           <div class="ms-fl-pill-inner">
             <span class="ms-fl-face ms-fl-face-bad" data-tip="Silent broker">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.86 9.86 0 0 1-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" opacity=".5"/><line x1="5" y1="5" x2="19" y2="19" stroke-width="2"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8 12 4l8 4v8l-8 4-8-4V8z"/><path d="M4 8l8 4 8-4M12 12v8"/><circle cx="12" cy="12.5" r="1.2" fill="currentColor" stroke="none"/><line x1="5" y1="5" x2="19" y2="19" stroke-width="2"/></svg>
             </span>
             <span class="ms-fl-face ms-fl-face-good" data-tip="Founder-signed">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 18.5L11 10l3 3-8.5 8.5a2.121 2.121 0 0 1-3-3z"/><path d="m11 10 4-4 5 5-4 4"/><path d="m13 8 6 6"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8 12 4l8 4v8l-8 4-8-4V8z"/><path d="M4 8l8 4 8-4M12 12v8"/><path d="m9.5 13.5 1.8 1.8 3.5-3.8" stroke-width="2"/></svg>
             </span>
           </div>
         </div>
         <div class="ms-fl-pill flow-2" aria-hidden="true">
           <div class="ms-fl-pill-inner">
             <span class="ms-fl-face ms-fl-face-bad" data-tip="Mystery lot">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.5-1.5 2-2.5 3v2"/><circle cx="12" cy="17.5" r="0.6" fill="currentColor"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8 12 4l8 4v8l-8 4-8-4V8z"/><path d="M4 8l8 4 8-4M12 12v8"/><path d="M10.8 15.5a1.4 1.4 0 0 1 2.4-1c.4.6 0 1.1-.6 1.5-.4.3-.6.5-.6 1" stroke-width="1.8"/><circle cx="12" cy="18.3" r="0.6" fill="currentColor" stroke="none"/></svg>
             </span>
             <span class="ms-fl-face ms-fl-face-good" data-tip="Verified manifest">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 3v3h6V3"/><path d="m9.5 13.5 2 2 3.5-4"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8 12 4l8 4v8l-8 4-8-4V8z"/><path d="M4 8l8 4 8-4M12 12v8"/><path d="M8.5 14h3M8.5 16h2.5M8.5 18h2" stroke-width="1.4"/><path d="m13.5 16 1.2 1.2 2.2-2.4" stroke-width="1.8"/></svg>
             </span>
           </div>
         </div>
         <div class="ms-fl-pill flow-3" aria-hidden="true">
           <div class="ms-fl-pill-inner">
             <span class="ms-fl-face ms-fl-face-bad" data-tip="Hidden costs">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/><path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/><path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/><line x1="3" y1="3" x2="21" y2="21"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8 12 4l8 4v8l-8 4-8-4V8z"/><path d="M4 8l8 4 8-4M12 12v8"/><text x="12" y="17.5" text-anchor="middle" font-size="6.5" font-weight="700" fill="currentColor" stroke="none">$?</text></svg>
             </span>
             <span class="ms-fl-face ms-fl-face-good" data-tip="Listed price">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41 13.42 20.58a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><circle cx="7" cy="7" r="1.2" fill="currentColor"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8 12 4l8 4v8l-8 4-8-4V8z"/><path d="M4 8l8 4 8-4M12 12v8"/><text x="12" y="17.8" text-anchor="middle" font-size="6.5" font-weight="700" fill="currentColor" stroke="none">$</text></svg>
             </span>
           </div>
         </div>
         <div class="ms-fl-pill flow-4" aria-hidden="true">
           <div class="ms-fl-pill-inner">
             <span class="ms-fl-face ms-fl-face-bad" data-tip="Auction war">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m14 13-7.5 7.5a2.12 2.12 0 0 1-3-3L11 10"/><path d="m16 16 6-6"/><path d="m8 8 6-6"/><path d="m9 7 8 8"/><path d="m21 11-8-8"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8 12 4l8 4v8l-8 4-8-4V8z"/><path d="M4 8l8 4 8-4M12 12v8"/><path d="M7 14l3-3M10 14l-3-3M14 14l3-3M17 14l-3-3" stroke-width="1.6"/></svg>
             </span>
             <span class="ms-fl-face ms-fl-face-good" data-tip="Direct match">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8 12 4l8 4v8l-8 4-8-4V8z"/><path d="M4 8l8 4 8-4M12 12v8"/><path d="M8 16h8M13 14l2 2-2 2" stroke-width="1.8"/></svg>
             </span>
           </div>
         </div>
         <div class="ms-fl-pill flow-5" aria-hidden="true">
           <div class="ms-fl-pill-inner">
             <span class="ms-fl-face ms-fl-face-bad" data-tip="Inflated counts">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8 12 4l8 4v8l-8 4-8-4V8z"/><path d="M4 8l8 4 8-4M12 12v8"/><path d="M9 15l3 -2 3 2" stroke-width="1.8"/><path d="M16 11l1.5-1.5M8 11l-1.5-1.5" stroke-width="1.6"/></svg>
             </span>
             <span class="ms-fl-face ms-fl-face-good" data-tip="Photographed">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h3l2-3h8l2 3h3a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1z"/><circle cx="12" cy="13" r="4"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8 12 4l8 4v8l-8 4-8-4V8z"/><path d="M4 8l8 4 8-4M12 12v8"/><rect x="9.5" y="14" width="5" height="4" rx="0.5"/><circle cx="12" cy="16" r="1"/></svg>
+            </span>
+          </div>
+        </div>
+
+        <div class="ms-fl-pill flow-6" aria-hidden="true">
+          <div class="ms-fl-pill-inner">
+            <span class="ms-fl-face ms-fl-face-bad" data-tip="Damaged units">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8 12 4l8 4v8l-8 4-8-4V8z"/><path d="M4 8l8 4 8-4M12 12v8"/><path d="m9 14 6 4M15 14l-6 4" stroke-width="1.8"/></svg>
+            </span>
+            <span class="ms-fl-face ms-fl-face-good" data-tip="QC passed">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8 12 4l8 4v8l-8 4-8-4V8z"/><path d="M4 8l8 4 8-4M12 12v8"/><circle cx="12" cy="16" r="2.5"/><path d="m10.8 16 .9.9 1.7-1.9" stroke-width="1.5"/></svg>
+            </span>
+          </div>
+        </div>
+        <div class="ms-fl-pill flow-7" aria-hidden="true">
+          <div class="ms-fl-pill-inner">
+            <span class="ms-fl-face ms-fl-face-bad" data-tip="No origin">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8 12 4l8 4v8l-8 4-8-4V8z"/><path d="M4 8l8 4 8-4M12 12v8"/><path d="M9 16h6" stroke-width="2"/></svg>
+            </span>
+            <span class="ms-fl-face ms-fl-face-good" data-tip="US-sourced">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8 12 4l8 4v8l-8 4-8-4V8z"/><path d="M4 8l8 4 8-4M12 12v8"/><text x="12" y="17.8" text-anchor="middle" font-size="5.5" font-weight="800" fill="currentColor" stroke="none">US</text></svg>
+            </span>
+          </div>
+        </div>
+        <div class="ms-fl-pill flow-8" aria-hidden="true">
+          <div class="ms-fl-pill-inner">
+            <span class="ms-fl-face ms-fl-face-bad" data-tip="Slow shipping">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8 12 4l8 4v8l-8 4-8-4V8z"/><path d="M4 8l8 4 8-4M12 12v8"/><circle cx="12" cy="16" r="2.4"/><path d="M12 14.4v1.6l1 .8" stroke-width="1.5"/></svg>
+            </span>
+            <span class="ms-fl-face ms-fl-face-good" data-tip="Same-week pickup">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8 12 4l8 4v8l-8 4-8-4V8z"/><path d="M4 8l8 4 8-4M12 12v8"/><path d="m9 16 2.5 2 4-4" stroke-width="2"/></svg>
             </span>
           </div>
         </div>
@@ -2875,11 +3725,11 @@
   </div>
 </section>
 
-<!-- GET STARTED — Corgi-inspired two-path CTA for buyers -->
+<!-- GET STARTED - Corgi-inspired two-path CTA for buyers -->
 <section id="get-started" class="ms-cta-section">
   <div class="max-w-7xl mx-auto px-5 sm:px-8">
     <h2 class="ms-cta-h2">
-      <span class="ms-cta-h2-accent">Request access instantly</span> or book a call with a founder
+      <span class="ms-cta-h2-accent">Request access</span> in under a minute
     </h2>
 
     <div class="ms-cta-grid">
@@ -2892,32 +3742,56 @@
           </div>
 
           <div class="ms-cta-form-row">
-            <label class="ms-cta-label">Country</label>
-            <select class="ms-cta-input" disabled>
-              <option>Select country</option>
+            <label class="ms-cta-label" for="ms-cta-country">Country</label>
+            <select class="ms-cta-input" id="ms-cta-country" name="country">
+              <option value="">Select country</option>
+              <option>Chile</option>
+              <option>Colombia</option>
+              <option>Mexico</option>
+              <option>Peru</option>
+              <option>Argentina</option>
+              <option>Brazil</option>
+              <option>Ecuador</option>
+              <option>Uruguay</option>
+              <option>Paraguay</option>
+              <option>Bolivia</option>
+              <option>Venezuela</option>
+              <option>Costa Rica</option>
+              <option>Panama</option>
+              <option>Dominican Republic</option>
+              <option>Guatemala</option>
+              <option>Honduras</option>
+              <option>El Salvador</option>
+              <option>Nicaragua</option>
+              <option>United States</option>
+              <option>Canada</option>
+              <option>Other</option>
             </select>
           </div>
 
           <div class="ms-cta-form-row ms-cta-form-row-grid">
             <div>
               <label class="ms-cta-label">Categories you import</label>
-              <div class="ms-cta-chips">
-                <span class="ms-cta-chip">Apparel</span>
-                <span class="ms-cta-chip">Electronics</span>
-                <span class="ms-cta-chip ms-cta-chip-on">Home &amp; kitchen</span>
-                <span class="ms-cta-chip">Toys</span>
-                <span class="ms-cta-chip">Tools</span>
+              <div class="ms-cta-chips" data-multi="true">
+                <button type="button" class="ms-cta-chip">Apparel</button>
+                <button type="button" class="ms-cta-chip">Electronics</button>
+                <button type="button" class="ms-cta-chip ms-cta-chip-on">Home &amp; kitchen</button>
+                <button type="button" class="ms-cta-chip">Toys</button>
+                <button type="button" class="ms-cta-chip">Tools</button>
+                <button type="button" class="ms-cta-chip">Beauty</button>
+                <button type="button" class="ms-cta-chip">Sporting</button>
+                <button type="button" class="ms-cta-chip">Mixed</button>
               </div>
             </div>
           </div>
 
           <div class="ms-cta-form-row">
             <label class="ms-cta-label">Typical lot size</label>
-            <div class="ms-cta-pills">
-              <span class="ms-cta-pill">&lt;$5K</span>
-              <span class="ms-cta-pill ms-cta-pill-on">$5K-$25K</span>
-              <span class="ms-cta-pill">$25K-$100K</span>
-              <span class="ms-cta-pill">$100K+</span>
+            <div class="ms-cta-pills" data-single="true">
+              <button type="button" class="ms-cta-pill">&lt;$5K</button>
+              <button type="button" class="ms-cta-pill ms-cta-pill-on">$5K-$25K</button>
+              <button type="button" class="ms-cta-pill">$25K-$100K</button>
+              <button type="button" class="ms-cta-pill">$100K+</button>
             </div>
           </div>
 
@@ -2937,323 +3811,194 @@
           <p class="ms-cta-path-best-body">Importers and pallet-buying wholesalers who already know the category they need and want a fast, frictionless start.</p>
         </div>
 
-        <div class="ms-cta-divider"></div>
-
-        <div class="ms-cta-path">
-          <h4 class="ms-cta-path-title">Talk to a founder: Walk through volume, terms, and timing.</h4>
-          <p class="ms-cta-path-body">Book 25 minutes with Jose or Esteban. Bring your last 12 months of import history and we will tell you, before you commit, if this is a fit.</p>
-          <a href="mailto:partnerships@masterstockunitedstates.com?subject=Book%20a%20call%20-%20MasterStock%20buyer%20intro" class="ms-cta-secondary">
-            Book a call
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
-          </a>
-        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- WHAT WE SELL (ported from suppliers, adapted to buyer perspective) -->
-<section id="value" class="sec-light py-20 sm:py-28">
+<!-- WHAT WE SELL - Bilt-style dark cards with photo + floating UI overlays -->
+<section id="value" class="ws-section">
+  <div class="ws-bg" aria-hidden="true"></div>
   <div class="max-w-6xl xl:max-w-[84rem] 2xl:max-w-[92rem] mx-auto px-5 sm:px-8 relative">
     <div class="text-center max-w-2xl mx-auto">
-      <span class="sec-kicker center">Categories we sell</span>
-      <h2 class="mt-4 text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">What We <span class="grad-text">Sell</span></h2>
-      <p class="mt-4 text-base sm:text-lg text-gray-600">
+      <span class="ws-kicker">Categories we sell</span>
+      <h2 class="ws-h2">What We <span class="ws-h2-accent">Sell</span></h2>
+      <p class="ws-lead">
         Don't see what you need this week? Tell us. We source against demand from buyers we already trust.
       </p>
     </div>
 
-    <div id="categories" class="mt-16 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-4 gap-y-10">
-      <a href="/request-access.html" class="category-card group">
-        <div class="category-icon">
-          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M16 18V12a8 8 0 0 1 16 0v6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
-            <path d="M10 18h28l-2 22a3 3 0 0 1-3 2.7H15a3 3 0 0 1-3-2.7L10 18z" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/>
-            <circle cx="24" cy="29" r="2" stroke="currentColor" stroke-width="1.4" opacity=".55" fill="none"/>
-          </svg>
-        </div>
-        <h3 class="category-title">Accessories</h3>
-        <p class="category-subtitle">Handbags, watches, luggage</p>
+    <div id="categories" class="ws-grid">
+      <a href="/request-access.html" data-open-modal="request-access" class="ws-card">
+        <div class="ws-card-media" style="background-image: url('https://images.unsplash.com/photo-1483985988355-763728e1935b?w=900&auto=format&fit=crop&q=80');"></div>
+        <h3 class="ws-card-title">Apparel</h3>
+        <p class="ws-card-desc">Clothing, activewear, and seasonal fashion overstock from US brands.</p>
       </a>
-      <a href="/request-access.html" class="category-card group">
-        <div class="category-icon">
-          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M17 12L10 16v6l5-1.5V40h18V20.5L38 22v-6l-7-4-2.5 3a5 5 0 0 1-9 0L17 12z" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/>
-          </svg>
-        </div>
-        <h3 class="category-title">Apparel</h3>
-        <p class="category-subtitle">Clothing, activewear, fashion</p>
+
+      <a href="/request-access.html" data-open-modal="request-access" class="ws-card">
+        <div class="ws-card-media" style="background-image: url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&auto=format&fit=crop&q=80');"></div>
+        <h3 class="ws-card-title">Home &amp; Kitchen</h3>
+        <p class="ws-card-desc">Cookware, small appliances, tabletop, and seasonal home goods.</p>
       </a>
-      <a href="/request-access.html" class="category-card group">
-        <div class="category-icon">
-          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect x="10" y="22" width="28" height="18" rx="2" stroke="currentColor" stroke-width="1.75"/>
-            <path d="M8 22h32" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
-            <path d="M14 16v6M24 16v6M34 16v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".55"/>
-            <path d="M5 28h5M38 28h5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <h3 class="category-title">Home &amp; Kitchen</h3>
-        <p class="category-subtitle">Cookware, appliances, tabletop</p>
+
+      <a href="/request-access.html" data-open-modal="request-access" class="ws-card">
+        <div class="ws-card-media" style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=900&auto=format&fit=crop&q=80');"></div>
+        <h3 class="ws-card-title">Technology</h3>
+        <p class="ws-card-desc">Laptops, networking, peripherals. Grade-segmented before listing.</p>
       </a>
-      <a href="/request-access.html" class="category-card group">
-        <div class="category-icon">
-          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect x="10" y="20" width="28" height="20" rx="2" stroke="currentColor" stroke-width="1.75"/>
-            <circle cx="17" cy="17" r="2.8" stroke="currentColor" stroke-width="1.75" fill="none"/>
-            <circle cx="24" cy="17" r="2.8" stroke="currentColor" stroke-width="1.75" fill="none"/>
-            <circle cx="31" cy="17" r="2.8" stroke="currentColor" stroke-width="1.75" fill="none"/>
-          </svg>
-        </div>
-        <h3 class="category-title">Toys &amp; Baby</h3>
-        <p class="category-subtitle">LEGO, strollers, educational</p>
+
+      <a href="/request-access.html" data-open-modal="request-access" class="ws-card">
+        <div class="ws-card-media" style="background-image: url('https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=900&auto=format&fit=crop&q=80');"></div>
+        <h3 class="ws-card-title">Toys &amp; Baby</h3>
+        <p class="ws-card-desc">LEGO, strollers, educational toys, and licensed character goods.</p>
       </a>
-      <a href="/request-access.html" class="category-card group">
-        <div class="category-icon">
-          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect x="8" y="16" width="32" height="22" rx="2" stroke="currentColor" stroke-width="1.75"/>
-            <path d="M16 16v-3a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/>
-            <rect x="20" y="28" width="8" height="3" rx=".5" stroke="currentColor" stroke-width="1.5" fill="none" opacity=".7"/>
-          </svg>
-        </div>
-        <h3 class="category-title">Tools &amp; Home</h3>
-        <p class="category-subtitle">Power tools, DIY, gardening</p>
+
+      <a href="/request-access.html" data-open-modal="request-access" class="ws-card">
+        <div class="ws-card-media" style="background-image: url('https://images.unsplash.com/photo-1581244277943-fe4a9c777189?w=900&auto=format&fit=crop&q=80');"></div>
+        <h3 class="ws-card-title">Tools &amp; Home</h3>
+        <p class="ws-card-desc">Power tools, hardware, gardening. Skidded and shrink-wrapped.</p>
       </a>
-      <a href="/request-access.html" class="category-card group">
-        <div class="category-icon">
-          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect x="8" y="12" width="32" height="22" rx="2.5" stroke="currentColor" stroke-width="1.75"/>
-            <path d="M4 38h40" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
-            <path d="M20 42h8" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
-            <rect x="14" y="18" width="20" height="10" rx="1" stroke="currentColor" stroke-width="1.25" opacity=".55"/>
-          </svg>
-        </div>
-        <h3 class="category-title">Technology</h3>
-        <p class="category-subtitle">Laptops, hardware, networking</p>
+
+      <a href="/request-access.html" data-open-modal="request-access" class="ws-card">
+        <div class="ws-card-media" style="background-image: url('https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=900&auto=format&fit=crop&q=80');"></div>
+        <h3 class="ws-card-title">Accessories</h3>
+        <p class="ws-card-desc">Handbags, watches, luggage, and travel. Direct from licensed sources.</p>
       </a>
     </div>
 
-    <div class="mt-16 relative">
-      <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-brand/5 via-white to-brand/10 border border-brand/15 p-8 sm:p-10 shadow-lg shadow-brand/5">
-        <div class="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-brand/10 blur-3xl pointer-events-none"></div>
-        <div class="absolute -bottom-16 -left-16 w-48 h-48 rounded-full bg-[#6EC6FF]/15 blur-3xl pointer-events-none"></div>
-        <div class="relative flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-          <div class="max-w-2xl">
-            <span class="inline-flex items-center gap-2 rounded-full bg-white border border-brand/20 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.15em] text-brand shadow-sm">
-              <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
-              Not listed? No problem
-            </span>
-            <h3 class="mt-4 text-2xl sm:text-3xl font-extrabold tracking-tight text-gray-900 leading-tight">
-              Can't find what you need?<br class="hidden sm:block"> <span class="grad-text">We'll source it for you.</span>
-            </h3>
-            <p class="mt-3 text-gray-600 text-base leading-relaxed max-w-xl">
-              Tell us the SKU, category, or volume you're after. We'll go find it in our supplier network and quote you back within one week. No commitment.
-            </p>
-          </div>
-          <a href="/request-access.html" data-open-modal="wishlist" class="group inline-flex items-center justify-center gap-2 rounded-xl bg-brand px-6 py-4 text-white font-semibold shadow-lg shadow-brand/25 hover:bg-brand-dark hover:shadow-xl transition-all whitespace-nowrap">
-            Send your wishlist <span class="transition-transform group-hover:translate-x-1" aria-hidden="true">&rarr;</span>
-          </a>
+    <div class="ws-sourcing">
+      <div class="ws-sourcing-glow" aria-hidden="true"></div>
+      <div class="ws-sourcing-inner">
+        <div class="ws-sourcing-text">
+          <h3 class="ws-sourcing-title">
+            Need something specific?<br>
+            <span class="ws-sourcing-accent">We source it against your demand.</span>
+          </h3>
+          <p class="ws-sourcing-desc">
+            Send the SKU, category, or volume. We tap our US supplier network and quote you back within one week. No commitment.
+          </p>
         </div>
+        <a href="/request-access.html" data-open-modal="wishlist" class="ws-sourcing-cta">
+          Send your wishlist
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+        </a>
       </div>
     </div>
-
-  </div>
-</section>
-
-<!-- COMPARISON TABLE (ported from suppliers, adapted to buyer perspective) -->
-<section id="compare" class="sec-light py-14 lg:py-20 border-t border-gray-100">
-  <div class="max-w-6xl xl:max-w-[84rem] 2xl:max-w-[92rem] mx-auto px-5 sm:px-8">
-
-    <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
-      <span class="sec-kicker center">Why a direct source beats auctions</span>
-      <h2 class="mt-3 text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">How we stack up <span class="grad-text">against your alternatives.</span></h2>
-      <p class="mt-3 text-base text-gray-600 leading-relaxed max-w-2xl mx-auto">You have three real ways to buy US liquidation. Here's what actually happens under each, in plain terms.</p>
-    </div>
-
-    <div class="compare-table-wrapper">
-      <div class="compare-table" role="table" aria-label="MasterStock vs Marketplaces vs Brokers">
-
-        <!-- Header row -->
-        <div class="compare-row compare-head" role="row">
-          <div class="compare-cell compare-label-cell" role="columnheader"></div>
-          <div class="compare-cell compare-us" role="columnheader">
-            <div class="compare-col-badge">Recommended</div>
-            <div class="compare-col-title">MasterStock USA</div>
-            <div class="compare-col-sub">Direct buyer source</div>
-          </div>
-          <div class="compare-cell compare-other" role="columnheader">
-            <div class="compare-col-title">Liquidation marketplaces</div>
-            <div class="compare-col-sub">Auction-based · B-Stock, Liquidation.com</div>
-          </div>
-          <div class="compare-cell compare-other" role="columnheader">
-            <div class="compare-col-title">Independent brokers</div>
-            <div class="compare-col-sub">Manifest middlemen</div>
-          </div>
-        </div>
-
-        <!-- Row 1: Manifest verification -->
-        <div class="compare-row" role="row">
-          <div class="compare-cell compare-label-cell" role="rowheader">Manifest verification</div>
-          <div class="compare-cell compare-us" role="cell">
-            <div class="compare-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <span class="compare-value"><strong>Every lot</strong> physically opened &amp; photographed</span>
-          </div>
-          <div class="compare-cell compare-other" role="cell">
-            <div class="compare-cross"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
-            <span class="compare-value">Seller-supplied, unverified</span>
-          </div>
-          <div class="compare-cell compare-other" role="cell">
-            <div class="compare-cross"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
-            <span class="compare-value">Pass-through, no inspection</span>
-          </div>
-        </div>
-
-        <!-- Row 2: Pricing model -->
-        <div class="compare-row" role="row">
-          <div class="compare-cell compare-label-cell" role="rowheader">Pricing model</div>
-          <div class="compare-cell compare-us" role="cell">
-            <div class="compare-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <span class="compare-value"><strong>Listed price.</strong> No bidding.</span>
-          </div>
-          <div class="compare-cell compare-other" role="cell">
-            <div class="compare-cross"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
-            <span class="compare-value">Auction · you compete with 50 buyers</span>
-          </div>
-          <div class="compare-cell compare-other" role="cell">
-            <div class="compare-cross"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
-            <span class="compare-value">Negotiated case by case</span>
-          </div>
-        </div>
-
-        <!-- Row 3: Source transparency -->
-        <div class="compare-row" role="row">
-          <div class="compare-cell compare-label-cell" role="rowheader">Source transparency</div>
-          <div class="compare-cell compare-us" role="cell">
-            <div class="compare-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <span class="compare-value">You see the supplier (under NDA)</span>
-          </div>
-          <div class="compare-cell compare-other" role="cell">
-            <div class="compare-cross"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
-            <span class="compare-value">Hidden behind marketplace handle</span>
-          </div>
-          <div class="compare-cell compare-other" role="cell">
-            <div class="compare-cross"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
-            <span class="compare-value">Layers between you and the source</span>
-          </div>
-        </div>
-
-        <!-- Row 5: Inventory consistency -->
-        <div class="compare-row" role="row">
-          <div class="compare-cell compare-label-cell" role="rowheader">Inventory consistency</div>
-          <div class="compare-cell compare-us" role="cell">
-            <div class="compare-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <span class="compare-value">Curated weekly catalog from vetted sources</span>
-          </div>
-          <div class="compare-cell compare-other" role="cell">
-            <div class="compare-cross"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
-            <span class="compare-value">One-off lots · no continuity</span>
-          </div>
-          <div class="compare-cell compare-other" role="cell">
-            <div class="compare-cross"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
-            <span class="compare-value">Depends what each broker has</span>
-          </div>
-        </div>
-
-        <!-- Row 6: What you receive -->
-        <div class="compare-row" role="row">
-          <div class="compare-cell compare-label-cell" role="rowheader">What you actually receive</div>
-          <div class="compare-cell compare-us" role="cell">
-            <div class="compare-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <span class="compare-value">Matches the manifest <strong>line-by-line</strong></span>
-          </div>
-          <div class="compare-cell compare-other" role="cell">
-            <div class="compare-cross"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
-            <span class="compare-value">"As described" with disclaimers</span>
-          </div>
-          <div class="compare-cell compare-other" role="cell">
-            <div class="compare-cross"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
-            <span class="compare-value">Often inflated counts</span>
-          </div>
-        </div>
-
-        <!-- Row 7: Recourse -->
-        <div class="compare-row" role="row">
-          <div class="compare-cell compare-label-cell" role="rowheader">Recourse if lot is wrong</div>
-          <div class="compare-cell compare-us" role="cell">
-            <div class="compare-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <span class="compare-value"><strong>Pro-rated credit</strong> within 7 business days</span>
-          </div>
-          <div class="compare-cell compare-other" role="cell">
-            <div class="compare-cross"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
-            <span class="compare-value">Buyer-beware · limited returns</span>
-          </div>
-          <div class="compare-cell compare-other" role="cell">
-            <div class="compare-cross"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
-            <span class="compare-value">Good luck</span>
-          </div>
-        </div>
-
-        <!-- Footer row: CTA -->
-        <div class="compare-row compare-foot" role="row">
-          <div class="compare-cell compare-label-cell" role="rowheader"></div>
-          <div class="compare-cell compare-us compare-foot-cell" role="cell">
-            <a href="/request-access.html" data-open-modal="request-access" class="btn-primary-lg">Request access &rarr;</a>
-          </div>
-          <div class="compare-cell compare-other compare-foot-cell" role="cell">
-            <span class="compare-foot-muted">Keep bidding</span>
-          </div>
-          <div class="compare-cell compare-other compare-foot-cell" role="cell">
-            <span class="compare-foot-muted">Keep calling brokers</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <p class="mt-8 text-center text-xs text-gray-500 max-w-xl mx-auto">Based on standard practices across US liquidation channels. Your experience may vary.</p>
 
   </div>
 </section>
 
 <!-- FOOTER -->
-<footer class="bg-white border-t border-gray-100">
-  <div class="max-w-7xl mx-auto px-5 sm:px-8 py-14">
-    <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-10">
-      <div class="lg:col-span-2">
-        <img src="images/logo-final.png" alt="MasterStock USA" class="h-10 w-auto" />
-        <p class="mt-4 text-sm text-gray-600 max-w-sm leading-relaxed">Verified US excess inventory. Real lots, real manifests, real source.</p>
-        <p class="mt-4 text-xs text-gray-500">MasterStock USA Inc.<br>8 The Green, Suite A<br>Dover, DE 19901, United States</p>
+<footer class="ms-footer">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+
+    <div class="ms-footer-main">
+      <div class="ms-footer-cols">
+        <div class="ms-footer-col">
+          <div class="ms-footer-col-title">Platform</div>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/#value">What we sell</a></li>
+            <li><a href="/#categories">Categories</a></li>
+            <li><a href="/how-it-works/">How it works</a></li>
+            <li><a href="/#get-started">Request access</a></li>
+            <li><a href="/login.html">Sign in</a></li>
+          </ul>
+        </div>
+        <div class="ms-footer-col">
+          <div class="ms-footer-col-title">For Buyers</div>
+          <ul>
+            <li><a href="/how-it-works/#buyers">Buyer flow</a></li>
+            <li><a href="/#categories">Browse lots</a></li>
+            <li><a href="/request-access.html">Request access</a></li>
+            <li><a href="/how-it-works/#buyers">Recourse policy</a></li>
+            <li><a href="/resources/">Manifest samples</a></li>
+          </ul>
+        </div>
+        <div class="ms-footer-col">
+          <div class="ms-footer-col-title">For Suppliers</div>
+          <ul>
+            <li><a href="/how-it-works/#suppliers">Supplier flow</a></li>
+            <li><a href="/how-it-works/#suppliers">48-hour offer</a></li>
+            <li><a href="/how-it-works/#suppliers">Offer structures</a></li>
+            <li><a href="/how-it-works/#suppliers">Pickup hubs</a></li>
+            <li><a href="mailto:info@masterstockunitedstates.com?subject=Manifest%20submission">Send manifest</a></li>
+          </ul>
+        </div>
+        <div class="ms-footer-col">
+          <div class="ms-footer-col-title">Resources</div>
+          <ul>
+            <li><a href="/resources/">Resource library</a></li>
+            <li><a href="/how-it-works/">How it works</a></li>
+            <li><a href="/about/#trust">Credentials</a></li>
+            <li><a href="/privacy.html">Privacy</a></li>
+            <li><a href="/terms.html">Terms</a></li>
+          </ul>
+        </div>
+        <div class="ms-footer-col">
+          <div class="ms-footer-col-title">Company</div>
+          <ul>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/about/#team">The team</a></li>
+            <li><a href="mailto:partnerships@masterstockunitedstates.com">Partnerships</a></li>
+            <li><a href="mailto:info@masterstockunitedstates.com">Contact</a></li>
+            <li><a href="https://www.linkedin.com/company/masterstock-usa">LinkedIn</a></li>
+          </ul>
+        </div>
       </div>
-      <div>
-        <h4 class="text-xs font-semibold uppercase tracking-wider text-gray-500">Platform</h4>
-        <ul class="mt-4 space-y-2 text-sm text-gray-700">
-          <li><a href="#value" class="hover:text-gray-900">What we sell</a></li>
-          <li><a href="#categories" class="hover:text-gray-900">Categories</a></li>
-          <li><a href="#compare" class="hover:text-gray-900">Compare</a></li>
-          <li><a href="/login.html" class="hover:text-gray-900">Sign in</a></li>
-          <li><a href="/request-access.html" data-open-modal="request-access" class="hover:text-gray-900">Request access</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="text-xs font-semibold uppercase tracking-wider text-gray-500">For suppliers</h4>
-        <ul class="mt-4 space-y-2 text-sm text-gray-700">
-          <li><a href="/suppliers/" class="hover:text-gray-900">Sell to MasterStock</a></li>
-          <li><a href="/how-it-works/" class="hover:text-gray-900">How it works</a></li>
-          <li><a href="/resources/" class="hover:text-gray-900">Resources</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="text-xs font-semibold uppercase tracking-wider text-gray-500">Company</h4>
-        <ul class="mt-4 space-y-2 text-sm text-gray-700">
-          <li><a href="/about/" class="hover:text-gray-900">About</a></li>
-          <li><a href="mailto:info@masterstockunitedstates.com" class="hover:text-gray-900">info@masterstockunitedstates.com</a></li>
-          <li><a href="mailto:partnerships@masterstockunitedstates.com" class="hover:text-gray-900">Partnerships</a></li>
-        </ul>
-      </div>
+      <aside class="ms-footer-contact-card ms-footer-contact-card-main">
+        <div class="ms-footer-contact-col">
+          <div class="ms-footer-contact-title">Contact</div>
+          <a href="mailto:info@masterstockunitedstates.com" class="ms-footer-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+            <span>info@masterstockunitedstates.com</span>
+          </a>
+          <a href="/about/#trust" class="ms-footer-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 0 20M12 2a15.3 15.3 0 0 0 0 20"/></svg>
+            <span>Global Hubs</span>
+          </a>
+          <span class="ms-footer-contact-item ms-footer-contact-item-static">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>8 The Green, Suite A, Dover, DE 19901</span>
+          </span>
+        </div>
+        <div class="ms-footer-contact-col">
+          <div class="ms-footer-contact-title">Get Started</div>
+          <a href="/request-access.html" data-open-modal="request-access" class="ms-footer-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span>Request Access</span>
+          </a>
+          <a href="mailto:partnerships@masterstockunitedstates.com?subject=Founder%20call%20-%20MasterStock" class="ms-footer-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 11h-6M19 8v6"/></svg>
+            <span>Call a Founder</span>
+          </a>
+          <a href="mailto:info@masterstockunitedstates.com?subject=Manifest%20submission" class="ms-footer-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
+            <span>Send Manifest</span>
+          </a>
+          <div class="ms-footer-contact-hq">Dover, DE · United States</div>
+        </div>
+      </aside>
     </div>
-    <div class="mt-12 pt-6 border-t border-gray-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-      <p class="text-xs text-gray-500">&copy; 2026 MasterStock USA Inc. All rights reserved.</p>
-      <p class="text-xs text-gray-500">Real lots, real manifests, real source.</p>
+
+    <div class="ms-footer-sep" aria-hidden="true"></div>
+
+    <div class="ms-footer-bottom">
+      <div class="ms-footer-bottom-left">
+        <img src="/images/logo-final.png" alt="MasterStock USA" class="ms-footer-logo" />
+        <div>
+          <div class="ms-footer-copy">&copy; <span data-year>2026</span> MasterStock USA Inc.</div>
+          <div class="ms-footer-addr">8 The Green, Suite A · Dover, DE 19901 · United States</div>
+        </div>
+      </div>
+      <div class="ms-footer-bottom-right">
+        <a href="https://www.linkedin.com/company/masterstock-usa" aria-label="LinkedIn" class="ms-footer-social">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.05-1.86-3.05-1.86 0-2.15 1.45-2.15 2.95v5.67H9.34V9h3.41v1.56h.05c.47-.9 1.63-1.86 3.35-1.86 3.59 0 4.25 2.36 4.25 5.43v6.32zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+        </a>
+        <a href="mailto:info@masterstockunitedstates.com" aria-label="Email" class="ms-footer-social">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+        </a>
+      </div>
     </div>
   </div>
 </footer>
@@ -3583,9 +4328,41 @@
     if (first) first.focus();
   }
 
+  function prefillFromInline(kind){
+    if (kind !== 'request-access') return;
+    // Country
+    var countrySel = document.getElementById('ms-cta-country');
+    if (countrySel && countrySel.value) {
+      var modalCountry = body.querySelector('select[name="country"]');
+      if (modalCountry) {
+        var match = Array.prototype.find.call(modalCountry.options, function(o){ return o.value === countrySel.value; });
+        if (match) modalCountry.value = countrySel.value;
+      }
+    }
+    // Categories (chips, multi)
+    var inlineChips = document.querySelectorAll('.ms-cta-chips[data-multi="true"] .ms-cta-chip-on');
+    if (inlineChips.length) {
+      var picked = Array.prototype.map.call(inlineChips, function(c){ return c.textContent.trim(); });
+      body.querySelectorAll('.ms-chips[data-chips="categories"] .ms-chip').forEach(function(btn){
+        var v = btn.getAttribute('data-value');
+        // Loose match (handles "Home & kitchen" vs "Home & Kitchen")
+        var hit = picked.some(function(p){ return p.toLowerCase() === v.toLowerCase(); });
+        if (hit) { btn.classList.add('is-active'); btn.setAttribute('aria-pressed','true'); }
+      });
+    }
+    // Lot size (single)
+    var inlinePill = document.querySelector('.ms-cta-pills[data-single="true"] .ms-cta-pill-on');
+    if (inlinePill) {
+      var val = inlinePill.textContent.trim();
+      var radio = body.querySelector('input[name="lot_size"][value="'+val.replace(/"/g,'\\"')+'"]');
+      if (radio) radio.checked = true;
+    }
+  }
+
   function openModal(kind, trigger){
     lastFocus = trigger || document.activeElement;
     buildModal(kind);
+    prefillFromInline(kind);
     overlay.classList.add('is-open');
     overlay.setAttribute('aria-hidden','false');
     document.body.style.overflow = 'hidden';
@@ -3598,6 +4375,19 @@
     document.body.style.overflow = '';
     if (lastFocus && lastFocus.focus) { try { lastFocus.focus(); } catch(e){} }
   }
+
+  // Inline form: toggle chips (multi) and pills (single)
+  document.addEventListener('click', function(e){
+    var chip = e.target.closest('.ms-cta-chips[data-multi="true"] .ms-cta-chip');
+    if (chip) { chip.classList.toggle('ms-cta-chip-on'); return; }
+    var pill = e.target.closest('.ms-cta-pills[data-single="true"] .ms-cta-pill');
+    if (pill) {
+      var siblings = pill.parentElement.querySelectorAll('.ms-cta-pill');
+      siblings.forEach(function(p){ p.classList.remove('ms-cta-pill-on'); });
+      pill.classList.add('ms-cta-pill-on');
+      return;
+    }
+  });
 
   // Click delegation: open modal triggers
   document.addEventListener('click', function(e){

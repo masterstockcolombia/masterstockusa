@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Resources | MasterStock USA</title>
-<link rel="icon" type="image/png" href="/images/logo-final.png" />
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
 <link rel="apple-touch-icon" href="/images/logo-final.png" />
 <meta name="description" content="Supplier resources: Insights blog, Sample NDA, Sample Bill of Sale, and the tax documentation package every deal closes with. Everything you need before sending your first manifest." />
 <link rel="canonical" href="https://www.masterstockunitedstates.com/resources/" />
@@ -13,7 +13,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.masterstockunitedstates.com/resources/" />
 <meta property="og:site_name" content="MasterStock USA" />
-<meta property="og:title" content="Resources | MasterStock USA — NDA, Bill of Sale, Tax Documentation" />
+<meta property="og:title" content="Resources | MasterStock USA. NDA, Bill of Sale, Tax Documentation" />
 <meta property="og:description" content="Free supplier resources: Sample NDA, Sample Bill of Sale, the standard tax documentation package, and the Supplier Brief insights feed. No lead capture." />
 <meta property="og:image" content="https://www.masterstockunitedstates.com/images/logo-final.png" />
 <meta property="og:locale" content="en_US" />
@@ -21,14 +21,14 @@
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Resources | MasterStock USA" />
-<meta name="twitter:description" content="Sample NDA · Bill of Sale · Tax documentation package · Insights blog. Free, no lead capture." />
+<meta name="twitter:description" content="Sample NDA, Bill of Sale, Tax documentation package, Insights blog. Free, no lead capture." />
 <meta name="twitter:image" content="https://www.masterstockunitedstates.com/images/logo-final.png" />
 
 <!-- Resource hints -->
 <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin />
 <link rel="dns-prefetch" href="https://cdn.tailwindcss.com" />
 
-<!-- BreadcrumbList for navigation context -->
+<!-- BreadcrumbList -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -40,19 +40,15 @@
 }
 </script>
 
-<!-- AEO / LLM-readable structured data -->
+<!-- AEO structured data -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
   "name": "MasterStock USA Supplier Resources",
-  "url": "https://www.masterstockunitedstates.com/resources.html",
+  "url": "https://www.masterstockunitedstates.com/resources/",
   "description": "Free, no-lead-capture resources for suppliers considering selling excess inventory: Insights blog, Sample NDA, Sample Bill of Sale, and the standard tax documentation package every transaction closes with.",
-  "isPartOf": {
-    "@type": "WebSite",
-    "name": "MasterStock USA",
-    "url": "https://www.masterstockunitedstates.com/"
-  },
+  "isPartOf": { "@type": "WebSite", "name": "MasterStock USA", "url": "https://www.masterstockunitedstates.com/" },
   "publisher": {
     "@type": "Organization",
     "name": "MasterStock USA Inc.",
@@ -60,37 +56,15 @@
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "8 The Green, Suite A",
-      "addressLocality": "Dover",
-      "addressRegion": "DE",
-      "postalCode": "19901",
-      "addressCountry": "US"
+      "addressLocality": "Dover", "addressRegion": "DE",
+      "postalCode": "19901", "addressCountry": "US"
     }
   },
   "hasPart": [
-    {
-      "@type": "DigitalDocument",
-      "name": "Sample Mutual NDA",
-      "description": "MasterStock USA standard mutual non-disclosure agreement. Two pages, plain English, mutual obligations on both parties. Available for redline by supplier counsel.",
-      "url": "https://www.masterstockunitedstates.com/resources.html#nda"
-    },
-    {
-      "@type": "DigitalDocument",
-      "name": "Sample Bill of Sale",
-      "description": "MasterStock USA standard Bill of Sale template with line-item SKU detail, condition grading, sale proceeds, signatures, and resale certificate.",
-      "url": "https://www.masterstockunitedstates.com/resources.html#bill-of-sale"
-    },
-    {
-      "@type": "DigitalDocument",
-      "name": "Tax Documentation Package",
-      "description": "Standard documentation included with every MasterStock USA transaction: Bill of Sale, manifest reconciliation report, wire confirmation, condition grading report, and Resale Certificate. Supports CPA-determined tax treatment under COGS, lower-of-cost-or-market, or other methods. Not tax advice.",
-      "url": "https://www.masterstockunitedstates.com/resources.html#tax-docs"
-    },
-    {
-      "@type": "Blog",
-      "name": "Supplier Brief",
-      "description": "Weekly free newsletter for suppliers on retailer distress, tariff moves, and category-level market shifts that affect liquidation timing.",
-      "url": "https://www.masterstockunitedstates.com/resources.html#insights"
-    }
+    { "@type": "DigitalDocument", "name": "Sample Mutual NDA", "url": "https://www.masterstockunitedstates.com/resources/#nda" },
+    { "@type": "DigitalDocument", "name": "Sample Bill of Sale", "url": "https://www.masterstockunitedstates.com/resources/#bos" },
+    { "@type": "DigitalDocument", "name": "Tax Documentation Package", "url": "https://www.masterstockunitedstates.com/resources/#tax" },
+    { "@type": "Blog", "name": "Supplier Brief", "url": "https://www.masterstockunitedstates.com/resources/#insights" }
   ]
 }
 </script>
@@ -102,10 +76,9 @@
       extend: {
         colors: {
           ink: '#0B1B35',
-          slate2: '#111827',
+          muted: '#475569',
           brand: { DEFAULT: '#0A5CD8', dark: '#0847A8', light: '#E8F0FE' },
-          success: '#0E7C3A',
-          warn: '#B45309'
+          cyan2: '#6EC6FF'
         },
         fontFamily: { sans: ['Inter','ui-sans-serif','system-ui','sans-serif'] }
       }
@@ -115,85 +88,362 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css">
 <style>
-  body { font-family: 'Inter', sans-serif; background: #FFFFFF; color: #0F172A; }
-  .page-hero {
-    background: #07101F;
-    color: #FFFFFF;
-    padding: 20px 0 48px;
-    position: relative;
-    overflow: hidden;
-    isolation: isolate;
+  /* =========================================================
+     MasterStock brand design system (Resources page)
+     Palette: #0A5CD8 brand, #0847A8 brand-dark, #6EC6FF cyan,
+              #0B1B35 ink, #475569 muted, #FFFFFF bg, #F8FAFC bg-soft,
+              #E2E8F0 border.
+     ========================================================= */
+  :root {
+    --brand: #0A5CD8;
+    --brand-dark: #0847A8;
+    --cyan: #6EC6FF;
+    --ink: #0B1B35;
+    --muted: #475569;
+    --bg: #FFFFFF;
+    --bg-soft: #F8FAFC;
+    --border: #E2E8F0;
   }
-  @media (min-width: 1024px) {
-    .page-hero { padding: 28px 0 56px; }
+  * { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+  #insights, #nda, #bos, #docs, #tax { scroll-margin-top: 96px; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
   }
-  .page-hero::before {
-    content: "";
-    position: absolute; inset: 0;
-    background: radial-gradient(circle at 20% 10%, rgba(10,92,216,0.28), transparent 45%),
-                radial-gradient(circle at 85% 80%, rgba(110,198,255,0.14), transparent 45%),
-                linear-gradient(180deg, #07101F 0%, #0A1B36 100%);
+
+  .gradient-text {
+    background: linear-gradient(135deg, #0A5CD8 0%, #6EC6FF 100%);
+    -webkit-background-clip: text;
+            background-clip: text;
+    color: transparent;
+  }
+
+  /* ===== Header (copied from index.html design system) ===== */
+  header#site-header {
+    background: #FFFFFF;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.07);
+    box-shadow: none;
+    transition: box-shadow .25s ease, border-color .25s ease;
+  }
+  header#site-header.scrolled {
+    border-bottom-color: rgba(15, 23, 42, 0.10);
+    box-shadow: 0 8px 28px -10px rgba(37, 99, 235, 0.18), 0 2px 8px -2px rgba(15, 23, 42, 0.06);
+  }
+  .ms-logo-link, .ms-logo-link:focus, .ms-logo-link:active { outline: none; -webkit-tap-highlight-color: transparent; }
+  .ms-logo-link:focus-visible { outline: 2px solid #2563EB; outline-offset: 4px; border-radius: 4px; }
+  .ms-logo-img {
+    user-select: none; -webkit-user-drag: none;
+    -webkit-user-select: none; pointer-events: none;
+  }
+
+  .nav-dd { position: relative; }
+  .nav-dd-trigger {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.375rem;
+    color: inherit;
+    transition: background-color .15s ease, color .15s ease;
+    cursor: pointer;
+  }
+  .nav-dd-trigger:hover { background: rgba(15, 23, 42, 0.04); }
+  .nav-dd-caret {
+    color: #94A3B8;
+    transition: transform .2s ease, color .2s ease;
+  }
+  .nav-dd:hover .nav-dd-caret,
+  .nav-dd:focus-within .nav-dd-caret { color: var(--brand); transform: rotate(180deg); }
+  .nav-dd::after { content: ""; position: absolute; top: 100%; left: 0; right: 0; height: 12px; pointer-events: none; }
+  .nav-dd:hover::after, .nav-dd:focus-within::after { pointer-events: auto; }
+
+  /* ============ MEGAMENU (Scale/Stripe-style) ============ */
+  .nav-mega {
+    position: fixed;
+    top: 64px; left: 0; right: 0;
+    background: #FFFFFF;
+    border-top: 1px solid rgba(15, 23, 42, 0.06);
+    box-shadow: 0 30px 60px -20px rgba(15, 23, 42, 0.18);
+    opacity: 0; visibility: hidden;
+    transform: translateY(-6px);
     pointer-events: none;
-    z-index: -3;
+    transition: opacity .2s ease, transform .2s ease, visibility .2s ease;
+    z-index: 90;
   }
+  .nav-dd:hover .nav-mega,
+  .nav-dd:focus-within .nav-mega {
+    opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto;
+  }
+  .nav-mega-inner {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 36px 32px 40px;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 56px;
+  }
+  .nav-mega-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  .nav-mega-col-h {
+    font-size: 11px; font-weight: 800;
+    text-transform: uppercase; letter-spacing: 0.14em;
+    color: #94A3B8;
+    margin-bottom: 14px;
+  }
+  .nav-mega-item {
+    display: flex; flex-direction: column; gap: 2px;
+    padding: 9px 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background .15s ease;
+    margin: 0 -12px;
+  }
+  .nav-mega-item:hover { background: rgba(10, 92, 216, 0.05); }
+  .nav-mega-item-title { font-size: 14px; font-weight: 700; color: #0B1B35; }
+  .nav-mega-item:hover .nav-mega-item-title { color: #0A5CD8; }
+  .nav-mega-item-desc { font-size: 12.5px; color: #64748B; line-height: 1.45; }
+
+  .nav-mega-feature {
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    min-height: 240px;
+    padding: 24px;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    text-decoration: none;
+    color: #FFFFFF;
+    background: #0F2547;
+  }
+  .nav-mega-feature-img {
+    position: absolute; inset: 0;
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+  }
+  .nav-mega-feature-img::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(7,20,42,0.35) 0%, rgba(7,20,42,0.90) 100%);
+  }
+  .nav-mega-feature > *:not(.nav-mega-feature-img) { position: relative; z-index: 1; }
+  .nav-mega-feature-eyebrow { font-size: 10.5px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: #6EC6FF; margin-bottom: 8px; }
+  .nav-mega-feature-title { font-size: 19px; font-weight: 800; margin: 0 0 6px; letter-spacing: -0.01em; }
+  .nav-mega-feature-body { font-size: 13px; color: rgba(255,255,255,0.82); margin: 0 0 14px; line-height: 1.5; }
+  .nav-mega-feature-cta { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; color: #6EC6FF; }
+  .nav-mega-feature:hover .nav-mega-feature-cta { color: #FFFFFF; }
+  .nav-mega-feature-cta svg { transition: transform .18s ease; }
+  .nav-mega-feature:hover .nav-mega-feature-cta svg { transform: translateX(3px); }
+
+  @media (max-width: 900px) {
+    .nav-mega { display: none; }
+  }
+
+  .nav-dd-panel {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: -8px;
+    min-width: 280px;
+    background: #FFFFFF;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 12px;
+    padding: 6px;
+    box-shadow: 0 24px 48px -16px rgba(15, 23, 42, 0.18), 0 8px 16px -8px rgba(15, 23, 42, 0.08);
+    opacity: 0; transform: translateY(-6px);
+    visibility: hidden; pointer-events: none;
+    transition: opacity .18s ease, transform .18s ease, visibility .18s ease;
+    z-index: 100;
+  }
+  .nav-dd:hover .nav-dd-panel,
+  .nav-dd:focus-within .nav-dd-panel {
+    opacity: 1; transform: translateY(0);
+    visibility: visible; pointer-events: auto;
+  }
+  .nav-dd-item {
+    display: flex; flex-direction: column; gap: 2px;
+    padding: 10px 12px; border-radius: 8px;
+    transition: background-color .12s ease;
+  }
+  .nav-dd-item:hover { background: rgba(10, 92, 216, 0.06); }
+  .nav-dd-item-title {
+    font-size: 13.5px; font-weight: 700;
+    color: var(--ink); letter-spacing: -0.005em;
+  }
+  .nav-dd-item:hover .nav-dd-item-title { color: var(--brand); }
+  .nav-dd-item-desc {
+    font-size: 11.5px; font-weight: 400;
+    color: #64748B; line-height: 1.4;
+  }
+
+  /* ===== Page hero (light, on-brand) ===== */
+  .page-hero {
+    position: relative;
+    background:
+      radial-gradient(ellipse 70% 50% at 10% 0%, rgba(10,92,216,0.08), transparent 60%),
+      radial-gradient(ellipse 60% 50% at 100% 100%, rgba(110,198,255,0.10), transparent 60%),
+      var(--bg);
+    padding: 56px 0 48px;
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+  }
+  @media (min-width: 1024px) { .page-hero { padding: 76px 0 64px; } }
+  .hero-dot-bg {
+    position: absolute; inset: 0;
+    background-image: radial-gradient(rgba(10, 92, 216, 0.08) 1px, transparent 1px);
+    background-size: 22px 22px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 30%, transparent 90%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 30%, transparent 90%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(10, 92, 216, 0.06);
+    border: 1px solid rgba(10, 92, 216, 0.18);
+    font-size: 11px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.18em;
+    color: var(--brand);
+  }
+  .hero-eyebrow .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: #10B981;
+  }
+
+  /* ===== Section quick-nav chips ===== */
   .resource-nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 24px;
+    display: flex; flex-wrap: wrap;
+    gap: 8px; margin-top: 28px;
   }
   .resource-nav a {
     display: inline-flex; align-items: center; gap: 6px;
     padding: 8px 14px;
     border-radius: 999px;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.15);
-    color: rgba(255,255,255,0.85);
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    color: var(--ink);
     font-size: 13px; font-weight: 600;
-    backdrop-filter: blur(8px);
-    transition: all .2s;
+    transition: all .18s ease;
   }
   .resource-nav a:hover {
-    background: rgba(110,198,255,0.15);
-    border-color: rgba(110,198,255,0.35);
-    color: #FFFFFF;
+    background: rgba(10, 92, 216, 0.05);
+    border-color: rgba(10, 92, 216, 0.30);
+    color: var(--brand);
     transform: translateY(-1px);
   }
+  .resource-nav a svg { color: var(--brand); }
+
+  /* ===== Sections ===== */
   .resource-section {
-    padding: 72px 0 56px;
-    border-top: 1px solid rgba(10, 92, 216, 0.08);
+    padding: 80px 0 64px;
+    border-top: 1px solid var(--border);
   }
-  .resource-section:first-of-type { border-top: none; }
-  .doc-preview {
-    background: linear-gradient(180deg, #F7FAFF 0%, #FFFFFF 100%);
-    border: 1px solid rgba(10, 92, 216, 0.12);
+  .section-eyebrow {
+    display: inline-block;
+    font-size: 11px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.18em;
+    color: var(--brand);
+  }
+  .section-title {
+    margin-top: 12px;
+    font-size: clamp(28px, 3.6vw, 40px);
+    font-weight: 800;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .section-lead {
+    margin-top: 18px;
+    font-size: 17px;
+    color: var(--muted);
+    line-height: 1.6;
+    max-width: 720px;
+  }
+
+  /* ===== Guide / blog cards ===== */
+  .guide-card {
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
     border-radius: 16px;
-    padding: 28px 32px;
+    padding: 24px;
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease, background .25s ease;
+    cursor: pointer;
+    display: flex; flex-direction: column;
+    height: 100%;
+  }
+  .guide-card:hover {
+    transform: translateY(-4px);
+    background: #F4F8FF;
+    border-color: rgba(10, 92, 216, 0.30);
+    box-shadow: 0 18px 38px -16px rgba(10, 92, 216, 0.22);
+  }
+  .guide-icon {
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    display: grid; place-items: center;
+    background: linear-gradient(135deg, rgba(10, 92, 216, 0.10) 0%, rgba(110, 198, 255, 0.18) 100%);
+    color: var(--brand);
+    margin-bottom: 16px;
+  }
+  .guide-tag {
+    display: inline-block;
+    font-size: 10.5px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--brand);
+    background: rgba(10, 92, 216, 0.07);
+    padding: 4px 10px; border-radius: 999px;
+  }
+  .guide-title {
+    margin-top: 14px;
+    font-size: 17px; font-weight: 700;
+    color: var(--ink); line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+  .guide-desc {
+    margin-top: 10px;
+    font-size: 14px; color: var(--muted);
+    line-height: 1.55;
+    flex: 1;
+  }
+  .guide-meta {
+    margin-top: 18px;
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 12px;
+  }
+  .guide-meta .read { color: #94A3B8; }
+  .guide-meta .cta { color: var(--brand); font-weight: 700; }
+
+  /* ===== Document preview ===== */
+  .doc-preview {
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 30px 32px;
     font-family: Georgia, 'Times New Roman', serif;
     color: #334155;
     line-height: 1.7;
     position: relative;
-    max-height: 500px;
+    max-height: 520px;
     overflow-y: auto;
   }
   .doc-preview h4 {
     font-family: 'Inter', sans-serif;
     font-size: 11px; font-weight: 800;
-    color: #0A5CD8;
-    text-transform: uppercase; letter-spacing: .14em;
-    margin-bottom: 10px;
+    color: var(--brand);
+    text-transform: uppercase; letter-spacing: 0.16em;
+    margin-bottom: 14px;
   }
   .doc-preview p { margin-bottom: 14px; font-size: 14.5px; }
-  .doc-preview strong { color: #0F172A; }
-  .doc-preview-watermark {
+  .doc-preview strong { color: var(--ink); }
+  .doc-watermark {
     position: absolute;
     top: 50%; left: 50%;
     transform: translate(-50%, -50%) rotate(-22deg);
     font-family: 'Inter', sans-serif;
-    font-size: 64px;
-    font-weight: 900;
+    font-size: 64px; font-weight: 900;
     color: rgba(10, 92, 216, 0.06);
     letter-spacing: 0.1em;
     pointer-events: none;
@@ -201,420 +451,1741 @@
     white-space: nowrap;
   }
   .doc-preview > * { position: relative; z-index: 1; }
-  .blog-card {
-    background: #FFFFFF;
-    border: 1px solid rgba(10, 92, 216, 0.1);
-    border-radius: 16px;
-    padding: 22px;
-    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
-    cursor: pointer;
-  }
-  .blog-card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(10, 92, 216, 0.25);
-    box-shadow: 0 16px 36px -14px rgba(10, 92, 216, 0.18);
-  }
-  .blog-card-tag {
-    display: inline-block;
-    font-size: 10.5px; font-weight: 700;
-    text-transform: uppercase; letter-spacing: .1em;
-    color: #0A5CD8;
-    background: rgba(10, 92, 216, 0.08);
-    padding: 4px 10px;
-    border-radius: 999px;
-  }
+
+  /* ===== Key clause callouts ===== */
   .key-clause {
-    background: rgba(10, 92, 216, 0.04);
-    border-left: 3px solid #0A5CD8;
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--brand);
     padding: 14px 18px;
     border-radius: 0 10px 10px 0;
-    margin-top: 16px;
+    margin-top: 14px;
     font-family: 'Inter', sans-serif;
     font-size: 13.5px;
+    color: var(--ink);
   }
   .key-clause-label {
     display: block;
     font-size: 10px; font-weight: 800;
-    color: #0A5CD8;
-    text-transform: uppercase; letter-spacing: .14em;
+    color: var(--brand);
+    text-transform: uppercase; letter-spacing: 0.14em;
     margin-bottom: 4px;
   }
+
+  /* ===== Buttons ===== */
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 20px;
+    border-radius: 12px;
+    background: var(--brand);
+    color: #FFFFFF;
+    font-weight: 600; font-size: 14px;
+    box-shadow: 0 10px 22px -10px rgba(10, 92, 216, 0.45);
+    transition: background .15s ease, transform .15s ease, box-shadow .15s ease;
+  }
+  .btn-primary:hover {
+    background: var(--brand-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 14px 28px -10px rgba(10, 92, 216, 0.55);
+  }
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 20px;
+    border-radius: 12px;
+    background: #FFFFFF;
+    border: 1px solid var(--border);
+    color: var(--ink);
+    font-weight: 600; font-size: 14px;
+    transition: all .15s ease;
+  }
+  .btn-ghost:hover {
+    background: var(--bg-soft);
+    border-color: rgba(10, 92, 216, 0.30);
+    color: var(--brand);
+  }
+
+  /* ===== Doc list cards (tax) ===== */
+  .doc-list-card {
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    transition: background .2s ease, border-color .2s ease, transform .2s ease;
+  }
+  .doc-list-card:hover {
+    background: #F4F8FF;
+    border-color: rgba(10, 92, 216, 0.25);
+    transform: translateY(-2px);
+  }
+  .doc-list-icon {
+    display: inline-grid; place-items: center;
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    background: rgba(10, 92, 216, 0.08);
+    color: var(--brand);
+    margin-bottom: 14px;
+  }
+
+  /* ===== Newsletter CTA ===== */
+  .newsletter-cta {
+    margin-top: 40px;
+    border-radius: 20px;
+    padding: 36px;
+    position: relative; overflow: hidden;
+    background: linear-gradient(135deg, #0A5CD8 0%, #0847A8 100%);
+    color: #FFFFFF;
+  }
+  .newsletter-cta::before {
+    content: ""; position: absolute;
+    inset: -40% -10% auto auto;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: rgba(110, 198, 255, 0.20);
+    filter: blur(60px);
+    pointer-events: none;
+  }
+  .newsletter-cta > * { position: relative; z-index: 1; }
+  .newsletter-input {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-size: 14px;
+    color: #FFFFFF;
+    backdrop-filter: blur(8px);
+  }
+  .newsletter-input::placeholder { color: rgba(255, 255, 255, 0.55); }
+  .newsletter-input:focus {
+    outline: none;
+    border-color: var(--cyan);
+    background: rgba(255, 255, 255, 0.18);
+  }
+  .newsletter-btn {
+    background: #FFFFFF;
+    color: var(--brand-dark);
+    border-radius: 10px;
+    padding: 12px 22px;
+    font-weight: 700; font-size: 14px;
+    transition: background .15s ease, transform .15s ease;
+  }
+  .newsletter-btn:hover {
+    background: #EAF2FF;
+    transform: translateY(-1px);
+  }
+
+  /* ===== Disclaimer block ===== */
+  .disclaimer {
+    margin-top: 24px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--brand);
+    background: var(--bg-soft);
+    padding: 20px 22px;
+  }
+
+  /* ===== "Why it matters" ===== */
+  .why-block {
+    margin-top: 48px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: linear-gradient(180deg, #F4F8FF 0%, #FFFFFF 100%);
+    padding: 32px;
+  }
+  .why-block-eyebrow {
+    display: inline-block;
+    font-size: 10px; font-weight: 800;
+    text-transform: uppercase; letter-spacing: 0.14em;
+    color: var(--brand);
+    background: #FFFFFF;
+    border: 1px solid rgba(10, 92, 216, 0.18);
+    padding: 4px 10px; border-radius: 999px;
+  }
+
+  /* ===== Footer (copied from index.html) ===== */
+  .ms-footer { background: #FFFFFF; color: #475569; padding: 80px 0 28px; border-top: 1px solid #E2E8F0; }
+  .ms-footer a { color: inherit; text-decoration: none; transition: color .15s ease; }
+  .ms-footer a:hover { color: #0B1B35; }
+  .ms-footer-contact-card {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 24px 48px;
+    padding: 32px 36px;
+    border-radius: 16px;
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    width: 100%;
+  }
+  @media (max-width: 480px) { .ms-footer-contact-card { grid-template-columns: 1fr; padding: 24px; } }
+  .ms-footer-contact-title { font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #0B1B35; margin-bottom: 16px; }
+  .ms-footer-contact-item { display: flex; align-items: center; gap: 10px; font-size: 14px; color: #475569; margin-bottom: 12px; transition: color .15s ease; white-space: nowrap; }
+  .ms-footer-contact-item:last-of-type { margin-bottom: 0; }
+  .ms-footer-contact-item svg { color: #0A5CD8; flex: 0 0 auto; }
+  .ms-footer-contact-item:hover { color: #0A5CD8; }
+  .ms-footer-contact-hq { font-size: 12.5px; color: #64748B; margin-top: 16px; padding-top: 14px; border-top: 1px solid #E2E8F0; }
+  .ms-footer-sep { height: 1px; background: #E2E8F0; margin: 56px 0; }
+  .ms-footer-explore { display: grid; grid-template-columns: 220px 1fr; gap: 40px; align-items: start; }
+  @media (max-width: 820px) { .ms-footer-explore { grid-template-columns: 1fr; gap: 24px; } }
+  .ms-footer-main { display: grid; grid-template-columns: 1fr 560px; gap: 56px; align-items: start; }
+  @media (max-width: 1100px) { .ms-footer-main { grid-template-columns: 1fr; } }
+  .ms-footer-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px 32px; }
+  @media (max-width: 640px) { .ms-footer-cols { grid-template-columns: repeat(2, 1fr); gap: 24px; } }
+  .ms-footer-col-title { font-size: 14px; font-weight: 700; color: #0B1B35; margin-bottom: 16px; }
+  .ms-footer-col ul { list-style: none; padding: 0; margin: 0; }
+  .ms-footer-col li { margin-bottom: 10px; }
+  .ms-footer-col a { font-size: 13.5px; color: #64748B; }
+  .ms-footer-bottom { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  .ms-footer-bottom-left { display: flex; align-items: center; gap: 16px; }
+  .ms-footer-logo { height: 32px; width: auto; }
+  .ms-footer-copy { font-size: 13px; color: #475569; }
+  .ms-footer-addr { font-size: 11.5px; color: #94A3B8; margin-top: 2px; }
+  .ms-footer-bottom-right { display: flex; gap: 8px; }
+  .ms-footer-social { width: 34px; height: 34px; border-radius: 8px; display: grid; place-items: center; background: #F8FAFC; border: 1px solid #E2E8F0; color: #64748B; transition: all .15s ease; }
+  .ms-footer-social:hover { background: rgba(10, 92, 216, 0.08); border-color: rgba(10, 92, 216, 0.3); color: #0A5CD8; }
+
+  /* ===== bp2-* hero (aligned with how-it-works visual language) ===== */
+  .bp2-hero { padding: 240px 0 120px; position: relative; overflow: visible; }
+  @media (max-width: 980px) { .bp2-hero { padding: 140px 0 80px; } }
+  .bp2-hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(900px 600px at 88% 12%, rgba(10, 92, 216, 0.10) 0%, rgba(10, 92, 216, 0) 65%),
+      radial-gradient(700px 500px at 10% 90%, rgba(10, 92, 216, 0.06) 0%, rgba(10, 92, 216, 0) 70%);
+    pointer-events: none; z-index: 0;
+  }
+  .bp2-hero-dotgrid {
+    position: absolute; inset: 0;
+    background-image: radial-gradient(rgba(10, 92, 216, 0.10) 1px, transparent 1px);
+    background-size: 22px 22px;
+    mask-image: linear-gradient(to bottom, #000 0%, #000 70%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 70%, transparent 100%);
+    pointer-events: none; z-index: 0;
+  }
+  .bp2-hero-inner { position: relative; z-index: 2; }
+
+  /* === Resources Hero: text + chat illustration === */
+  .rh-hero-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 64px; align-items: start; }
+  @media (max-width: 980px) { .rh-hero-grid { grid-template-columns: 1fr; gap: 48px; } }
+  .rh-hero-text { max-width: 620px; }
+
+  .rh-hero-art { position: relative; min-height: 440px; perspective: 1200px; margin-top: 90px; }
+  @media (max-width: 980px) { .rh-hero-art { min-height: 420px; margin-top: 0; } }
+
+  .rh-art-glow {
+    position: absolute; inset: -20px;
+    background: radial-gradient(60% 60% at 70% 40%, rgba(10,92,216,0.18), transparent 70%),
+                radial-gradient(50% 50% at 30% 80%, rgba(110,198,255,0.22), transparent 70%);
+    filter: blur(40px); z-index: 0; animation: rh-glow-drift 14s ease-in-out infinite;
+  }
+  @keyframes rh-glow-drift {
+    0%,100% { transform: translate(0,0) scale(1); }
+    50% { transform: translate(12px,-10px) scale(1.06); }
+  }
+
+  .rh-art-card {
+    position: relative; z-index: 2;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(15,23,42,0.08);
+    border-radius: 18px;
+    padding: 18px 18px 14px;
+    box-shadow: 0 30px 80px -20px rgba(10,92,216,0.25), 0 6px 18px -6px rgba(15,23,42,0.08);
+    transform: rotateY(-3deg) rotateX(2deg);
+    animation: rh-card-float 6s ease-in-out infinite;
+  }
+  @keyframes rh-card-float {
+    0%,100% { transform: rotateY(-3deg) rotateX(2deg) translateY(0); }
+    50% { transform: rotateY(-3deg) rotateX(2deg) translateY(-8px); }
+  }
+
+  .rh-art-card-head { display: flex; align-items: center; gap: 12px; padding-bottom: 14px; border-bottom: 1px solid rgba(15,23,42,0.06); }
+  .rh-art-avatar {
+    position: relative; width: 38px; height: 38px; border-radius: 50%;
+    background: linear-gradient(135deg, #0A5CD8 0%, #6EC6FF 100%);
+    color: #fff; font-weight: 800; font-size: 13px; letter-spacing: 0.02em;
+    display: grid; place-items: center; flex: 0 0 auto;
+  }
+  .rh-art-avatar-dot {
+    position: absolute; right: -1px; bottom: -1px; width: 11px; height: 11px;
+    border-radius: 50%; background: #10B981; border: 2px solid #fff;
+    box-shadow: 0 0 0 0 rgba(16,185,129,0.5);
+    animation: rh-online-pulse 2.4s ease-out infinite;
+  }
+  @keyframes rh-online-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(16,185,129,0.55); }
+    100% { box-shadow: 0 0 0 10px rgba(16,185,129,0); }
+  }
+  .rh-art-meta { flex: 1; min-width: 0; }
+  .rh-art-name { font-size: 14px; font-weight: 700; color: var(--ink); }
+  .rh-art-role { font-size: 12px; color: var(--muted); }
+  .rh-art-headicon { color: #0A5CD8; flex: 0 0 auto; }
+
+  .rh-art-msgs { padding: 14px 2px 6px; display: flex; flex-direction: column; gap: 10px; min-height: 220px; }
+  .rh-art-msg { display: flex; opacity: 0; transform: translateY(8px); animation: rh-msg-in .5s cubic-bezier(0.16,1,0.3,1) forwards; }
+  .rh-art-msg span {
+    display: inline-block; max-width: 86%;
+    padding: 9px 13px; border-radius: 14px; font-size: 13.5px; line-height: 1.45;
+  }
+  .rh-art-msg-in { justify-content: flex-start; }
+  .rh-art-msg-in span { background: #F1F5F9; color: var(--ink); border-bottom-left-radius: 4px; }
+  .rh-art-msg-out { justify-content: flex-end; }
+  .rh-art-msg-out span { background: linear-gradient(135deg, #0A5CD8, #0847A8); color: #fff; border-bottom-right-radius: 4px; box-shadow: 0 4px 12px -4px rgba(10,92,216,0.4); }
+  @keyframes rh-msg-in { to { opacity: 1; transform: translateY(0); } }
+
+  .rh-art-typing {
+    display: inline-flex; gap: 4px; padding: 10px 14px;
+    background: #F1F5F9; border-radius: 14px; border-bottom-left-radius: 4px;
+    align-self: flex-start; opacity: 0;
+    animation: rh-typing-in .4s ease-out 4.8s forwards, rh-typing-out .4s ease-out 7.5s forwards;
+  }
+  .rh-art-typing span {
+    width: 6px; height: 6px; border-radius: 50%; background: #94A3B8;
+    animation: rh-typing-bounce 1.2s ease-in-out infinite;
+  }
+  .rh-art-typing span:nth-child(2) { animation-delay: .15s; }
+  .rh-art-typing span:nth-child(3) { animation-delay: .3s; }
+  @keyframes rh-typing-bounce {
+    0%,80%,100% { transform: translateY(0); opacity: 0.5; }
+    40% { transform: translateY(-4px); opacity: 1; }
+  }
+  @keyframes rh-typing-in { to { opacity: 1; } }
+  @keyframes rh-typing-out { to { opacity: 0; height: 0; padding-top: 0; padding-bottom: 0; margin: 0; } }
+
+  .rh-art-foot { padding-top: 12px; border-top: 1px solid rgba(15,23,42,0.06); display: flex; justify-content: flex-start; }
+  .rh-art-foot-pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 11.5px; font-weight: 600; color: #047857;
+    background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.2);
+    padding: 5px 10px; border-radius: 999px;
+  }
+  .rh-art-foot-pill svg { color: #10B981; }
+
+  /* Floating doc chips */
+  .rh-art-chip {
+    position: absolute; z-index: 3;
+    display: inline-flex; align-items: center; gap: 6px;
+    background: #fff; color: var(--ink);
+    border: 1px solid rgba(15,23,42,0.08);
+    padding: 8px 12px; border-radius: 999px;
+    font-size: 12px; font-weight: 600;
+    box-shadow: 0 10px 28px -10px rgba(15,23,42,0.18);
+    animation: rh-chip-float 5s ease-in-out infinite;
+  }
+  .rh-art-chip svg { color: #0A5CD8; }
+  .rh-art-chip-1 { top: -14px; right: 8%; animation-delay: 0s; }
+  .rh-art-chip-2 { bottom: 12%; left: -18px; animation-delay: 1.5s; }
+  @keyframes rh-chip-float {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rh-art-card, .rh-art-glow, .rh-art-chip, .rh-art-avatar-dot, .rh-art-typing, .rh-art-typing span { animation: none !important; }
+    .rh-art-msg { opacity: 1; transform: none; animation: none !important; }
+  }
+
+  .bp2-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--brand);
+    background: rgba(10, 92, 216, 0.08);
+    border: 1px solid rgba(10, 92, 216, 0.22);
+    padding: 6px 12px; border-radius: 999px;
+  }
+  .bp2-eyebrow-dot { width: 6px; height: 6px; border-radius: 999px; background: var(--brand); box-shadow: 0 0 8px rgba(10,92,216,0.45); }
+  .bp2-h1 {
+    font-size: clamp(36px, 4.8vw, 56px);
+    line-height: 1.05; letter-spacing: -0.02em; font-weight: 800;
+    color: var(--ink); margin: 20px 0 18px;
+  }
+  .bp2-grad {
+    background: linear-gradient(135deg, #0A5CD8 0%, #6EC6FF 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+  }
+  .bp2-lead {
+    font-size: 17px; line-height: 1.6; color: var(--muted);
+    max-width: 640px;
+  }
+  .bp2-cta-row { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 12px; }
+
+  /* ===== stepnav-pills (aligned with how-it-works) ===== */
+  .stepnav-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 32px; }
+  .stepnav-pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 9px 16px; border-radius: 999px;
+    background: #FFFFFF; border: 1px solid var(--border);
+    color: var(--muted); font-size: 13.5px; font-weight: 600;
+    cursor: pointer; transition: all .18s ease;
+    font-family: inherit; letter-spacing: -0.005em;
+    text-decoration: none;
+  }
+  .stepnav-pill:hover { background: #F4F8FF; border-color: rgba(10,92,216,0.30); color: var(--ink); }
+  .stepnav-pill.is-active,
+  .stepnav-pill[aria-selected="true"] {
+    background: linear-gradient(135deg, #0A5CD8 0%, #0847A8 100%);
+    border-color: transparent; color: #FFFFFF;
+    box-shadow: 0 12px 28px -10px rgba(10,92,216,0.55);
+  }
+  .stepnav-pill svg { opacity: 0.85; }
+
+  /* ===== btn-secondary (aligned with how-it-works) ===== */
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 22px; border-radius: 10px;
+    background: #FFFFFF; color: var(--ink);
+    font-weight: 600; font-size: 14.5px;
+    border: 1px solid var(--border);
+    transition: all .15s ease;
+    text-decoration: none;
+  }
+  .btn-secondary:hover { border-color: var(--brand); color: var(--brand); }
+
+  /* ===== Sample document preview (monospace, badge) ===== */
+  .sample-doc {
+    position: relative;
+    background: #FFFFFF;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 28px 30px;
+    box-shadow: 0 24px 60px -32px rgba(11,27,53,0.18);
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 13px; line-height: 1.65;
+    color: #334155;
+    max-height: 560px;
+    overflow-y: auto;
+  }
+  .sample-doc .sample-badge {
+    position: absolute; top: 18px; right: 18px;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px; font-weight: 800;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--brand);
+    background: rgba(10,92,216,0.08);
+    border: 1px solid rgba(10,92,216,0.22);
+    padding: 4px 10px; border-radius: 999px;
+  }
+  .sample-doc .sample-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px; font-weight: 800;
+    color: var(--ink); letter-spacing: -0.01em;
+    margin: 0 0 14px;
+  }
+  .sample-doc .sample-parties {
+    text-align: center; font-weight: 700; color: var(--ink);
+    margin: 14px 0 18px; line-height: 1.7;
+  }
+  .sample-doc p { margin: 0 0 12px; }
+  .sample-doc strong { color: var(--ink); font-weight: 700; }
+  .sample-doc .sample-end {
+    margin-top: 22px; font-style: italic; color: #94A3B8;
+    font-size: 12px; font-family: 'Inter', sans-serif;
+  }
+
+  /* =========================================================
+     PREMIUM POLISH, scroll reveal, micro-interactions, hero FX
+     ========================================================= */
+
+  /* --- Scroll reveal --- */
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity .8s cubic-bezier(0.16, 1, 0.3, 1),
+                transform .8s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity;
+  }
+  [data-reveal].is-visible { opacity: 1; transform: translateY(0); }
+  [data-reveal-delay="1"] { transition-delay: .08s; }
+  [data-reveal-delay="2"] { transition-delay: .16s; }
+  [data-reveal-delay="3"] { transition-delay: .24s; }
+  [data-reveal-delay="4"] { transition-delay: .32s; }
+
+  /* --- Hero ambience: drifting gradient blobs + noise --- */
+  .bp2-hero::before,
+  .bp2-hero::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.55;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .bp2-hero::before {
+    width: 520px; height: 520px;
+    top: -180px; left: -120px;
+    background: radial-gradient(circle, rgba(10,92,216,0.45), transparent 70%);
+    animation: blob-drift-a 22s ease-in-out infinite;
+  }
+  .bp2-hero::after {
+    width: 460px; height: 460px;
+    bottom: -180px; right: -80px;
+    background: radial-gradient(circle, rgba(110,198,255,0.5), transparent 70%);
+    animation: blob-drift-b 26s ease-in-out infinite;
+    opacity: 0.45;
+  }
+  @keyframes blob-drift-a {
+    0%, 100% { transform: translate(0,0) scale(1); }
+    50% { transform: translate(60px, 40px) scale(1.08); }
+  }
+  @keyframes blob-drift-b {
+    0%, 100% { transform: translate(0,0) scale(1); }
+    50% { transform: translate(-50px, -30px) scale(1.1); }
+  }
+  .bp2-noise {
+    position: absolute; inset: 0;
+    pointer-events: none; z-index: 1;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+
+  /* --- Animated H1 gradient span --- */
+  .bp2-grad {
+    background: linear-gradient(135deg, #0A5CD8 0%, #6EC6FF 50%, #0A5CD8 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+    animation: gradient-shift 8s ease infinite;
+  }
+  @keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  /* --- Sticky pills nav --- */
+  .stepnav-pills.is-stuck {
+    position: sticky;
+    top: 64px;
+    z-index: 30;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: saturate(180%) blur(14px);
+    -webkit-backdrop-filter: saturate(180%) blur(14px);
+    padding: 12px 0;
+    margin-top: 0;
+    border-bottom: 1px solid rgba(15,23,42,0.06);
+  }
+  .stepnav-pill {
+    transition: background .25s cubic-bezier(0.16,1,0.3,1),
+                color .25s cubic-bezier(0.16,1,0.3,1),
+                border-color .25s cubic-bezier(0.16,1,0.3,1),
+                box-shadow .25s cubic-bezier(0.16,1,0.3,1),
+                transform .25s cubic-bezier(0.16,1,0.3,1);
+  }
+
+  /* --- Card micro-interactions (override base) --- */
+  .guide-card {
+    transition: transform .25s cubic-bezier(0.16,1,0.3,1),
+                box-shadow .25s cubic-bezier(0.16,1,0.3,1),
+                border-color .25s cubic-bezier(0.16,1,0.3,1),
+                background .25s cubic-bezier(0.16,1,0.3,1);
+    position: relative; overflow: hidden;
+  }
+  .guide-card::before {
+    content: "";
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #0A5CD8 0%, #6EC6FF 100%);
+    transform: scaleX(0); transform-origin: left center;
+    transition: transform .35s cubic-bezier(0.16,1,0.3,1);
+  }
+  .guide-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -20px rgba(10,92,216,0.25),
+                0 0 0 1px rgba(10,92,216,0.10);
+    border-color: rgba(10,92,216,0.30);
+  }
+  .guide-card:hover::before { transform: scaleX(1); }
+  .guide-card .cta { transition: transform .25s cubic-bezier(0.16,1,0.3,1); display: inline-block; }
+  .guide-card:hover .cta { transform: translateX(4px); }
+  .guide-tag { position: relative; padding-left: 18px; }
+  .guide-tag::before {
+    content: "";
+    position: absolute; left: 8px; top: 50%;
+    width: 5px; height: 5px; border-radius: 50%;
+    background: var(--brand);
+    transform: translateY(-50%);
+    box-shadow: 0 0 0 0 rgba(10,92,216,0.5);
+    animation: dot-pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes dot-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(10,92,216,0.5); }
+    50% { box-shadow: 0 0 0 6px rgba(10,92,216,0); }
+  }
+
+  /* --- Doc list card (tax) numbered indicator + lift --- */
+  .doc-list-card {
+    position: relative;
+    transition: transform .25s cubic-bezier(0.16,1,0.3,1),
+                box-shadow .25s cubic-bezier(0.16,1,0.3,1),
+                border-color .25s cubic-bezier(0.16,1,0.3,1),
+                background .25s cubic-bezier(0.16,1,0.3,1);
+  }
+  .doc-list-card[data-num]::after {
+    content: attr(data-num);
+    position: absolute; top: 18px; right: 22px;
+    font-size: 12px; font-weight: 800; letter-spacing: 0.08em;
+    color: #CBD5E1;
+    transition: color .25s ease;
+    font-variant-numeric: tabular-nums;
+  }
+  .doc-list-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -20px rgba(10,92,216,0.25),
+                0 0 0 1px rgba(10,92,216,0.10);
+    border-color: rgba(10,92,216,0.30);
+    background: #F4F8FF;
+  }
+  .doc-list-card:hover[data-num]::after { color: var(--brand); }
+  .doc-list-card:hover .doc-list-icon {
+    transform: scale(1.05);
+    background: rgba(10,92,216,0.14);
+  }
+  .doc-list-icon { transition: transform .25s cubic-bezier(0.16,1,0.3,1), background .25s ease; }
+
+  /* --- Sample doc shimmer badge + perforation dots --- */
+  .sample-doc { overflow: hidden; }
+  .sample-doc .sample-badge {
+    position: absolute; top: 18px; right: 18px;
+    overflow: hidden;
+  }
+  .sample-doc .sample-badge::after {
+    content: "";
+    position: absolute; top: 0; left: -60%;
+    width: 60%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.7), transparent);
+    animation: badge-shimmer 3s ease-in-out infinite;
+  }
+  @keyframes badge-shimmer {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(360%); }
+  }
+  .sample-doc::before {
+    content: "";
+    position: absolute; top: 14px; left: 14px;
+    width: 6px; height: 6px; border-radius: 50%;
+    background: #E2E8F0;
+    box-shadow: 12px 0 0 #E2E8F0, 24px 0 0 #E2E8F0;
+    z-index: 2;
+  }
+
+  /* --- Key clause subtle lift --- */
+  .key-clause { transition: transform .25s cubic-bezier(0.16,1,0.3,1), border-color .25s ease, background .25s ease; }
+  .key-clause:hover {
+    transform: translateX(3px);
+    border-left-color: var(--cyan);
+    background: #F4F8FF;
+  }
+
+  /* ============== DOCS SECTION (Vercel-style sticky timeline) ============== */
+  .docs-header { max-width: 760px; margin: 0 auto 64px; text-align: center; }
+  .docs-header .section-eyebrow { display: inline-block; }
+  .docs-grid {
+    display: grid;
+    grid-template-columns: 180px 40px minmax(0, 1fr);
+    gap: 32px;
+    align-items: start;
+    position: relative;
+  }
+  .docs-rail { display: flex; flex-direction: column; gap: 0; position: relative; }
+  .docs-quote {
+    font-size: 13px;
+    line-height: 1.55;
+    color: #64748B;
+    padding: 18px 0;
+    border-top: 1px dashed #E2E8F0;
+  }
+  .docs-quote:first-child { border-top: 0; }
+  .docs-quote .docs-quote-text { font-style: italic; color: #475569; margin: 0 0 10px; }
+  .docs-quote .docs-quote-author {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: #94A3B8; font-weight: 600;
+  }
+  .docs-quote .docs-quote-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: linear-gradient(135deg, #0A5CD8, #6EC6FF);
+    flex-shrink: 0;
+  }
+
+  .docs-timeline {
+    position: relative;
+    width: 40px;
+    align-self: stretch;
+    min-height: 600px;
+  }
+  .docs-timeline::before {
+    content: "";
+    position: absolute;
+    left: 50%; top: 0; bottom: 0;
+    width: 2px;
+    transform: translateX(-50%);
+    background: linear-gradient(180deg, transparent 0%, #0A5CD8 8%, #6EC6FF 50%, #0A5CD8 92%, transparent 100%);
+    border-radius: 2px;
+  }
+  .docs-timeline::after {
+    content: "";
+    position: absolute;
+    left: 50%; top: 0;
+    width: 2px; height: 80px;
+    transform: translateX(-50%);
+    background: linear-gradient(180deg, transparent 0%, rgba(110,198,255,0.9) 50%, transparent 100%);
+    filter: blur(1px);
+    animation: docsScanBeam 4.5s linear infinite;
+    pointer-events: none;
+  }
+  @keyframes docsScanBeam {
+    0% { top: -80px; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+  }
+  .docs-node {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: #0A5CD8;
+    box-shadow:
+      0 0 0 4px rgba(10, 92, 216, 0.12),
+      0 0 18px rgba(10, 92, 216, 0.45);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 2;
+  }
+  .docs-node::after {
+    content: "";
+    width: 4px; height: 4px; border-radius: 50%;
+    background: #fff;
+  }
+  .docs-node.is-step-1 { top: 8%; }
+  .docs-node.is-step-2 { top: 27%; }
+  .docs-node.is-step-3 { top: 47%; }
+  .docs-node.is-step-4 { top: 68%; }
+  .docs-node.is-step-5 { top: 89%; }
+
+  .docs-content { display: flex; flex-direction: column; gap: 96px; }
+
+  /* === REP section (accordion + device illustration) === */
+  .rep-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: start; }
+  .rep-grid > .rep-art { margin-top: 220px; }
+  @media (max-width: 1024px) { .rep-grid { grid-template-columns: 1fr; gap: 48px; } .rep-grid > .rep-art { margin-top: 0; } }
+  .rep-left { max-width: 560px; }
+  .rep-toplink { display: inline-flex; align-items: center; gap: 6px; margin-top: 18px; font-size: 13.5px; font-weight: 700; color: var(--brand); transition: gap .2s ease; }
+  .rep-toplink:hover { gap: 12px; }
+  .rep-accordion { margin-top: 36px; border-top: 1px solid var(--border); }
+  .rep-acc-item { border-bottom: 1px solid var(--border); }
+  .rep-acc-head {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 22px 4px 22px 0; cursor: pointer; list-style: none;
+    font-size: 16px; font-weight: 700; color: var(--ink);
+    transition: color .2s ease;
+  }
+  .rep-acc-head::-webkit-details-marker { display: none; }
+  .rep-acc-head:hover { color: var(--brand); }
+  .rep-acc-title { flex: 1; }
+  .rep-acc-chev { color: var(--muted); flex: 0 0 auto; transition: transform .3s cubic-bezier(0.16,1,0.3,1), color .2s ease; }
+  .rep-acc-item[open] .rep-acc-chev { transform: rotate(180deg); color: var(--brand); }
+  .rep-acc-body {
+    padding: 0 0 22px;
+    font-size: 14px; line-height: 1.65; color: var(--muted); max-width: 540px;
+    animation: rep-acc-slide .4s cubic-bezier(0.16,1,0.3,1);
+  }
+  @keyframes rep-acc-slide { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* Right-side art */
+  .rep-art {
+    position: relative; min-height: 520px;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid rgba(15,23,42,0.06);
+    background: linear-gradient(135deg, #0B1B35 0%, #0F2547 55%, #0A5CD8 130%);
+    padding: 28px;
+  }
+  .rep-art-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 32px 32px;
+    pointer-events: none;
+  }
+  .rep-art-glow1, .rep-art-glow2 {
+    position: absolute; border-radius: 50%; filter: blur(60px); pointer-events: none;
+  }
+  .rep-art-glow1 { width: 320px; height: 320px; top: -80px; right: -80px; background: rgba(110,198,255,0.35); animation: rep-glow-1 9s ease-in-out infinite; }
+  .rep-art-glow2 { width: 280px; height: 280px; bottom: -100px; left: -60px; background: rgba(10,92,216,0.45); animation: rep-glow-2 11s ease-in-out infinite; }
+  @keyframes rep-glow-1 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(-30px,20px); } }
+  @keyframes rep-glow-2 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(20px,-25px); } }
+
+  /* Dashboard card */
+  .rep-dash {
+    position: relative; z-index: 2;
+    background: rgba(255,255,255,0.97); backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.5);
+    border-radius: 16px;
+    box-shadow: 0 30px 80px -30px rgba(0,0,0,0.5);
+    overflow: hidden;
+    transform: perspective(1200px) rotateX(2deg);
+  }
+  .rep-dash-top {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 14px; border-bottom: 1px solid #E2E8F0;
+  }
+  .rep-dash-search {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #F1F5F9; border-radius: 8px; padding: 7px 12px;
+    font-size: 11.5px; color: #64748B; flex: 1; max-width: 240px;
+  }
+  .rep-dash-avatar { position: relative; }
+  .rep-dash-avatar-img {
+    width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center;
+    background: linear-gradient(135deg, #0A5CD8, #6EC6FF); color: #fff; font-weight: 800; font-size: 10.5px;
+  }
+  .rep-dash-avatar-dot { position: absolute; right: -1px; bottom: -1px; width: 9px; height: 9px; background: #10B981; border: 2px solid #fff; border-radius: 50%; animation: rep-online-pulse 2.4s ease-out infinite; }
+
+  .rep-dash-body { display: grid; grid-template-columns: 124px 1fr; min-height: 320px; }
+  .rep-dash-side { padding: 10px; border-right: 1px solid #E2E8F0; display: flex; flex-direction: column; gap: 2px; }
+  .rep-dash-side-item {
+    display: flex; align-items: center; gap: 8px; padding: 8px 10px;
+    border-radius: 7px; font-size: 12px; color: #475569; cursor: default;
+    transition: background .15s ease;
+  }
+  .rep-dash-side-item svg { color: #94A3B8; flex: 0 0 auto; }
+  .rep-dash-side-item.is-active { background: rgba(10,92,216,0.08); color: #0A5CD8; font-weight: 600; }
+  .rep-dash-side-item.is-active svg { color: #0A5CD8; }
+  .rep-dash-side-badge { margin-left: auto; font-size: 10px; background: #0A5CD8; color: #fff; padding: 1px 7px; border-radius: 999px; font-weight: 700; }
+
+  .rep-dash-main { padding: 14px 16px; display: flex; flex-direction: column; gap: 12px; }
+  .rep-dash-thread-h { display: flex; align-items: center; justify-content: space-between; padding-bottom: 10px; border-bottom: 1px solid #F1F5F9; }
+  .rep-dash-thread-meta { display: flex; flex-direction: column; gap: 4px; }
+  .rep-dash-thread-tag { font-size: 9.5px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #0A5CD8; }
+  .rep-dash-thread-title { font-size: 13.5px; font-weight: 700; color: #0B1B35; }
+  .rep-dash-thread-status { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 600; color: #047857; }
+  .rep-dash-thread-status .dot { width: 6px; height: 6px; border-radius: 50%; background: #10B981; animation: rep-online-pulse 1.8s ease-out infinite; }
+
+  .rep-dash-stream { display: flex; flex-direction: column; gap: 7px; min-height: 100px; }
+  .rep-dash-msg { display: flex; }
+  .rep-dash-msg span {
+    display: block; height: 10px; border-radius: 6px;
+    opacity: 0; transform: translateY(6px);
+    animation: rep-msg-pop .5s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  .rep-dash-msg-in { justify-content: flex-start; }
+  .rep-dash-msg-in span { width: 65%; background: #E2E8F0; border-bottom-left-radius: 3px; }
+  .rep-dash-msg-out { justify-content: flex-end; }
+  .rep-dash-msg-out span { width: 72%; background: linear-gradient(135deg, #0A5CD8, #0847A8); border-bottom-right-radius: 3px; }
+  .rep-dash-msg:nth-child(1) span { animation-delay: .3s; width: 55%; }
+  .rep-dash-msg:nth-child(2) span { animation-delay: 1.2s; }
+  .rep-dash-msg:nth-child(3) span { animation-delay: 2.2s; width: 40%; }
+  @keyframes rep-msg-pop { to { opacity: 1; transform: translateY(0); } }
+  .rep-dash-typing {
+    display: inline-flex; align-self: flex-end; gap: 3px;
+    background: linear-gradient(135deg, #0A5CD8, #0847A8); padding: 6px 10px; border-radius: 8px; border-bottom-right-radius: 3px;
+    opacity: 0; animation: rep-typing-fade .4s ease-out 3s forwards;
+  }
+  .rep-dash-typing span { width: 4px; height: 4px; border-radius: 50%; background: rgba(255,255,255,0.7); animation: rep-typing-bounce 1.2s ease-in-out infinite; }
+  .rep-dash-typing span:nth-child(2) { animation-delay: .15s; }
+  .rep-dash-typing span:nth-child(3) { animation-delay: .3s; }
+  @keyframes rep-typing-fade { to { opacity: 1; } }
+  @keyframes rep-typing-bounce { 0%,80%,100% { transform: translateY(0); opacity: 0.4; } 40% { transform: translateY(-3px); opacity: 1; } }
+
+  .rep-dash-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: auto; padding-top: 10px; border-top: 1px solid #F1F5F9; }
+  .rep-dash-metric-label { font-size: 9.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #94A3B8; }
+  .rep-dash-metric-value { font-size: 16px; font-weight: 800; color: #0B1B35; margin: 2px 0 5px; letter-spacing: -0.01em; }
+  .rep-dash-bar { height: 4px; border-radius: 4px; background: #F1F5F9; overflow: hidden; }
+  .rep-dash-bar span { display: block; height: 100%; background: linear-gradient(90deg, #0A5CD8, #6EC6FF); border-radius: 4px; transform-origin: left; animation: rep-bar-grow 1.4s cubic-bezier(0.16,1,0.3,1) .8s both; }
+  .rep-dash-bar span.ok { background: linear-gradient(90deg, #10B981, #34D399); }
+  @keyframes rep-bar-grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+  /* Floating toast */
+  .rep-toast {
+    position: absolute; z-index: 3;
+    right: 16px; bottom: 20px;
+    display: flex; align-items: center; gap: 10px;
+    background: rgba(255,255,255,0.96); backdrop-filter: blur(20px);
+    padding: 11px 14px; border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.5);
+    box-shadow: 0 18px 40px -10px rgba(0,0,0,0.35);
+    animation: rep-toast-pop .6s cubic-bezier(0.16,1,0.3,1) 1.6s both, rep-toast-float 4s ease-in-out 2.2s infinite;
+  }
+  .rep-toast-icon { width: 26px; height: 26px; border-radius: 50%; background: #10B981; color: #fff; display: grid; place-items: center; flex: 0 0 auto; }
+  .rep-toast-title { font-size: 12.5px; font-weight: 700; color: #0B1B35; }
+  .rep-toast-sub { font-size: 11px; color: #64748B; }
+  @keyframes rep-toast-pop { from { opacity: 0; transform: translateY(20px) scale(0.92); } to { opacity: 1; transform: translateY(0) scale(1); } }
+  @keyframes rep-toast-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rep-art-glow1, .rep-art-glow2, .rep-dash-typing, .rep-dash-typing span, .rep-dash-bar span,
+    .rep-dash-msg span, .rep-toast, .rep-dash-avatar-dot, .rep-dash-thread-status .dot { animation: none !important; opacity: 1 !important; transform: none !important; }
+  }
+  @media (max-width: 1024px) { .rep-art { min-height: 460px; } }
+
+  /* Laptop card */
+  .rep-art-laptop {
+    position: absolute; left: 0; top: 12%; width: 78%;
+    background: #fff; border-radius: 14px; overflow: hidden;
+    border: 1px solid rgba(15,23,42,0.08);
+    box-shadow: 0 24px 60px -24px rgba(15,23,42,0.22);
+    animation: rep-art-float 6s ease-in-out infinite;
+  }
+  .rep-art-laptop-bar { display: flex; gap: 6px; padding: 10px 12px; background: #F8FAFC; border-bottom: 1px solid rgba(15,23,42,0.06); }
+  .rep-art-laptop-bar span { width: 9px; height: 9px; border-radius: 50%; background: #CBD5E1; }
+  .rep-art-laptop-bar span:nth-child(1) { background: #FCA5A5; }
+  .rep-art-laptop-bar span:nth-child(2) { background: #FDE68A; }
+  .rep-art-laptop-bar span:nth-child(3) { background: #86EFAC; }
+  .rep-art-laptop-body { padding: 16px; display: flex; flex-direction: column; gap: 8px; }
+  .rep-art-laptop-row { height: 8px; border-radius: 4px; background: #E2E8F0; }
+  .rep-art-laptop-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin-top: 10px; }
+  .rep-art-laptop-tile { aspect-ratio: 1; border-radius: 8px; background: #F1F5F9; border: 1px solid #E2E8F0; }
+  .rep-art-laptop-tile-accent { background: linear-gradient(135deg, #0A5CD8, #6EC6FF); border-color: transparent; }
+
+  /* Phone (chat) */
+  .rep-art-phone {
+    position: absolute; right: 4%; bottom: 4%; width: 38%; max-width: 180px;
+    background: #0B1B35; border-radius: 22px; padding: 8px;
+    border: 2px solid #0B1B35;
+    box-shadow: 0 30px 60px -20px rgba(15,23,42,0.4);
+    animation: rep-art-float 6s ease-in-out 1.5s infinite;
+  }
+  .rep-art-phone-notch { height: 14px; display: flex; justify-content: center; align-items: center; }
+  .rep-art-phone-notch::after { content: ""; width: 38%; height: 4px; border-radius: 4px; background: #1E293B; }
+  .rep-art-phone-body { background: #fff; border-radius: 14px; padding: 14px 12px; display: flex; flex-direction: column; gap: 8px; min-height: 180px; }
+  .rep-art-bubble { height: 12px; border-radius: 8px; width: 75%; }
+  .rep-art-bubble-in { background: #E2E8F0; border-bottom-left-radius: 3px; align-self: flex-start; }
+  .rep-art-bubble-out { background: linear-gradient(135deg, #0A5CD8, #0847A8); border-bottom-right-radius: 3px; align-self: flex-end; }
+
+  /* Floating icon chips */
+  .rep-art-icon {
+    position: absolute; width: 44px; height: 44px;
+    background: #fff; border: 1px solid rgba(15,23,42,0.08);
+    border-radius: 50%;
+    display: grid; place-items: center;
+    box-shadow: 0 12px 30px -10px rgba(15,23,42,0.18);
+    animation: rep-art-float 5s ease-in-out infinite;
+  }
+  .rep-art-icon svg { color: var(--brand); }
+  .rep-art-icon-cal { top: 4%; right: 8%; border: 2px solid #DBEAFE; animation-delay: 0s; }
+  .rep-art-icon-pin { top: 38%; right: -8px; border: 2px solid #FEE2E2; animation-delay: 1s; }
+  .rep-art-icon-pin svg { color: #DC2626; }
+  .rep-art-icon-phone { bottom: 36%; left: 36%; border: 2px solid #DCFCE7; animation-delay: 2s; }
+  .rep-art-icon-phone svg { color: #16A34A; }
+  .rep-art-icon-mail { bottom: 8%; left: 8%; border: 2px solid #FFEDD5; animation-delay: 0.5s; }
+  .rep-art-icon-mail svg { color: #EA580C; }
+
+  @keyframes rep-art-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .rep-art-laptop, .rep-art-phone, .rep-art-icon { animation: none !important; }
+  }
+  @media (max-width: 1024px) { .rep-art { min-height: 420px; } }
+  .docs-step { position: relative; }
+  .docs-step-number {
+    font-size: 56px;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    background: linear-gradient(135deg, #0A5CD8 0%, #6EC6FF 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    opacity: 0.9;
+    margin: 0 0 14px;
+    display: block;
+  }
+  .docs-step-title {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin: 0 0 14px;
+    line-height: 1.2;
+  }
+  .docs-step-lead {
+    font-size: 16px;
+    color: #475569;
+    line-height: 1.6;
+    margin: 0 0 26px;
+    max-width: 620px;
+  }
+  .docs-clauses {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin: 0 0 26px;
+  }
+  .docs-clause {
+    position: relative;
+    border: 1px solid #E2E8F0;
+    border-radius: 10px;
+    padding: 14px 16px;
+    background: #FFFFFF;
+    overflow: hidden;
+    transition: transform .25s cubic-bezier(0.16,1,0.3,1), border-color .25s ease, box-shadow .25s ease;
+  }
+  .docs-clause::before {
+    content: "";
+    position: absolute;
+    left: -3px; top: 0; bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, #0A5CD8, #6EC6FF);
+    transition: left .25s cubic-bezier(0.16,1,0.3,1);
+  }
+  .docs-clause:hover {
+    border-color: #C7D2FE;
+    box-shadow: 0 4px 14px -6px rgba(10,92,216,0.18);
+  }
+  .docs-clause:hover::before { left: 0; }
+  .docs-clause-num {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #0A5CD8;
+    background: #EEF4FF;
+    border-radius: 4px;
+    padding: 2px 6px;
+    margin: 0 0 8px;
+  }
+  .docs-clause-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 0 0 4px;
+    letter-spacing: -0.01em;
+  }
+  .docs-clause-desc {
+    font-size: 12.5px;
+    color: #64748B;
+    line-height: 1.5;
+    margin: 0;
+  }
+  .docs-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin: 0 0 28px; }
+  .docs-step .sample-doc {
+    transition: transform .35s cubic-bezier(0.16,1,0.3,1), box-shadow .35s ease;
+  }
+  .docs-step .sample-doc:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px -18px rgba(10,92,216,0.25);
+  }
+
+  @media (max-width: 1100px) {
+    .docs-rail { display: none; }
+    .docs-grid { grid-template-columns: 40px minmax(0, 1fr); }
+  }
+  @media (max-width: 980px) {
+    .docs-grid { grid-template-columns: minmax(0, 1fr); }
+    .docs-timeline { display: none; }
+    .docs-content { gap: 64px; }
+    .docs-clauses { grid-template-columns: 1fr; }
+    .docs-step-number { font-size: 44px; }
+    .docs-step-title { font-size: 24px; }
+  }
+
+  /* --- Newsletter form polish --- */
+  .newsletter-input { transition: box-shadow .25s ease, border-color .25s ease, background .25s ease; }
+  .newsletter-input:focus {
+    box-shadow: 0 0 0 4px rgba(110,198,255,0.25);
+  }
+  .newsletter-btn {
+    position: relative; overflow: hidden;
+  }
+  .newsletter-btn::after {
+    content: "";
+    position: absolute; top: 0; left: -120%;
+    width: 60%; height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(10,92,216,0.18), transparent);
+    transform: skewX(-20deg);
+    transition: left .7s cubic-bezier(0.16,1,0.3,1);
+  }
+  .newsletter-btn:hover::after { left: 140%; }
+
+  /* --- Section divider --- */
+  .section-divider {
+    height: 1px; max-width: 720px; margin: 0 auto;
+    background: linear-gradient(90deg, transparent, #E2E8F0, transparent);
+  }
+
+  /* --- Why-block gradient border --- */
+  .why-block {
+    position: relative;
+    background:
+      linear-gradient(180deg, #F4F8FF 0%, #FFFFFF 100%) padding-box,
+      linear-gradient(135deg, rgba(10,92,216,0.35), rgba(110,198,255,0.35)) border-box;
+    border: 1px solid transparent;
+  }
+
+  /* --- Final CTA --- */
+  .btn-final {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 16px 28px; border-radius: 14px;
+    font-size: 16px; font-weight: 700; color: #FFFFFF;
+    background: linear-gradient(135deg, #0A5CD8, #6EC6FF, #0A5CD8);
+    background-size: 200% 200%;
+    animation: gradient-shift 4s ease infinite, cta-float 3s ease-in-out infinite;
+    box-shadow: 0 18px 40px -12px rgba(10,92,216,0.45);
+    position: relative; overflow: hidden;
+    transition: transform .25s cubic-bezier(0.16,1,0.3,1), box-shadow .25s ease;
+  }
+  .btn-final:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 26px 50px -12px rgba(10,92,216,0.55);
+  }
+  .btn-final .arrow {
+    display: inline-block;
+    transition: transform .4s cubic-bezier(0.16,1,0.3,1);
+  }
+  .btn-final:hover .arrow { animation: arrow-loop .9s cubic-bezier(0.16,1,0.3,1) infinite; }
+  @keyframes arrow-loop {
+    0% { transform: translateX(0); opacity: 1; }
+    50% { transform: translateX(8px); opacity: 0.6; }
+    51% { transform: translateX(-6px); opacity: 0; }
+    52% { transform: translateX(-6px); opacity: 0.6; }
+    100% { transform: translateX(0); opacity: 1; }
+  }
+  @keyframes cta-float {
+    0%, 100% { box-shadow: 0 18px 40px -12px rgba(10,92,216,0.45); }
+    50% { box-shadow: 0 22px 48px -12px rgba(10,92,216,0.60); }
+  }
+
+  /* --- Reduced motion --- */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+    [data-reveal] { opacity: 1 !important; transform: none !important; }
+  }
+
+/* === ms-scrollbar (injected) === */
+html, body { overflow-x: hidden; max-width: 100%; }
+html { scrollbar-width: auto; scrollbar-color: #94A3B8 #F1F5F9; }
+html::-webkit-scrollbar, body::-webkit-scrollbar, *::-webkit-scrollbar { width: 18px; height: 0; }
+html::-webkit-scrollbar-track, body::-webkit-scrollbar-track, *::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+html::-webkit-scrollbar-thumb, body::-webkit-scrollbar-thumb, *::-webkit-scrollbar-thumb {
+  background: #94A3B8;
+  border-radius: 999px;
+  border: 4px solid #F1F5F9;
+  background-clip: padding-box;
+  min-height: 80px;
+}
+html::-webkit-scrollbar-thumb:hover, body::-webkit-scrollbar-thumb:hover, *::-webkit-scrollbar-thumb:hover {
+  background: #64748B;
+  background-clip: padding-box;
+}
+html::-webkit-scrollbar:horizontal, body::-webkit-scrollbar:horizontal, *::-webkit-scrollbar:horizontal {
+  height: 0;
+  display: none;
+}
+
+
+
 </style>
 </head>
-<body class="bg-white text-slate-900 font-sans antialiased">
+<body>
 
-<header id="site-header" class="fixed top-0 left-0 right-0 z-40 border-b border-gray-100 bg-white/90 backdrop-blur-lg transition-shadow duration-300">
-  <div class="max-w-6xl xl:max-w-[84rem] 2xl:max-w-[92rem] mx-auto px-5 sm:px-8 h-14 flex items-center gap-4 sm:gap-6">
-    <a href="/" class="flex items-center shrink-0" aria-label="MasterStock USA Home">
-      <img src="/images/logo-final.png" alt="MasterStock USA" class="h-10 sm:h-11 w-auto object-contain" />
+<!-- ============== HEADER ============== -->
+<header id="site-header" class="fixed top-0 left-0 right-0 z-40 transition-shadow duration-300">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 h-16 flex items-center gap-4 sm:gap-6">
+    <a href="/" class="ms-logo-link flex items-center shrink-0" aria-label="MasterStock USA Home">
+      <img src="/images/logo-final.png" alt="MasterStock USA" class="ms-logo-img h-10 sm:h-11 w-auto object-contain" draggable="false" />
     </a>
 
-    <div class="site-search relative flex-1 max-w-md hidden md:block">
-      <div class="relative">
-        <svg class="site-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input type="search" class="site-search-input" placeholder="Search FAQ, categories, policies..." autocomplete="off" aria-label="Search the site" />
-        <kbd class="site-search-kbd" aria-hidden="true">/</kbd>
-      </div>
-    </div>
+    <nav class="flex items-center gap-1 text-sm font-medium ml-6 flex-1"></nav>
 
     <nav class="flex items-center gap-1 text-sm font-medium ml-auto">
-      <a href="/#what-we-buy" class="px-3 py-2 rounded-md hover:bg-gray-50 hidden sm:inline">What We Buy</a>
-      <a href="/how-it-works/" class="px-3 py-2 rounded-md hover:bg-gray-50 hidden sm:inline">How it Works</a>
-      <a href="/resources/" class="px-3 py-2 rounded-md bg-brand/5 text-brand font-semibold hidden md:inline relative">Resources<span class="absolute -bottom-0.5 left-3 right-3 h-0.5 bg-brand rounded-full"></span></a>
-      <a href="/about/" class="px-3 py-2 rounded-md hover:bg-gray-50 hidden sm:inline">About</a>
-      <button type="button" data-open-modal class="ml-2 inline-flex items-center gap-1.5 rounded-lg bg-brand px-3.5 py-2 text-white text-xs font-semibold shadow-md shadow-brand/20 hover:bg-brand-dark hover:shadow-lg hover:shadow-brand/30 transition-all">
+      <div class="nav-dd hidden lg:inline-block">
+        <a href="/how-it-works/" class="nav-dd-trigger" aria-haspopup="true" aria-expanded="false">
+          Solutions
+          <svg class="nav-dd-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </a>
+        <div class="nav-mega" role="menu">
+          <div class="nav-mega-inner">
+            <div class="nav-mega-cols">
+              <div>
+                <div class="nav-mega-col-h">Pick a side</div>
+                <a href="/how-it-works/#buyers" class="nav-mega-item" role="menuitem">
+                  <span class="nav-mega-item-title">For buyers</span>
+                  <span class="nav-mega-item-desc">From request access to first lot in about a week.</span>
+                </a>
+                <a href="/how-it-works/#suppliers" class="nav-mega-item" role="menuitem">
+                  <span class="nav-mega-item-title">For suppliers</span>
+                  <span class="nav-mega-item-desc">From manifest to wired funds in 10-14 days.</span>
+                </a>
+                <a href="/how-it-works/" class="nav-mega-item" role="menuitem">
+                  <span class="nav-mega-item-title">Both flows, side by side</span>
+                  <span class="nav-mega-item-desc">Same desk, same diligence, two intake doors.</span>
+                </a>
+              </div>
+              <div>
+                <div class="nav-mega-col-h">Operational deep dives</div>
+                <a href="/how-it-works/#buyer-process" class="nav-mega-item" role="menuitem">
+                  <span class="nav-mega-item-title">The 6-step buyer flow</span>
+                  <span class="nav-mega-item-desc">Request, approval, catalog, lot, pickup, recourse.</span>
+                </a>
+                <a href="/how-it-works/#lot-anatomy" class="nav-mega-item" role="menuitem">
+                  <span class="nav-mega-item-title">Anatomy of a lot</span>
+                  <span class="nav-mega-item-desc">Manifest fields, photo standards, cherry-picking, MOQ.</span>
+                </a>
+                <a href="/how-it-works/#logistics-lanes" class="nav-mega-item" role="menuitem">
+                  <span class="nav-mega-item-title">Logistics lanes</span>
+                  <span class="nav-mega-item-desc">Domestic pickup or coordinated export drayage.</span>
+                </a>
+              </div>
+            </div>
+            <a href="/how-it-works/" class="nav-mega-feature">
+              <div class="nav-mega-feature-img" style="background-image: url('https://images.unsplash.com/photo-1496171367470-9ed9a91ea931?w=900&auto=format&fit=crop&q=80');"></div>
+              <div class="nav-mega-feature-eyebrow">Featured</div>
+              <h4 class="nav-mega-feature-title">Inside the buyer flow</h4>
+              <p class="nav-mega-feature-body">The operating manual: what an actual lot looks like, what sits in a manifest, how recourse works.</p>
+              <span class="nav-mega-feature-cta">Read the guide <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-dd hidden lg:inline-block">
+        <a href="/#categories" class="nav-dd-trigger" aria-haspopup="true" aria-expanded="false">
+          Categories
+          <svg class="nav-dd-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </a>
+        <div class="nav-mega" role="menu">
+          <div class="nav-mega-inner">
+            <div class="nav-mega-cols">
+              <div>
+                <div class="nav-mega-col-h">Apparel &amp; lifestyle</div>
+                <a href="/#categories" class="nav-mega-item"><span class="nav-mega-item-title">Apparel</span><span class="nav-mega-item-desc">Clothing, activewear, seasonal fashion.</span></a>
+                <a href="/#categories" class="nav-mega-item"><span class="nav-mega-item-title">Accessories</span><span class="nav-mega-item-desc">Handbags, watches, luggage, travel.</span></a>
+                <a href="/#categories" class="nav-mega-item"><span class="nav-mega-item-title">Toys &amp; Baby</span><span class="nav-mega-item-desc">LEGO, strollers, educational toys.</span></a>
+              </div>
+              <div>
+                <div class="nav-mega-col-h">Home &amp; tech</div>
+                <a href="/#categories" class="nav-mega-item"><span class="nav-mega-item-title">Home &amp; Kitchen</span><span class="nav-mega-item-desc">Cookware, small appliances, tabletop.</span></a>
+                <a href="/#categories" class="nav-mega-item"><span class="nav-mega-item-title">Tools &amp; Home</span><span class="nav-mega-item-desc">Power tools, hardware, gardening.</span></a>
+                <a href="/#categories" class="nav-mega-item"><span class="nav-mega-item-title">Technology</span><span class="nav-mega-item-desc">Laptops, networking, peripherals.</span></a>
+              </div>
+            </div>
+            <a href="/request-access.html" data-open-modal="request-access" class="nav-mega-feature">
+              <div class="nav-mega-feature-img" style="background-image: url('https://images.unsplash.com/photo-1601598851547-4302969d0614?w=900&auto=format&fit=crop&q=80');"></div>
+              <div class="nav-mega-feature-eyebrow">This week</div>
+              <h4 class="nav-mega-feature-title">See what's open right now</h4>
+              <p class="nav-mega-feature-body">Approved buyers get the catalog link with full SKU manifests and pallet photos.</p>
+              <span class="nav-mega-feature-cta">Request access <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-dd hidden lg:inline-block">
+        <a href="/resources/" class="nav-dd-trigger" aria-haspopup="true" aria-expanded="false">
+          Resources
+          <svg class="nav-dd-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </a>
+        <div class="nav-mega" role="menu">
+          <div class="nav-mega-inner">
+            <div class="nav-mega-cols">
+              <div>
+                <div class="nav-mega-col-h">Read &amp; learn</div>
+                <a href="/resources/" class="nav-mega-item"><span class="nav-mega-item-title">Guides &amp; playbooks</span><span class="nav-mega-item-desc">How to read a manifest, vet a lot, price a deal.</span></a>
+                <a href="/resources/#docs" class="nav-mega-item"><span class="nav-mega-item-title">Sample NDA</span><span class="nav-mega-item-desc">Mutual NDA used pre-catalog disclosure.</span></a>
+                <a href="/resources/#docs" class="nav-mega-item"><span class="nav-mega-item-title">Sample Bill of Sale</span><span class="nav-mega-item-desc">Plain-English BoS with manifest schedule.</span></a>
+              </div>
+              <div>
+                <div class="nav-mega-col-h">For machines</div>
+                <a href="/llms.txt" class="nav-mega-item"><span class="nav-mega-item-title">For AI agents</span><span class="nav-mega-item-desc">Machine-readable index of the platform.</span></a>
+                <a href="/resources/#rep" class="nav-mega-item"><span class="nav-mega-item-title">Tax documentation</span><span class="nav-mega-item-desc">W-9, COI, resale cert workflow.</span></a>
+                <a href="/sitemap.xml" class="nav-mega-item"><span class="nav-mega-item-title">Sitemap</span><span class="nav-mega-item-desc">All public pages, structured.</span></a>
+              </div>
+            </div>
+            <a href="/resources/" class="nav-mega-feature">
+              <div class="nav-mega-feature-img" style="background-image: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?w=900&auto=format&fit=crop&q=80');"></div>
+              <div class="nav-mega-feature-eyebrow">Featured</div>
+              <h4 class="nav-mega-feature-title">The MasterStock playbook</h4>
+              <p class="nav-mega-feature-body">Every doc a buyer or supplier needs, in one library. NDA, BoS, manifest spec, tax pack.</p>
+              <span class="nav-mega-feature-cta">Open the library <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-dd hidden lg:inline-block">
+        <a href="/about/" class="nav-dd-trigger" aria-haspopup="true" aria-expanded="false">
+          Company
+          <svg class="nav-dd-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </a>
+        <div class="nav-mega" role="menu">
+          <div class="nav-mega-inner">
+            <div class="nav-mega-cols">
+              <div>
+                <div class="nav-mega-col-h">About us</div>
+                <a href="/about/#story" class="nav-mega-item"><span class="nav-mega-item-title">Our story</span><span class="nav-mega-item-desc">Why we built a cross-border wholesale operator.</span></a>
+                <a href="/about/#team" class="nav-mega-item"><span class="nav-mega-item-title">The team</span><span class="nav-mega-item-desc">Jose and Esteban. Every offer is signed by one of us.</span></a>
+                <a href="/about/#trust" class="nav-mega-item"><span class="nav-mega-item-title">Credentials</span><span class="nav-mega-item-desc">D-U-N-S, Delaware incorporation, US banking.</span></a>
+              </div>
+              <div>
+                <div class="nav-mega-col-h">Talk to us</div>
+                <a href="/about/#partnerships" class="nav-mega-item"><span class="nav-mega-item-title">Partnerships</span><span class="nav-mega-item-desc">Suppliers, forwarders, brokers, banks.</span></a>
+                <a href="/about/#contact" class="nav-mega-item"><span class="nav-mega-item-title">General contact</span><span class="nav-mega-item-desc">One business day reply.</span></a>
+                <a href="/about/#press" class="nav-mega-item"><span class="nav-mega-item-title">Press</span><span class="nav-mega-item-desc">Logos, founder bios, brand kit.</span></a>
+              </div>
+            </div>
+            <a href="/about/#team" class="nav-mega-feature">
+              <div class="nav-mega-feature-img" style="background-image: url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1200&auto=format&fit=crop&q=80');"></div>
+              <div class="nav-mega-feature-eyebrow">Founders</div>
+              <h4 class="nav-mega-feature-title">Meet the founders of MasterStock</h4>
+              <p class="nav-mega-feature-body">Two operators running the desk end to end. Every offer carries one of our names.</p>
+              <span class="nav-mega-feature-cta">See the team <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <span class="hidden sm:inline-block w-px h-5 bg-gray-200 mx-1" aria-hidden="true"></span>
+      <a href="/login.html" class="px-3 py-2 rounded-md text-gray-700 hover:bg-gray-50 hidden sm:inline">Log in</a>
+      <button type="button" data-open-modal="request-access" class="ml-1 inline-flex items-center gap-1.5 rounded-lg px-3.5 py-2 text-white text-xs font-semibold shadow-md transition-all" style="background-color:#0A5CD8;">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
-        Send Manifest
+        Request access
       </button>
     </nav>
   </div>
 </header>
 
-<main id="main" style="padding-top: 72px;">
+<main id="main" style="padding-top: 64px;">
 
-<!-- Page hero -->
-<section class="page-hero">
-  <div class="mesh-grain" aria-hidden="true"></div>
-  <div class="hero-grid" aria-hidden="true"></div>
-  <div class="hero-vignette" aria-hidden="true"></div>
-  <div class="hero-map-bg" aria-hidden="true">
-    <div class="hero-map-frame">
-      <img src="/images/usa-map.png" class="hero-map-base" alt="" />
-      <svg class="hero-map-overlay" viewBox="0 0 598 417" preserveAspectRatio="xMidYMid meet">
-        <defs>
-          <linearGradient id="ph-line-grad-res" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#6EC6FF" stop-opacity="0"/>
-            <stop offset="50%" stop-color="#6EC6FF" stop-opacity="0.9"/>
-            <stop offset="100%" stop-color="#6EC6FF" stop-opacity="0"/>
-          </linearGradient>
-          <filter id="ph-line-glow-res">
-            <feGaussianBlur stdDeviation="1.5" result="blur"/>
-            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-          </filter>
-        </defs>
-        <g stroke="rgba(110,198,255,0.25)" stroke-width="1.2" stroke-dasharray="3 4" fill="none">
-          <line x1="95" y1="205" x2="320" y2="295"/>
-          <line x1="320" y1="295" x2="510" y2="145"/>
-          <line x1="95" y1="205" x2="510" y2="145"/>
-        </g>
-        <g stroke="url(#ph-line-grad-res)" stroke-width="1.8" fill="none" stroke-linecap="round" filter="url(#ph-line-glow-res)">
-          <line x1="95" y1="205" x2="320" y2="295" class="flow-line flow-1"/>
-          <line x1="320" y1="295" x2="510" y2="145" class="flow-line flow-2"/>
-          <line x1="95" y1="205" x2="510" y2="145" class="flow-line flow-3"/>
-        </g>
-        <g class="usa-hub" transform="translate(95, 205)">
-          <circle class="hub-ripple hub-ripple-1" r="8" fill="none" stroke="#6EC6FF" stroke-width="2"/>
-          <circle class="hub-ripple hub-ripple-2" r="8" fill="none" stroke="#6EC6FF" stroke-width="2"/>
-          <circle r="7" fill="#6EC6FF" opacity="0.25"/>
-          <circle r="4" fill="#6EC6FF"/>
-          <circle r="2" fill="#FFFFFF"/>
-        </g>
-        <g class="usa-hub" transform="translate(320, 295)">
-          <circle class="hub-ripple hub-ripple-1" r="8" fill="none" stroke="#6EC6FF" stroke-width="2"/>
-          <circle class="hub-ripple hub-ripple-2" r="8" fill="none" stroke="#6EC6FF" stroke-width="2"/>
-          <circle r="7" fill="#6EC6FF" opacity="0.25"/>
-          <circle r="4" fill="#6EC6FF"/>
-          <circle r="2" fill="#FFFFFF"/>
-        </g>
-        <g class="usa-hub" transform="translate(510, 145)">
-          <circle class="hub-ripple hub-ripple-1" r="8" fill="none" stroke="#6EC6FF" stroke-width="2"/>
-          <circle class="hub-ripple hub-ripple-2" r="8" fill="none" stroke="#6EC6FF" stroke-width="2"/>
-          <circle r="7" fill="#6EC6FF" opacity="0.25"/>
-          <circle r="4" fill="#6EC6FF"/>
-          <circle r="2" fill="#FFFFFF"/>
-        </g>
-      </svg>
-    </div>
-  </div>
-  <div class="max-w-6xl xl:max-w-[84rem] mx-auto px-8 sm:px-10 lg:px-12 xl:px-20 relative" style="z-index: 3; position: relative;">
-    <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm text-[11px] font-bold uppercase tracking-[0.2em] text-[#6EC6FF]">
-      <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-      Resources
-    </span>
-    <h1 class="mt-4 font-extrabold tracking-tight text-white" style="font-size: clamp(1.75rem, 2.6vw + 0.4rem, 2.5rem); line-height: 1.1; letter-spacing: -0.025em; padding-bottom: 0.1em;">
-      Everything a procurement team asks for
-      <span class="block bg-gradient-to-r from-[#6EC6FF] to-[#3A87FF] bg-clip-text text-transparent" style="padding-bottom:0.15em;line-height:1.15;">before we even talk.</span>
-    </h1>
-    <p class="mt-4 text-base text-white/75 max-w-2xl leading-[1.55]">
-      Sample NDA, Sample Bill of Sale, our standard tax documentation package, and the Supplier Brief insights feed. All on this page. No lead capture.
-    </p>
+<!-- ============== HERO ============== -->
+<section class="bp2-hero">
+  <div class="bp2-hero-bg" aria-hidden="true"></div>
+  <div class="bp2-hero-dotgrid" aria-hidden="true"></div>
+  <div class="bp2-noise" aria-hidden="true"></div>
+  <div class="bp2-hero-inner max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="rh-hero-grid">
+      <div class="rh-hero-text">
+        <h1 class="bp2-h1" data-reveal data-reveal-delay="1">
+          A real human on your side, <span class="bp2-grad">from the first manifest.</span>
+        </h1>
+        <p class="bp2-lead" data-reveal data-reveal-delay="2">
+          Every buyer gets a named MasterStock rep on day one. We learn your channels, source vetted lots that fit, surface alternatives in 48 hours when something doesn&rsquo;t, and benchmark every offer against comparable lots that already cleared. No auction floor. No 50-bidder churn.
+        </p>
 
-    <nav class="resource-nav" aria-label="Jump to section">
-      <a href="#insights"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Insights Blog</a>
-      <a href="#nda"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Sample NDA</a>
-      <a href="#bill-of-sale"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Sample Bill of Sale</a>
-      <a href="#tax-docs"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="3" x2="9" y2="21"/></svg>Tax Documentation</a>
-    </nav>
-  </div>
-</section>
-
-<!-- SECTION 1: Insights Blog -->
-<section id="insights" class="resource-section">
-  <div class="max-w-6xl xl:max-w-[84rem] mx-auto px-5 sm:px-8">
-    <div class="max-w-3xl">
-      <span class="inline-block text-[11px] font-bold uppercase tracking-[0.2em] text-brand">Insights Blog</span>
-      <h2 class="mt-3 text-3xl sm:text-4xl font-extrabold tracking-tight">What the secondary market <span class="bg-gradient-to-r from-[#6EC6FF] to-[#3A87FF] bg-clip-text text-transparent">is doing this week.</span></h2>
-      <p class="mt-4 text-base text-gray-600 leading-relaxed">The Supplier Brief goes out every Monday to 1,100+ suppliers. No pump, no filler. Tariff moves that changed landed cost, retailer distress that floods resale channels, category-level price shifts. Here are the topics we cover.</p>
-    </div>
-
-    <div class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-      <article class="blog-card">
-        <span class="blog-card-tag">Tariffs &amp; Trade</span>
-        <h3 class="mt-4 font-bold text-gray-900 text-lg leading-snug">The Q4 tariff window: what it means for pre-holiday excess</h3>
-        <p class="mt-3 text-sm text-gray-600 leading-relaxed">When Section 301 adjusts, inventory locked in at old landed costs suddenly shifts value. We track it weekly.</p>
-        <div class="mt-5 flex items-center justify-between">
-          <span class="text-xs text-gray-500">5 min read</span>
-          <span class="text-xs font-bold text-brand">Coming Monday &rarr;</span>
-        </div>
-      </article>
-
-      <article class="blog-card">
-        <span class="blog-card-tag">Retailer Distress</span>
-        <h3 class="mt-4 font-bold text-gray-900 text-lg leading-snug">When Big Lots, Conn's, or Bed Bath clear: where that inventory ends up</h3>
-        <p class="mt-3 text-sm text-gray-600 leading-relaxed">Retail bankruptcies flood the secondary market within 30 days. Track the flow to protect your brand channel.</p>
-        <div class="mt-5 flex items-center justify-between">
-          <span class="text-xs text-gray-500">6 min read</span>
-          <span class="text-xs font-bold text-brand">Coming Monday &rarr;</span>
-        </div>
-      </article>
-
-      <article class="blog-card">
-        <span class="blog-card-tag">Category Shifts</span>
-        <h3 class="mt-4 font-bold text-gray-900 text-lg leading-snug">Premium electronics recovery rates: 2024 vs 2025 MSRP benchmarks</h3>
-        <p class="mt-3 text-sm text-gray-600 leading-relaxed">We pulled 40K comparable sales. Here's what A-stock, B-stock, and returns actually cleared at, by quarter.</p>
-        <div class="mt-5 flex items-center justify-between">
-          <span class="text-xs text-gray-500">8 min read</span>
-          <span class="text-xs font-bold text-brand">Coming Monday &rarr;</span>
-        </div>
-      </article>
-    </div>
-
-    <!-- Subscribe CTA -->
-    <div class="mt-10 rounded-2xl bg-gradient-to-br from-[#0A5CD8] to-[#0A3F8F] text-white p-8 sm:p-10 relative overflow-hidden">
-      <div class="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-[#6EC6FF]/10 blur-3xl pointer-events-none"></div>
-      <div class="relative">
-        <span class="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.2em] text-[#6EC6FF]">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          Weekly &middot; Free &middot; Supplier-only
-        </span>
-        <h3 class="mt-3 text-2xl sm:text-3xl font-extrabold tracking-tight">Subscribe to the Supplier Brief</h3>
-        <p class="mt-3 text-white/80 max-w-xl leading-relaxed text-sm">First manifest valuation is <strong class="text-[#6EC6FF]">free</strong> when you subscribe. Monday delivery. Unsubscribe in one click.</p>
-        <form id="newsletter-form" class="mt-5 flex flex-col sm:flex-row gap-3 max-w-md" novalidate>
-          <label for="newsletter-email" class="sr-only">Email</label>
-          <input type="email" id="newsletter-email" required placeholder="you@company.com" class="flex-1 rounded-lg bg-white/10 border border-white/20 backdrop-blur-sm px-4 py-3 text-sm text-white placeholder-white/50 focus:outline-none focus:border-[#6EC6FF] focus:bg-white/15">
-          <button type="submit" class="rounded-lg bg-white px-5 py-3 text-sm font-bold text-[#0A3F8F] hover:bg-[#EAF2FF] transition whitespace-nowrap">Subscribe &rarr;</button>
-        </form>
-        <p id="newsletter-success" class="hidden mt-3 text-sm font-medium text-emerald-300">You're in. First brief lands Monday.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SECTION 2: Sample NDA -->
-<section id="nda" class="resource-section">
-  <div class="max-w-6xl xl:max-w-[84rem] mx-auto px-5 sm:px-8">
-    <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-10 items-start">
-      <div>
-        <span class="inline-block text-[11px] font-bold uppercase tracking-[0.2em] text-brand">Sample NDA</span>
-        <h2 class="mt-3 text-3xl sm:text-4xl font-extrabold tracking-tight">Mutual 2-way NDA. <span class="bg-gradient-to-r from-[#6EC6FF] to-[#3A87FF] bg-clip-text text-transparent">Signed in minutes.</span></h2>
-        <p class="mt-4 text-base text-gray-600 leading-relaxed">Our standard NDA is 2 pages, plain English, mutual. We send it alongside your offer. Your legal team can redline it, or we'll sign your version.</p>
-
-        <div class="key-clause">
-          <span class="key-clause-label">Clause 1 · Mutual obligation</span>
-          Both parties protect the other's confidential information. Symmetric, not one-sided.
-        </div>
-        <div class="key-clause">
-          <span class="key-clause-label">Clause 2 · Purpose limitation</span>
-          Information is used only to evaluate the proposed transaction.
-        </div>
-        <div class="key-clause">
-          <span class="key-clause-label">Clause 3 · 2-year term</span>
-          Confidentiality obligations survive 24 months post-transaction.
-        </div>
-        <div class="key-clause">
-          <span class="key-clause-label">Clause 4 · Delaware governing law</span>
-          Jurisdiction: Delaware courts. Industry-standard.
-        </div>
-
-        <div class="mt-6 flex flex-wrap gap-3">
-          <a href="mailto:legal@masterstockunitedstates.com?subject=Request%20Sample%20NDA&amp;body=Please%20send%20the%20sample%20mutual%20NDA." class="inline-flex items-center gap-2 rounded-xl bg-brand px-5 py-3 text-white font-semibold text-sm hover:bg-brand-dark transition shadow-md shadow-brand/20">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            Email me the NDA (PDF)
-          </a>
-          <button type="button" data-open-modal class="inline-flex items-center gap-2 rounded-xl border border-gray-300 bg-white px-5 py-3 text-gray-900 font-semibold text-sm hover:bg-gray-50 transition">
-            Send manifest with NDA request <span aria-hidden="true">&rarr;</span>
+        <div class="bp2-cta-row" data-reveal data-reveal-delay="3">
+          <button type="button" data-open-modal="request-access" class="btn-primary">
+            Get matched with a rep
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
           </button>
-        </div>
-      </div>
-
-      <!-- Document preview -->
-      <div class="doc-preview">
-        <span class="doc-preview-watermark">SAMPLE</span>
-        <h4>Mutual Non-Disclosure Agreement</h4>
-        <p style="text-align: center; font-weight: 700; color: #0F172A;">BETWEEN<br>MasterStock USA Inc. (&ldquo;MS&rdquo;)<br>AND<br>[Supplier Legal Name] (&ldquo;Supplier&rdquo;)</p>
-        <p><strong>1. Purpose.</strong> The parties intend to explore a potential transaction involving the sale of excess or liquidation inventory (the &ldquo;Transaction&rdquo;) and may exchange confidential information (&ldquo;Confidential Information&rdquo;) in connection with evaluating it.</p>
-        <p><strong>2. Confidential Information.</strong> Includes any non-public business, financial, operational, technical, product, or pricing information disclosed by one party to the other, whether oral, written, or electronic, marked or reasonably identified as confidential.</p>
-        <p><strong>3. Obligations.</strong> Each party agrees to (a) use Confidential Information solely to evaluate the Transaction; (b) protect it using at least the same standard of care it uses for its own confidential information; (c) limit disclosure to employees, advisors, and affiliates with a need-to-know, who are bound by equivalent confidentiality obligations.</p>
-        <p><strong>4. Exclusions.</strong> Confidential Information does not include information that (i) is or becomes publicly available through no breach; (ii) was rightfully known before receipt; (iii) is independently developed; or (iv) is required to be disclosed by law, subject to prompt notice to the disclosing party.</p>
-        <p><strong>5. Term.</strong> Obligations under this Agreement survive for twenty-four (24) months from the Effective Date.</p>
-        <p><strong>6. Governing Law.</strong> This Agreement is governed by the laws of the State of Delaware, USA.</p>
-        <p style="margin-top: 28px; color: #94A3B8; font-size: 12px; font-style: italic;">&mdash; End of sample. Full executable version available on request.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SECTION 3: Sample Bill of Sale -->
-<section id="bill-of-sale" class="resource-section">
-  <div class="max-w-6xl xl:max-w-[84rem] mx-auto px-5 sm:px-8">
-    <div class="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-10 items-start">
-      <!-- Document preview -->
-      <div class="doc-preview order-2 lg:order-1">
-        <span class="doc-preview-watermark">SAMPLE</span>
-        <h4>Bill of Sale &middot; Excess Inventory Transaction</h4>
-        <p style="text-align: center; font-weight: 700; color: #0F172A;">SELLER: [Supplier Legal Name]<br>BUYER: MasterStock USA Inc., Delaware<br>DATE: [Transaction Date]</p>
-        <p><strong>1. Sale.</strong> Seller hereby sells, transfers, and conveys to Buyer all right, title, and interest in the inventory described in <strong>Schedule A (Manifest)</strong>, attached and incorporated herein (the &ldquo;Inventory&rdquo;).</p>
-        <p><strong>2. Consideration.</strong> Buyer has paid Seller <strong>$[Total Purchase Price]</strong> in US dollars, wired from Buyer's US Mercury Treasury account on the Date above. Payment structure per the executed Offer (Full-Lot / Selective Buy / Floor + Upside).</p>
-        <p><strong>3. Condition &amp; Title.</strong> Seller warrants that (a) Seller holds clear title free of liens, encumbrances, and claims; (b) Inventory is in the condition represented in the Manifest; (c) Seller has full authority to sell.</p>
-        <p><strong>4. Channel Restrictions.</strong> Buyer agrees to the channel restrictions checked in <strong>Schedule B</strong>: ☐ No Amazon ☐ No eBay ☐ No brand-owned stores ☐ Export only ☐ Region-specific. Violations are subject to the penalties stated in Schedule B.</p>
-        <p><strong>5. Risk of Loss.</strong> Title and risk transfer to Buyer at the moment of pickup at origin dock.</p>
-        <p><strong>6. Inspection Reconciliation.</strong> Seller acknowledges that Buyer performs a 7-day video-recorded inspection against the Manifest. Line-item variances resolved per the reconciliation schedule in Schedule C.</p>
-        <p><strong>7. Tax Documentation.</strong> Buyer will provide a W-9 upon request and a complete documentation package (Bill of Sale, manifest reconciliation, wire confirmation, condition report). Seller's tax treatment of this transaction is determined solely by Seller's CPA, enrolled agent, or tax attorney based on Seller's facts and entity structure. Buyer makes no representation as to deductibility or tax outcome.</p>
-        <p><strong>8. Governing Law.</strong> Delaware. Disputes over $5,000 USD resolved by binding arbitration (AAA or JAMS), loser pays.</p>
-        <p style="margin-top: 28px; color: #94A3B8; font-size: 12px; font-style: italic;">&mdash; End of sample. Schedules A, B, C customized per transaction.</p>
-      </div>
-
-      <div class="order-1 lg:order-2">
-        <span class="inline-block text-[11px] font-bold uppercase tracking-[0.2em] text-brand">Sample Bill of Sale</span>
-        <h2 class="mt-3 text-3xl sm:text-4xl font-extrabold tracking-tight">One page. <span class="bg-gradient-to-r from-[#6EC6FF] to-[#3A87FF] bg-clip-text text-transparent">No back-end traps.</span></h2>
-        <p class="mt-4 text-base text-gray-600 leading-relaxed">Every transaction closes on the same Bill of Sale. Standard across every deal — we don't spin up special terms in your disfavor.</p>
-
-        <div class="key-clause">
-          <span class="key-clause-label">Clean title transfer</span>
-          Clear warranty of title, no silent liens.
-        </div>
-        <div class="key-clause">
-          <span class="key-clause-label">Channel restrictions in writing</span>
-          No Amazon, no eBay, export-only — checked off in Schedule B. Binding.
-        </div>
-        <div class="key-clause">
-          <span class="key-clause-label">Video-inspection reconciliation</span>
-          7-day window, recording shared within 24h, timestamps on any dispute.
-        </div>
-        <div class="key-clause">
-          <span class="key-clause-label">Tax documentation package</span>
-          Full deal documentation for your tax advisor. CPA decides treatment.
-        </div>
-
-        <div class="mt-6 flex flex-wrap gap-3">
-          <a href="mailto:legal@masterstockunitedstates.com?subject=Request%20Sample%20Bill%20of%20Sale&amp;body=Please%20send%20the%20sample%20Bill%20of%20Sale." class="inline-flex items-center gap-2 rounded-xl bg-brand px-5 py-3 text-white font-semibold text-sm hover:bg-brand-dark transition shadow-md shadow-brand/20">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            Email me the BoS (PDF)
+          <a href="#docs" class="btn-secondary">
+            See how we source for you
           </a>
         </div>
       </div>
+
+      <!-- Right-side animated illustration: chat-with-rep mock -->
+      <div class="rh-hero-art" data-reveal data-reveal-delay="3" aria-hidden="true">
+        <div class="rh-art-glow"></div>
+        <div class="rh-art-card">
+          <div class="rh-art-card-head">
+            <div class="rh-art-avatar">
+              <span class="rh-art-avatar-dot"></span>
+              JP
+            </div>
+            <div class="rh-art-meta">
+              <div class="rh-art-name">Jose Palomino</div>
+              <div class="rh-art-role">Your rep &middot; <span style="color:#10B981;">online</span></div>
+            </div>
+            <svg class="rh-art-headicon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.96.34 1.9.66 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.54 2.81.66A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+
+          <div class="rh-art-msgs">
+            <div class="rh-art-msg rh-art-msg-in" style="animation-delay:.4s;"><span>Need 2,000 units of premium audio for Q4. Anything active?</span></div>
+            <div class="rh-art-msg rh-art-msg-out" style="animation-delay:1.4s;"><span>3 lots match your channel. Full manifests + warehouse photos in your inbox today.</span></div>
+            <div class="rh-art-msg rh-art-msg-in" style="animation-delay:2.6s;"><span>What did comparable lots clear at last quarter?</span></div>
+            <div class="rh-art-msg rh-art-msg-out" style="animation-delay:3.6s;"><span>$42&ndash;48/unit A-stock. Benchmarks attached. Wire from Mercury on pickup.</span></div>
+            <div class="rh-art-typing" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
     </div>
   </div>
 </section>
 
-<!-- SECTION 4: Tax Documentation Package -->
-<section id="tax-docs" class="resource-section">
-  <div class="max-w-6xl xl:max-w-[84rem] mx-auto px-5 sm:px-8">
-    <div class="max-w-3xl">
-      <span class="inline-block text-[11px] font-bold uppercase tracking-[0.2em] text-brand">Tax documentation</span>
-      <h2 class="mt-3 text-3xl sm:text-4xl font-extrabold tracking-tight">Every deal closes with <span class="bg-gradient-to-r from-[#6EC6FF] to-[#3A87FF] bg-clip-text text-transparent">the paperwork your CPA expects.</span></h2>
-      <p class="mt-4 text-base text-gray-600 leading-relaxed">When excess inventory sells below cost, the loss flows through your Cost of Goods Sold &mdash; that's ordinary inventory accounting, not a special provision. What matters is having the documentation to support it: a clean Bill of Sale, a reconciled manifest, wire confirmation, and the pickup dated to the period you need it in. We ship all four with every deal, at no additional cost.</p>
-    </div>
-
-    <!-- Prominent legal disclaimer (not footer-style) -->
-    <div class="mt-6 rounded-xl border-l-4 border-brand bg-brand/5 p-5">
-      <p class="text-sm text-gray-800 leading-relaxed">
-        <strong class="text-gray-900">This is not tax advice.</strong> MasterStock USA provides transactional documentation only. We do not determine tax treatment, prepare tax returns, or give tax opinions. Your entity structure, inventory method, and applicable deductions are determined solely by your CPA, enrolled agent, or tax attorney based on your specific facts.
+<!-- ============== SECTION: HOW WE SOURCE FOR PROCUREMENT TEAMS ============== -->
+<section id="docs" class="resource-section">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="docs-header" data-reveal>
+      <span class="section-eyebrow">For procurement teams</span>
+      <h2 class="section-title">We do the hunting. <span class="bp2-grad">You pick the lots that fit.</span></h2>
+      <p class="section-lead">
+        Procurement teams don&rsquo;t need another auction floor. They need vetted lots that match their channel, with full manifests, real photos, and honest price benchmarks. We source against your brief, and back every transaction with paperwork that doesn&rsquo;t move from deal to deal.
       </p>
     </div>
 
-    <!-- Standard docs card grid -->
-    <h3 class="mt-12 text-xl sm:text-2xl font-extrabold tracking-tight text-gray-900">Standard with every transaction</h3>
-    <p class="mt-2 text-sm text-gray-600">Every deal ships with this documentation package. No upsell, no tier. Included.</p>
-
-    <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-5">
-      <div class="bg-white border border-gray-100 rounded-2xl p-6">
-        <div class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-brand/10 text-brand mb-4">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+    <div class="docs-grid">
+      <!-- Far-left pull-quote rail -->
+      <aside class="docs-rail" aria-hidden="true">
+        <div class="docs-quote">
+          <p class="docs-quote-text">&ldquo;We stopped chasing 50-bidder auctions. They send us 3 lots a month that actually fit our channel.&rdquo;</p>
+          <div class="docs-quote-author"><span class="docs-quote-dot"></span>Head of Sourcing &middot; Off-price retailer</div>
         </div>
-        <h4 class="font-bold text-base text-gray-900">Bill of Sale</h4>
-        <p class="mt-2 text-sm text-gray-600 leading-relaxed">Line-item detail: SKU, quantity, condition grade, sale proceeds, pickup date, signed by both parties. The document of record for the transaction.</p>
+        <div class="docs-quote" style="margin-top: 480px;">
+          <p class="docs-quote-text">&ldquo;Same paper every deal. NDA, BoS, recourse. We stopped re-reading clauses years ago.&rdquo;</p>
+          <div class="docs-quote-author"><span class="docs-quote-dot"></span>VP Procurement &middot; B2B Wholesaler, FL</div>
+        </div>
+      </aside>
+
+      <!-- Center timeline -->
+      <div class="docs-timeline" aria-hidden="true">
+        <span class="docs-node is-step-1"></span>
+        <span class="docs-node is-step-2"></span>
+        <span class="docs-node is-step-3"></span>
+        <span class="docs-node is-step-4"></span>
+        <span class="docs-node is-step-5"></span>
       </div>
 
-      <div class="bg-white border border-gray-100 rounded-2xl p-6">
-        <div class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-brand/10 text-brand mb-4">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-        </div>
-        <h4 class="font-bold text-base text-gray-900">Manifest reconciliation</h4>
-        <p class="mt-2 text-sm text-gray-600 leading-relaxed">Our count vs. your manifest, with any shortages, damages, or adjustments explicitly called out. Clean audit trail, no surprises.</p>
-      </div>
+      <!-- Right content column -->
+      <div class="docs-content">
+        <!-- Step 01: How we find lots -->
+        <div class="docs-step" data-reveal>
+          <span class="docs-step-number">01</span>
+          <h3 class="docs-step-title">We hunt for the lot that fits your channel.</h3>
+          <p class="docs-step-lead">
+            Tell us your categories, your channels, and the gap you&rsquo;re trying to fill. We map it against active US supplier inventory and surface only what fits, with full manifests, real warehouse photos, and pricing benchmarks from comparable lots that already cleared.
+          </p>
 
-      <div class="bg-white border border-gray-100 rounded-2xl p-6">
-        <div class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-brand/10 text-brand mb-4">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-        </div>
-        <h4 class="font-bold text-base text-gray-900">Wire confirmation</h4>
-        <p class="mt-2 text-sm text-gray-600 leading-relaxed">Originated from our US Mercury Treasury account. Proof of payment, not just a journal entry. Named counterparty for arm's-length documentation.</p>
-      </div>
+          <div class="docs-clauses">
+            <div class="docs-clause">
+              <span class="docs-clause-num">Step 01</span>
+              <p class="docs-clause-title">Channel mapping</p>
+              <p class="docs-clause-desc">We learn how you sell, Amazon, retail, export, B2B wholesale. Every lot we surface is pre-screened against your channel restrictions before you ever see it.</p>
+            </div>
+            <div class="docs-clause">
+              <span class="docs-clause-num">Step 02</span>
+              <p class="docs-clause-title">Active supplier pipeline</p>
+              <p class="docs-clause-desc">100+ US suppliers in active conversation each month. We don&rsquo;t pitch you stale stock, only inventory leaving the dock this quarter.</p>
+            </div>
+            <div class="docs-clause">
+              <span class="docs-clause-num">Step 03</span>
+              <p class="docs-clause-title">Specific SKU requests</p>
+              <p class="docs-clause-desc">Need 2,000 units of a category by November? Send the brief. We tap our supplier network and report back within 5 business days.</p>
+            </div>
+            <div class="docs-clause">
+              <span class="docs-clause-num">Step 04</span>
+              <p class="docs-clause-title">Honest price benchmarks</p>
+              <p class="docs-clause-desc">We show you what comparable lots cleared at, by quarter and condition grade. You bid against data, not gut. No mark-up theater.</p>
+            </div>
+          </div>
 
-      <div class="bg-white border border-gray-100 rounded-2xl p-6">
-        <div class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-brand/10 text-brand mb-4">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+          <div class="docs-ctas">
+            <button type="button" data-open-modal="request-access" class="btn-primary">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+              Request access
+            </button>
+          </div>
         </div>
-        <h4 class="font-bold text-base text-gray-900">Condition grading report</h4>
-        <p class="mt-2 text-sm text-gray-600 leading-relaxed">A / B / Salvage grading per SKU or lot, with notes on packaging, seals, and observable defects. Supports fair market documentation.</p>
-      </div>
 
-      <div class="bg-white border border-gray-100 rounded-2xl p-6">
-        <div class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-brand/10 text-brand mb-4">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><line x1="3" y1="9" x2="21" y2="9"/></svg>
-        </div>
-        <h4 class="font-bold text-base text-gray-900">Resale Certificate</h4>
-        <p class="mt-2 text-sm text-gray-600 leading-relaxed">Where applicable by state, so you do not charge sales tax on the transaction. We provide the correct form for your jurisdiction.</p>
-      </div>
+        <!-- Step 02: Manifest review -->
+        <div class="docs-step" data-reveal>
+          <span class="docs-step-number">02</span>
+          <h3 class="docs-step-title">We pre-screen every manifest before it lands in your inbox.</h3>
+          <p class="docs-step-lead">
+            Raw manifests are noisy. We clean line items, flag SKUs that conflict with your channel restrictions, and grade condition by lot, so when a manifest reaches you, it&rsquo;s already filtered down to what&rsquo;s worth a real look.
+          </p>
 
-      <div class="bg-white border border-gray-100 rounded-2xl p-6">
-        <div class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-brand/10 text-brand mb-4">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <div class="docs-clauses">
+            <div class="docs-clause">
+              <span class="docs-clause-num">Filter 01</span>
+              <p class="docs-clause-title">Channel-restriction screen</p>
+              <p class="docs-clause-desc">We strip out SKUs blocked by your channel rules (Amazon, brand-restricted, region-locked) before you see the file.</p>
+            </div>
+            <div class="docs-clause">
+              <span class="docs-clause-num">Filter 02</span>
+              <p class="docs-clause-title">Condition grading by lot</p>
+              <p class="docs-clause-desc">A-stock, B-stock, returns, salvage. Walked the warehouse, photographed it, called it the way it is.</p>
+            </div>
+            <div class="docs-clause">
+              <span class="docs-clause-num">Filter 03</span>
+              <p class="docs-clause-title">MOQ alignment</p>
+              <p class="docs-clause-desc">If you only take full pallets, we don&rsquo;t bother you with hand-pick lots. If you cherry-pick, we structure offers per SKU.</p>
+            </div>
+            <div class="docs-clause">
+              <span class="docs-clause-num">Filter 04</span>
+              <p class="docs-clause-title">SKU-level photos</p>
+              <p class="docs-clause-desc">Warehouse photos this week. Not stock product shots. You see what you&rsquo;re actually buying.</p>
+            </div>
+          </div>
         </div>
-        <h4 class="font-bold text-base text-gray-900">Timing that matches your fiscal year</h4>
-        <p class="mt-2 text-sm text-gray-600 leading-relaxed">Tell us your fiscal year-end. We engineer the pickup window to land the transaction in the tax period you need it in. Standard for Q4 close, available for any fiscal pattern.</p>
+
+        <!-- Step 03: Negotiation -->
+        <div class="docs-step" data-reveal>
+          <span class="docs-step-number">03</span>
+          <h3 class="docs-step-title">We negotiate on your behalf with the supplier.</h3>
+          <p class="docs-step-lead">
+            You tell us your ceiling. We work the supplier on payment terms, pickup window, and offer structure, Full-Lot, Selective Buy, or Floor + Upside. You walk in with one number to approve, not a back-and-forth chain to manage.
+          </p>
+
+          <div class="docs-clauses">
+            <div class="docs-clause">
+              <span class="docs-clause-num">Lever 01</span>
+              <p class="docs-clause-title">Three offer structures</p>
+              <p class="docs-clause-desc">Full-Lot for liquidity, Selective Buy for cherry-pick, Floor + Upside when condition is uncertain. We pick the right one for your channel.</p>
+            </div>
+            <div class="docs-clause">
+              <span class="docs-clause-num">Lever 02</span>
+              <p class="docs-clause-title">Payment terms</p>
+              <p class="docs-clause-desc">Cash on pickup as default. Net-30 available after onboarding. We absorb supplier-side payment timing so you don&rsquo;t.</p>
+            </div>
+            <div class="docs-clause">
+              <span class="docs-clause-num">Lever 03</span>
+              <p class="docs-clause-title">Pickup window control</p>
+              <p class="docs-clause-desc">Tell us your fiscal close, your warehouse capacity, your shipping schedule. We anchor pickup to your timeline, not theirs.</p>
+            </div>
+            <div class="docs-clause">
+              <span class="docs-clause-num">Lever 04</span>
+              <p class="docs-clause-title">Single point of contact</p>
+              <p class="docs-clause-desc">You talk to your rep. We talk to the supplier. No three-way email chains, no &ldquo;reply-all&rdquo; chaos.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 04: Alternatives -->
+        <div class="docs-step" data-reveal>
+          <span class="docs-step-number">04</span>
+          <h3 class="docs-step-title">When a lot doesn&rsquo;t fit, we surface alternatives within 48 hours.</h3>
+          <p class="docs-step-lead">
+            Wrong category, wrong condition, wrong volume? Don&rsquo;t walk away, tell us why. We tap the active supplier pipeline and come back within 48 hours with comparable inventory that does fit. If we don&rsquo;t have it on the floor, we go source it.
+          </p>
+
+          <div class="docs-clauses">
+            <div class="docs-clause">
+              <span class="docs-clause-num">Path 01</span>
+              <p class="docs-clause-title">Comparable lots from the pipeline</p>
+              <p class="docs-clause-desc">We map your feedback to active inventory across our 100+ supplier network. Usually 2&ndash;4 alternates within 48 hours.</p>
+            </div>
+            <div class="docs-clause">
+              <span class="docs-clause-num">Path 02</span>
+              <p class="docs-clause-title">Active sourcing brief</p>
+              <p class="docs-clause-desc">No fit in the pipeline? We open a sourcing brief, ping our supplier base, and report back in 5 business days.</p>
+            </div>
+            <div class="docs-clause">
+              <span class="docs-clause-num">Path 03</span>
+              <p class="docs-clause-title">Forward queue</p>
+              <p class="docs-clause-desc">Tell us what you&rsquo;ll need next quarter. We watch for it and pull you in the moment matching inventory lands.</p>
+            </div>
+            <div class="docs-clause">
+              <span class="docs-clause-num">Path 04</span>
+              <p class="docs-clause-title">Comparable price benchmarks</p>
+              <p class="docs-clause-desc">We share what similar lots cleared at recently, so when the alternative lands, you already know the price ceiling.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 05: Standard paperwork -->
+        <div class="docs-step" data-reveal>
+          <span class="docs-step-number">05</span>
+          <h3 class="docs-step-title">Standard paperwork, on every deal.</h3>
+          <p class="docs-step-lead">
+            Mutual NDA before we talk numbers. One-page Bill of Sale at close. Same paper every time, no special clauses, no surprises, no terms tilted in our favor. Your legal team reviews once and we&rsquo;re done re-reading for life.
+          </p>
+
+          <div class="docs-clauses">
+            <div class="docs-clause">
+              <span class="docs-clause-num">Doc 01</span>
+              <p class="docs-clause-title">Mutual 2-page NDA</p>
+              <p class="docs-clause-desc">Symmetric protection for both sides. Plain English, 24-month term, Delaware law. Sign ours or send us yours.</p>
+            </div>
+            <div class="docs-clause">
+              <span class="docs-clause-num">Doc 02</span>
+              <p class="docs-clause-title">One-page Bill of Sale</p>
+              <p class="docs-clause-desc">Same document across every transaction. Clear title, channel restrictions in writing, video-inspected reconciliation.</p>
+            </div>
+            <div class="docs-clause">
+              <span class="docs-clause-num">Doc 03</span>
+              <p class="docs-clause-title">No back-end traps</p>
+              <p class="docs-clause-desc">We don&rsquo;t spin up special terms in your disfavor. The deal you sign is the deal you get. Standard across every supplier and every buyer.</p>
+            </div>
+            <div class="docs-clause">
+              <span class="docs-clause-num">Doc 04</span>
+              <p class="docs-clause-title">Recourse you can hold us to</p>
+              <p class="docs-clause-desc">5%+ manifest variance triggers a pro-rated credit. Documented, video-timestamped, resolved within one week of receipt.</p>
+            </div>
+          </div>
+
+          <div class="docs-ctas">
+            <button type="button" data-open-modal="request-access" class="btn-primary">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+              Request access
+            </button>
+          </div>
+        </div>
       </div>
     </div>
+  </div>
+</section>
 
-    <!-- On-request extras -->
-    <h3 class="mt-12 text-xl sm:text-2xl font-extrabold tracking-tight text-gray-900">Available on request</h3>
-    <p class="mt-2 text-sm text-gray-600">For lots that are partially destroyed or routed to charitable partners, we issue additional certificates your CPA may need for alternative tax positions.</p>
+<div class="section-divider" aria-hidden="true"></div>
+<!-- ============== SECTION 4: YOUR REP (accordion + visual) ============== -->
+<section id="rep" class="resource-section">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="rep-grid">
+      <!-- LEFT: header + accordion -->
+      <div class="rep-left">
+        <div data-reveal>
+          <span class="section-eyebrow">Dedicated support</span>
+          <h2 class="section-title">
+            One MasterStock rep, working your inventory <span class="bp2-grad">like it&rsquo;s their own.</span>
+          </h2>
+          <p class="section-lead">
+            From your first manifest you&rsquo;re matched with a named rep who knows your categories, your channels, and what buyers are bidding on this week.
+          </p>
+          <a href="mailto:info@masterstockunitedstates.com?subject=Get%20matched%20with%20a%20rep" class="rep-toplink">
+            Talk to a rep <span aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
 
-    <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-5">
-      <div class="bg-gradient-to-br from-gray-50 to-white border border-gray-100 rounded-2xl p-6">
-        <h4 class="font-bold text-base text-gray-900">Certificate of Destruction</h4>
-        <p class="mt-2 text-sm text-gray-600 leading-relaxed">For portions of the lot we destroy (expired, damaged, or brand-restricted). Dated, signed, with line-item detail.</p>
+        <div class="rep-accordion" data-reveal>
+          <details class="rep-acc-item" open>
+            <summary class="rep-acc-head">
+              <span class="rep-acc-title">Direct line, named owner</span>
+              <svg class="rep-acc-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </summary>
+            <div class="rep-acc-body">
+              Cell, WhatsApp, and email of a real person, usually Jose or Esteban. Reply window under 4 business hours. No support tier. No escalation maze. The person you message is the person who knows your account.
+            </div>
+          </details>
+
+          <details class="rep-acc-item">
+            <summary class="rep-acc-head">
+              <span class="rep-acc-title">We source alternatives in 48 hours</span>
+              <svg class="rep-acc-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </summary>
+            <div class="rep-acc-body">
+              Lot doesn&rsquo;t fit your channel? Send what you have. We surface comparable inventory from our active pipeline within 48 hours, or go source it from our 100+ US supplier network.
+            </div>
+          </details>
+
+          <details class="rep-acc-item">
+            <summary class="rep-acc-head">
+              <span class="rep-acc-title">Buyer matching, by category</span>
+              <svg class="rep-acc-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </summary>
+            <div class="rep-acc-body">
+              We know which of our 100+ active buyers are bidding on your category this week. We close faster because we don&rsquo;t shop you blind to the open market.
+            </div>
+          </details>
+
+          <details class="rep-acc-item">
+            <summary class="rep-acc-head">
+              <span class="rep-acc-title">Weekly check-in &amp; scoping help</span>
+              <svg class="rep-acc-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </summary>
+            <div class="rep-acc-body">
+              Optional 20-minute weekly sync. Async-friendly if you prefer written updates. Not sure how to format a manifest or split a lot? We walk you through it before you commit anything to paper.
+            </div>
+          </details>
+
+          <details class="rep-acc-item">
+            <summary class="rep-acc-head">
+              <span class="rep-acc-title">On-site visits when it matters</span>
+              <svg class="rep-acc-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </summary>
+            <div class="rep-acc-body">
+              For large lots or first-time relationships, your rep flies out. We&rsquo;ve walked warehouses in 14 US states. Trust starts in person, not over email.
+            </div>
+          </details>
+        </div>
       </div>
-      <div class="bg-gradient-to-br from-gray-50 to-white border border-gray-100 rounded-2xl p-6">
-        <h4 class="font-bold text-base text-gray-900">Charitable diversion attestation</h4>
-        <p class="mt-2 text-sm text-gray-600 leading-relaxed">For portions routed to qualified 501(c)(3) partners, including the recipient organization's EIN and acceptance letter.</p>
+
+      <!-- RIGHT: Animated CRM / rep dashboard mock -->
+      <div class="rep-art" data-reveal aria-hidden="true">
+        <div class="rep-art-grid" aria-hidden="true"></div>
+        <div class="rep-art-glow1" aria-hidden="true"></div>
+        <div class="rep-art-glow2" aria-hidden="true"></div>
+
+        <div class="rep-dash">
+          <!-- Top bar -->
+          <div class="rep-dash-top">
+            <div class="rep-dash-search">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <span>Search active lots</span>
+            </div>
+            <div class="rep-dash-avatar">
+              <span class="rep-dash-avatar-img">JP</span>
+              <span class="rep-dash-avatar-dot"></span>
+            </div>
+          </div>
+
+          <!-- Body: sidebar + main -->
+          <div class="rep-dash-body">
+            <aside class="rep-dash-side">
+              <div class="rep-dash-side-item is-active">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                <span>Inbox</span>
+                <span class="rep-dash-side-badge">3</span>
+              </div>
+              <div class="rep-dash-side-item">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span>Active lots</span>
+              </div>
+              <div class="rep-dash-side-item">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                <span>Pipeline</span>
+              </div>
+              <div class="rep-dash-side-item">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                <span>Buyers</span>
+              </div>
+            </aside>
+
+            <main class="rep-dash-main">
+              <!-- Active conversation header -->
+              <div class="rep-dash-thread-h">
+                <div class="rep-dash-thread-meta">
+                  <span class="rep-dash-thread-tag">Sourcing brief</span>
+                  <span class="rep-dash-thread-title">Premium audio, 2,000 units, Q4</span>
+                </div>
+                <span class="rep-dash-thread-status"><span class="dot"></span> Live</span>
+              </div>
+
+              <!-- Message stream -->
+              <div class="rep-dash-stream">
+                <div class="rep-dash-msg rep-dash-msg-in"><span></span></div>
+                <div class="rep-dash-msg rep-dash-msg-out"><span></span></div>
+                <div class="rep-dash-msg rep-dash-msg-in"><span></span></div>
+                <div class="rep-dash-typing"><span></span><span></span><span></span></div>
+              </div>
+
+              <!-- Metric row -->
+              <div class="rep-dash-metrics">
+                <div class="rep-dash-metric">
+                  <div class="rep-dash-metric-label">Reply time</div>
+                  <div class="rep-dash-metric-value">2h 14m</div>
+                  <div class="rep-dash-bar"><span style="width: 22%;"></span></div>
+                </div>
+                <div class="rep-dash-metric">
+                  <div class="rep-dash-metric-label">Pipeline match</div>
+                  <div class="rep-dash-metric-value">92%</div>
+                  <div class="rep-dash-bar"><span class="ok" style="width: 92%;"></span></div>
+                </div>
+              </div>
+            </main>
+          </div>
+        </div>
+
+        <!-- Floating notification toast -->
+        <div class="rep-toast">
+          <div class="rep-toast-icon">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div class="rep-toast-text">
+            <div class="rep-toast-title">2 buyers matched</div>
+            <div class="rep-toast-sub">Active on your category</div>
+          </div>
+        </div>
       </div>
-    </div>
-
-    <!-- Why it matters -->
-    <div class="mt-12 rounded-2xl bg-gradient-to-br from-blue-50 to-white border border-blue-100 p-6 sm:p-8">
-      <div class="inline-block text-[10px] font-bold uppercase tracking-[0.14em] text-brand bg-white border border-brand/20 px-2.5 py-1 rounded-full">Why this matters</div>
-      <h3 class="mt-3 text-xl font-extrabold text-gray-900">Most brokers ship a one-page Bill of Sale. Your CPA then spends hours rebuilding the rest.</h3>
-      <p class="mt-3 text-sm text-gray-600 leading-relaxed">Standard broker paperwork rarely holds up under audit without supplementation: no condition grading, no reconciliation, no wire trail, no arm's-length documentation. CPAs bill real hours to reconstruct it. We deliver the package complete so your tax team can focus on the return, not on chasing paperwork.</p>
-    </div>
-
-    <!-- Final CTA -->
-    <div class="mt-10 text-center">
-      <button type="button" data-open-modal class="inline-flex items-center gap-2 rounded-xl bg-brand px-6 py-3.5 text-white font-semibold shadow-lg shadow-brand/25 hover:bg-brand-dark transition-all">
-        Send Manifest &middot; Get the Documentation Package <span aria-hidden="true">&rarr;</span>
-      </button>
-      <p class="mt-3 text-xs text-gray-500">Tax treatment is your CPA's call. We just hand over the paperwork.</p>
     </div>
   </div>
 </section>
@@ -622,104 +2193,206 @@
 </main>
 
 <!-- FOOTER -->
-<footer class="border-t border-gray-200 bg-white">
-  <div class="max-w-6xl xl:max-w-[84rem] 2xl:max-w-[92rem] mx-auto px-5 sm:px-8 py-14">
-    <div class="grid grid-cols-1 md:grid-cols-5 gap-10">
-      <div class="md:col-span-1">
-        <a href="/" class="flex items-center" aria-label="MasterStock USA">
-          <img src="/images/logo-final.png" alt="MasterStock USA" class="h-10 w-auto object-contain" />
-        </a>
-        <p class="mt-3 text-xs text-gray-500 leading-relaxed">MasterStock USA Inc. Cash offers for excess inventory.</p>
-      </div>
-      <nav aria-label="About">
-        <h4 class="text-xs font-bold uppercase tracking-wider text-gray-900">About</h4>
-        <ul class="mt-4 space-y-2 text-sm text-gray-600">
-          <li><a href="/about/" class="hover:text-gray-900">Who we are</a></li>
-          <li><a href="/#faq" class="hover:text-gray-900">FAQ</a></li>
-          <li><a href="/about/#trust" class="hover:text-gray-900">Trust &amp; compliance</a></li>
-          <li><a href="/#what-we-buy" class="hover:text-gray-900">What We Buy</a></li>
-        </ul>
-      </nav>
-      <div class="md:col-span-2">
-        <h4 class="text-xs font-bold uppercase tracking-wider text-gray-900">Join the <span class="text-brand">Supplier Brief</span></h4>
-        <p class="mt-3 text-sm text-gray-600 leading-relaxed max-w-md">A short weekly note on active categories, real-time benchmarks, and one case study per drop.</p>
-        <form class="mt-4 flex flex-col sm:flex-row gap-2 max-w-md" novalidate onsubmit="event.preventDefault(); this.querySelector('button').textContent='✓ Subscribed';">
-          <label for="footer-newsletter-email" class="sr-only">Email</label>
-          <input type="email" id="footer-newsletter-email" required placeholder="you@company.com" class="flex-1 rounded-md border border-gray-300 px-3 py-2.5 text-sm focus:border-brand focus:ring-brand">
-          <button type="submit" class="rounded-md bg-ink px-4 py-2.5 text-sm font-semibold text-white hover:bg-slate2 transition">Subscribe</button>
-        </form>
-        <p class="mt-2 text-xs text-gray-500">First manifest valuation is <span class="font-bold text-brand">free</span> when you subscribe.</p>
-      </div>
-      <nav aria-label="Resources">
-        <h4 class="text-xs font-bold uppercase tracking-wider text-gray-900">Resources</h4>
-        <ul class="mt-4 space-y-2 text-sm text-gray-600">
-          <li><a href="/resources/#insights" class="hover:text-gray-900">Insights blog</a></li>
-          <li><a href="/resources/#nda" class="hover:text-gray-900">Sample NDA</a></li>
-          <li><a href="/resources/#bill-of-sale" class="hover:text-gray-900">Sample Bill of Sale</a></li>
-          <li><a href="/resources/#tax-docs" class="hover:text-gray-900">Tax Documentation</a></li>
-          <li><a href="/how-it-works/" class="hover:text-gray-900">How It Works</a></li>
-        </ul>
-      </nav>
-    </div>
-    <div class="mt-12 pt-8 border-t border-gray-100">
-      <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6">
-        <div>
-          <h4 class="text-xs font-bold uppercase tracking-wider text-gray-900">Contact</h4>
-          <ul class="mt-3 space-y-2 text-sm text-gray-600">
-            <li>
-              <span class="text-gray-500">General inquiries</span>
-              <span class="mx-1.5 text-gray-400">·</span>
-              <a href="mailto:info@masterstockunitedstates.com" class="font-medium text-gray-900 hover:text-brand">info@masterstockunitedstates.com</a>
-            </li>
-            <li>
-              <span class="text-gray-500">Partnerships</span>
-              <span class="mx-1.5 text-gray-400">·</span>
-              <a href="mailto:partnerships@masterstockunitedstates.com" class="font-medium text-gray-900 hover:text-brand">partnerships@masterstockunitedstates.com</a>
-            </li>
+<footer class="ms-footer">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+
+    <div class="ms-footer-main">
+      <div class="ms-footer-cols">
+        <div class="ms-footer-col">
+          <div class="ms-footer-col-title">Platform</div>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/#value">What we sell</a></li>
+            <li><a href="/#categories">Categories</a></li>
+            <li><a href="/how-it-works/">How it works</a></li>
+            <li><a href="/#get-started">Request access</a></li>
+            <li><a href="/login.html">Sign in</a></li>
           </ul>
         </div>
-        <div>
-          <h4 class="text-xs font-bold uppercase tracking-wider text-gray-900">Follow</h4>
-          <div class="mt-3 flex items-center gap-2">
-            <a href="https://x.com/masterstock_usa?s=21" target="_blank" rel="noopener" class="footer-social" aria-label="X / Twitter">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            </a>
-            <a href="https://www.linkedin.com/company/masterstock-usa/" target="_blank" rel="noopener" class="footer-social" aria-label="LinkedIn">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.339 18.337v-8.59H5.667v8.59h2.672zM7.003 8.575a1.55 1.55 0 1 0 0-3.1 1.55 1.55 0 0 0 0 3.1zm11.335 9.762v-4.708c0-2.474-1.338-3.625-3.123-3.625-1.44 0-2.086.792-2.446 1.348v-1.157h-2.715a40.534 40.534 0 0 1 .036 2.855v5.287h2.715V13.54c0-.244.017-.488.089-.662.196-.488.642-.993 1.391-.993.981 0 1.373.749 1.373 1.846v4.606h2.68z"/></svg>
-            </a>
-            <a href="https://www.threads.com/@masterstock_usa?igshid=NTc4MTIwNjQ2YQ==" target="_blank" rel="noopener" class="footer-social" aria-label="Threads">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-            </a>
-          </div>
+        <div class="ms-footer-col">
+          <div class="ms-footer-col-title">For Buyers</div>
+          <ul>
+            <li><a href="/how-it-works/#buyers">Buyer flow</a></li>
+            <li><a href="/#categories">Browse lots</a></li>
+            <li><a href="/request-access.html">Request access</a></li>
+            <li><a href="/how-it-works/#buyers">Recourse policy</a></li>
+            <li><a href="/resources/">Manifest samples</a></li>
+          </ul>
+        </div>
+        <div class="ms-footer-col">
+          <div class="ms-footer-col-title">For Suppliers</div>
+          <ul>
+            <li><a href="/how-it-works/#suppliers">Supplier flow</a></li>
+            <li><a href="/how-it-works/#suppliers">48-hour offer</a></li>
+            <li><a href="/how-it-works/#suppliers">Offer structures</a></li>
+            <li><a href="/how-it-works/#suppliers">Pickup hubs</a></li>
+            <li><a href="mailto:info@masterstockunitedstates.com?subject=Manifest%20submission">Send manifest</a></li>
+          </ul>
+        </div>
+        <div class="ms-footer-col">
+          <div class="ms-footer-col-title">Resources</div>
+          <ul>
+            <li><a href="/resources/">Resource library</a></li>
+            <li><a href="/how-it-works/">How it works</a></li>
+            <li><a href="/about/#trust">Credentials</a></li>
+            <li><a href="/privacy.html">Privacy</a></li>
+            <li><a href="/terms.html">Terms</a></li>
+          </ul>
+        </div>
+        <div class="ms-footer-col">
+          <div class="ms-footer-col-title">Company</div>
+          <ul>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/about/#team">The team</a></li>
+            <li><a href="mailto:partnerships@masterstockunitedstates.com">Partnerships</a></li>
+            <li><a href="mailto:info@masterstockunitedstates.com">Contact</a></li>
+            <li><a href="https://www.linkedin.com/company/masterstock-usa">LinkedIn</a></li>
+          </ul>
         </div>
       </div>
+      <aside class="ms-footer-contact-card ms-footer-contact-card-main">
+        <div class="ms-footer-contact-col">
+          <div class="ms-footer-contact-title">Contact</div>
+          <a href="mailto:info@masterstockunitedstates.com" class="ms-footer-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+            <span>info@masterstockunitedstates.com</span>
+          </a>
+          <a href="/about/#trust" class="ms-footer-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 0 20M12 2a15.3 15.3 0 0 0 0 20"/></svg>
+            <span>Global Hubs</span>
+          </a>
+          <span class="ms-footer-contact-item ms-footer-contact-item-static">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>8 The Green, Suite A, Dover, DE 19901</span>
+          </span>
+        </div>
+        <div class="ms-footer-contact-col">
+          <div class="ms-footer-contact-title">Get Started</div>
+          <a href="/request-access.html" data-open-modal="request-access" class="ms-footer-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span>Request Access</span>
+          </a>
+          <a href="mailto:partnerships@masterstockunitedstates.com?subject=Founder%20call%20-%20MasterStock" class="ms-footer-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 11h-6M19 8v6"/></svg>
+            <span>Call a Founder</span>
+          </a>
+          <a href="mailto:info@masterstockunitedstates.com?subject=Manifest%20submission" class="ms-footer-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
+            <span>Send Manifest</span>
+          </a>
+          <div class="ms-footer-contact-hq">Dover, DE · United States</div>
+        </div>
+      </aside>
     </div>
-  </div>
-  <div class="border-t border-gray-200 bg-gray-50">
-    <div class="max-w-6xl xl:max-w-[84rem] 2xl:max-w-[92rem] mx-auto px-5 sm:px-8 py-6">
-      <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 text-xs text-gray-500">
-        <div class="space-y-1">
-          <div class="font-bold text-gray-900">MasterStock USA Inc.</div>
-          <div class="text-gray-500">8 The Green, Ste A · Dover, DE 19901</div>
-        </div>
-        <div class="flex flex-wrap items-center gap-x-5 gap-y-2 md:justify-end">
-          <a href="/resources/#privacy" class="hover:text-gray-900">Privacy Policy</a>
-          <a href="/resources/#terms" class="hover:text-gray-900">Terms of Service</a>
-          <a href="/resources/#dmca" class="hover:text-gray-900">DMCA</a>
-          <a href="/resources/#do-not-sell" class="hover:text-gray-900">Do not sell my personal information</a>
+
+    <div class="ms-footer-sep" aria-hidden="true"></div>
+
+    <div class="ms-footer-bottom">
+      <div class="ms-footer-bottom-left">
+        <img src="/images/logo-final.png" alt="MasterStock USA" class="ms-footer-logo" />
+        <div>
+          <div class="ms-footer-copy">&copy; <span data-year>2026</span> MasterStock USA Inc.</div>
+          <div class="ms-footer-addr">8 The Green, Suite A · Dover, DE 19901 · United States</div>
         </div>
       </div>
-      <div class="mt-4 pt-4 border-t border-gray-200 text-xs text-gray-500 text-center md:text-left">
-        &copy; <span data-year>2026</span> MasterStock USA Inc. All rights reserved.
+      <div class="ms-footer-bottom-right">
+        <a href="https://www.linkedin.com/company/masterstock-usa" aria-label="LinkedIn" class="ms-footer-social">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.05-1.86-3.05-1.86 0-2.15 1.45-2.15 2.95v5.67H9.34V9h3.41v1.56h.05c.47-.9 1.63-1.86 3.35-1.86 3.59 0 4.25 2.36 4.25 5.43v6.32zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+        </a>
+        <a href="mailto:info@masterstockunitedstates.com" aria-label="Email" class="ms-footer-social">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+        </a>
       </div>
     </div>
   </div>
 </footer>
 
-</main>
-
 <script>
-  document.querySelectorAll('[data-year]').forEach(el => el.textContent = new Date().getFullYear());
+  // Auto year
+  document.querySelectorAll('[data-year]').forEach(function(el){ el.textContent = new Date().getFullYear(); });
+
+  // Sticky header scroll state
+  (function(){
+    var header = document.getElementById('site-header');
+    if (!header) return;
+    var ticking = false;
+    function update() {
+      if (window.scrollY > 4) header.classList.add('scrolled');
+      else header.classList.remove('scrolled');
+      ticking = false;
+    }
+    window.addEventListener('scroll', function(){
+      if (!ticking) { requestAnimationFrame(update); ticking = true; }
+    }, { passive: true });
+    update();
+  })();
+</script>
+
+<!-- ===== Premium polish: scroll-reveal + sticky pills active-section ===== -->
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Scroll-reveal
+  var revealEls = document.querySelectorAll('[data-reveal]');
+  if (reduce || !('IntersectionObserver' in window)) {
+    revealEls.forEach(function(el){ el.classList.add('is-visible'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) {
+          e.target.classList.add('is-visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
+    revealEls.forEach(function(el){ io.observe(el); });
+  }
+
+  // Sticky pills active-section highlighting
+  var pillsNav = document.getElementById('resource-pills');
+  if (!pillsNav) return;
+  var pills = pillsNav.querySelectorAll('.stepnav-pill');
+  var sectionIds = ['docs','rep'];
+  var sections = sectionIds.map(function(id){ return document.getElementById(id); }).filter(Boolean);
+
+  // Stuck state via sentinel above the pills
+  var sentinel = document.createElement('div');
+  sentinel.setAttribute('aria-hidden','true');
+  sentinel.style.cssText = 'position:relative;height:1px;width:100%;';
+  pillsNav.parentNode.insertBefore(sentinel, pillsNav);
+  if ('IntersectionObserver' in window) {
+    var stickyIo = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        pillsNav.classList.toggle('is-stuck', !e.isIntersecting && e.boundingClientRect.top < 0);
+      });
+    }, { threshold: 0, rootMargin: '-64px 0px 0px 0px' });
+    stickyIo.observe(sentinel);
+
+    var activeIo = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) {
+          var id = e.target.id;
+          pills.forEach(function(p){
+            p.classList.toggle('is-active', p.getAttribute('href') === '#' + id);
+          });
+        }
+      });
+    }, { threshold: 0, rootMargin: '-30% 0px -60% 0px' });
+    sections.forEach(function(s){ activeIo.observe(s); });
+  }
+
+  // Newsletter: arrow twitch when valid email
+  var nlInput = document.getElementById('newsletter-email');
+  var nlBtn = nlInput ? nlInput.parentNode.querySelector('.newsletter-btn') : null;
+  if (nlInput && nlBtn) {
+    nlInput.addEventListener('input', function(){
+      if (nlInput.checkValidity() && nlInput.value.length > 4) {
+        nlBtn.style.transform = 'translateY(-1px)';
+        setTimeout(function(){ nlBtn.style.transform = ''; }, 180);
+      }
+    });
+  }
+})();
 </script>
 
 </body>

@@ -34,7 +34,7 @@
 </script>
 <link rel="stylesheet" href="home.css">
 <style>
-  /* ===== Auth split layout — page-scoped ===== */
+  /* ===== Auth split layout, page-scoped ===== */
   .auth-shell { min-height: calc(100vh - 56px); display: grid; grid-template-columns: 1fr; }
   @media (min-width: 900px) { .auth-shell { grid-template-columns: 1fr 1fr; } }
   .auth-form-col {
@@ -82,6 +82,32 @@
   .auth-bullet svg { flex: 0 0 auto; margin-top: 2px; color: #6EC6FF; }
   .auth-bullet p { color: #B7C2D8; font-size: 14px; line-height: 1.55; }
   .auth-bullet strong { color: #fff; font-weight: 600; }
+
+/* === ms-scrollbar (injected) === */
+html, body { overflow-x: hidden; max-width: 100%; }
+html { scrollbar-width: auto; scrollbar-color: #94A3B8 #F1F5F9; }
+html::-webkit-scrollbar, body::-webkit-scrollbar, *::-webkit-scrollbar { width: 18px; height: 0; }
+html::-webkit-scrollbar-track, body::-webkit-scrollbar-track, *::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+html::-webkit-scrollbar-thumb, body::-webkit-scrollbar-thumb, *::-webkit-scrollbar-thumb {
+  background: #94A3B8;
+  border-radius: 999px;
+  border: 4px solid #F1F5F9;
+  background-clip: padding-box;
+  min-height: 80px;
+}
+html::-webkit-scrollbar-thumb:hover, body::-webkit-scrollbar-thumb:hover, *::-webkit-scrollbar-thumb:hover {
+  background: #64748B;
+  background-clip: padding-box;
+}
+html::-webkit-scrollbar:horizontal, body::-webkit-scrollbar:horizontal, *::-webkit-scrollbar:horizontal {
+  height: 0;
+  display: none;
+}
+
+
+
 </style>
 </head>
 <body class="bg-white text-gray-900 antialiased">
