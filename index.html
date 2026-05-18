@@ -4422,12 +4422,7 @@ html::-webkit-scrollbar:horizontal, body::-webkit-scrollbar:horizontal, *::-webk
       openModal(kind, t);
       return;
     }
-    // Fallback: any link to /request-access.html opens Modal A
-    var link = e.target.closest('a[href="https://portal.masterstockunitedstates.com/"]');
-    if (link && !link.hasAttribute('data-open-modal')) {
-      e.preventDefault();
-      openModal('request-access', link);
-    }
+    // (legacy fallback removed: portal links now navigate normally)
   });
 
   // Close handlers
