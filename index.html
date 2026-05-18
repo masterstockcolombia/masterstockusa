@@ -3448,117 +3448,6 @@ html::-webkit-scrollbar:horizontal, body::-webkit-scrollbar:horizontal, *::-webk
     </div>
   </div>
 </section>
-
-<!-- ============ REVIEWS WALL (auction floors warning) ============ -->
-<style>
-  .ms-reviews-wall { padding: 96px 0; background: #FFFFFF; }
-  .ms-reviews-wall .ms-rev-head-wrap { max-width: 760px; margin: 0 auto; text-align: center; }
-  .ms-reviews-wall .ms-rev-eyebrow { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.18em; color: #0A5CD8; margin-bottom: 14px; }
-  .ms-reviews-wall .ms-rev-h2 { font-size: clamp(28px, 4.2vw, 44px); font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; color: #0B1B35; margin: 0 0 18px; }
-  .ms-reviews-wall .ms-rev-h2-accent { background: linear-gradient(135deg, #0A5CD8 0%, #6EC6FF 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
-  .ms-reviews-wall .ms-rev-lead { font-size: 15.5px; line-height: 1.6; color: #475569; margin: 0; }
-  .ms-reviews-wall .ms-rev-grid { margin-top: 56px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1180px; margin-left: auto; margin-right: auto; }
-  @media (max-width: 1024px) { .ms-reviews-wall .ms-rev-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 640px)  { .ms-reviews-wall .ms-rev-grid { grid-template-columns: 1fr; } }
-  .ms-reviews-wall .ms-rev-card { background: #fff; border: 1px solid #E2E8F0; border-radius: 14px; padding: 22px; aspect-ratio: 1 / 1; display: flex; flex-direction: column; transition: transform .25s cubic-bezier(0.16,1,0.3,1), box-shadow .25s ease, border-color .25s ease; overflow: hidden; }
-  .ms-reviews-wall .ms-rev-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -20px rgba(15,23,42,0.18); border-color: rgba(10,92,216,0.25); }
-  @media (max-width: 640px) { .ms-reviews-wall .ms-rev-card { aspect-ratio: auto; } }
-  .ms-reviews-wall .ms-rev-card-head { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
-  .ms-reviews-wall .ms-rev-avatar { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; font-size: 13px; font-weight: 800; color: #fff; flex: 0 0 auto; }
-  .ms-reviews-wall .ms-rev-meta { flex: 1; min-width: 0; }
-  .ms-reviews-wall .ms-rev-name { font-size: 13.5px; font-weight: 700; color: #0B1B35; line-height: 1.2; }
-  .ms-reviews-wall .ms-rev-sub  { font-size: 11.5px; color: #94A3B8; margin-top: 2px; }
-  .ms-reviews-wall .ms-rev-date { font-size: 11.5px; color: #94A3B8; flex: 0 0 auto; }
-  .ms-reviews-wall .ms-rev-stars { display: inline-flex; gap: 2px; margin-bottom: 10px; }
-  .ms-reviews-wall .ms-rev-stars span { width: 14px; height: 14px; background: #E2E8F0; clip-path: polygon(50% 0, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); }
-  .ms-reviews-wall .ms-rev-stars span.on { background: #EF4444; }
-  .ms-reviews-wall .ms-rev-title { font-size: 14.5px; font-weight: 700; color: #0B1B35; margin-bottom: 8px; line-height: 1.35; letter-spacing: -0.01em; }
-  .ms-reviews-wall .ms-rev-body  { font-size: 12.5px; line-height: 1.55; color: #475569; overflow: hidden; }
-  .ms-reviews-wall .ms-redacted { display: inline-block; background: #0B1B35; color: #0B1B35; padding: 0 8px; border-radius: 3px; user-select: none; -webkit-user-select: none; vertical-align: baseline; letter-spacing: 0.04em; }
-  .ms-reviews-wall .ms-rev-footnote { margin-top: 36px; text-align: center; font-size: 14px; color: #475569; }
-  .ms-reviews-wall .ms-rev-footnote a { color: #0A5CD8; font-weight: 600; }
-  .ms-reviews-wall .ms-rev-footnote a:hover { text-decoration: underline; }
-</style>
-<section class="ms-reviews-wall">
-  <div class="max-w-7xl mx-auto px-5 sm:px-8">
-    <div class="ms-rev-head-wrap">
-      <span class="ms-rev-eyebrow">Why this market needed a different operator</span>
-      <h2 class="ms-rev-h2">Real reviews. Real buyers. <span class="ms-rev-h2-accent">Burned by the auction floors.</span></h2>
-      <p class="ms-rev-lead">A sample of what procurement teams say about today&rsquo;s liquidation marketplaces. Company names redacted. This is the gap MasterStock was built to close.</p>
-    </div>
-
-    <div class="ms-rev-grid">
-      <article class="ms-rev-card">
-        <header class="ms-rev-card-head">
-          <span class="ms-rev-avatar" style="background:#94A3B8;">a</span>
-          <div class="ms-rev-meta"><div class="ms-rev-name">antodedo</div><div class="ms-rev-sub">IT &middot; 3 reviews</div></div>
-          <span class="ms-rev-date">6 days ago</span>
-        </header>
-        <div class="ms-rev-stars" aria-label="1 of 5 stars"><span class="on"></span><span></span><span></span><span></span><span></span></div>
-        <h3 class="ms-rev-title">I won an auction 18025</h3>
-        <p class="ms-rev-body">I won an auction, but no one shipped anything, no refund, no reply, no explanations, after many emails. Now after more than a month they said the seller didn&rsquo;t have the items to ship. I spoke to the seller, the said <span class="ms-redacted">[ marketplace ]</span> closed wrongly the timing of the auction. Result i found myself with no money, no items to sell.</p>
-      </article>
-
-      <article class="ms-rev-card">
-        <header class="ms-rev-card-head">
-          <span class="ms-rev-avatar" style="background:#FBCFE8; color:#9D174D;">MM</span>
-          <div class="ms-rev-meta"><div class="ms-rev-name">Marie Mori</div><div class="ms-rev-sub">US &middot; 1 review</div></div>
-          <span class="ms-rev-date">Apr 9, 2026</span>
-        </header>
-        <div class="ms-rev-stars" aria-label="1 of 5 stars"><span class="on"></span><span></span><span></span><span></span><span></span></div>
-        <h3 class="ms-rev-title"><span class="ms-redacted">[ marketplace ]</span> is about money, they don&rsquo;t care about the Buyers!!!</h3>
-        <p class="ms-rev-body">Bought Amazon 6 pallets, one missing and the other five not mine. They located my order in New York and just closed my dispute. Got Target 4 pallets and 48% stolen items, all Dysons and good stuff was not in the pallets. Costco had 2 pallets said good, that product was trash and dirty, nasty and broken. I am done with them.</p>
-      </article>
-
-      <article class="ms-rev-card">
-        <header class="ms-rev-card-head">
-          <span class="ms-rev-avatar" style="background:#86EFAC; color:#14532D;">T</span>
-          <div class="ms-rev-meta"><div class="ms-rev-name">Tim Andow</div><div class="ms-rev-sub">2 reviews</div></div>
-          <span class="ms-rev-date">5 days ago</span>
-        </header>
-        <div class="ms-rev-stars" aria-label="1 of 5 stars"><span class="on"></span><span></span><span></span><span></span><span></span></div>
-        <h3 class="ms-rev-title">Cherry-picked, every single time.</h3>
-        <p class="ms-rev-body"><span class="ms-redacted">[ broker ]</span> has become a complete waste of time and money. The quality of their pallets keeps getting worse and worse. It feels like they are cherry-picking all the good and valuable items before the lot is even listed.</p>
-      </article>
-
-      <article class="ms-rev-card">
-        <header class="ms-rev-card-head">
-          <span class="ms-rev-avatar" style="background:#CBD5E1; color:#0F172A;">S</span>
-          <div class="ms-rev-meta"><div class="ms-rev-name">Shane Gorum</div><div class="ms-rev-sub">1 review</div></div>
-          <span class="ms-rev-date">Dec 7, 2025</span>
-        </header>
-        <div class="ms-rev-stars" aria-label="1 of 5 stars"><span class="on"></span><span></span><span></span><span></span><span></span></div>
-        <h3 class="ms-rev-title">&ldquo;Untested&rdquo; means junk.</h3>
-        <p class="ms-rev-body">Untested means junk. The manifest is a lie. They will short you. Support is trash. They cherry-pick everything to put on <span class="ms-redacted">[ sister site ]</span> (their other company) and if you buy from <span class="ms-redacted">[ sister site ]</span> &ldquo;new&rdquo; it&rsquo;s actually a return.</p>
-      </article>
-
-      <article class="ms-rev-card">
-        <header class="ms-rev-card-head">
-          <span class="ms-rev-avatar" style="background:#FED7AA; color:#7C2D12;">LR</span>
-          <div class="ms-rev-meta"><div class="ms-rev-name">Lonnie Frank Rudd</div><div class="ms-rev-sub">4 reviews</div></div>
-          <span class="ms-rev-date">Dec 13, 2025</span>
-        </header>
-        <div class="ms-rev-stars" aria-label="2 of 5 stars"><span class="on"></span><span class="on"></span><span></span><span></span><span></span></div>
-        <h3 class="ms-rev-title">Hidden requirements at pickup.</h3>
-        <p class="ms-rev-body">I bought 3 pallets, 2 of air conditioners and one of humidifiers/dehumidifiers. First, they don&rsquo;t disclose that you need a &ldquo;dock-high&rdquo; truck to pick up your pallets. So instead of spending $150 in gas, I spent $600 chasing a truck no one warned me about.</p>
-      </article>
-
-      <article class="ms-rev-card">
-        <header class="ms-rev-card-head">
-          <span class="ms-rev-avatar" style="background:#FDE68A; color:#78350F;">EL</span>
-          <div class="ms-rev-meta"><div class="ms-rev-name">Elina Lewis</div><div class="ms-rev-sub">1 review</div></div>
-          <span class="ms-rev-date">May 25, 2025</span>
-        </header>
-        <div class="ms-rev-stars" aria-label="1 of 5 stars"><span class="on"></span><span></span><span></span><span></span><span></span></div>
-        <h3 class="ms-rev-title">Wait 2 hours, drive home empty.</h3>
-        <p class="ms-rev-body">The Fort Worth Texas location is horrible. They never have orders ready on time, you sit around and wait up to 2 hours. They are always missing a pallet and then tell you to come back another day, to someone else, to a different dock. Total mess.</p>
-      </article>
-    </div>
-
-    <p class="ms-rev-footnote">That&rsquo;s why we built an <strong>operator</strong>, not another marketplace. <a href="/about/#story">See how it started &rarr;</a></p>
-  </div>
-</section>
-
 <!-- WHAT IS MASTERSTOCK & WHY WE EXIST -->
 <section id="why-we-exist" class="ms-why-section">
   <div class="ms-why-bg" aria-hidden="true"></div>
@@ -3722,6 +3611,117 @@ html::-webkit-scrollbar:horizontal, body::-webkit-scrollbar:horizontal, *::-webk
     </div>
 
 
+  </div>
+</section>
+
+
+<!-- ============ REVIEWS WALL (auction floors warning) ============ -->
+<style>
+  .ms-reviews-wall { padding: 96px 0; background: #FFFFFF; }
+  .ms-reviews-wall .ms-rev-head-wrap { max-width: 760px; margin: 0 auto; text-align: center; }
+  .ms-reviews-wall .ms-rev-eyebrow { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.18em; color: #0A5CD8; margin-bottom: 14px; }
+  .ms-reviews-wall .ms-rev-h2 { font-size: clamp(28px, 4.2vw, 44px); font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; color: #0B1B35; margin: 0 0 18px; }
+  .ms-reviews-wall .ms-rev-h2-accent { background: linear-gradient(135deg, #0A5CD8 0%, #6EC6FF 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .ms-reviews-wall .ms-rev-lead { font-size: 15.5px; line-height: 1.6; color: #475569; margin: 0; }
+  .ms-reviews-wall .ms-rev-grid { margin-top: 56px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1180px; margin-left: auto; margin-right: auto; }
+  @media (max-width: 1024px) { .ms-reviews-wall .ms-rev-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 640px)  { .ms-reviews-wall .ms-rev-grid { grid-template-columns: 1fr; } }
+  .ms-reviews-wall .ms-rev-card { background: #fff; border: 1px solid #E2E8F0; border-radius: 14px; padding: 22px; aspect-ratio: 1 / 1; display: flex; flex-direction: column; transition: transform .25s cubic-bezier(0.16,1,0.3,1), box-shadow .25s ease, border-color .25s ease; overflow: hidden; }
+  .ms-reviews-wall .ms-rev-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -20px rgba(15,23,42,0.18); border-color: rgba(10,92,216,0.25); }
+  @media (max-width: 640px) { .ms-reviews-wall .ms-rev-card { aspect-ratio: auto; } }
+  .ms-reviews-wall .ms-rev-card-head { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+  .ms-reviews-wall .ms-rev-avatar { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; font-size: 13px; font-weight: 800; color: #fff; flex: 0 0 auto; }
+  .ms-reviews-wall .ms-rev-meta { flex: 1; min-width: 0; }
+  .ms-reviews-wall .ms-rev-name { font-size: 13.5px; font-weight: 700; color: #0B1B35; line-height: 1.2; }
+  .ms-reviews-wall .ms-rev-sub  { font-size: 11.5px; color: #94A3B8; margin-top: 2px; }
+  .ms-reviews-wall .ms-rev-date { font-size: 11.5px; color: #94A3B8; flex: 0 0 auto; }
+  .ms-reviews-wall .ms-rev-stars { display: inline-flex; gap: 2px; margin-bottom: 10px; }
+  .ms-reviews-wall .ms-rev-stars span { width: 14px; height: 14px; background: #E2E8F0; clip-path: polygon(50% 0, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); }
+  .ms-reviews-wall .ms-rev-stars span.on { background: #EF4444; }
+  .ms-reviews-wall .ms-rev-title { font-size: 14.5px; font-weight: 700; color: #0B1B35; margin-bottom: 8px; line-height: 1.35; letter-spacing: -0.01em; }
+  .ms-reviews-wall .ms-rev-body  { font-size: 12.5px; line-height: 1.55; color: #475569; overflow: hidden; }
+  .ms-reviews-wall .ms-redacted { display: inline-block; background: #0B1B35; color: #0B1B35; padding: 0 8px; border-radius: 3px; user-select: none; -webkit-user-select: none; vertical-align: baseline; letter-spacing: 0.04em; }
+  .ms-reviews-wall .ms-rev-footnote { margin-top: 36px; text-align: center; font-size: 14px; color: #475569; }
+  .ms-reviews-wall .ms-rev-footnote a { color: #0A5CD8; font-weight: 600; }
+  .ms-reviews-wall .ms-rev-footnote a:hover { text-decoration: underline; }
+</style>
+<section class="ms-reviews-wall">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="ms-rev-head-wrap">
+      <span class="ms-rev-eyebrow">Why this market needed a different operator</span>
+      <h2 class="ms-rev-h2">Real reviews. Real buyers. <span class="ms-rev-h2-accent">Burned by the auction floors.</span></h2>
+      <p class="ms-rev-lead">A sample of what procurement teams say about today&rsquo;s liquidation marketplaces. Company names redacted. This is the gap MasterStock was built to close.</p>
+    </div>
+
+    <div class="ms-rev-grid">
+      <article class="ms-rev-card">
+        <header class="ms-rev-card-head">
+          <span class="ms-rev-avatar" style="background:#94A3B8;">a</span>
+          <div class="ms-rev-meta"><div class="ms-rev-name">antodedo</div><div class="ms-rev-sub">IT &middot; 3 reviews</div></div>
+          <span class="ms-rev-date">6 days ago</span>
+        </header>
+        <div class="ms-rev-stars" aria-label="1 of 5 stars"><span class="on"></span><span></span><span></span><span></span><span></span></div>
+        <h3 class="ms-rev-title">I won an auction 18025</h3>
+        <p class="ms-rev-body">I won an auction, but no one shipped anything, no refund, no reply, no explanations, after many emails. Now after more than a month they said the seller didn&rsquo;t have the items to ship. I spoke to the seller, the said <span class="ms-redacted">[ marketplace ]</span> closed wrongly the timing of the auction. Result i found myself with no money, no items to sell.</p>
+      </article>
+
+      <article class="ms-rev-card">
+        <header class="ms-rev-card-head">
+          <span class="ms-rev-avatar" style="background:#FBCFE8; color:#9D174D;">MM</span>
+          <div class="ms-rev-meta"><div class="ms-rev-name">Marie Mori</div><div class="ms-rev-sub">US &middot; 1 review</div></div>
+          <span class="ms-rev-date">Apr 9, 2026</span>
+        </header>
+        <div class="ms-rev-stars" aria-label="1 of 5 stars"><span class="on"></span><span></span><span></span><span></span><span></span></div>
+        <h3 class="ms-rev-title"><span class="ms-redacted">[ marketplace ]</span> is about money, they don&rsquo;t care about the Buyers!!!</h3>
+        <p class="ms-rev-body">Bought Amazon 6 pallets, one missing and the other five not mine. They located my order in New York and just closed my dispute. Got Target 4 pallets and 48% stolen items, all Dysons and good stuff was not in the pallets. Costco had 2 pallets said good, that product was trash and dirty, nasty and broken. I am done with them.</p>
+      </article>
+
+      <article class="ms-rev-card">
+        <header class="ms-rev-card-head">
+          <span class="ms-rev-avatar" style="background:#86EFAC; color:#14532D;">T</span>
+          <div class="ms-rev-meta"><div class="ms-rev-name">Tim Andow</div><div class="ms-rev-sub">2 reviews</div></div>
+          <span class="ms-rev-date">5 days ago</span>
+        </header>
+        <div class="ms-rev-stars" aria-label="1 of 5 stars"><span class="on"></span><span></span><span></span><span></span><span></span></div>
+        <h3 class="ms-rev-title">Cherry-picked, every single time.</h3>
+        <p class="ms-rev-body"><span class="ms-redacted">[ broker ]</span> has become a complete waste of time and money. The quality of their pallets keeps getting worse and worse. It feels like they are cherry-picking all the good and valuable items before the lot is even listed.</p>
+      </article>
+
+      <article class="ms-rev-card">
+        <header class="ms-rev-card-head">
+          <span class="ms-rev-avatar" style="background:#CBD5E1; color:#0F172A;">S</span>
+          <div class="ms-rev-meta"><div class="ms-rev-name">Shane Gorum</div><div class="ms-rev-sub">1 review</div></div>
+          <span class="ms-rev-date">Dec 7, 2025</span>
+        </header>
+        <div class="ms-rev-stars" aria-label="1 of 5 stars"><span class="on"></span><span></span><span></span><span></span><span></span></div>
+        <h3 class="ms-rev-title">&ldquo;Untested&rdquo; means junk.</h3>
+        <p class="ms-rev-body">Untested means junk. The manifest is a lie. They will short you. Support is trash. They cherry-pick everything to put on <span class="ms-redacted">[ sister site ]</span> (their other company) and if you buy from <span class="ms-redacted">[ sister site ]</span> &ldquo;new&rdquo; it&rsquo;s actually a return.</p>
+      </article>
+
+      <article class="ms-rev-card">
+        <header class="ms-rev-card-head">
+          <span class="ms-rev-avatar" style="background:#FED7AA; color:#7C2D12;">LR</span>
+          <div class="ms-rev-meta"><div class="ms-rev-name">Lonnie Frank Rudd</div><div class="ms-rev-sub">4 reviews</div></div>
+          <span class="ms-rev-date">Dec 13, 2025</span>
+        </header>
+        <div class="ms-rev-stars" aria-label="2 of 5 stars"><span class="on"></span><span class="on"></span><span></span><span></span><span></span></div>
+        <h3 class="ms-rev-title">Hidden requirements at pickup.</h3>
+        <p class="ms-rev-body">I bought 3 pallets, 2 of air conditioners and one of humidifiers/dehumidifiers. First, they don&rsquo;t disclose that you need a &ldquo;dock-high&rdquo; truck to pick up your pallets. So instead of spending $150 in gas, I spent $600 chasing a truck no one warned me about.</p>
+      </article>
+
+      <article class="ms-rev-card">
+        <header class="ms-rev-card-head">
+          <span class="ms-rev-avatar" style="background:#FDE68A; color:#78350F;">EL</span>
+          <div class="ms-rev-meta"><div class="ms-rev-name">Elina Lewis</div><div class="ms-rev-sub">1 review</div></div>
+          <span class="ms-rev-date">May 25, 2025</span>
+        </header>
+        <div class="ms-rev-stars" aria-label="1 of 5 stars"><span class="on"></span><span></span><span></span><span></span><span></span></div>
+        <h3 class="ms-rev-title">Wait 2 hours, drive home empty.</h3>
+        <p class="ms-rev-body">The Fort Worth Texas location is horrible. They never have orders ready on time, you sit around and wait up to 2 hours. They are always missing a pallet and then tell you to come back another day, to someone else, to a different dock. Total mess.</p>
+      </article>
+    </div>
+
+    <p class="ms-rev-footnote">That&rsquo;s why we built an <strong>operator</strong>, not another marketplace. <a href="/about/#story">See how it started &rarr;</a></p>
   </div>
 </section>
 
