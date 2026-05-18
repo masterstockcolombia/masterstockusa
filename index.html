@@ -435,6 +435,32 @@ html::-webkit-scrollbar:horizontal, body::-webkit-scrollbar:horizontal, *::-webk
     letter-spacing: -0.02em;
     color: var(--ink);
   }
+  .hero-eyebrow-pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 12px; margin-bottom: 16px;
+    background: rgba(37, 99, 235, 0.08);
+    border: 1px solid rgba(37, 99, 235, 0.28);
+    border-radius: 999px;
+    color: #1D4ED8;
+    font-size: 11.5px; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .hero-eyebrow-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: #2563EB;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+    animation: heroDotPulse 2.4s ease-in-out infinite;
+  }
+  @keyframes heroDotPulse {
+    0%, 100% { box-shadow: 0 0 0 4px rgba(37,99,235,0.15); }
+    50%      { box-shadow: 0 0 0 6px rgba(37,99,235,0.05); }
+  }
+  .hero-platform-line {
+    margin-top: 6px;
+    font-size: 13.5px; font-weight: 600;
+    color: #2563EB;
+    letter-spacing: 0.005em;
+  }
   .hero-subhead {
     margin-top: 18px;
     font-size: clamp(1.05rem, 1.6vw, 1.35rem);
@@ -3392,24 +3418,29 @@ html::-webkit-scrollbar:horizontal, body::-webkit-scrollbar:horizontal, *::-webk
   <div class="relative max-w-7xl mx-auto px-5 sm:px-8 pt-6 sm:pt-10 lg:pt-14 pb-12 lg:pb-16">
     <div class="grid lg:grid-cols-12 gap-10 lg:gap-8 items-center">
       <div class="lg:col-span-6 text-left max-w-2xl">
+        <span class="hero-eyebrow-pill reveal reveal-delay-1">
+          <span class="hero-eyebrow-dot" aria-hidden="true"></span>
+          The buyer platform for US liquidation pallets &middot; By application
+        </span>
         <h1 class="font-extrabold reveal reveal-delay-1">
           Stop importing <span class="gradient-text">US pallets</span> blind.
         </h1>
         <p class="mt-6 text-lg sm:text-xl text-slate-600 max-w-xl leading-relaxed reveal reveal-delay-2">
-          The work of finding, vetting, and verifying US pallets, already done. You browse, you pick, you ship. No auctions. No mystery lots.
+          MasterStock is the <strong>buyer platform</strong> for US liquidation pallets. Approved importers browse a curated catalog vetted lot-by-lot, then pick and ship. No auctions. No mystery lots. <strong>Apply below to get access.</strong>
         </p>
         <ol class="hero-steps reveal reveal-delay-2">
-          <li class="hero-step"><span class="hero-step-num">1</span><span class="hero-step-text">Request access</span></li>
-          <li class="hero-step"><span class="hero-step-num">2</span><span class="hero-step-text">Pick a lot</span></li>
+          <li class="hero-step"><span class="hero-step-num">1</span><span class="hero-step-text">Apply for access</span></li>
+          <li class="hero-step"><span class="hero-step-num">2</span><span class="hero-step-text">Get matched lots</span></li>
           <li class="hero-step"><span class="hero-step-num">3</span><span class="hero-step-text">Ship it your way</span></li>
         </ol>
         <div class="mt-8 flex flex-col sm:flex-row gap-3 reveal reveal-delay-3">
           <a href="/request-access.html" data-open-modal="request-access" class="b-btn-primary">
-            Request access
+            Apply for access
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
           </a>
-          <a href="/login.html" class="b-btn-secondary">Sign in</a>
+          <a href="/login.html" class="b-btn-secondary">Member sign in</a>
         </div>
+        <p class="hero-platform-line reveal reveal-delay-3">Free to apply &middot; Reviewed in 1 business day &middot; Catalog access once approved</p>
       </div>
       <div class="lg:col-span-6 reveal reveal-delay-3 hero-orbit-col" aria-hidden="true">
         <div class="orbit-stage">
