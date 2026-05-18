@@ -3630,12 +3630,25 @@ html::-webkit-scrollbar:horizontal, body::-webkit-scrollbar:horizontal, *::-webk
   .ms-reviews-wall .ms-rev-h2 { font-size: clamp(28px, 4.2vw, 44px); font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; color: #0B1B35; margin: 0 0 18px; }
   .ms-reviews-wall .ms-rev-h2-accent { background: linear-gradient(135deg, #0A5CD8 0%, #6EC6FF 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
   .ms-reviews-wall .ms-rev-lead { font-size: 15.5px; line-height: 1.6; color: #475569; margin: 0; }
-  .ms-reviews-wall .ms-rev-grid { margin-top: 56px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1180px; margin-left: auto; margin-right: auto; }
-  @media (max-width: 1024px) { .ms-reviews-wall .ms-rev-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 640px)  { .ms-reviews-wall .ms-rev-grid { grid-template-columns: 1fr; } }
-  .ms-reviews-wall .ms-rev-card { background: #fff; border: 1px solid #E2E8F0; border-radius: 14px; padding: 22px; aspect-ratio: 1 / 1; display: flex; flex-direction: column; transition: transform .25s cubic-bezier(0.16,1,0.3,1), box-shadow .25s ease, border-color .25s ease; overflow: hidden; }
-  .ms-reviews-wall .ms-rev-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -20px rgba(15,23,42,0.18); border-color: rgba(10,92,216,0.25); }
-  @media (max-width: 640px) { .ms-reviews-wall .ms-rev-card { aspect-ratio: auto; } }
+  .ms-reviews-wall .ms-rev-grid { margin-top: 56px; display: grid; grid-template-columns: 1fr; gap: 18px; max-width: 1180px; margin-left: auto; margin-right: auto; }
+  .ms-reviews-wall .ms-rev-card { background: #fff; border: 1px solid #E2E8F0; border-radius: 14px; padding: 0; display: grid; grid-template-columns: 1fr auto 1fr; align-items: stretch; transition: transform .25s cubic-bezier(0.16,1,0.3,1), box-shadow .25s ease, border-color .25s ease; overflow: hidden; }
+  .ms-reviews-wall .ms-rev-card:hover { transform: translateY(-3px); box-shadow: 0 20px 40px -20px rgba(15,23,42,0.18); border-color: rgba(10,92,216,0.25); }
+  .ms-reviews-wall .ms-rev-pane { padding: 22px; display: flex; flex-direction: column; }
+  .ms-reviews-wall .ms-rev-pane-fix { background: linear-gradient(135deg, #F8FAFC 0%, #EFF6FF 100%); }
+  .ms-reviews-wall .ms-rev-arrow { display: flex; align-items: center; justify-content: center; position: relative; width: 0; }
+  .ms-reviews-wall .ms-rev-arrow svg { position: absolute; left: -14px; top: 50%; transform: translateY(-50%); background: #fff; border: 1px solid #E2E8F0; border-radius: 50%; padding: 5px; width: 28px; height: 28px; color: #0A5CD8; }
+  .ms-reviews-wall .ms-rev-fix-eyebrow { display: inline-flex; align-items: center; gap: 5px; align-self: flex-start; padding: 3px 8px; margin-bottom: 14px; background: rgba(10,92,216,0.08); border: 1px solid rgba(10,92,216,0.25); color: #0A5CD8; font-size: 10.5px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; border-radius: 999px; }
+  .ms-reviews-wall .ms-rev-fix-eyebrow::before { content: ""; width: 6px; height: 6px; background: #0A5CD8; border-radius: 50%; }
+  .ms-reviews-wall .ms-rev-fix-icon { width: 32px; height: 32px; border-radius: 8px; background: linear-gradient(135deg, #0A5CD8 0%, #2563EB 100%); display: inline-flex; align-items: center; justify-content: center; color: #fff; margin-bottom: 10px; }
+  .ms-reviews-wall .ms-rev-fix-icon svg { width: 18px; height: 18px; }
+  .ms-reviews-wall .ms-rev-fix-title { font-size: 16px; font-weight: 800; color: #0B1B35; line-height: 1.3; letter-spacing: -0.01em; margin: 0 0 8px; }
+  .ms-reviews-wall .ms-rev-fix-body { font-size: 13.5px; line-height: 1.55; color: #475569; margin: 0; }
+  @media (max-width: 720px) {
+    .ms-reviews-wall .ms-rev-card { grid-template-columns: 1fr; }
+    .ms-reviews-wall .ms-rev-arrow { width: auto; height: 0; }
+    .ms-reviews-wall .ms-rev-arrow svg { left: 50%; top: -14px; transform: translateX(-50%) rotate(90deg); }
+    .ms-reviews-wall .ms-rev-pane-fix { border-top: 1px solid #E2E8F0; }
+  }
   .ms-reviews-wall .ms-rev-card-head { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
   .ms-reviews-wall .ms-rev-avatar { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; font-size: 13px; font-weight: 800; color: #fff; flex: 0 0 auto; }
   .ms-reviews-wall .ms-rev-meta { flex: 1; min-width: 0; }
@@ -3659,13 +3672,12 @@ html::-webkit-scrollbar:horizontal, body::-webkit-scrollbar:horizontal, *::-webk
   <div class="max-w-7xl mx-auto px-5 sm:px-8">
     <div class="ms-rev-head-wrap">
       <span class="ms-rev-eyebrow" data-es="Reseñas de marketplaces de la competencia &middot; No de MasterStock">Reviews of competing marketplaces &middot; Not MasterStock</span>
-      <h2 class="ms-rev-h2" data-es="Lo que dicen los compradores sobre &lt;span class=&quot;ms-rev-h2-accent&quot;&gt;nuestra competencia.&lt;/span&gt;">What buyers say about <span class="ms-rev-h2-accent">our competitors.</span></h2>
-      <p class="ms-rev-lead" data-es="Quejas públicas textuales dejadas por compradores de &lt;strong&gt;otras&lt;/strong&gt; subastas, brokers y marketplaces de liquidación de EE. UU. - los actores que MasterStock vino a corregir. Nombres de empresas omitidos.">Verbatim public complaints left by buyers of <strong>other</strong> US liquidation auctions, brokers, and marketplaces - the incumbents MasterStock was built to fix. Company names redacted.</p>
+      <h2 class="ms-rev-h2" data-es="Lo que dicen los compradores de la competencia. &lt;span class=&quot;ms-rev-h2-accent&quot;&gt;Y cómo arreglamos cada queja.&lt;/span&gt;">What buyers say about our competitors. <span class="ms-rev-h2-accent">Here&rsquo;s how we fixed each one.</span></h2>
+      <p class="ms-rev-lead" data-es="Quejas públicas textuales de compradores de &lt;strong&gt;otras&lt;/strong&gt; subastas y marketplaces de liquidación de EE. UU. A la derecha de cada una: la decisión estructural que hace imposible que esa queja exista en MasterStock.">Verbatim public complaints from buyers of <strong>other</strong> US liquidation auctions and marketplaces. On the right of each one: the structural choice that makes that complaint impossible at MasterStock.</p>
     </div>
 
     <div class="ms-rev-grid">
-      <article class="ms-rev-card">
-        <span class="ms-rev-badge" data-es="Marketplace competidor">Competitor marketplace</span>
+      <article class="ms-rev-card"><div class="ms-rev-pane ms-rev-pane-review"><span class="ms-rev-badge" data-es="Marketplace competidor">Competitor marketplace</span>
         <header class="ms-rev-card-head">
           <span class="ms-rev-avatar" style="background:#94A3B8;">a</span>
           <div class="ms-rev-meta"><div class="ms-rev-name">antodedo</div><div class="ms-rev-sub">IT &middot; 3 reviews</div></div>
@@ -3673,11 +3685,10 @@ html::-webkit-scrollbar:horizontal, body::-webkit-scrollbar:horizontal, *::-webk
         </header>
         <div class="ms-rev-stars" aria-label="1 of 5 stars"><span class="on"></span><span></span><span></span><span></span><span></span></div>
         <h3 class="ms-rev-title">I won an auction 18025</h3>
-        <p class="ms-rev-body">I won an auction, but no one shipped anything, no refund, no reply, no explanations, after many emails. Now after more than a month they said the seller didn&rsquo;t have the items to ship. I spoke to the seller, the said <span class="ms-redacted">[ marketplace ]</span> closed wrongly the timing of the auction. Result i found myself with no money, no items to sell.</p>
+        <p class="ms-rev-body">I won an auction, but no one shipped anything, no refund, no reply, no explanations, after many emails. Now after more than a month they said the seller didn&rsquo;t have the items to ship. I spoke to the seller, the said <span class="ms-redacted">[ marketplace ]</span> closed wrongly the timing of the auction. Result i found myself with no money, no items to sell.</p></div><div class="ms-rev-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div><aside class="ms-rev-pane ms-rev-pane-fix"><span class="ms-rev-fix-eyebrow" data-es="El fix de MasterStock">MasterStock fix</span><span class="ms-rev-fix-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><h4 class="ms-rev-fix-title" data-es="Sin subastas. Precio fijo de catálogo.">No auctions. Fixed catalog prices.</h4><p class="ms-rev-fix-body" data-es="Ves el precio listado antes de comprometerte. Sin pujas, sin trampas de tiempo, sin disputas cerradas en tu contra. Y cada orden lleva el nombre de un fundador, así que &lsquo;sin respuesta&rsquo; no puede pasar aquí.">You see the listed price before you commit. No bidding, no timing flips, no disputes closed against you. And every order carries a founder&rsquo;s name, so &lsquo;no reply&rsquo; can&rsquo;t happen here.</p></aside>
       </article>
 
-      <article class="ms-rev-card">
-        <span class="ms-rev-badge" data-es="Marketplace competidor">Competitor marketplace</span>
+      <article class="ms-rev-card"><div class="ms-rev-pane ms-rev-pane-review"><span class="ms-rev-badge" data-es="Marketplace competidor">Competitor marketplace</span>
         <header class="ms-rev-card-head">
           <span class="ms-rev-avatar" style="background:#FBCFE8; color:#9D174D;">MM</span>
           <div class="ms-rev-meta"><div class="ms-rev-name">Marie Mori</div><div class="ms-rev-sub">US &middot; 1 review</div></div>
@@ -3685,11 +3696,10 @@ html::-webkit-scrollbar:horizontal, body::-webkit-scrollbar:horizontal, *::-webk
         </header>
         <div class="ms-rev-stars" aria-label="1 of 5 stars"><span class="on"></span><span></span><span></span><span></span><span></span></div>
         <h3 class="ms-rev-title"><span class="ms-redacted">[ marketplace ]</span> is about money, they don&rsquo;t care about the Buyers!!!</h3>
-        <p class="ms-rev-body">Bought Amazon 6 pallets, one missing and the other five not mine. They located my order in New York and just closed my dispute. Got Target 4 pallets and 48% stolen items, all Dysons and good stuff was not in the pallets. Costco had 2 pallets said good, that product was trash and dirty, nasty and broken. I am done with them.</p>
+        <p class="ms-rev-body">Bought Amazon 6 pallets, one missing and the other five not mine. They located my order in New York and just closed my dispute. Got Target 4 pallets and 48% stolen items, all Dysons and good stuff was not in the pallets. Costco had 2 pallets said good, that product was trash and dirty, nasty and broken. I am done with them.</p></div><div class="ms-rev-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div><aside class="ms-rev-pane ms-rev-pane-fix"><span class="ms-rev-fix-eyebrow" data-es="El fix de MasterStock">MasterStock fix</span><span class="ms-rev-fix-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><h4 class="ms-rev-fix-title" data-es="Manifiesto verificado antes de listar.">Manifest verified before listing.</h4><p class="ms-rev-fix-body" data-es="Cada lote se cuenta, clasifica y fotografía antes de entrar al catálogo. Lo que llega coincide con el manifiesto que aprobaste; si hay diferencia, la cubrimos sin cola de disputas.">Each lot is counted, graded, and photographed before it enters the catalog. What arrives matches the manifest you approved - or we cover the gap, no dispute queue.</p></aside>
       </article>
 
-      <article class="ms-rev-card">
-        <span class="ms-rev-badge" data-es="Marketplace competidor">Competitor marketplace</span>
+      <article class="ms-rev-card"><div class="ms-rev-pane ms-rev-pane-review"><span class="ms-rev-badge" data-es="Marketplace competidor">Competitor marketplace</span>
         <header class="ms-rev-card-head">
           <span class="ms-rev-avatar" style="background:#86EFAC; color:#14532D;">T</span>
           <div class="ms-rev-meta"><div class="ms-rev-name">Tim Andow</div><div class="ms-rev-sub">2 reviews</div></div>
@@ -3697,11 +3707,10 @@ html::-webkit-scrollbar:horizontal, body::-webkit-scrollbar:horizontal, *::-webk
         </header>
         <div class="ms-rev-stars" aria-label="1 of 5 stars"><span class="on"></span><span></span><span></span><span></span><span></span></div>
         <h3 class="ms-rev-title">Cherry-picked, every single time.</h3>
-        <p class="ms-rev-body"><span class="ms-redacted">[ broker ]</span> has become a complete waste of time and money. The quality of their pallets keeps getting worse and worse. It feels like they are cherry-picking all the good and valuable items before the lot is even listed.</p>
+        <p class="ms-rev-body"><span class="ms-redacted">[ broker ]</span> has become a complete waste of time and money. The quality of their pallets keeps getting worse and worse. It feels like they are cherry-picking all the good and valuable items before the lot is even listed.</p></div><div class="ms-rev-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div><aside class="ms-rev-pane ms-rev-pane-fix"><span class="ms-rev-fix-eyebrow" data-es="El fix de MasterStock">MasterStock fix</span><span class="ms-rev-fix-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><h4 class="ms-rev-fix-title" data-es="Sin cherry-picking. No competimos contra ti.">No cherry-picking. We don&rsquo;t compete with you.</h4><p class="ms-rev-fix-body" data-es="El desk de operador no corre un outlet paralelo. No descremamos los SKUs buenos antes de que veas el lote; nuestro margen está en la transacción, no en absorber tu A-stock.">The operator desk doesn&rsquo;t run a side outlet. We don&rsquo;t skim the good SKUs before you see the lot - our margin is on the deal, not on absorbing your A-stock.</p></aside>
       </article>
 
-      <article class="ms-rev-card">
-        <span class="ms-rev-badge" data-es="Marketplace competidor">Competitor marketplace</span>
+      <article class="ms-rev-card"><div class="ms-rev-pane ms-rev-pane-review"><span class="ms-rev-badge" data-es="Marketplace competidor">Competitor marketplace</span>
         <header class="ms-rev-card-head">
           <span class="ms-rev-avatar" style="background:#CBD5E1; color:#0F172A;">S</span>
           <div class="ms-rev-meta"><div class="ms-rev-name">Shane Gorum</div><div class="ms-rev-sub">1 review</div></div>
@@ -3709,11 +3718,10 @@ html::-webkit-scrollbar:horizontal, body::-webkit-scrollbar:horizontal, *::-webk
         </header>
         <div class="ms-rev-stars" aria-label="1 of 5 stars"><span class="on"></span><span></span><span></span><span></span><span></span></div>
         <h3 class="ms-rev-title">&ldquo;Untested&rdquo; means junk.</h3>
-        <p class="ms-rev-body">Untested means junk. The manifest is a lie. They will short you. Support is trash. They cherry-pick everything to put on <span class="ms-redacted">[ sister site ]</span> (their other company) and if you buy from <span class="ms-redacted">[ sister site ]</span> &ldquo;new&rdquo; it&rsquo;s actually a return.</p>
+        <p class="ms-rev-body">Untested means junk. The manifest is a lie. They will short you. Support is trash. They cherry-pick everything to put on <span class="ms-redacted">[ sister site ]</span> (their other company) and if you buy from <span class="ms-redacted">[ sister site ]</span> &ldquo;new&rdquo; it&rsquo;s actually a return.</p></div><div class="ms-rev-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div><aside class="ms-rev-pane ms-rev-pane-fix"><span class="ms-rev-fix-eyebrow" data-es="El fix de MasterStock">MasterStock fix</span><span class="ms-rev-fix-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><h4 class="ms-rev-fix-title" data-es="Cada lote es probado, clasificado y trazable.">Every lot is tested, graded, and traceable.</h4><p class="ms-rev-fix-body" data-es="&lsquo;Untested&rsquo; no es una categoría aquí. Cada lote sale con manifiesto verificado, etiqueta de origen y grado de condición. Y si no se vende, perdemos tu siguiente pedido; por eso filtramos fuerte antes de listar.">&lsquo;Untested&rsquo; isn&rsquo;t a category here. Each lot ships with a verified manifest, source label, and condition grade. And if it doesn&rsquo;t sell, we lose your next order - so we screen hard before listing.</p></aside>
       </article>
 
-      <article class="ms-rev-card">
-        <span class="ms-rev-badge" data-es="Marketplace competidor">Competitor marketplace</span>
+      <article class="ms-rev-card"><div class="ms-rev-pane ms-rev-pane-review"><span class="ms-rev-badge" data-es="Marketplace competidor">Competitor marketplace</span>
         <header class="ms-rev-card-head">
           <span class="ms-rev-avatar" style="background:#FED7AA; color:#7C2D12;">LR</span>
           <div class="ms-rev-meta"><div class="ms-rev-name">Lonnie Frank Rudd</div><div class="ms-rev-sub">4 reviews</div></div>
@@ -3721,11 +3729,10 @@ html::-webkit-scrollbar:horizontal, body::-webkit-scrollbar:horizontal, *::-webk
         </header>
         <div class="ms-rev-stars" aria-label="2 of 5 stars"><span class="on"></span><span class="on"></span><span></span><span></span><span></span></div>
         <h3 class="ms-rev-title">Hidden requirements at pickup.</h3>
-        <p class="ms-rev-body">I bought 3 pallets, 2 of air conditioners and one of humidifiers/dehumidifiers. First, they don&rsquo;t disclose that you need a &ldquo;dock-high&rdquo; truck to pick up your pallets. So instead of spending $150 in gas, I spent $600 chasing a truck no one warned me about.</p>
+        <p class="ms-rev-body">I bought 3 pallets, 2 of air conditioners and one of humidifiers/dehumidifiers. First, they don&rsquo;t disclose that you need a &ldquo;dock-high&rdquo; truck to pick up your pallets. So instead of spending $150 in gas, I spent $600 chasing a truck no one warned me about.</p></div><div class="ms-rev-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div><aside class="ms-rev-pane ms-rev-pane-fix"><span class="ms-rev-fix-eyebrow" data-es="El fix de MasterStock">MasterStock fix</span><span class="ms-rev-fix-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><h4 class="ms-rev-fix-title" data-es="Logística de pickup declarada de entrada.">Pickup logistics declared upfront.</h4><p class="ms-rev-fix-body" data-es="Cada ficha de lote muestra tipo de muelle, requisitos del camión y opciones de 3PL antes de comprometerte. O sáltate todo el lío: coordinamos el pickup con transportistas verificados y solo ves una factura.">Every lot card states dock type, truck requirements, and 3PL options before you commit. Or skip the hassle entirely - we coordinate pickup with vetted carriers and you only see one invoice.</p></aside>
       </article>
 
-      <article class="ms-rev-card">
-        <span class="ms-rev-badge" data-es="Marketplace competidor">Competitor marketplace</span>
+      <article class="ms-rev-card"><div class="ms-rev-pane ms-rev-pane-review"><span class="ms-rev-badge" data-es="Marketplace competidor">Competitor marketplace</span>
         <header class="ms-rev-card-head">
           <span class="ms-rev-avatar" style="background:#FDE68A; color:#78350F;">EL</span>
           <div class="ms-rev-meta"><div class="ms-rev-name">Elina Lewis</div><div class="ms-rev-sub">1 review</div></div>
@@ -3733,137 +3740,11 @@ html::-webkit-scrollbar:horizontal, body::-webkit-scrollbar:horizontal, *::-webk
         </header>
         <div class="ms-rev-stars" aria-label="1 of 5 stars"><span class="on"></span><span></span><span></span><span></span><span></span></div>
         <h3 class="ms-rev-title">Wait 2 hours, drive home empty.</h3>
-        <p class="ms-rev-body">The Fort Worth Texas location is horrible. They never have orders ready on time, you sit around and wait up to 2 hours. They are always missing a pallet and then tell you to come back another day, to someone else, to a different dock. Total mess.</p>
+        <p class="ms-rev-body">The Fort Worth Texas location is horrible. They never have orders ready on time, you sit around and wait up to 2 hours. They are always missing a pallet and then tell you to come back another day, to someone else, to a different dock. Total mess.</p></div><div class="ms-rev-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div><aside class="ms-rev-pane ms-rev-pane-fix"><span class="ms-rev-fix-eyebrow" data-es="El fix de MasterStock">MasterStock fix</span><span class="ms-rev-fix-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span><h4 class="ms-rev-fix-title" data-es="Pickup en la misma semana. Cita confirmada, un solo contacto.">Same-week pickup. Confirmed slot, single point of contact.</h4><p class="ms-rev-fix-body" data-es="Las ventanas de pickup se reservan y confirman antes de que llegues. Un contacto en MasterStock es dueño de la cadena: si un pallet no está listo, es nuestro problema, no tuyo.">Pickup windows are booked and confirmed before you arrive. One contact at MasterStock owns the chain - if a pallet isn&rsquo;t staged, that&rsquo;s our problem, not yours.</p></aside>
       </article>
     </div>
 
-    <p class="ms-rev-footnote" data-es="Cada queja de arriba es sobre un &lt;strong&gt;competidor&lt;/strong&gt;, no nosotros. Por eso construimos un &lt;strong&gt;operador&lt;/strong&gt;, no otro marketplace.">Every complaint above is about a <strong>competitor</strong> - not us. That&rsquo;s why we built an <strong>operator</strong>, not another marketplace.</p>
-  </div>
-</section>
-
-<!-- ============ THE MASTERSTOCK DIFFERENCE ============ -->
-<style>
-  .ms-diff-section { padding: 96px 0; background: linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 100%); }
-  .ms-diff-head { max-width: 760px; margin: 0 auto 56px; text-align: center; }
-  .ms-diff-eyebrow { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.18em; color: #0A5CD8; margin-bottom: 14px; }
-  .ms-diff-h2 { font-size: clamp(28px, 4.2vw, 44px); font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; color: #0B1B35; margin: 0 0 18px; }
-  .ms-diff-h2-accent { background: linear-gradient(135deg, #0A5CD8 0%, #6EC6FF 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
-  .ms-diff-lead { font-size: 15.5px; line-height: 1.6; color: #475569; margin: 0; }
-  .ms-diff-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 1180px; margin: 0 auto; }
-  @media (max-width: 900px) { .ms-diff-grid { grid-template-columns: 1fr; } }
-  .ms-diff-card { background: #fff; border: 1px solid #E2E8F0; border-radius: 14px; padding: 0; overflow: hidden; display: grid; grid-template-columns: 1fr auto 1fr; align-items: stretch; transition: transform .25s cubic-bezier(0.16,1,0.3,1), box-shadow .25s ease, border-color .25s ease; }
-  .ms-diff-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -20px rgba(15,23,42,0.18); border-color: rgba(10,92,216,0.25); }
-  .ms-diff-pain { background: #FEF2F2; border-right: 1px dashed #FECACA; padding: 18px 18px; display: flex; flex-direction: column; }
-  .ms-diff-pain-label { display: inline-flex; align-items: center; gap: 5px; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #B91C1C; margin-bottom: 8px; }
-  .ms-diff-pain-label::before { content: ""; width: 5px; height: 5px; background: #EF4444; border-radius: 50%; }
-  .ms-diff-pain p { font-size: 13px; line-height: 1.5; color: #7F1D1D; margin: 0; font-style: italic; }
-  .ms-diff-arrow { display: flex; align-items: center; justify-content: center; position: relative; width: 0; }
-  .ms-diff-arrow svg { position: absolute; left: -13px; top: 50%; transform: translateY(-50%); background: #fff; border: 1px solid #E2E8F0; border-radius: 50%; padding: 5px; width: 26px; height: 26px; color: #0A5CD8; }
-  .ms-diff-fix { padding: 18px 18px; display: flex; flex-direction: column; gap: 6px; }
-  .ms-diff-fix-icon { width: 26px; height: 26px; border-radius: 8px; background: linear-gradient(135deg, #0A5CD8 0%, #2563EB 100%); display: inline-flex; align-items: center; justify-content: center; color: #fff; margin-bottom: 2px; }
-  .ms-diff-fix-icon svg { width: 15px; height: 15px; }
-  .ms-diff-fix h3 { font-size: 15px; font-weight: 800; color: #0B1B35; line-height: 1.3; letter-spacing: -0.01em; margin: 0; }
-  .ms-diff-fix p { font-size: 13px; line-height: 1.55; color: #475569; margin: 0; }
-  @media (max-width: 540px) {
-    .ms-diff-card { grid-template-columns: 1fr; }
-    .ms-diff-pain { border-right: none; border-bottom: 1px dashed #FECACA; }
-    .ms-diff-arrow svg { left: 50%; top: -13px; transform: translateX(-50%) rotate(90deg); }
-  }
-  .ms-diff-footnote { margin: 48px auto 0; max-width: 760px; text-align: center; font-size: 15px; color: #0B1B35; font-weight: 600; }
-  .ms-diff-footnote a { display: inline-flex; align-items: center; gap: 6px; color: #0A5CD8; margin-left: 6px; }
-  .ms-diff-footnote a:hover { text-decoration: underline; }
-</style>
-<section class="ms-diff-section">
-  <div class="max-w-7xl mx-auto px-5 sm:px-8">
-    <div class="ms-diff-head">
-      <span class="ms-diff-eyebrow" data-es="La diferencia MasterStock">The MasterStock difference</span>
-      <h2 class="ms-diff-h2" data-es="Por qué estas quejas &lt;span class=&quot;ms-diff-h2-accent&quot;&gt;no pueden pasar aquí.&lt;/span&gt;">Why these complaints <span class="ms-diff-h2-accent">can't happen here.</span></h2>
-      <p class="ms-diff-lead" data-es="Cada dolor de las reseñas de arriba viene de una decisión estructural del competidor. Así es como removimos cada uno.">Every pain in the reviews above traces back to a structural choice on the competitor's side. Here's how we removed each one.</p>
-    </div>
-
-    <div class="ms-diff-grid">
-
-      <article class="ms-diff-card">
-        <div class="ms-diff-pain">
-          <span class="ms-diff-pain-label" data-es="La queja">The complaint</span>
-          <p data-es="&ldquo;Cerraron mal el tiempo de la subasta&hellip; me quedé sin dinero y sin productos.&rdquo;">&ldquo;Closed wrongly the timing of the auction&hellip; i found myself with no money, no items.&rdquo;</p>
-        </div>
-        <div class="ms-diff-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-        <div class="ms-diff-fix">
-          <span class="ms-diff-fix-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-          <h3 data-es="Sin subastas. Precio fijo de catálogo.">No auctions. Fixed catalog prices.</h3>
-          <p data-es="Ves el precio antes de comprometerte. Sin pujas, sin trampas de tiempo, sin disputas cerradas a tu favor.">You see the price before you commit. No bidding, no timing flips, no disputes closed against you.</p>
-        </div>
-      </article>
-
-      <article class="ms-diff-card">
-        <div class="ms-diff-pain">
-          <span class="ms-diff-pain-label" data-es="La queja">The complaint</span>
-          <p data-es="&ldquo;Nadie envió nada, sin reembolso, sin respuesta, sin explicaciones, despuís de muchos correos.&rdquo;">&ldquo;No one shipped anything, no refund, no reply, no explanations, after many emails.&rdquo;</p>
-        </div>
-        <div class="ms-diff-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-        <div class="ms-diff-fix">
-          <span class="ms-diff-fix-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-          <h3 data-es="Cada oferta lleva el nombre de un fundador.">Every offer carries a founder's name.</h3>
-          <p data-es="Jose o Esteban firman cada lote. Si algo sale mal, hablas con un humano responsable, no con una cola de tickets.">Jose or Esteban sign every lot. If something goes wrong, you reach a human who&rsquo;s on the hook, not a ticket queue.</p>
-        </div>
-      </article>
-
-      <article class="ms-diff-card">
-        <div class="ms-diff-pain">
-          <span class="ms-diff-pain-label" data-es="La queja">The complaint</span>
-          <p data-es="&ldquo;El manifiesto es mentira. Te van a faltar productos. Compré Target y 48&#37; eran ítems robados.&rdquo;">&ldquo;The manifest is a lie. They will short you. Got Target pallets and 48&#37; stolen items.&rdquo;</p>
-        </div>
-        <div class="ms-diff-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-        <div class="ms-diff-fix">
-          <span class="ms-diff-fix-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-          <h3 data-es="Manifiesto verificado antes de listar.">Manifest verified before listing.</h3>
-          <p data-es="Cada lote se cuenta, clasifica y fotografía antes de entrar al catálogo. Lo que llega coincide con lo que viste.">Each lot is counted, graded, and photographed before it ever hits the catalog. What arrives matches what you saw.</p>
-        </div>
-      </article>
-
-      <article class="ms-diff-card">
-        <div class="ms-diff-pain">
-          <span class="ms-diff-pain-label" data-es="La queja">The complaint</span>
-          <p data-es="&ldquo;Cherry-pickean los ítems buenos antes de listar el lote. Lo bueno termina en su propio outlet.&rdquo;">&ldquo;They cherry-pick the good items before the lot is even listed. The good stuff ends up on their own outlet.&rdquo;</p>
-        </div>
-        <div class="ms-diff-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-        <div class="ms-diff-fix">
-          <span class="ms-diff-fix-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-          <h3 data-es="Sin cherry-picking. No competimos contra ti.">No cherry-picking. We don't compete with you.</h3>
-          <p data-es="El desk de operador no vende al detalle. No tenemos un outlet paralelo absorbiendo lo bueno antes que tú lo veas.">The operator desk doesn&rsquo;t run a side retail outlet. We don&rsquo;t skim the good SKUs before you see the lot.</p>
-        </div>
-      </article>
-
-      <article class="ms-diff-card">
-        <div class="ms-diff-pain">
-          <span class="ms-diff-pain-label" data-es="La queja">The complaint</span>
-          <p data-es="&ldquo;No revelan que necesitas un camión &lsquo;dock-high&rsquo;. Gasté $600 buscando un camión que nadie avisó.&rdquo;">&ldquo;They don&rsquo;t disclose you need a &lsquo;dock-high&rsquo; truck. I spent $600 chasing a truck no one warned me about.&rdquo;</p>
-        </div>
-        <div class="ms-diff-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-        <div class="ms-diff-fix">
-          <span class="ms-diff-fix-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-          <h3 data-es="Logística declarada antes de comprometerte.">Pickup spelled out before you commit.</h3>
-          <p data-es="Cada lote muestra tipo de muelle, requisitos del camión y opciones de 3PL. O coordinamos el pickup nosotros mismos.">Each lot card states dock type, truck requirements, and 3PL options upfront. Or we coordinate pickup ourselves.</p>
-        </div>
-      </article>
-
-      <article class="ms-diff-card">
-        <div class="ms-diff-pain">
-          <span class="ms-diff-pain-label" data-es="La queja">The complaint</span>
-          <p data-es="&ldquo;&lsquo;Untested&rsquo; significa basura. La calidad empeora cada vez. Total p&eacute;rdida de tiempo y dinero.&rdquo;">&ldquo;&lsquo;Untested&rsquo; means junk. The quality keeps getting worse. A complete waste of time and money.&rdquo;</p>
-        </div>
-        <div class="ms-diff-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-        <div class="ms-diff-fix">
-          <span class="ms-diff-fix-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-          <h3 data-es="Si tu lote no se vende, perdemos tu siguiente pedido.">If your lot doesn't sell, we lose your next order.</h3>
-          <p data-es="Estamos alineados en tu sell-through. Por eso filtramos fuerte antes de listar - el modelo solo funciona si tú repites.">We&rsquo;re aligned on your sell-through. So we screen hard before listing - the business only works if you reorder.</p>
-        </div>
-      </article>
-
-    </div>
-
-    <p class="ms-diff-footnote" data-es="Cada decisión arriba es la diferencia entre un marketplace y un operador. &lt;a href=&quot;/about/#story&quot;&gt;Mira cómo empezó &rarr;&lt;/a&gt;">Each choice above is the difference between a marketplace and an operator. <a href="/about/#story">See how it started &rarr;</a></p>
+    <p class="ms-rev-footnote" data-es="Cada queja arriba es un competidor. Cada fix a la derecha es la razón por la que MasterStock es un operador, no otro marketplace. &lt;a href=&quot;/about/#story&quot;&gt;Mira cómo empezó &rarr;&lt;/a&gt;">Every complaint above is a competitor. Every fix on the right is why MasterStock is an operator, not another marketplace. <a href="/about/#story">See how it started &rarr;</a></p>
   </div>
 </section>
 
