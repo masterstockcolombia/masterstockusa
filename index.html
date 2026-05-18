@@ -435,26 +435,6 @@ html::-webkit-scrollbar:horizontal, body::-webkit-scrollbar:horizontal, *::-webk
     letter-spacing: -0.02em;
     color: var(--ink);
   }
-  .hero-eyebrow-pill {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 6px 12px; margin-bottom: 16px;
-    background: rgba(37, 99, 235, 0.08);
-    border: 1px solid rgba(37, 99, 235, 0.28);
-    border-radius: 999px;
-    color: #1D4ED8;
-    font-size: 11.5px; font-weight: 700;
-    letter-spacing: 0.08em; text-transform: uppercase;
-  }
-  .hero-eyebrow-dot {
-    width: 7px; height: 7px; border-radius: 50%;
-    background: #2563EB;
-    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
-    animation: heroDotPulse 2.4s ease-in-out infinite;
-  }
-  @keyframes heroDotPulse {
-    0%, 100% { box-shadow: 0 0 0 4px rgba(37,99,235,0.15); }
-    50%      { box-shadow: 0 0 0 6px rgba(37,99,235,0.05); }
-  }
   .hero-platform-line {
     margin-top: 6px;
     font-size: 13.5px; font-weight: 600;
@@ -3145,7 +3125,7 @@ html::-webkit-scrollbar:horizontal, body::-webkit-scrollbar:horizontal, *::-webk
     display: flex; align-items: flex-start; gap: 12px;
     position: relative;
   }
-  .ms-modal-header img.ms-modal-logo { height: 28px; width: auto; }
+  .ms-modal-header img.ms-modal-logo { height: 36px; width: 36px; object-fit: contain; }
   .ms-modal-header-text { flex: 1; min-width: 0; }
   .ms-modal-title { font-size: 18px; font-weight: 800; color: #0F172A; letter-spacing: -0.01em; line-height: 1.25; margin-top: 2px; }
   .ms-modal-sub { font-size: 13px; color: #64748B; margin-top: 4px; line-height: 1.4; }
@@ -3418,10 +3398,6 @@ html::-webkit-scrollbar:horizontal, body::-webkit-scrollbar:horizontal, *::-webk
   <div class="relative max-w-7xl mx-auto px-5 sm:px-8 pt-6 sm:pt-10 lg:pt-14 pb-12 lg:pb-16">
     <div class="grid lg:grid-cols-12 gap-10 lg:gap-8 items-center">
       <div class="lg:col-span-6 text-left max-w-2xl">
-        <span class="hero-eyebrow-pill reveal reveal-delay-1">
-          <span class="hero-eyebrow-dot" aria-hidden="true"></span>
-          <span data-es="La plataforma de compradores para pallets de liquidación de EE. UU. &middot; Por aplicación">The buyer platform for US liquidation pallets &middot; By application</span>
-        </span>
         <h1 class="font-extrabold reveal reveal-delay-1" data-es="Deja de importar &lt;span class=&quot;gradient-text&quot;&gt;pallets de EE. UU.&lt;/span&gt; a ciegas.">
           Stop importing <span class="gradient-text">US pallets</span> blind.
         </h1>
@@ -4217,7 +4193,7 @@ html::-webkit-scrollbar:horizontal, body::-webkit-scrollbar:horizontal, *::-webk
 <div id="msModal" class="ms-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="msModalTitle" aria-hidden="true">
   <div class="ms-modal" role="document">
     <div class="ms-modal-header">
-      <img src="images/logo-final.png" alt="MasterStock USA" class="ms-modal-logo" />
+      <img src="images/pallet-engine.png" alt="MasterStock USA" class="ms-modal-logo" />
       <div class="ms-modal-header-text">
         <div id="msModalTitle" class="ms-modal-title">Request buyer access</div>
         <div id="msModalSub" class="ms-modal-sub">Tell us about your import operation. We respond within one business day.</div>
