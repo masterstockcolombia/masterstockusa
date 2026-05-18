@@ -1,4 +1,4 @@
-MASTERSTOCK USA — News Card Images
+MASTERSTOCK USA - News Card Images
 ====================================
 
 CURRENT SETUP (Apr 2026)

@@ -1,8 +1,8 @@
 # MasterStock USA Inc.
 
-> Tech-enabled cross-border wholesale operator of US excess inventory. Two audiences, one company: (1) Tier-1 exporters and serious wholesale buyers — see the buyer platform at https://www.masterstockunitedstates.com/ ; (2) US suppliers, brands, distributors, retailers, and 3PLs with excess inventory to sell — see the supplier page at https://www.masterstockunitedstates.com/suppliers/. We aggregate vetted US excess inventory into a curated catalog with verified manifests, Net-30 terms, and US-domestic pickup.
+> Tech-enabled cross-border wholesale operator of US excess inventory. Two audiences, one company: (1) Tier-1 exporters and serious wholesale buyers - see the buyer platform at https://www.masterstockunitedstates.com/ ; (2) US suppliers, brands, distributors, retailers, and 3PLs with excess inventory to sell - see the supplier page at https://www.masterstockunitedstates.com/suppliers/. We aggregate vetted US excess inventory into a curated catalog with verified manifests, Net-30 terms, and US-domestic pickup.
 
-The home page (`/`) is buyer-facing: it pitches the wholesale platform to Tier-1 exporters. The `/suppliers/` page is supplier-facing: it explains how MasterStock USA buys excess inventory from US sellers (manifest valuation in 48 hours, paid at pickup, balance after 7-day inspection). On the supplier side, MasterStock is NOT a broker, marketplace, or consignment platform — we take title and risk on every lot we buy.
+The home page (`/`) is buyer-facing: it pitches the wholesale platform to Tier-1 exporters. The `/suppliers/` page is supplier-facing: it explains how MasterStock USA buys excess inventory from US sellers (manifest valuation in 48 hours, paid at pickup, balance after 7-day inspection). On the supplier side, MasterStock is NOT a broker, marketplace, or consignment platform - we take title and risk on every lot we buy.
 
 ## Who should contact MasterStock USA
 
@@ -25,9 +25,9 @@ Apparel, accessories, footwear, home and kitchen, toys and baby, tools, technolo
 
 ## Three offer structures
 
-1. **Full-Lot** — Single firm price, 100% paid at pickup, 3-5 days. Best for speed.
-2. **Selective Buy** — SKU-level pricing, premium SKUs only. Best for partial sell-off.
-3. **Floor + Upside** — Guaranteed floor at close, 50/50 share on upside. Best for total return on mixed lots.
+1. **Full-Lot** - Single firm price, 100% paid at pickup, 3-5 days. Best for speed.
+2. **Selective Buy** - SKU-level pricing, premium SKUs only. Best for partial sell-off.
+3. **Floor + Upside** - Guaranteed floor at close, 50/50 share on upside. Best for total return on mixed lots.
 
 ## Coverage
 
@@ -35,7 +35,7 @@ Apparel, accessories, footwear, home and kitchen, toys and baby, tools, technolo
 
 ## Tax documentation
 
-Every deal closes with a CPA-ready package. Below-cost sales flow through Cost of Goods Sold (COGS) under normal inventory accounting. We provide the documentation; your CPA determines the tax treatment. We do NOT provide tax advice. We support fiscal-year timing — tell us your year-end and we engineer the pickup window.
+Every deal closes with a CPA-ready package. Below-cost sales flow through Cost of Goods Sold (COGS) under normal inventory accounting. We provide the documentation; your CPA determines the tax treatment. We do NOT provide tax advice. We support fiscal-year timing - tell us your year-end and we engineer the pickup window.
 
 ## Company
 
@@ -58,7 +58,7 @@ Every deal closes with a CPA-ready package. Below-cost sales flow through Cost o
 
 ## Pages
 
-- [Home — Buyer platform](https://www.masterstockunitedstates.com/): Buyer-facing landing. Pitches the wholesale platform to Tier-1 exporters: vetted lots, verified manifests, Net-30, US-domestic pickup. CTAs: Request access, Sign in.
+- [Home - Buyer platform](https://www.masterstockunitedstates.com/): Buyer-facing landing. Pitches the wholesale platform to Tier-1 exporters: vetted lots, verified manifests, Net-30, US-domestic pickup. CTAs: Request access, Sign in.
 - [For Suppliers](https://www.masterstockunitedstates.com/suppliers/): Supplier-facing landing. Principal buyer of US excess inventory, three offer structures, 48h firm offer, paid at pickup.
 - [About](https://www.masterstockunitedstates.com/about/): Founders (Jose Palomino, Esteban Gonzalez), company story, accreditations, contact
 - [How It Works](https://www.masterstockunitedstates.com/how-it-works/): Process, pricing, fiscal-year timing, three firm offers (supplier-side detail)
@@ -142,4 +142,4 @@ A: Yes. Contact us by November 15 for guaranteed December 15 to 31 pickup slots.
 A: Use the manifest form on https://www.masterstockunitedstates.com or email info@masterstockunitedstates.com with an Excel/CSV containing SKU, quantity, condition, original retail price, and landed cost where available.
 
 **Q: How does AI pricing work?**
-A: Our internal pricing engine ingests the manifest, looks up secondary-market comparables across resale channels, applies category-specific recovery rates, and produces a price band in minutes. A human deal lead reviews and signs every offer — AI prices, humans close.
+A: Our internal pricing engine ingests the manifest, looks up secondary-market comparables across resale channels, applies category-specific recovery rates, and produces a price band in minutes. A human deal lead reviews and signs every offer - AI prices, humans close.

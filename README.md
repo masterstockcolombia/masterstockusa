@@ -1,4 +1,4 @@
-# MasterStock USA — Website
+# MasterStock USA - Website
 
 Production website for MasterStock USA Inc., a Delaware-incorporated principal buyer of US excess inventory.
 
@@ -6,14 +6,14 @@ Production website for MasterStock USA Inc., a Delaware-incorporated principal b
 
 ## Stack
 
-Pure HTML/CSS/JS — no build step, no framework. Tailwind via CDN for utility classes plus custom `home.css` / `styles.css` for design system tokens, animations, and component styles.
+Pure HTML/CSS/JS - no build step, no framework. Tailwind via CDN for utility classes plus custom `home.css` / `styles.css` for design system tokens, animations, and component styles.
 
 ## Pages
 
-- `index.html` — Home (hero slider, industry pulse, what we buy, USA coverage map, comparison table, FAQ)
-- `how-it-works.html` — Process explanation (5-step flow, 3 offer structures, AI pricing factors)
-- `about.html` — Founders, credentials, contact
-- `resources.html` — Insights blog, sample NDA, sample Bill of Sale, IRS §165 primer
+- `index.html` - Home (hero slider, industry pulse, what we buy, USA coverage map, comparison table, FAQ)
+- `how-it-works.html` - Process explanation (5-step flow, 3 offer structures, AI pricing factors)
+- `about.html` - Founders, credentials, contact
+- `resources.html` - Insights blog, sample NDA, sample Bill of Sale, IRS §165 primer
 
 ## Local development
 

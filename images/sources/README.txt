@@ -25,7 +25,7 @@ SPECS
 - Aspect ratio: horizontal wordmark works best
 
 
-LEGAL — NOMINATIVE FAIR USE
+LEGAL - NOMINATIVE FAIR USE
 ----------------------------
 Using a news outlet's logo to attribute an article you're citing is generally
 protected under "nominative fair use" doctrine in US trademark law, provided:
