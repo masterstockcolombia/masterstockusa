@@ -3398,11 +3398,11 @@ html::-webkit-scrollbar:horizontal, body::-webkit-scrollbar:horizontal, *::-webk
   <div class="relative max-w-7xl mx-auto px-5 sm:px-8 pt-6 sm:pt-10 lg:pt-14 pb-12 lg:pb-16">
     <div class="grid lg:grid-cols-12 gap-10 lg:gap-8 items-center">
       <div class="lg:col-span-6 text-left max-w-2xl">
-        <h1 class="font-extrabold reveal reveal-delay-1" data-es="Compra &lt;span class=&quot;gradient-text&quot;&gt;pallets de liquidación US&lt;/span&gt; sin atar tu capital.">
-          Buy <span class="gradient-text">US liquidation pallets</span> without tying up your capital.
+        <h1 class="font-extrabold reveal reveal-delay-1" data-es="Lo &lt;span class=&quot;gradient-text&quot;&gt;encontramos&lt;/span&gt;. Lo &lt;span class=&quot;gradient-text&quot;&gt;financiamos&lt;/span&gt;. Tú lo vendes.">
+          We <span class="gradient-text">find it</span>. We <span class="gradient-text">finance it</span>. You sell it.
         </h1>
-        <p class="mt-6 text-lg sm:text-xl text-slate-600 max-w-xl leading-relaxed reveal reveal-delay-2" data-es="MasterStock es la &lt;strong&gt;plataforma de trade finance y catálogo curado&lt;/strong&gt; para importadores Tier-1 en LATAM. Nosotros le pagamos al supplier en Estados Unidos, te embarcamos la mercancía y tú nos pagas a 30 días, después de vender. Sin subastas, sin lotes ciegos, sin intermediarios. &lt;strong&gt;Aplica para acceder.&lt;/strong&gt;">
-          MasterStock is the <strong>trade finance and curated catalog</strong> platform for Tier-1 importers in LATAM. We pay the US supplier upfront, ship the inventory to you, and you pay Net-30, after you've sold. No auctions, no mystery boxes, no middlemen. <strong>Apply below for access.</strong>
+        <p class="mt-6 text-lg sm:text-xl text-slate-600 max-w-xl leading-relaxed reveal reveal-delay-2" data-es="MasterStock encuentra pallets de overstock en retailers y 3PLs de Estados Unidos, le paga al supplier en efectivo y te los embarca con términos Net-30. Curado, financiado y entregado. Te ahorras el viaje a buscar mercancía, te ahorras el capital upfront y nos pagas después de vender. &lt;strong&gt;Aplica para acceder.&lt;/strong&gt;">
+          MasterStock sources US overstock pallets directly from retailers and 3PLs, pays the supplier in cash, and ships them to Tier-1 importers in LATAM on Net-30 terms. Sourced, financed, delivered. You skip the sourcing trip, skip the upfront capital, and pay after you've sold. <strong>Apply below for access.</strong>
         </p>
         <ol class="hero-steps reveal reveal-delay-2">
           <li class="hero-step"><span class="hero-step-num">1</span><span class="hero-step-text" data-es="Aplica para acceso">Apply for access</span></li>
@@ -3455,6 +3455,297 @@ html::-webkit-scrollbar:horizontal, body::-webkit-scrollbar:horizontal, *::-webk
     </div>
   </div>
 </section>
+
+<!-- ============================================================
+     THREE-LAYER BUNDLE: We find. We finance. You sell.
+     Animated section explaining how MasterStock works.
+     ============================================================ -->
+<style>
+  /* Bundle section root */
+  .ms-bundle {
+    position: relative;
+    padding: 88px 24px 96px;
+    background: linear-gradient(180deg, #F8FAFC 0%, #ffffff 60%, #F1F5FB 100%);
+    overflow: hidden;
+  }
+  .ms-bundle__bg {
+    position: absolute; inset: 0;
+    background-image:
+      radial-gradient(circle at 12% 18%, rgba(10,92,216,0.07) 0, transparent 38%),
+      radial-gradient(circle at 88% 82%, rgba(110,198,255,0.10) 0, transparent 42%);
+    pointer-events: none;
+  }
+  .ms-bundle__wrap {
+    position: relative; z-index: 2;
+    max-width: 1200px; margin: 0 auto;
+  }
+  .ms-bundle__eyebrow {
+    display: inline-block; font-size: 12px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: #0A5CD8; margin-bottom: 12px;
+  }
+  .ms-bundle__title {
+    font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+    font-size: clamp(28px, 3.4vw, 44px); font-weight: 800;
+    color: #0B1B35; line-height: 1.1; letter-spacing: -0.02em;
+    margin: 0 0 14px; max-width: 760px;
+  }
+  .ms-bundle__title .grad {
+    background: linear-gradient(135deg, #0A5CD8 0%, #6EC6FF 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .ms-bundle__lead {
+    font-size: 16px; color: #4A5568; line-height: 1.55;
+    max-width: 660px; margin: 0 0 56px;
+  }
+
+  /* Steps grid + connecting line */
+  .ms-bundle__steps {
+    position: relative;
+    display: grid; grid-template-columns: 1fr; gap: 28px;
+  }
+  @media (min-width: 900px) {
+    .ms-bundle__steps { grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+  }
+  .ms-bundle__line {
+    display: none;
+  }
+  @media (min-width: 900px) {
+    .ms-bundle__line {
+      display: block; position: absolute;
+      top: 64px; left: 14%; right: 14%; height: 2px;
+      background: linear-gradient(90deg,
+        rgba(10,92,216,0.08) 0%,
+        rgba(10,92,216,0.55) 12%,
+        rgba(110,198,255,0.85) 50%,
+        rgba(10,92,216,0.55) 88%,
+        rgba(10,92,216,0.08) 100%);
+      border-radius: 1px;
+      overflow: hidden;
+    }
+    .ms-bundle__line::before {
+      content: ''; position: absolute;
+      top: -3px; left: 0; width: 60px; height: 8px;
+      background: linear-gradient(90deg, transparent, #6EC6FF, transparent);
+      border-radius: 50%; filter: blur(2px);
+      animation: ms-bundle-travel 5.5s linear infinite;
+    }
+  }
+  @keyframes ms-bundle-travel {
+    0%   { transform: translateX(-60px); }
+    100% { transform: translateX(calc(100% + 60px)); }
+  }
+
+  /* Step card */
+  .ms-bundle__step {
+    position: relative; background: #ffffff;
+    border: 1px solid rgba(11,27,53,0.08);
+    border-radius: 20px; padding: 32px 26px 28px;
+    box-shadow: 0 4px 14px rgba(11,27,53,0.04), 0 1px 2px rgba(11,27,53,0.04);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  .ms-bundle__step:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(11,27,53,0.10), 0 2px 6px rgba(11,27,53,0.06);
+  }
+
+  /* Icon container */
+  .ms-bundle__iconbox {
+    position: relative; width: 96px; height: 96px;
+    margin: 0 auto 18px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #E8F0FE 0%, #ffffff 100%);
+    display: flex; align-items: center; justify-content: center;
+    border: 2px solid rgba(10,92,216,0.12);
+  }
+  .ms-bundle__iconbox::before,
+  .ms-bundle__iconbox::after {
+    content: ''; position: absolute; inset: 0;
+    border-radius: 50%;
+    border: 2px solid rgba(10,92,216,0.35);
+    opacity: 0;
+    animation: ms-bundle-pulse 3.5s ease-out infinite;
+  }
+  .ms-bundle__iconbox::after { animation-delay: 1.75s; }
+  @keyframes ms-bundle-pulse {
+    0%   { transform: scale(1);   opacity: 0.7; }
+    100% { transform: scale(1.55); opacity: 0;   }
+  }
+  .ms-bundle__icon {
+    position: relative; z-index: 2;
+    width: 44px; height: 44px;
+    color: #0A5CD8;
+  }
+
+  /* Step number badge */
+  .ms-bundle__num {
+    position: absolute; top: 22px; right: 22px;
+    width: 32px; height: 32px; border-radius: 50%;
+    background: linear-gradient(135deg, #0A5CD8 0%, #0847A8 100%);
+    color: #ffffff; font-weight: 800; font-size: 14px;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 10px rgba(10,92,216,0.25);
+  }
+
+  /* Step text */
+  .ms-bundle__step h3 {
+    font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+    text-align: center;
+    font-size: 22px; font-weight: 800; color: #0B1B35;
+    margin: 0 0 10px; letter-spacing: -0.01em;
+  }
+  .ms-bundle__step p {
+    text-align: center;
+    font-size: 14.5px; color: #4A5568; line-height: 1.55;
+    margin: 0;
+  }
+  .ms-bundle__tag {
+    display: block; margin: 14px auto 0;
+    width: max-content; padding: 4px 12px;
+    background: rgba(10,92,216,0.06);
+    color: #0A5CD8; font-size: 11px; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    border-radius: 999px;
+  }
+
+  /* === Step 1: searching/scanning pulse on warehouse icon === */
+  .ms-bundle__step--find .ms-bundle__icon-fill {
+    transform-origin: center;
+    animation: ms-bundle-scan 3s ease-in-out infinite;
+  }
+  @keyframes ms-bundle-scan {
+    0%, 100% { opacity: 0.4; }
+    50%      { opacity: 1.0; }
+  }
+
+  /* === Step 2: money flow animation === */
+  .ms-bundle__money {
+    position: absolute; top: 50%; left: -10%;
+    transform: translateY(-50%);
+    width: 28px; height: 28px;
+    background: linear-gradient(135deg, #1F7A3A 0%, #2ea84a 100%);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    color: #ffffff; font-weight: 800; font-size: 14px;
+    box-shadow: 0 4px 12px rgba(31,122,58,0.4);
+    animation: ms-bundle-money-flow 3.4s ease-in-out infinite;
+    opacity: 0;
+  }
+  @keyframes ms-bundle-money-flow {
+    0%   { left: 8%;  opacity: 0; transform: translateY(-50%) scale(0.6); }
+    15%  { opacity: 1; transform: translateY(-50%) scale(1); }
+    85%  { opacity: 1; transform: translateY(-50%) scale(1); }
+    100% { left: 78%; opacity: 0; transform: translateY(-50%) scale(0.6); }
+  }
+
+  /* === Step 3: countdown clock on the receivable === */
+  .ms-bundle__countdown {
+    position: absolute; bottom: 16px; right: 18px;
+    background: linear-gradient(135deg, #0B1B35 0%, #1F2A44 100%);
+    color: #ffffff; font-weight: 800;
+    font-size: 11px; padding: 5px 10px; border-radius: 999px;
+    letter-spacing: 0.05em;
+    box-shadow: 0 3px 8px rgba(11,27,53,0.25);
+  }
+  .ms-bundle__countdown span {
+    color: #6EC6FF;
+    animation: ms-bundle-count 4s steps(31) infinite;
+  }
+  @keyframes ms-bundle-count {
+    /* Visual hint of a Net-30 countdown — purely decorative */
+    0%   { content: '30'; }
+    100% { content: '0'; }
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .ms-bundle__iconbox::before,
+    .ms-bundle__iconbox::after,
+    .ms-bundle__line::before,
+    .ms-bundle__money,
+    .ms-bundle__icon-fill { animation: none !important; }
+  }
+</style>
+
+<section id="how-the-bundle-works" class="ms-bundle" aria-label="How MasterStock works">
+  <div class="ms-bundle__bg" aria-hidden="true"></div>
+  <div class="ms-bundle__wrap">
+    <span class="ms-bundle__eyebrow" data-es="Cómo funciona el bundle">How the bundle works</span>
+    <h2 class="ms-bundle__title" data-es="Tres capas. &lt;span class=&quot;grad&quot;&gt;Un solo flujo.&lt;/span&gt;">
+      Three layers. <span class="grad">One single flow.</span>
+    </h2>
+    <p class="ms-bundle__lead" data-es="Sourcing, financiamiento y entrega empaquetados en un único ciclo semanal. Tú no buscas, no anticipas capital y no esperas para vender.">
+      Sourcing, financing and delivery packaged into a single weekly cycle. You don't search, you don't put up capital, and you don't wait to sell.
+    </p>
+
+    <div class="ms-bundle__steps">
+      <span class="ms-bundle__line" aria-hidden="true"></span>
+
+      <!-- STEP 1: WE FIND -->
+      <article class="ms-bundle__step ms-bundle__step--find">
+        <div class="ms-bundle__num">1</div>
+        <div class="ms-bundle__iconbox" aria-hidden="true">
+          <svg class="ms-bundle__icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <!-- warehouse silhouette -->
+            <path d="M8 28 L32 14 L56 28 V52 H8 Z"/>
+            <path d="M20 52 V36 H44 V52"/>
+            <path d="M28 44 H36"/>
+            <!-- scanning pulse circle around it -->
+            <circle class="ms-bundle__icon-fill" cx="32" cy="32" r="22" stroke-dasharray="3 4" opacity="0.55"/>
+          </svg>
+        </div>
+        <h3 data-es="Lo encontramos">We find it</h3>
+        <p data-es="Mapeamos retailers, 3PLs y brands en el Northeast de Estados Unidos. Cada manifiesto se verifica físicamente antes de llegar a tu catálogo.">
+          We map retailers, 3PLs and brands across the US Northeast. Every manifest is physically verified before it reaches your catalog.
+        </p>
+        <span class="ms-bundle__tag" data-es="Sourcing">Sourcing</span>
+      </article>
+
+      <!-- STEP 2: WE FINANCE -->
+      <article class="ms-bundle__step ms-bundle__step--finance">
+        <div class="ms-bundle__num">2</div>
+        <div class="ms-bundle__iconbox" aria-hidden="true">
+          <span class="ms-bundle__money">$</span>
+          <svg class="ms-bundle__icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <!-- bank vault / dollar -->
+            <rect x="12" y="14" width="40" height="36" rx="4"/>
+            <path d="M12 24 H52"/>
+            <path d="M28 36 c0 -2 2 -3 4 -3 s4 1 4 3 -2 3 -4 3 -4 1 -4 3 2 3 4 3 4 -1 4 -3"/>
+            <path d="M32 30 V42"/>
+          </svg>
+        </div>
+        <h3 data-es="Lo financiamos">We finance it</h3>
+        <p data-es="Pagamos al supplier en Estados Unidos en efectivo el día cero. Tú no anticipas capital de trabajo antes de que la mercancía llegue.">
+          We pay the US supplier in cash on day zero. You don't put up working capital before the inventory arrives.
+        </p>
+        <span class="ms-bundle__tag" data-es="Trade Finance">Trade Finance</span>
+      </article>
+
+      <!-- STEP 3: YOU SELL -->
+      <article class="ms-bundle__step ms-bundle__step--sell">
+        <div class="ms-bundle__num">3</div>
+        <div class="ms-bundle__iconbox" aria-hidden="true">
+          <svg class="ms-bundle__icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <!-- truck delivering -->
+            <rect x="6" y="22" width="30" height="22" rx="2"/>
+            <path d="M36 28 H50 L58 36 V44 H36 Z"/>
+            <circle cx="18" cy="48" r="4"/>
+            <circle cx="48" cy="48" r="4"/>
+            <path d="M14 32 H28 M14 38 H24"/>
+          </svg>
+        </div>
+        <h3 data-es="Tú vendes">You sell it</h3>
+        <p data-es="Recibes el pallet curado, manifestado y financiado. Lo vendes en tu mercado local. Nos pagas a 30 días desde recepción.">
+          You receive the pallet curated, manifested and financed. You sell it in your local market. You pay us Net-30 from receipt.
+        </p>
+        <span class="ms-bundle__tag" data-es="Net-30">Net-30</span>
+        <div class="ms-bundle__countdown" aria-hidden="true">NET-<span>30</span>D</div>
+      </article>
+    </div>
+  </div>
+</section>
+
 <!-- WHAT IS MASTERSTOCK & WHY WE EXIST -->
 <section id="why-we-exist" class="ms-why-section">
   <div class="ms-why-bg" aria-hidden="true"></div>
