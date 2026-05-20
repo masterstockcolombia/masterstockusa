@@ -1577,7 +1577,7 @@ html::-webkit-scrollbar:horizontal, body::-webkit-scrollbar:horizontal, *::-webk
     display: grid;
     grid-template-columns: 1fr;
     gap: 40px;
-    align-items: stretch;
+    align-items: start;
   }
   @media (min-width: 1024px) {
     .ms-why-grid {
@@ -1903,6 +1903,186 @@ html::-webkit-scrollbar:horizontal, body::-webkit-scrollbar:horizontal, *::-webk
     color: #2563EB;
     margin-bottom: 18px;
   }
+
+  /* === Simplified compare (Industry today → With MasterStock) === */
+  .ms-compare {
+    position: relative;
+    width: 100%;
+    background:
+      radial-gradient(ellipse 60% 80% at 50% 50%, rgba(110, 198, 255, 0.10) 0%, transparent 70%),
+      linear-gradient(180deg, #0B1B35 0%, #07142A 100%);
+    border-radius: 20px;
+    padding: 26px 22px 22px;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06),
+                0 24px 60px -30px rgba(0, 0, 0, 0.6);
+    flex: 1;
+    overflow: hidden;
+  }
+  .ms-compare::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 22px 22px;
+    mask-image: radial-gradient(ellipse 75% 85% at 50% 50%, #000 30%, transparent 90%);
+    -webkit-mask-image: radial-gradient(ellipse 75% 85% at 50% 50%, #000 30%, transparent 90%);
+    pointer-events: none;
+  }
+  .ms-compare__head {
+    position: relative; z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 28px 1fr;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .ms-compare__hcol {
+    display: inline-flex; align-items: center; gap: 8px;
+    font: 700 11px/1 Inter, ui-sans-serif, system-ui, sans-serif;
+    letter-spacing: 0.14em; text-transform: uppercase;
+  }
+  .ms-compare__hcol--bad { color: #FCA5A5; }
+  .ms-compare__hcol--good {
+    color: #6EC6FF;
+    grid-column: 3;
+    justify-self: start;
+  }
+  .ms-compare__hdot {
+    width: 8px; height: 8px; border-radius: 50%;
+    display: inline-block;
+  }
+  .ms-compare__hdot--bad { background: #EF4444; box-shadow: 0 0 8px rgba(239,68,68,0.55); }
+  .ms-compare__hdot--good {
+    background: #6EC6FF; box-shadow: 0 0 8px rgba(110,198,255,0.6);
+    animation: ms-compare-pulse 2s ease-in-out infinite;
+  }
+  @keyframes ms-compare-pulse {
+    0%,100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.55; transform: scale(1.25); }
+  }
+
+  /* Rows */
+  .ms-compare__rows {
+    position: relative; z-index: 2;
+    display: flex; flex-direction: column;
+    gap: 10px;
+  }
+  .ms-compare__row {
+    display: grid;
+    grid-template-columns: 1fr 28px 1fr;
+    align-items: center; gap: 10px;
+    opacity: 0; transform: translateY(8px);
+    animation: ms-compare-rise .6s ease-out forwards;
+    animation-delay: calc(0.25s + var(--i, 0) * 0.6s);
+  }
+  @keyframes ms-compare-rise {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .ms-compare__cell {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    transition: all .3s ease;
+  }
+  .ms-compare__cell--bad {
+    background: rgba(239, 68, 68, 0.08);
+    border-color: rgba(239, 68, 68, 0.18);
+  }
+  .ms-compare__cell--good {
+    background: rgba(110, 198, 255, 0.08);
+    border-color: rgba(110, 198, 255, 0.22);
+    box-shadow: 0 0 18px rgba(110, 198, 255, 0.05);
+  }
+  .ms-compare__row:hover .ms-compare__cell--good {
+    background: rgba(110, 198, 255, 0.14);
+    border-color: rgba(110, 198, 255, 0.4);
+  }
+  .ms-compare__ic {
+    flex-shrink: 0;
+    width: 28px; height: 28px; border-radius: 8px;
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+  .ms-compare__ic svg { width: 16px; height: 16px; }
+  .ms-compare__ic--bad { background: rgba(239, 68, 68, 0.15); color: #FCA5A5; }
+  .ms-compare__ic--good { background: rgba(110, 198, 255, 0.18); color: #6EC6FF; }
+  .ms-compare__txt {
+    color: #F5F8FF;
+    font: 600 13.5px/1.3 Inter, ui-sans-serif, system-ui, sans-serif;
+    letter-spacing: -0.005em;
+    text-decoration: line-through;
+    text-decoration-color: rgba(252, 165, 165, 0.5);
+    text-decoration-thickness: 1.5px;
+  }
+  .ms-compare__cell--good .ms-compare__txt {
+    text-decoration: none;
+  }
+  .ms-compare__txt--steps {
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.005em;
+    white-space: nowrap;
+  }
+  .ms-compare__arrow {
+    display: inline-flex; align-items: center; justify-content: center;
+    color: #6EC6FF;
+    opacity: 0;
+    animation: ms-compare-arrow .5s ease forwards;
+    animation-delay: calc(0.45s + var(--i, 0) * 0.6s);
+  }
+  .ms-compare__arrow svg { width: 18px; height: 18px; }
+  @keyframes ms-compare-arrow {
+    0% { opacity: 0; transform: translateX(-6px); }
+    100% { opacity: 0.9; transform: translateX(0); }
+  }
+
+  /* Footer punchline */
+  .ms-compare__foot {
+    position: relative; z-index: 2;
+    margin-top: 18px; padding-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex; align-items: center; gap: 10px;
+    font: 600 13px/1.4 Inter, ui-sans-serif, system-ui, sans-serif;
+    color: #C4D2F0;
+  }
+  .ms-compare__foot-logo {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+    padding: 3px;
+    flex-shrink: 0;
+  }
+
+  /* Mobile: stack each row's pain & fix vertically */
+  @media (max-width: 560px) {
+    .ms-compare__head { grid-template-columns: 1fr 1fr; }
+    .ms-compare__hcol--good { grid-column: 2; }
+    .ms-compare__row {
+      grid-template-columns: 1fr;
+      gap: 6px;
+      padding: 6px;
+      background: rgba(255,255,255,0.02);
+      border-radius: 12px;
+    }
+    .ms-compare__arrow {
+      transform: rotate(90deg);
+      align-self: center;
+    }
+    @keyframes ms-compare-arrow {
+      0% { opacity: 0; transform: rotate(90deg) translateX(-6px); }
+      100% { opacity: 0.9; transform: rotate(90deg) translateX(0); }
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ms-compare__row,
+    .ms-compare__arrow,
+    .ms-compare__hdot--good {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+
   .ms-funnel {
     position: relative;
     width: 100%;
@@ -3461,18 +3641,23 @@ html::-webkit-scrollbar:horizontal, body::-webkit-scrollbar:horizontal, *::-webk
      Animated section explaining how MasterStock works.
      ============================================================ -->
 <style>
-  /* Bundle section root */
+  /* Bundle section root — deep navy bg, alternates with surrounding white sections */
   .ms-bundle {
     position: relative;
-    padding: 88px 24px 96px;
-    background: linear-gradient(180deg, #F8FAFC 0%, #ffffff 60%, #F1F5FB 100%);
+    padding: 96px 24px 104px;
+    background:
+      radial-gradient(ellipse 70% 50% at 50% 0%, rgba(10,92,216,0.18) 0%, transparent 65%),
+      linear-gradient(180deg, #07142A 0%, #050E20 60%, #07142A 100%);
     overflow: hidden;
   }
   .ms-bundle__bg {
     position: absolute; inset: 0;
     background-image:
-      radial-gradient(circle at 12% 18%, rgba(10,92,216,0.07) 0, transparent 38%),
-      radial-gradient(circle at 88% 82%, rgba(110,198,255,0.10) 0, transparent 42%);
+      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse at 50% 50%, #000 30%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse at 50% 50%, #000 30%, transparent 80%);
     pointer-events: none;
   }
   .ms-bundle__wrap {
@@ -3480,24 +3665,29 @@ html::-webkit-scrollbar:horizontal, body::-webkit-scrollbar:horizontal, *::-webk
     max-width: 1200px; margin: 0 auto;
   }
   .ms-bundle__eyebrow {
-    display: inline-block; font-size: 12px; font-weight: 700;
-    letter-spacing: 0.12em; text-transform: uppercase;
-    color: #0A5CD8; margin-bottom: 12px;
+    display: inline-flex; align-items: center; gap: 10px;
+    font: 600 11px/1 Inter, ui-sans-serif, system-ui, sans-serif;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: #6EC6FF; margin-bottom: 16px;
+  }
+  .ms-bundle__eyebrow::before {
+    content: ''; width: 18px; height: 1px;
+    background: linear-gradient(90deg, #6EC6FF 0%, transparent 100%);
   }
   .ms-bundle__title {
     font-family: Inter, ui-sans-serif, system-ui, sans-serif;
-    font-size: clamp(28px, 3.4vw, 44px); font-weight: 800;
-    color: #0B1B35; line-height: 1.1; letter-spacing: -0.02em;
+    font-size: clamp(28px, 3.4vw, 44px); font-weight: 700;
+    color: #FFFFFF; line-height: 1.12; letter-spacing: -0.025em;
     margin: 0 0 14px; max-width: 760px;
   }
   .ms-bundle__title .grad {
-    background: linear-gradient(135deg, #0A5CD8 0%, #6EC6FF 100%);
+    background: linear-gradient(135deg, #6EC6FF 0%, #0A5CD8 100%);
     -webkit-background-clip: text; background-clip: text;
     -webkit-text-fill-color: transparent;
   }
   .ms-bundle__lead {
-    font-size: 16px; color: #4A5568; line-height: 1.55;
-    max-width: 660px; margin: 0 0 56px;
+    font-size: 16px; color: rgba(255,255,255,0.55); line-height: 1.6;
+    max-width: 660px; margin: 0 0 64px;
   }
 
   /* Steps grid + connecting line */
@@ -3512,111 +3702,169 @@ html::-webkit-scrollbar:horizontal, body::-webkit-scrollbar:horizontal, *::-webk
     display: none;
   }
   @media (min-width: 900px) {
-    .ms-bundle__line {
-      display: block; position: absolute;
-      top: 64px; left: 14%; right: 14%; height: 2px;
-      background: linear-gradient(90deg,
-        rgba(10,92,216,0.08) 0%,
-        rgba(10,92,216,0.55) 12%,
-        rgba(110,198,255,0.85) 50%,
-        rgba(10,92,216,0.55) 88%,
-        rgba(10,92,216,0.08) 100%);
-      border-radius: 1px;
-      overflow: hidden;
-    }
-    .ms-bundle__line::before {
-      content: ''; position: absolute;
-      top: -3px; left: 0; width: 60px; height: 8px;
-      background: linear-gradient(90deg, transparent, #6EC6FF, transparent);
-      border-radius: 50%; filter: blur(2px);
-      animation: ms-bundle-travel 5.5s linear infinite;
-    }
+    .ms-bundle__line { display: none; }
   }
   @keyframes ms-bundle-travel {
-    0%   { transform: translateX(-60px); }
+    0% { transform: translateX(-60px); }
     100% { transform: translateX(calc(100% + 60px)); }
   }
 
   /* Step card */
   .ms-bundle__step {
-    position: relative; background: #ffffff;
-    border: 1px solid rgba(11,27,53,0.08);
-    border-radius: 20px; padding: 32px 26px 28px;
-    box-shadow: 0 4px 14px rgba(11,27,53,0.04), 0 1px 2px rgba(11,27,53,0.04);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    position: relative; background: transparent;
+    border: 0;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+    transition: transform 0.5s cubic-bezier(.2,.7,.2,1);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
   }
-  .ms-bundle__step:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 30px rgba(11,27,53,0.10), 0 2px 6px rgba(11,27,53,0.06);
-  }
+  .ms-bundle__step:hover { transform: translateY(-3px); }
+  .ms-bundle__steps { align-items: stretch; }
+  .ms-bundle__step h3, .ms-bundle__step p { flex: 0 0 auto; }
+  .ms-bundle__step .ms-bundle__tag { margin-top: auto; padding-top: 18px; }
 
-  /* Icon container */
+  /* Illustration container — constrained size, sits in a subtle tile */
   .ms-bundle__iconbox {
-    position: relative; width: 96px; height: 96px;
-    margin: 0 auto 18px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #E8F0FE 0%, #ffffff 100%);
+    position: relative;
+    width: 100%;
+    max-width: 200px;
+    aspect-ratio: 4 / 3;
+    margin: 0 0 28px;
+    border-radius: 14px;
+    background: rgba(110, 198, 255, 0.04);
+    border: 1px solid rgba(110, 198, 255, 0.08);
     display: flex; align-items: center; justify-content: center;
-    border: 2px solid rgba(10,92,216,0.12);
+    overflow: visible;
+    padding: 8px;
   }
   .ms-bundle__iconbox::before,
-  .ms-bundle__iconbox::after {
-    content: ''; position: absolute; inset: 0;
-    border-radius: 50%;
-    border: 2px solid rgba(10,92,216,0.35);
-    opacity: 0;
-    animation: ms-bundle-pulse 3.5s ease-out infinite;
-  }
-  .ms-bundle__iconbox::after { animation-delay: 1.75s; }
-  @keyframes ms-bundle-pulse {
-    0%   { transform: scale(1);   opacity: 0.7; }
-    100% { transform: scale(1.55); opacity: 0;   }
-  }
-  .ms-bundle__icon {
-    position: relative; z-index: 2;
-    width: 44px; height: 44px;
-    color: #0A5CD8;
-  }
+  .ms-bundle__iconbox::after { content: none; display: none; }
+  .ms-bundle__icon { display: none; }
 
-  /* Step number badge */
+  /* Step number: editorial italic serif, not pill */
   .ms-bundle__num {
-    position: absolute; top: 22px; right: 22px;
-    width: 32px; height: 32px; border-radius: 50%;
-    background: linear-gradient(135deg, #0A5CD8 0%, #0847A8 100%);
-    color: #ffffff; font-weight: 800; font-size: 14px;
-    display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 4px 10px rgba(10,92,216,0.25);
+    position: absolute; top: 0; right: 0;
+    width: auto; height: auto;
+    background: none; box-shadow: none;
+    color: rgba(110,198,255,0.55);
+    font-family: ui-serif, Georgia, 'Times New Roman', serif;
+    font-style: italic; font-weight: 300;
+    font-size: 28px; line-height: 1;
+    letter-spacing: -0.02em;
+    display: block;
+    text-align: right;
   }
 
   /* Step text */
   .ms-bundle__step h3 {
     font-family: Inter, ui-sans-serif, system-ui, sans-serif;
-    text-align: center;
-    font-size: 22px; font-weight: 800; color: #0B1B35;
-    margin: 0 0 10px; letter-spacing: -0.01em;
+    text-align: left;
+    font-size: 22px; font-weight: 700; color: #FFFFFF;
+    margin: 0 0 10px; letter-spacing: -0.022em;
   }
   .ms-bundle__step p {
-    text-align: center;
-    font-size: 14.5px; color: #4A5568; line-height: 1.55;
+    text-align: left;
+    font-size: 14.5px; color: rgba(255,255,255,0.55); line-height: 1.6;
     margin: 0;
   }
   .ms-bundle__tag {
-    display: block; margin: 14px auto 0;
-    width: max-content; padding: 4px 12px;
-    background: rgba(10,92,216,0.06);
-    color: #0A5CD8; font-size: 11px; font-weight: 700;
-    letter-spacing: 0.08em; text-transform: uppercase;
-    border-radius: 999px;
+    display: inline-block;
+    margin: 18px 0 0;
+    width: auto; padding: 0;
+    background: transparent;
+    color: #6EC6FF; font-size: 10.5px; font-weight: 700;
+    letter-spacing: 0.20em; text-transform: uppercase;
+    border-radius: 0;
   }
 
-  /* === Step 1: searching/scanning pulse on warehouse icon === */
-  .ms-bundle__step--find .ms-bundle__icon-fill {
-    transform-origin: center;
-    animation: ms-bundle-scan 3s ease-in-out infinite;
+  /* === Bold flat illustrations === */
+  .msb-illus { width: 100%; height: 100%; display: block; }
+  .msb-illus rect, .msb-illus path, .msb-illus circle, .msb-illus polygon, .msb-illus polyline, .msb-illus line, .msb-illus ellipse {
+    stroke: #000000;
   }
-  @keyframes ms-bundle-scan {
-    0%, 100% { opacity: 0.4; }
-    50%      { opacity: 1.0; }
+
+  /* Warehouse (We find it) — scan beam sweeps across */
+  .msb-scan {
+    transform-origin: center;
+    animation: msb-scan 3.4s ease-in-out infinite;
+  }
+  @keyframes msb-scan {
+    0%, 100% { opacity: 0.0; transform: translateX(-20px); }
+    50%      { opacity: 1.0; transform: translateX(20px); }
+  }
+  .msb-magnifier {
+    transform-origin: 75px 60px;
+    animation: msb-mag 3.4s ease-in-out infinite;
+  }
+  @keyframes msb-mag {
+    0%, 100% { transform: translate(0, 0) rotate(-6deg); }
+    50%      { transform: translate(4px, -3px) rotate(8deg); }
+  }
+
+  /* Finance (We finance it) — wire arrow + $ float */
+  .msb-bill {
+    transform-origin: center;
+    animation: msb-bill 3s ease-in-out infinite;
+  }
+  @keyframes msb-bill {
+    0%   { transform: translate(-26px, 8px) rotate(-8deg); opacity: 0; }
+    15%  { opacity: 1; }
+    50%  { transform: translate(0, 0) rotate(0deg); opacity: 1; }
+    85%  { opacity: 1; }
+    100% { transform: translate(26px, -8px) rotate(8deg); opacity: 0; }
+  }
+  .msb-bill-shadow { animation: msb-bill-shadow 3s ease-in-out infinite; }
+  @keyframes msb-bill-shadow {
+    0%, 100% { opacity: 0; }
+    50%      { opacity: 0.4; }
+  }
+
+  /* Truck (You sell it) — slight bobbing motion, wheels spin */
+  .msb-truck {
+    transform-origin: center;
+    animation: msb-truck-bob 2.6s ease-in-out infinite;
+  }
+  @keyframes msb-truck-bob {
+    0%, 100% { transform: translateX(-6px); }
+    50%      { transform: translateX(6px); }
+  }
+  .msb-wheel {
+    transform-origin: center;
+    transform-box: fill-box;
+    animation: msb-wheel-spin 1.4s linear infinite;
+  }
+  @keyframes msb-wheel-spin {
+    to { transform: rotate(360deg); }
+  }
+  .msb-puff {
+    transform-origin: center;
+    animation: msb-puff 2s ease-out infinite;
+  }
+  @keyframes msb-puff {
+    0%   { opacity: 0; transform: translateX(0) scale(0.6); }
+    30%  { opacity: 0.7; }
+    100% { opacity: 0; transform: translateX(-30px) scale(1.4); }
+  }
+
+  /* Card stagger fade-in */
+  .ms-bundle__step {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: msb-rise .9s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .ms-bundle__step--find    { animation-delay: 0.05s; }
+  .ms-bundle__step--finance { animation-delay: 0.20s; }
+  .ms-bundle__step--sell    { animation-delay: 0.35s; }
+  @keyframes msb-rise {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ms-bundle__step, .msb-scan, .msb-magnifier, .msb-bill, .msb-bill-shadow,
+    .msb-truck, .msb-wheel, .msb-puff { animation: none !important; opacity: 1 !important; transform: none !important; }
   }
 
   /* === Step 2: money flow animation === */
@@ -3633,9 +3881,9 @@ html::-webkit-scrollbar:horizontal, body::-webkit-scrollbar:horizontal, *::-webk
     opacity: 0;
   }
   @keyframes ms-bundle-money-flow {
-    0%   { left: 8%;  opacity: 0; transform: translateY(-50%) scale(0.6); }
-    15%  { opacity: 1; transform: translateY(-50%) scale(1); }
-    85%  { opacity: 1; transform: translateY(-50%) scale(1); }
+    0% { left: 8%; opacity: 0; transform: translateY(-50%) scale(0.6); }
+    15% { opacity: 1; transform: translateY(-50%) scale(1); }
+    85% { opacity: 1; transform: translateY(-50%) scale(1); }
     100% { left: 78%; opacity: 0; transform: translateY(-50%) scale(0.6); }
   }
 
@@ -3653,8 +3901,8 @@ html::-webkit-scrollbar:horizontal, body::-webkit-scrollbar:horizontal, *::-webk
     animation: ms-bundle-count 4s steps(31) infinite;
   }
   @keyframes ms-bundle-count {
-    /* Visual hint of a Net-30 countdown — purely decorative */
-    0%   { content: '30'; }
+    /* Visual hint of a Net-30 countdown, purely decorative */
+    0% { content: '30'; }
     100% { content: '0'; }
   }
 
@@ -3682,17 +3930,32 @@ html::-webkit-scrollbar:horizontal, body::-webkit-scrollbar:horizontal, *::-webk
     <div class="ms-bundle__steps">
       <span class="ms-bundle__line" aria-hidden="true"></span>
 
-      <!-- STEP 1: WE FIND -->
+      <!-- STEP 1: WE FIND — Warehouse + scan + magnifier -->
       <article class="ms-bundle__step ms-bundle__step--find">
-        <div class="ms-bundle__num">1</div>
+        <div class="ms-bundle__num">01</div>
         <div class="ms-bundle__iconbox" aria-hidden="true">
-          <svg class="ms-bundle__icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-            <!-- warehouse silhouette -->
-            <path d="M8 28 L32 14 L56 28 V52 H8 Z"/>
-            <path d="M20 52 V36 H44 V52"/>
-            <path d="M28 44 H36"/>
-            <!-- scanning pulse circle around it -->
-            <circle class="ms-bundle__icon-fill" cx="32" cy="32" r="22" stroke-dasharray="3 4" opacity="0.55"/>
+          <svg class="msb-illus" viewBox="0 0 160 120" preserveAspectRatio="xMidYMid meet">
+            <!-- ground shadow -->
+            <ellipse cx="80" cy="108" rx="60" ry="3.5" fill="#0E1A33" opacity="0.7"/>
+            <!-- scan beam (sweeps left/right behind warehouse) -->
+            <rect class="msb-scan" x="56" y="40" width="48" height="60" fill="#6EC6FF" opacity="0.18" rx="6"/>
+            <!-- warehouse body -->
+            <polygon points="32,52 80,28 128,52 128,100 32,100" fill="#4FB8FF" stroke="#000" stroke-width="3.5" stroke-linejoin="round"/>
+            <!-- roof shadow stripe -->
+            <polygon points="32,52 80,28 128,52 128,60 80,36 32,60" fill="#3FA8FF" stroke="#000" stroke-width="3.5" stroke-linejoin="round"/>
+            <!-- big door -->
+            <rect x="64" y="66" width="32" height="34" fill="#82D0FF" stroke="#000" stroke-width="3" rx="2"/>
+            <line x1="80" y1="66" x2="80" y2="100" stroke="#000" stroke-width="2.4"/>
+            <line x1="64" y1="84" x2="96" y2="84" stroke="#000" stroke-width="2"/>
+            <!-- side windows -->
+            <rect x="42" y="72" width="14" height="10" fill="#A0DEFF" stroke="#000" stroke-width="2.4" rx="1"/>
+            <rect x="104" y="72" width="14" height="10" fill="#A0DEFF" stroke="#000" stroke-width="2.4" rx="1"/>
+            <!-- magnifying glass overlay -->
+            <g class="msb-magnifier">
+              <circle cx="118" cy="40" r="14" fill="#FFFFFF" stroke="#000" stroke-width="3" opacity="0.95"/>
+              <circle cx="118" cy="40" r="9"  fill="#6EC6FF" stroke="#000" stroke-width="2"/>
+              <line x1="128" y1="50" x2="138" y2="60" stroke="#000" stroke-width="4" stroke-linecap="round"/>
+            </g>
           </svg>
         </div>
         <h3 data-es="Lo encontramos">We find it</h3>
@@ -3702,17 +3965,34 @@ html::-webkit-scrollbar:horizontal, body::-webkit-scrollbar:horizontal, *::-webk
         <span class="ms-bundle__tag" data-es="Sourcing">Sourcing</span>
       </article>
 
-      <!-- STEP 2: WE FINANCE -->
+      <!-- STEP 2: WE FINANCE — vault + flying bill -->
       <article class="ms-bundle__step ms-bundle__step--finance">
-        <div class="ms-bundle__num">2</div>
+        <div class="ms-bundle__num">02</div>
         <div class="ms-bundle__iconbox" aria-hidden="true">
-          <span class="ms-bundle__money">$</span>
-          <svg class="ms-bundle__icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-            <!-- bank vault / dollar -->
-            <rect x="12" y="14" width="40" height="36" rx="4"/>
-            <path d="M12 24 H52"/>
-            <path d="M28 36 c0 -2 2 -3 4 -3 s4 1 4 3 -2 3 -4 3 -4 1 -4 3 2 3 4 3 4 -1 4 -3"/>
-            <path d="M32 30 V42"/>
+          <svg class="msb-illus" viewBox="0 0 160 120" preserveAspectRatio="xMidYMid meet">
+            <!-- ground shadow -->
+            <ellipse cx="80" cy="108" rx="60" ry="3.5" fill="#0E1A33" opacity="0.7"/>
+            <!-- vault -->
+            <rect x="40" y="42" width="80" height="60" fill="#4FB8FF" stroke="#000" stroke-width="3.5" rx="6"/>
+            <rect x="40" y="42" width="80" height="14" fill="#3FA8FF" stroke="#000" stroke-width="3.5" rx="6"/>
+            <!-- vault wheel -->
+            <circle cx="80" cy="76" r="16" fill="#82D0FF" stroke="#000" stroke-width="3"/>
+            <circle cx="80" cy="76" r="6"  fill="#FFFFFF" stroke="#000" stroke-width="2.4"/>
+            <line x1="80" y1="60" x2="80" y2="68" stroke="#000" stroke-width="3" stroke-linecap="round"/>
+            <line x1="80" y1="84" x2="80" y2="92" stroke="#000" stroke-width="3" stroke-linecap="round"/>
+            <line x1="64" y1="76" x2="72" y2="76" stroke="#000" stroke-width="3" stroke-linecap="round"/>
+            <line x1="88" y1="76" x2="96" y2="76" stroke="#000" stroke-width="3" stroke-linecap="round"/>
+            <!-- handle -->
+            <rect x="106" y="68" width="6" height="16" fill="#FFFFFF" stroke="#000" stroke-width="2.4" rx="1"/>
+            <!-- flying dollar bill -->
+            <g class="msb-bill">
+              <rect x="98" y="20" width="48" height="24" fill="#A0DEFF" stroke="#000" stroke-width="3" rx="3"/>
+              <circle cx="122" cy="32" r="6" fill="#FFFFFF" stroke="#000" stroke-width="2.4"/>
+              <text x="122" y="35.5" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="9" fill="#000">$</text>
+              <line x1="104" y1="26" x2="110" y2="26" stroke="#000" stroke-width="1.8"/>
+              <line x1="134" y1="38" x2="140" y2="38" stroke="#000" stroke-width="1.8"/>
+            </g>
+            <ellipse class="msb-bill-shadow" cx="122" cy="48" rx="22" ry="2.5" fill="#0E1A33"/>
           </svg>
         </div>
         <h3 data-es="Lo financiamos">We finance it</h3>
@@ -3722,17 +4002,42 @@ html::-webkit-scrollbar:horizontal, body::-webkit-scrollbar:horizontal, *::-webk
         <span class="ms-bundle__tag" data-es="Trade Finance">Trade Finance</span>
       </article>
 
-      <!-- STEP 3: YOU SELL -->
+      <!-- STEP 3: YOU SELL — truck delivering -->
       <article class="ms-bundle__step ms-bundle__step--sell">
-        <div class="ms-bundle__num">3</div>
+        <div class="ms-bundle__num">03</div>
         <div class="ms-bundle__iconbox" aria-hidden="true">
-          <svg class="ms-bundle__icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-            <!-- truck delivering -->
-            <rect x="6" y="22" width="30" height="22" rx="2"/>
-            <path d="M36 28 H50 L58 36 V44 H36 Z"/>
-            <circle cx="18" cy="48" r="4"/>
-            <circle cx="48" cy="48" r="4"/>
-            <path d="M14 32 H28 M14 38 H24"/>
+          <svg class="msb-illus" viewBox="0 0 160 120" preserveAspectRatio="xMidYMid meet">
+            <!-- ground shadow -->
+            <ellipse cx="80" cy="108" rx="60" ry="3.5" fill="#0E1A33" opacity="0.7"/>
+            <!-- exhaust puffs -->
+            <circle class="msb-puff" cx="22" cy="84" r="5"  fill="#FFFFFF" opacity="0.4"/>
+            <circle class="msb-puff" cx="14" cy="76" r="4"  fill="#FFFFFF" opacity="0.3" style="animation-delay:.4s"/>
+            <g class="msb-truck">
+              <!-- trailer -->
+              <rect x="32" y="50" width="68" height="44" fill="#4FB8FF" stroke="#000" stroke-width="3.5" rx="4"/>
+              <line x1="32" y1="62" x2="100" y2="62" stroke="#000" stroke-width="2"/>
+              <line x1="32" y1="80" x2="100" y2="80" stroke="#000" stroke-width="2"/>
+              <line x1="66" y1="50" x2="66" y2="94" stroke="#000" stroke-width="2.4"/>
+              <!-- cab -->
+              <polygon points="100,58 122,58 138,76 138,94 100,94" fill="#82D0FF" stroke="#000" stroke-width="3.5" stroke-linejoin="round"/>
+              <!-- window -->
+              <polygon points="106,64 122,64 132,76 106,76" fill="#A0DEFF" stroke="#000" stroke-width="2.4"/>
+              <!-- headlight -->
+              <rect x="132" y="80" width="6" height="6" fill="#FFFFFF" stroke="#000" stroke-width="2"/>
+              <!-- wheels -->
+              <g>
+                <circle cx="50"  cy="96" r="8" fill="#000000"/>
+                <circle class="msb-wheel" cx="50" cy="96" r="5" fill="#82D0FF" stroke="#000" stroke-width="2"/>
+              </g>
+              <g>
+                <circle cx="86"  cy="96" r="8" fill="#000000"/>
+                <circle class="msb-wheel" cx="86" cy="96" r="5" fill="#82D0FF" stroke="#000" stroke-width="2"/>
+              </g>
+              <g>
+                <circle cx="122" cy="96" r="8" fill="#000000"/>
+                <circle class="msb-wheel" cx="122" cy="96" r="5" fill="#82D0FF" stroke="#000" stroke-width="2"/>
+              </g>
+            </g>
           </svg>
         </div>
         <h3 data-es="Tú vendes">You sell it</h3>
@@ -3740,224 +4045,1525 @@ html::-webkit-scrollbar:horizontal, body::-webkit-scrollbar:horizontal, *::-webk
           You receive the pallet curated, manifested and financed. You sell it in your local market. You pay us Net-30 from receipt.
         </p>
         <span class="ms-bundle__tag" data-es="Net-30">Net-30</span>
-        <div class="ms-bundle__countdown" aria-hidden="true">NET-<span>30</span>D</div>
       </article>
     </div>
   </div>
 </section>
 
-<!-- WHAT IS MASTERSTOCK & WHY WE EXIST -->
-<section id="why-we-exist" class="ms-why-section">
-  <div class="ms-why-bg" aria-hidden="true"></div>
-  <div class="ms-why-grid">
+<!-- ============================================================
+     HOW THE LOOP WORKS, text left, animated cycle right.
+     Each pallet trains the next match: brief → source → ship/Net-30 → learn.
+     ============================================================ -->
+<style>
+  .ms-loop {
+    position: relative;
+    padding: 96px 24px 104px;
+    background: #FFFFFF;
+    overflow: hidden;
+  }
+  .ms-loop::before {
+    content: ''; position: absolute; inset: 0;
+    background-image:
+      radial-gradient(circle at 12% 18%, rgba(10,92,216,0.05) 0, transparent 38%),
+      radial-gradient(circle at 88% 82%, rgba(110,198,255,0.06) 0, transparent 42%);
+    pointer-events: none;
+  }
+  .ms-loop__wrap {
+    position: relative; z-index: 2;
+    max-width: 1180px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+  @media (min-width: 940px) {
+    .ms-loop__wrap { grid-template-columns: 1fr 1.05fr; gap: 56px; }
+  }
 
-    <!-- COL 1: Title + body -->
-    <div class="ms-why-col ms-why-col-text">
-      <span class="ms-why-eyebrow" data-es="Qué es MasterStock">What is MasterStock</span>
-      <h2 class="ms-why-title" data-es="Crédito Net-30 y catálogo curado. La plataforma se adapta a ti, no al revés.">Net-30 credit and curated catalog. The platform adapts to you, not the other way around.</h2>
-      <p class="ms-why-lead" data-es="Los bancos en Estados Unidos no le dan crédito comercial a un importador en LATAM sin historia local. Los bancos en LATAM cobran tasas locales sobre dólares que no tienen. MasterStock cierra el gap: le pagamos al supplier en Estados Unidos, te embarcamos la mercancía y tú nos pagas a 30 días desde que la recibes. Cada lote viene puntuado contra tu velocidad de venta, tasa de defectos y rotación de SKU. Cero subastas. Cero lotes ciegos.">
-        US banks don't extend trade credit to a LATAM importer without local history. LATAM banks charge local rates on dollars they don't hold. MasterStock closes the gap: we pay the US supplier, ship you the inventory, and you pay Net-30 from receipt. Every lot is scored against your sell-through, defect rate, and SKU rotation. No auctions. No mystery boxes.
+  /* === LEFT: explanation === */
+  .ms-loop__text { color: #4A5568; }
+  .ms-loop__eyebrow {
+    display: inline-block; font: 700 11.5px/1 Inter, ui-sans-serif, system-ui, sans-serif;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: #0A5CD8; margin-bottom: 14px;
+  }
+  .ms-loop__title {
+    font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+    font-size: clamp(24px, 2.4vw, 32px); font-weight: 800;
+    color: #0B1B35; line-height: 1.18; letter-spacing: -0.015em;
+    margin: 0 0 14px;
+  }
+  .ms-loop__title .grad {
+    background: linear-gradient(135deg, #0A5CD8 0%, #6EC6FF 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .ms-loop__lead {
+    font-size: 14.5px; color: #4A5568; line-height: 1.6;
+    margin: 0 0 26px; max-width: 520px;
+  }
+  .ms-loop__steps {
+    list-style: none; padding: 0; margin: 0 0 24px;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .ms-loop__step {
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    gap: 14px; align-items: start;
+  }
+  .ms-loop__step-num {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: rgba(10,92,216,0.08);
+    border: 1px solid rgba(10,92,216,0.22);
+    color: #0A5CD8;
+    display: flex; align-items: center; justify-content: center;
+    font: 800 13px/1 Inter, sans-serif;
+    flex-shrink: 0;
+  }
+  .ms-loop__step-body strong {
+    display: block;
+    color: #0B1B35;
+    font: 700 14.5px/1.3 Inter, sans-serif;
+    margin-bottom: 3px;
+  }
+  .ms-loop__step-body span {
+    display: block;
+    color: #4A5568;
+    font: 500 13.5px/1.55 Inter, sans-serif;
+  }
+  .ms-loop__step--accent .ms-loop__step-num {
+    background: linear-gradient(135deg, #0A5CD8 0%, #6EC6FF 100%);
+    border-color: #0A5CD8;
+    color: #FFFFFF;
+    box-shadow: 0 0 0 4px rgba(10,92,216,0.10);
+  }
+  .ms-loop__step--accent .ms-loop__step-body strong {
+    color: #0A5CD8;
+  }
+  .ms-loop__step-bullets {
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+  }
+  .ms-loop__step-bullet {
+    display: inline-block !important;
+    font: 600 10.5px/1 Inter, sans-serif !important;
+    color: #6EC6FF !important;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 5px 9px;
+    border-radius: 999px;
+    background: rgba(110,198,255,0.08);
+    border: 1px solid rgba(110,198,255,0.22);
+  }
+  .ms-loop__cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 11px 18px; border-radius: 999px;
+    background: linear-gradient(135deg, #0A5CD8 0%, #1574FF 100%);
+    color: #fff; font-weight: 700; font-size: 14px;
+    text-decoration: none;
+    box-shadow: 0 8px 20px rgba(10,92,216,0.35);
+    transition: transform .2s ease;
+  }
+  .ms-loop__cta:hover { transform: translateY(-1px); }
+  .ms-loop__cta svg { width: 16px; height: 16px; }
+
+  /* === RIGHT: animation card === */
+  /* === ILLUSTRATED CARD — strong navy-blue, alternates with white section === */
+  .ms-loop__card--illus {
+    position: relative;
+    background:
+      radial-gradient(ellipse 70% 50% at 50% 0%, rgba(110,198,255,0.18) 0%, transparent 65%),
+      linear-gradient(180deg, #0A1F4A 0%, #07153A 60%, #0A1F4A 100%);
+    border: 1px solid rgba(110, 198, 255, 0.18);
+    border-radius: 16px;
+    padding: 28px 32px 32px;
+    overflow: hidden;
+    box-shadow:
+      0 30px 80px -30px rgba(10, 31, 74, 0.55),
+      0 0 60px rgba(10, 92, 216, 0.18);
+  }
+  .ms-loop__illus-top {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 12px;
+  }
+  .ms-loop__illus-eye {
+    font: 600 10.5px/1 Inter, sans-serif;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: #6EC6FF;
+  }
+  .ms-loop__illus-mark {
+    font-family: ui-serif, Georgia, 'Times New Roman', serif;
+    font-style: italic; font-weight: 300;
+    font-size: 28px;
+    line-height: 1;
+    color: rgba(110,198,255,0.6);
+  }
+  .ms-loop__illus-stage {
+    position: relative;
+    width: 100%;
+    margin: 4px 0 24px;
+  }
+  .ms-loop__illus-svg { width: 100%; height: auto; display: block; }
+
+  /* === PHASE TIMING ===
+     Two-phase 9s loop:
+       0.0s   start. Phase A visible.
+       0.0–2.2s   pallets drop in (stack A → B → C)
+       2.2–4.0s   stacks hold full
+       4.0–4.6s   Phase A fades out, Phase B fades in
+       4.6–8.0s   Phase B plays (receipts → signals → catalog → smarter match)
+       8.0–9.0s   Phase B fades out
+       9.0s   loop restarts
+  */
+  .msa-phase {
+    transition: opacity .6s ease;
+  }
+  .msa-phase-a {
+    animation: msa-fadeA 9s linear infinite;
+  }
+  .msa-phase-b {
+    opacity: 0;
+    animation: msa-fadeB 9s linear infinite;
+  }
+  @keyframes msa-fadeA {
+    0%, 44%   { opacity: 1; }
+    51%       { opacity: 0; }
+    93%       { opacity: 0; }
+    100%      { opacity: 1; }
+  }
+  @keyframes msa-fadeB {
+    0%, 44%   { opacity: 0; }
+    51%       { opacity: 1; }
+    93%       { opacity: 1; }
+    100%      { opacity: 0; }
+  }
+
+  /* Phase labels on top */
+  .msa-phase-label {
+    position: absolute;
+    top: 0; left: 0;
+    font: 600 10.5px/1 Inter, sans-serif;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #6EC6FF;
+    transition: opacity .6s ease;
+    pointer-events: none;
+    display: none;
+  }
+  /* Hidden because the eyebrow at the card head still says CYCLES CLEARED */
+
+  /* === Pallets: drop in sequentially within Phase A === */
+  .msa-pal {
+    transform-origin: center bottom;
+    transform: translateY(-32px) scale(.98);
+    opacity: 0;
+    animation: msa-drop 9s cubic-bezier(.22,1.3,.36,1) infinite;
+  }
+  @keyframes msa-drop {
+    0%   { transform: translateY(-44px) scale(.95); opacity: 0; }
+    6%   { transform: translateY(2px) scale(1.01); opacity: 1; }
+    9%   { transform: translateY(0) scale(1); opacity: 1; }
+    44%  { transform: translateY(0) scale(1); opacity: 1; }
+    50%  { transform: translateY(0) scale(1); opacity: 0; }
+    93%  { transform: translateY(0) scale(1); opacity: 0; }
+    100% { transform: translateY(-44px) scale(.95); opacity: 0; }
+  }
+
+  /* Sequential staggering: stack A first (2 pallets), then B (4), then C (6) */
+  .msa-pal-a-1 { animation-delay: 0.10s; }
+  .msa-pal-a-2 { animation-delay: 0.25s; }
+  .msa-pal-b-1 { animation-delay: 0.55s; }
+  .msa-pal-b-2 { animation-delay: 0.70s; }
+  .msa-pal-b-3 { animation-delay: 0.85s; }
+  .msa-pal-b-4 { animation-delay: 1.00s; }
+  .msa-pal-c-1 { animation-delay: 1.30s; }
+  .msa-pal-c-2 { animation-delay: 1.45s; }
+  .msa-pal-c-3 { animation-delay: 1.60s; }
+  .msa-pal-c-4 { animation-delay: 1.75s; }
+  .msa-pal-c-5 { animation-delay: 1.90s; }
+  .msa-pal-c-6 { animation-delay: 2.05s; }
+
+  /* === PHASE B: receipts → signals → catalog → smarter match === */
+  /* Receipts pop in */
+  .msb2-receipt {
+    transform-origin: center bottom;
+    opacity: 0;
+    animation: msb2-receipt-in 9s cubic-bezier(.2,.7,.2,1) infinite;
+  }
+  @keyframes msb2-receipt-in {
+    0%, 50%  { opacity: 0; transform: translateY(8px) scale(0.95); }
+    54%      { opacity: 1; transform: translateY(0) scale(1); }
+    88%      { opacity: 1; transform: translateY(0) scale(1); }
+    94%      { opacity: 0; transform: translateY(-4px) scale(0.96); }
+    100%     { opacity: 0; }
+  }
+  .msb2-r-1 { animation-delay: 0.0s; }
+  .msb2-r-2 { animation-delay: 0.15s; }
+  .msb2-r-3 { animation-delay: 0.30s; }
+
+  /* Signal paths: marching dashes during phase B */
+  .msb2-path {
+    opacity: 0;
+    stroke-dashoffset: 0;
+    animation: msb2-path-show 9s linear infinite,
+               msb2-path-march 1.5s linear infinite;
+  }
+  @keyframes msb2-path-show {
+    0%, 54%  { opacity: 0; }
+    60%      { opacity: 0.65; }
+    88%      { opacity: 0.65; }
+    93%      { opacity: 0; }
+    100%     { opacity: 0; }
+  }
+  @keyframes msb2-path-march {
+    to { stroke-dashoffset: -44; }
+  }
+
+  /* Signal dots travel from receipt to catalog */
+  .msb2-dot {
+    opacity: 0;
+    animation: msb2-dot-fly 9s ease-in-out infinite;
+  }
+  @keyframes msb2-dot-fly {
+    0%, 56%  { opacity: 0; transform: translate(0, 0); }
+    60%      { opacity: 1; transform: translate(0, 0); }
+    75%      { opacity: 1; transform: translate(80px, -100px) scale(0.85); }
+    78%      { opacity: 0; transform: translate(80px, -100px) scale(0.6); }
+    100%     { opacity: 0; }
+  }
+  .msb2-d-1 { animation-delay: 0.05s; }
+  .msb2-d-2 { animation-delay: 0.20s;  /* note: this travels straight up, different translate */ }
+  .msb2-d-3 { animation-delay: 0.35s; }
+  /* Override translates per dot direction */
+  .msb2-d-2 { animation-name: msb2-dot-fly-mid; }
+  .msb2-d-3 { animation-name: msb2-dot-fly-right; }
+  @keyframes msb2-dot-fly-mid {
+    0%, 56%  { opacity: 0; transform: translate(0, 0); }
+    60%      { opacity: 1; transform: translate(0, 0); }
+    75%      { opacity: 1; transform: translate(-20px, -100px) scale(0.85); }
+    78%      { opacity: 0; transform: translate(-20px, -100px) scale(0.6); }
+    100%     { opacity: 0; }
+  }
+  @keyframes msb2-dot-fly-right {
+    0%, 56%  { opacity: 0; transform: translate(0, 0); }
+    60%      { opacity: 1; transform: translate(0, 0); }
+    75%      { opacity: 1; transform: translate(-120px, -100px) scale(0.85); }
+    78%      { opacity: 0; transform: translate(-120px, -100px) scale(0.6); }
+    100%     { opacity: 0; }
+  }
+
+  /* Catalog console: appears and pulses */
+  .msb2-brain {
+    transform-origin: center;
+    transform-box: fill-box;
+    opacity: 0;
+    animation: msb2-brain-pop 9s cubic-bezier(.2,.7,.2,1) infinite;
+  }
+  @keyframes msb2-brain-pop {
+    0%, 52%  { opacity: 0; transform: scale(0.85); }
+    58%      { opacity: 1; transform: scale(1.04); }
+    63%      { opacity: 1; transform: scale(1); }
+    85%      { opacity: 1; transform: scale(1); }
+    93%      { opacity: 0; transform: scale(0.92); }
+    100%     { opacity: 0; }
+  }
+
+  /* Chart bars inside catalog grow */
+  .msb2-bar {
+    transform-origin: bottom;
+    transform-box: fill-box;
+    transform: scaleY(0);
+    animation: msb2-bar-grow 9s cubic-bezier(.2,.7,.2,1) infinite;
+  }
+  @keyframes msb2-bar-grow {
+    0%, 65%  { transform: scaleY(0); }
+    72%      { transform: scaleY(1); }
+    85%      { transform: scaleY(1); }
+    93%      { transform: scaleY(0.4); }
+    100%     { transform: scaleY(0); }
+  }
+  .msb2-bar-1 { animation-delay: 0.0s; }
+  .msb2-bar-2 { animation-delay: 0.10s; }
+  .msb2-bar-3 { animation-delay: 0.20s; }
+  .msb2-bar-4 { animation-delay: 0.30s; }
+
+  /* Outgoing arrow → smarter pallet */
+  .msb2-out, .msb2-out-arrow {
+    stroke-dasharray: 60;
+    stroke-dashoffset: 60;
+    animation: msb2-out-draw 9s ease-in-out infinite;
+  }
+  @keyframes msb2-out-draw {
+    0%, 74%  { stroke-dashoffset: 60; opacity: 0.7; }
+    82%      { stroke-dashoffset: 0; opacity: 0.95; }
+    92%      { opacity: 0.95; }
+    100%     { stroke-dashoffset: 60; opacity: 0; }
+  }
+  .msb2-output {
+    transform-origin: left center;
+    transform-box: fill-box;
+    opacity: 0;
+    animation: msb2-output-pop 9s cubic-bezier(.2,.7,.2,1) infinite;
+  }
+  @keyframes msb2-output-pop {
+    0%, 78%  { opacity: 0; transform: translateX(-12px) scale(0.92); }
+    85%      { opacity: 1; transform: translateX(0) scale(1.02); }
+    90%      { opacity: 1; transform: translateX(0) scale(1); }
+    93%      { opacity: 0; transform: translateX(0) scale(1); }
+    100%     { opacity: 0; }
+  }
+
+  /* Subtle continuous float on the whole illustration */
+  .ms-loop__illus-stage {
+    animation: msa-float 7s ease-in-out infinite;
+  }
+  @keyframes msa-float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-4px); }
+  }
+
+  .ms-loop__illus-foot {
+    padding-top: 22px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .ms-loop__illus-title {
+    font: 700 22px/1.2 Inter, sans-serif;
+    color: #FFFFFF;
+    letter-spacing: -0.025em;
+    margin: 0 0 8px;
+  }
+  .ms-loop__illus-align {
+    font-family: ui-serif, Georgia, 'Times New Roman', serif;
+    font-style: italic; font-weight: 400;
+    font-size: 14.5px; line-height: 1.5;
+    color: rgba(110,198,255,0.85);
+    margin: 0 0 22px;
+    letter-spacing: 0.005em;
+  }
+  .ms-loop__illus-align em {
+    font-style: italic;
+    color: #FFFFFF;
+    font-weight: 500;
+    background: linear-gradient(transparent 70%, rgba(110,198,255,0.35) 70%);
+    padding: 0 2px;
+  }
+  .ms-loop__illus-sub {
+    font: 400 11.5px/1.55 Inter, sans-serif;
+    color: rgba(255,255,255,0.38);
+    margin: 22px 0 0;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    letter-spacing: 0.005em;
+  }
+
+  /* ===== Micro-stats row ===== */
+  .ms-loop__illus-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 18px;
+    margin-bottom: 6px;
+  }
+  .msa-stat {
+    display: flex; flex-direction: column;
+    padding: 14px 0 0;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    position: relative;
+  }
+  .msa-stat::before {
+    content: '';
+    position: absolute;
+    top: -1px; left: 0;
+    width: 28px; height: 1px;
+    background: #6EC6FF;
+    opacity: 0;
+    animation: msa-stat-rule 9s ease-in-out infinite;
+  }
+  .ms-loop__illus-stats .msa-stat:nth-child(1)::before { animation-delay: 2.3s; }
+  .ms-loop__illus-stats .msa-stat:nth-child(2)::before { animation-delay: 2.6s; }
+  .ms-loop__illus-stats .msa-stat:nth-child(3)::before { animation-delay: 2.9s; }
+  @keyframes msa-stat-rule {
+    0%, 22% { opacity: 0; width: 0; }
+    32%     { opacity: 1; width: 40px; }
+    88%     { opacity: 1; width: 40px; }
+    100%    { opacity: 0; width: 28px; }
+  }
+  .msa-stat__num {
+    font-family: ui-serif, Georgia, 'Times New Roman', serif;
+    font-style: italic; font-weight: 300;
+    font-size: 28px; line-height: 1;
+    color: #FFFFFF;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
+  }
+  .msa-stat__lbl {
+    font: 600 9.5px/1.2 Inter, sans-serif;
+    color: rgba(255,255,255,0.50);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .msa-pal, .msa-feedback, .msa-feedback-path, .msa-feedback-arrow,
+    .msa-stat::before { animation: none !important; opacity: 1 !important; transform: none !important; }
+    .ms-loop__illus-stage { animation: none !important; }
+  }
+  .ms-loop__card-head {
+    display: flex; align-items: baseline; justify-content: space-between;
+    margin-bottom: 36px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .ms-loop__card-eye {
+    display: inline-flex; align-items: center; gap: 10px;
+    font: 500 10px/1 Inter, sans-serif;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: rgba(110,198,255,0.85);
+  }
+  .ms-loop__card-eye::before {
+    content: ''; width: 18px; height: 1px;
+    background: linear-gradient(90deg, #6EC6FF 0%, transparent 100%);
+    display: inline-block;
+  }
+  .ms-loop__cycle {
+    font: 400 italic 13px/1 ui-serif, Georgia, 'Times New Roman', serif;
+    color: rgba(164,179,210,0.7);
+    letter-spacing: 0.04em;
+  }
+  .ms-loop__cycle b {
+    font-style: italic;
+    font-weight: 400;
+    color: #F5F8FF;
+    font-variant-numeric: tabular-nums;
+    font-size: 24px;
+    margin-left: 8px;
+    letter-spacing: -0.02em;
+  }
+
+  /* The 4-node cycle */
+  .ms-loop__grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 48px 88px;
+    padding: 16px 12px 24px;
+    margin-bottom: 32px;
+  }
+  .ms-loop__node {
+    position: relative; z-index: 2;
+    background: transparent;
+    border: 0;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    border-radius: 0;
+    padding: 16px 0 4px 0;
+    transition: border-color .7s ease;
+  }
+
+  /* Editorial italic number, large, sits behind */
+  .ms-loop__node-num {
+    position: absolute; top: -4px; right: 4px;
+    width: auto; height: auto; background: none; border: none;
+    color: rgba(110,198,255,0.18);
+    font-family: ui-serif, Georgia, 'Times New Roman', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 44px;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    display: block;
+    box-shadow: none !important;
+    transition: color .7s ease, transform .7s cubic-bezier(.2,.7,.2,1);
+  }
+
+  /* Icon: minimal stroke, no tile */
+  .ms-loop__node-ic {
+    width: 22px; height: 22px;
+    background: transparent;
+    color: rgba(110,198,255,0.6);
+    display: inline-flex; align-items: center; justify-content: center;
+    margin-bottom: 14px;
+    border-radius: 0;
+    transition: color .7s ease;
+  }
+  .ms-loop__node-ic svg {
+    width: 22px; height: 22px;
+    stroke-width: 1.4;
+  }
+  .ms-loop__node-label {
+    color: rgba(245,248,255,0.7);
+    font: 600 14px/1.25 Inter, sans-serif;
+    letter-spacing: -0.015em;
+    margin-bottom: 4px;
+    transition: color .7s ease;
+  }
+  .ms-loop__node-sub {
+    color: rgba(124,141,181,0.7);
+    font: 400 12px/1.4 Inter, sans-serif;
+    letter-spacing: 0.005em;
+    transition: color .7s ease;
+  }
+  .ms-loop__node-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    margin-top: 12px;
+    font: 600 9.5px/1 Inter, sans-serif;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(245,248,255,0.5);
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+    border: 0;
+    border-left: 1px solid rgba(255,255,255,0.18);
+    padding-left: 10px;
+  }
+  .ms-loop__note {
+    margin: 14px 2px 0;
+    color: rgba(124,141,181,0.65);
+    font: 400 11px/1.55 Inter, sans-serif;
+    text-align: left;
+    letter-spacing: 0.005em;
+  }
+
+  /* Active node: refined emphasis. No pulse, no glow burst. */
+  .ms-loop__node[data-active="true"] { border-top-color: rgba(110,198,255,0.55); }
+  .ms-loop__node[data-active="true"] .ms-loop__node-num {
+    color: rgba(110,198,255,0.85);
+    transform: translateY(-1px);
+  }
+  .ms-loop__node[data-active="true"] .ms-loop__node-ic { color: #6EC6FF; }
+  .ms-loop__node[data-active="true"] .ms-loop__node-label { color: #F5F8FF; }
+  .ms-loop__node[data-active="true"] .ms-loop__node-sub  { color: rgba(180,196,225,0.85); }
+  .ms-loop__node[data-active="true"] .ms-loop__node-badge {
+    color: rgba(245,248,255,0.85);
+    border-left-color: rgba(110,198,255,0.7);
+  }
+
+  /* Connecting lines: thin solid gradient, no marching ants */
+  .ms-loop__paths {
+    position: absolute; inset: 16px 12px 24px;
+    pointer-events: none; z-index: 1;
+    width: calc(100% - 24px); height: calc(100% - 40px);
+  }
+  .ms-loop__paths path {
+    fill: none;
+    stroke: rgba(255,255,255,0.06);
+    stroke-width: 1;
+    stroke-dasharray: none;
+  }
+  .ms-loop__paths .ms-loop__paths-active {
+    stroke: rgba(110,198,255,0.55);
+    stroke-width: 1;
+    stroke-dasharray: none;
+    animation: none;
+    filter: none;
+  }
+
+  /* Match quality: editorial metric, not dashboard widget */
+  .ms-loop__meter {
+    background: transparent;
+    border: 0;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    border-radius: 0;
+    padding: 22px 2px 4px;
+  }
+  .ms-loop__meter-head {
+    display: flex; align-items: baseline; justify-content: space-between;
+    margin-bottom: 14px;
+  }
+  .ms-loop__meter-label {
+    font: 500 10px/1 Inter, sans-serif;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: rgba(164,179,210,0.6);
+  }
+  .ms-loop__meter-value {
+    font-family: ui-serif, Georgia, 'Times New Roman', serif;
+    font-style: italic; font-weight: 300;
+    font-size: 34px; line-height: 1;
+    color: #F5F8FF;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+  }
+  .ms-loop__meter-bar {
+    height: 1px; border-radius: 0;
+    background: rgba(255,255,255,0.06);
+    overflow: hidden;
+    margin-bottom: 12px;
+  }
+  .ms-loop__meter-bar > i {
+    display: block; height: 100%;
+    width: 60%;
+    background: linear-gradient(90deg, #0A5CD8 0%, #6EC6FF 100%);
+    border-radius: 0;
+    transition: width 1.4s cubic-bezier(.2,.7,.2,1);
+    box-shadow: none;
+  }
+  .ms-loop__meter-foot {
+    display: flex; align-items: center; justify-content: space-between;
+    font: 400 11px/1 Inter, sans-serif;
+    color: rgba(124,141,181,0.7);
+    letter-spacing: 0.02em;
+  }
+  .ms-loop__meter-foot b {
+    color: rgba(110,231,168,0.9);
+    font-weight: 500;
+    font-style: italic;
+    font-family: ui-serif, Georgia, 'Times New Roman', serif;
+    font-size: 13px;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .ms-loop__meter-foot b svg { width: 11px; height: 11px; stroke-width: 1.6; opacity: 0.85; }
+
+  @media (max-width: 720px) {
+    .ms-loop { padding: 64px 16px 72px; }
+    .ms-loop__card { padding: 24px 22px 20px; }
+    .ms-loop__grid { gap: 36px 44px; padding: 12px 6px 18px; }
+    .ms-loop__node-num { font-size: 36px; }
+    .ms-loop__meter-value { font-size: 28px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ms-loop__node, .ms-loop__node-num, .ms-loop__node-ic,
+    .ms-loop__node-label, .ms-loop__node-sub, .ms-loop__node-badge,
+    .ms-loop__meter-bar > i { transition: none !important; }
+  }
+</style>
+
+<section class="ms-loop" aria-label="How the MasterStock loop works">
+  <div class="ms-loop__wrap">
+
+    <!-- LEFT: text -->
+    <div class="ms-loop__text">
+      <span class="ms-loop__eyebrow" data-es="Cómo funciona el ciclo">How the loop works</span>
+      <h2 class="ms-loop__title" data-es="Cada pallet entrena al &lt;span class=&quot;grad&quot;&gt;siguiente.&lt;/span&gt;">
+        Each pallet trains the <span class="grad">next one.</span>
+      </h2>
+      <p class="ms-loop__lead" data-es="No vendemos lotes al azar. Tú nos dices qué se mueve en tu canal, nosotros buscamos en Estados Unidos contra esa demanda. Financiamos con Net-30, tú vendes, y el sell-through afina el match del próximo pallet. Cuanto más operamos juntos, mejor te calza el catálogo.">
+        We don't sell random lots. You tell us what sells in your channel, we source against that demand in the US, finance it on Net-30, and your sell-through sharpens the next match. The more cycles we run together, the better the catalog fits you.
       </p>
 
-      <ul class="ms-why-points">
-        <li>
-          <span class="ms-why-point-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          </span>
-          <div>
-            <strong data-es="Curado, no listado.">Curated, not listed.</strong>
-            <span data-es="Cada lote se puntuía contra tu perfil de comprador antes de llegar al catálogo.">Every lot is scored against your buyer profile before it ever reaches the catalog.</span>
+      <ol class="ms-loop__steps">
+        <li class="ms-loop__step">
+          <span class="ms-loop__step-num">1</span>
+          <div class="ms-loop__step-body">
+            <strong data-es="Tu canal define el brief">Your channel defines the brief</strong>
+            <span data-es="Categorías que rotan, ticket promedio, defect rate aceptable. Lo registras una vez.">Categories that rotate, average ticket, acceptable defect rate. You register it once.</span>
           </div>
         </li>
-        <li>
-          <span class="ms-why-point-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          </span>
-          <div>
-            <strong data-es="Alineados en resultados.">Aligned on outcomes.</strong>
-            <span data-es="Si tu lote no se vende, perdemos tu próximo pedido. Por eso filtramos fuerte antes de listar.">If your lot doesn't sell, we lose your next order. So we screen hard before listing.</span>
+        <li class="ms-loop__step">
+          <span class="ms-loop__step-num">2</span>
+          <div class="ms-loop__step-body">
+            <strong data-es="Buscamos contra tu demanda">We source against your demand</strong>
+            <span data-es="Mapeamos retailers, 3PLs y brands en el Northeast. Cada manifiesto se verifica físicamente antes de listar.">We map retailers, 3PLs and brands in the Northeast. Every manifest is physically verified before listing.</span>
           </div>
         </li>
-        <li>
-          <span class="ms-why-point-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          </span>
-          <div>
-            <strong data-es="Cada transacción afina la siguiente.">Every transaction sharpens the next.</strong>
-            <span data-es="Tu historial de sell-through se compone. Para el tercer pallet, el match calza tus canales mejor que cualquier subasta.">Your sell-through history compounds. By the third pallet, the match fits your channels better than any auction could.</span>
+        <li class="ms-loop__step ms-loop__step--accent">
+          <span class="ms-loop__step-num">3</span>
+          <div class="ms-loop__step-body">
+            <strong data-es="Net-30 es una línea de crédito, no un default">Net-30 is a credit line, not a default</strong>
+            <span data-es="Las condiciones estándar son wire al momento de liberar el pallet. El Net-30 se otorga solo a compradores aprobados, bajo un contrato de crédito aparte y a discreción de MasterStock. La línea arranca pequeña y crece con tu historial de pagos y sell-through verificado, no se desbloquea al crear la cuenta.">Standard terms are wire on release. Net-30 is extended only to approved buyers, under a separate credit agreement and at MasterStock's discretion. The line starts small and grows with your payment history and verified sell-through, it doesn't unlock the moment you create an account.</span>
+            <span class="ms-loop__step-bullets" aria-hidden="true">
+              <span class="ms-loop__step-bullet" data-es="KYB + revisión financiera">KYB + financial review</span>
+              <span class="ms-loop__step-bullet" data-es="Importador Tier-1">Tier-1 importer</span>
+              <span class="ms-loop__step-bullet" data-es="Acuerdo de crédito firmado">Signed credit agreement</span>
+            </span>
           </div>
         </li>
-      </ul>
+        <li class="ms-loop__step">
+          <span class="ms-loop__step-num">4</span>
+          <div class="ms-loop__step-body">
+            <strong data-es="El sell-through afina el match">Sell-through sharpens the match</strong>
+            <span data-es="Tu rotación real entrena al siguiente brief. Al tercer pallet, lo que llega calza mejor que cualquier subasta.">Your real sell-through trains the next brief. By the third pallet, what arrives fits better than any auction could.</span>
+          </div>
+        </li>
+      </ol>
 
-      <div class="ms-why-cta-row">
-        <a href="https://portal.masterstockunitedstates.com/" class="ms-why-cta-primary">
-          <span data-es="Solicitar acceso">Request access</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
-        </a>
-        <a href="/how-it-works/" class="ms-why-cta-ghost">
-          <span data-es="Ver cómo funciona">See how it works</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
-        </a>
-      </div>
+      <a class="ms-loop__cta" href="https://portal.masterstockunitedstates.com/">
+        <span data-es="Solicitar acceso">Request access</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+      </a>
     </div>
 
-    <!-- COL 2: Funnel where each chip passes through MS and transforms -->
-    <div class="ms-why-col ms-why-col-engine">
-      <span class="ms-engine-eyebrow" data-es="Lo que entra vs lo que recibes">What goes in vs what you get</span>
-
-      <div class="ms-funnel">
-        <!-- Background handled by .ms-funnel ::before/::after (warehouse grid + glow) -->
-
-        <!-- Center MS node (chips pass behind it) -->
-        <div class="ms-funnel-center">
-          <span class="ms-funnel-center-halo" aria-hidden="true"></span>
-          <img src="images/pallet-engine.png" alt="" class="ms-funnel-center-logo" />
-        </div>
-
-        <!-- 5 chips, each travels left→right and flips at center to reveal transformation -->
-        <div class="ms-fl-pill flow-1" aria-hidden="true">
-          <div class="ms-fl-pill-inner">
-            <span class="ms-fl-face ms-fl-face-bad" data-tip="Silent broker">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8 12 4l8 4v8l-8 4-8-4V8z"/><path d="M4 8l8 4 8-4M12 12v8"/><circle cx="12" cy="12.5" r="1.2" fill="currentColor" stroke="none"/><line x1="5" y1="5" x2="19" y2="19" stroke-width="2"/></svg>
-            </span>
-            <span class="ms-fl-face ms-fl-face-good" data-tip="Founder-signed">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8 12 4l8 4v8l-8 4-8-4V8z"/><path d="M4 8l8 4 8-4M12 12v8"/><path d="m9.5 13.5 1.8 1.8 3.5-3.8" stroke-width="2"/></svg>
-            </span>
-          </div>
-        </div>
-        <div class="ms-fl-pill flow-2" aria-hidden="true">
-          <div class="ms-fl-pill-inner">
-            <span class="ms-fl-face ms-fl-face-bad" data-tip="Mystery lot">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8 12 4l8 4v8l-8 4-8-4V8z"/><path d="M4 8l8 4 8-4M12 12v8"/><path d="M10.8 15.5a1.4 1.4 0 0 1 2.4-1c.4.6 0 1.1-.6 1.5-.4.3-.6.5-.6 1" stroke-width="1.8"/><circle cx="12" cy="18.3" r="0.6" fill="currentColor" stroke="none"/></svg>
-            </span>
-            <span class="ms-fl-face ms-fl-face-good" data-tip="Verified manifest">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8 12 4l8 4v8l-8 4-8-4V8z"/><path d="M4 8l8 4 8-4M12 12v8"/><path d="M8.5 14h3M8.5 16h2.5M8.5 18h2" stroke-width="1.4"/><path d="m13.5 16 1.2 1.2 2.2-2.4" stroke-width="1.8"/></svg>
-            </span>
-          </div>
-        </div>
-        <div class="ms-fl-pill flow-3" aria-hidden="true">
-          <div class="ms-fl-pill-inner">
-            <span class="ms-fl-face ms-fl-face-bad" data-tip="Hidden costs">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8 12 4l8 4v8l-8 4-8-4V8z"/><path d="M4 8l8 4 8-4M12 12v8"/><text x="12" y="17.5" text-anchor="middle" font-size="6.5" font-weight="700" fill="currentColor" stroke="none">$?</text></svg>
-            </span>
-            <span class="ms-fl-face ms-fl-face-good" data-tip="Listed price">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8 12 4l8 4v8l-8 4-8-4V8z"/><path d="M4 8l8 4 8-4M12 12v8"/><text x="12" y="17.8" text-anchor="middle" font-size="6.5" font-weight="700" fill="currentColor" stroke="none">$</text></svg>
-            </span>
-          </div>
-        </div>
-        <div class="ms-fl-pill flow-4" aria-hidden="true">
-          <div class="ms-fl-pill-inner">
-            <span class="ms-fl-face ms-fl-face-bad" data-tip="Auction war">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8 12 4l8 4v8l-8 4-8-4V8z"/><path d="M4 8l8 4 8-4M12 12v8"/><path d="M7 14l3-3M10 14l-3-3M14 14l3-3M17 14l-3-3" stroke-width="1.6"/></svg>
-            </span>
-            <span class="ms-fl-face ms-fl-face-good" data-tip="Direct match">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8 12 4l8 4v8l-8 4-8-4V8z"/><path d="M4 8l8 4 8-4M12 12v8"/><path d="M8 16h8M13 14l2 2-2 2" stroke-width="1.8"/></svg>
-            </span>
-          </div>
-        </div>
-        <div class="ms-fl-pill flow-5" aria-hidden="true">
-          <div class="ms-fl-pill-inner">
-            <span class="ms-fl-face ms-fl-face-bad" data-tip="Inflated counts">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8 12 4l8 4v8l-8 4-8-4V8z"/><path d="M4 8l8 4 8-4M12 12v8"/><path d="M9 15l3 -2 3 2" stroke-width="1.8"/><path d="M16 11l1.5-1.5M8 11l-1.5-1.5" stroke-width="1.6"/></svg>
-            </span>
-            <span class="ms-fl-face ms-fl-face-good" data-tip="Photographed">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8 12 4l8 4v8l-8 4-8-4V8z"/><path d="M4 8l8 4 8-4M12 12v8"/><rect x="9.5" y="14" width="5" height="4" rx="0.5"/><circle cx="12" cy="16" r="1"/></svg>
-            </span>
-          </div>
-        </div>
-
-        <div class="ms-fl-pill flow-6" aria-hidden="true">
-          <div class="ms-fl-pill-inner">
-            <span class="ms-fl-face ms-fl-face-bad" data-tip="Damaged units">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8 12 4l8 4v8l-8 4-8-4V8z"/><path d="M4 8l8 4 8-4M12 12v8"/><path d="m9 14 6 4M15 14l-6 4" stroke-width="1.8"/></svg>
-            </span>
-            <span class="ms-fl-face ms-fl-face-good" data-tip="QC passed">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8 12 4l8 4v8l-8 4-8-4V8z"/><path d="M4 8l8 4 8-4M12 12v8"/><circle cx="12" cy="16" r="2.5"/><path d="m10.8 16 .9.9 1.7-1.9" stroke-width="1.5"/></svg>
-            </span>
-          </div>
-        </div>
-        <div class="ms-fl-pill flow-7" aria-hidden="true">
-          <div class="ms-fl-pill-inner">
-            <span class="ms-fl-face ms-fl-face-bad" data-tip="No origin">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8 12 4l8 4v8l-8 4-8-4V8z"/><path d="M4 8l8 4 8-4M12 12v8"/><path d="M9 16h6" stroke-width="2"/></svg>
-            </span>
-            <span class="ms-fl-face ms-fl-face-good" data-tip="US-sourced">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8 12 4l8 4v8l-8 4-8-4V8z"/><path d="M4 8l8 4 8-4M12 12v8"/><text x="12" y="17.8" text-anchor="middle" font-size="5.5" font-weight="800" fill="currentColor" stroke="none">US</text></svg>
-            </span>
-          </div>
-        </div>
-        <div class="ms-fl-pill flow-8" aria-hidden="true">
-          <div class="ms-fl-pill-inner">
-            <span class="ms-fl-face ms-fl-face-bad" data-tip="Slow shipping">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8 12 4l8 4v8l-8 4-8-4V8z"/><path d="M4 8l8 4 8-4M12 12v8"/><circle cx="12" cy="16" r="2.4"/><path d="M12 14.4v1.6l1 .8" stroke-width="1.5"/></svg>
-            </span>
-            <span class="ms-fl-face ms-fl-face-good" data-tip="Same-week pickup">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8 12 4l8 4v8l-8 4-8-4V8z"/><path d="M4 8l8 4 8-4M12 12v8"/><path d="m9 16 2.5 2 4-4" stroke-width="2"/></svg>
-            </span>
-          </div>
-        </div>
-
-        <!-- Side labels -->
-        <span class="ms-funnel-side ms-funnel-side-bad" data-es="La industria hoy">Industry today</span>
-        <span class="ms-funnel-side ms-funnel-side-good" data-es="Con MasterStock">With MasterStock</span>
+    <!-- RIGHT: animation card -->
+    <div class="ms-loop__card ms-loop__card--illus" data-msloop>
+      <div class="ms-loop__illus-top">
+        <span class="ms-loop__illus-eye" data-es="Ciclos cumplidos">CYCLES CLEARED</span>
+        <span class="ms-loop__illus-mark">+</span>
       </div>
 
-      <div class="ms-engine-foot">
-        <span class="ms-engine-foot-dot"></span>
-        <span class="ms-engine-foot-text" data-es="&lt;strong&gt;Cada dolor de la industria&lt;/strong&gt; &middot; reescrito como estándar"><strong>Every industry pain</strong> &middot; rewritten as a standard</span>
+      <div class="ms-loop__illus-stage" aria-hidden="true">
+        <span class="msa-phase-label msa-phase-label-a">CYCLES CLEARED</span>
+        <span class="msa-phase-label msa-phase-label-b">DATA FEEDS BACK</span>
+
+        <svg viewBox="0 0 480 340" class="ms-loop__illus-svg" preserveAspectRatio="xMidYMid meet">
+          <!-- ===== PHASE A: STACKS BUILD ===== -->
+          <g class="msa-phase msa-phase-a">
+          <!-- Ground shadow line -->
+          <ellipse cx="240" cy="296" rx="200" ry="6" fill="#06112A" opacity="0.7"/>
+
+          <!-- ============ STACK A (Net-7) ============ -->
+          <g class="msa-stack msa-stack-a">
+            <!-- Each "pallet" is a stylized horizontal puck with thick outline -->
+            <g class="msa-pal msa-pal-a-1">
+              <rect x="60"  y="240" width="120" height="32" rx="6" fill="#4FB8FF" stroke="#000" stroke-width="3.5"/>
+              <line x1="68"  y1="252" x2="172" y2="252" stroke="#000" stroke-width="2" opacity="0.55"/>
+              <line x1="68"  y1="260" x2="172" y2="260" stroke="#000" stroke-width="2" opacity="0.55"/>
+            </g>
+            <g class="msa-pal msa-pal-a-2">
+              <rect x="60"  y="208" width="120" height="32" rx="6" fill="#6EC6FF" stroke="#000" stroke-width="3.5"/>
+              <line x1="68"  y1="220" x2="172" y2="220" stroke="#000" stroke-width="2" opacity="0.55"/>
+              <line x1="68"  y1="228" x2="172" y2="228" stroke="#000" stroke-width="2" opacity="0.55"/>
+            </g>
+            <!-- Label -->
+            <text x="120" y="296" text-anchor="middle"
+                  font-family="ui-serif, Georgia, serif" font-style="italic"
+                  font-size="16" fill="#6EC6FF" opacity="0.85" data-es="Net-7">Net-7</text>
+          </g>
+
+          <!-- ============ STACK B (Net-15) ============ -->
+          <g class="msa-stack msa-stack-b">
+            <g class="msa-pal msa-pal-b-1">
+              <rect x="200" y="240" width="120" height="32" rx="6" fill="#3FA8FF" stroke="#000" stroke-width="3.5"/>
+              <line x1="208" y1="252" x2="312" y2="252" stroke="#000" stroke-width="2" opacity="0.55"/>
+              <line x1="208" y1="260" x2="312" y2="260" stroke="#000" stroke-width="2" opacity="0.55"/>
+            </g>
+            <g class="msa-pal msa-pal-b-2">
+              <rect x="200" y="208" width="120" height="32" rx="6" fill="#4FB8FF" stroke="#000" stroke-width="3.5"/>
+              <line x1="208" y1="220" x2="312" y2="220" stroke="#000" stroke-width="2" opacity="0.55"/>
+              <line x1="208" y1="228" x2="312" y2="228" stroke="#000" stroke-width="2" opacity="0.55"/>
+            </g>
+            <g class="msa-pal msa-pal-b-3">
+              <rect x="200" y="176" width="120" height="32" rx="6" fill="#6EC6FF" stroke="#000" stroke-width="3.5"/>
+              <line x1="208" y1="188" x2="312" y2="188" stroke="#000" stroke-width="2" opacity="0.55"/>
+              <line x1="208" y1="196" x2="312" y2="196" stroke="#000" stroke-width="2" opacity="0.55"/>
+            </g>
+            <g class="msa-pal msa-pal-b-4">
+              <rect x="200" y="144" width="120" height="32" rx="6" fill="#82D0FF" stroke="#000" stroke-width="3.5"/>
+              <line x1="208" y1="156" x2="312" y2="156" stroke="#000" stroke-width="2" opacity="0.55"/>
+              <line x1="208" y1="164" x2="312" y2="164" stroke="#000" stroke-width="2" opacity="0.55"/>
+            </g>
+            <text x="260" y="296" text-anchor="middle"
+                  font-family="ui-serif, Georgia, serif" font-style="italic"
+                  font-size="16" fill="#6EC6FF" opacity="0.85" data-es="Net-15">Net-15</text>
+          </g>
+
+          <!-- ============ STACK C (Net-30) ============ -->
+          <g class="msa-stack msa-stack-c">
+            <g class="msa-pal msa-pal-c-1">
+              <rect x="340" y="240" width="120" height="32" rx="6" fill="#2F98FF" stroke="#000" stroke-width="3.5"/>
+              <line x1="348" y1="252" x2="452" y2="252" stroke="#000" stroke-width="2" opacity="0.55"/>
+              <line x1="348" y1="260" x2="452" y2="260" stroke="#000" stroke-width="2" opacity="0.55"/>
+            </g>
+            <g class="msa-pal msa-pal-c-2">
+              <rect x="340" y="208" width="120" height="32" rx="6" fill="#3FA8FF" stroke="#000" stroke-width="3.5"/>
+              <line x1="348" y1="220" x2="452" y2="220" stroke="#000" stroke-width="2" opacity="0.55"/>
+              <line x1="348" y1="228" x2="452" y2="228" stroke="#000" stroke-width="2" opacity="0.55"/>
+            </g>
+            <g class="msa-pal msa-pal-c-3">
+              <rect x="340" y="176" width="120" height="32" rx="6" fill="#4FB8FF" stroke="#000" stroke-width="3.5"/>
+              <line x1="348" y1="188" x2="452" y2="188" stroke="#000" stroke-width="2" opacity="0.55"/>
+              <line x1="348" y1="196" x2="452" y2="196" stroke="#000" stroke-width="2" opacity="0.55"/>
+            </g>
+            <g class="msa-pal msa-pal-c-4">
+              <rect x="340" y="144" width="120" height="32" rx="6" fill="#6EC6FF" stroke="#000" stroke-width="3.5"/>
+              <line x1="348" y1="156" x2="452" y2="156" stroke="#000" stroke-width="2" opacity="0.55"/>
+              <line x1="348" y1="164" x2="452" y2="164" stroke="#000" stroke-width="2" opacity="0.55"/>
+            </g>
+            <g class="msa-pal msa-pal-c-5">
+              <rect x="340" y="112" width="120" height="32" rx="6" fill="#82D0FF" stroke="#000" stroke-width="3.5"/>
+              <line x1="348" y1="124" x2="452" y2="124" stroke="#000" stroke-width="2" opacity="0.55"/>
+              <line x1="348" y1="132" x2="452" y2="132" stroke="#000" stroke-width="2" opacity="0.55"/>
+            </g>
+            <g class="msa-pal msa-pal-c-6">
+              <rect x="340" y="80" width="120" height="32" rx="6" fill="#A0DEFF" stroke="#000" stroke-width="3.5"/>
+              <line x1="348" y1="92" x2="452" y2="92" stroke="#000" stroke-width="2" opacity="0.55"/>
+              <line x1="348" y1="100" x2="452" y2="100" stroke="#000" stroke-width="2" opacity="0.55"/>
+            </g>
+            <text x="400" y="296" text-anchor="middle"
+                  font-family="ui-serif, Georgia, serif" font-style="italic"
+                  font-size="16" fill="#6EC6FF" opacity="0.85" data-es="Net-30">Net-30</text>
+          </g>
+          </g><!-- end .msa-phase-a -->
+
+          <!-- ===== PHASE B: DATA FEEDS BACK (each sale → catalog learns → smarter next deal) ===== -->
+          <g class="msa-phase msa-phase-b">
+            <!-- Ground shadow -->
+            <ellipse cx="240" cy="296" rx="180" ry="5" fill="#06112A" opacity="0.7"/>
+
+            <!-- Sale receipts at the bottom (one per former stack position) -->
+            <g class="msb2-receipt msb2-r-1">
+              <rect x="78" y="248" width="84" height="38" rx="4" fill="#82D0FF" stroke="#000" stroke-width="3"/>
+              <line x1="88" y1="262" x2="152" y2="262" stroke="#000" stroke-width="2" opacity="0.6"/>
+              <line x1="88" y1="272" x2="138" y2="272" stroke="#000" stroke-width="2" opacity="0.6"/>
+              <text x="120" y="280" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="11" fill="#000" data-es="VENDIDO">SOLD</text>
+            </g>
+            <g class="msb2-receipt msb2-r-2">
+              <rect x="218" y="248" width="84" height="38" rx="4" fill="#82D0FF" stroke="#000" stroke-width="3"/>
+              <line x1="228" y1="262" x2="292" y2="262" stroke="#000" stroke-width="2" opacity="0.6"/>
+              <line x1="228" y1="272" x2="278" y2="272" stroke="#000" stroke-width="2" opacity="0.6"/>
+              <text x="260" y="280" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="11" fill="#000" data-es="VENDIDO">SOLD</text>
+            </g>
+            <g class="msb2-receipt msb2-r-3">
+              <rect x="358" y="248" width="84" height="38" rx="4" fill="#82D0FF" stroke="#000" stroke-width="3"/>
+              <line x1="368" y1="262" x2="432" y2="262" stroke="#000" stroke-width="2" opacity="0.6"/>
+              <line x1="368" y1="272" x2="418" y2="272" stroke="#000" stroke-width="2" opacity="0.6"/>
+              <text x="400" y="280" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="11" fill="#000" data-es="VENDIDO">SOLD</text>
+            </g>
+
+            <!-- Signal paths: each receipt sends a data signal up into the data console -->
+            <path class="msb2-path msb2-path-1" d="M 120 248 Q 120 180, 200 150" fill="none" stroke="#6EC6FF" stroke-width="2.4" stroke-dasharray="5 6" stroke-linecap="round"/>
+            <path class="msb2-path msb2-path-2" d="M 260 248 Q 260 200, 240 150" fill="none" stroke="#6EC6FF" stroke-width="2.4" stroke-dasharray="5 6" stroke-linecap="round"/>
+            <path class="msb2-path msb2-path-3" d="M 400 248 Q 400 180, 280 150" fill="none" stroke="#6EC6FF" stroke-width="2.4" stroke-dasharray="5 6" stroke-linecap="round"/>
+
+            <!-- Travelling signal dots along each path -->
+            <circle class="msb2-dot msb2-d-1" cx="120" cy="248" r="5" fill="#6EC6FF" stroke="#000" stroke-width="2"/>
+            <circle class="msb2-dot msb2-d-2" cx="260" cy="248" r="5" fill="#6EC6FF" stroke="#000" stroke-width="2"/>
+            <circle class="msb2-dot msb2-d-3" cx="400" cy="248" r="5" fill="#6EC6FF" stroke="#000" stroke-width="2"/>
+
+            <!-- Central CATALOG / DATA console -->
+            <g class="msb2-brain">
+              <rect x="180" y="80" width="120" height="76" rx="8" fill="#4FB8FF" stroke="#000" stroke-width="3.5"/>
+              <rect x="180" y="80" width="120" height="18" rx="8" fill="#3FA8FF" stroke="#000" stroke-width="3.5"/>
+              <!-- header dots -->
+              <circle cx="190" cy="89" r="2.5" fill="#000"/>
+              <circle cx="200" cy="89" r="2.5" fill="#000"/>
+              <circle cx="210" cy="89" r="2.5" fill="#000"/>
+              <text x="285" y="93" text-anchor="end" font-family="Inter, sans-serif" font-weight="700" font-size="8.5" fill="#000" letter-spacing="0.1em" data-es="CATÁLOGO">CATALOG</text>
+              <!-- Growing chart bars inside -->
+              <rect class="msb2-bar msb2-bar-1" x="194" y="142" width="14" height="6"  fill="#FFFFFF" stroke="#000" stroke-width="2"/>
+              <rect class="msb2-bar msb2-bar-2" x="216" y="136" width="14" height="12" fill="#FFFFFF" stroke="#000" stroke-width="2"/>
+              <rect class="msb2-bar msb2-bar-3" x="238" y="126" width="14" height="22" fill="#FFFFFF" stroke="#000" stroke-width="2"/>
+              <rect class="msb2-bar msb2-bar-4" x="260" y="114" width="14" height="34" fill="#A0DEFF" stroke="#000" stroke-width="2"/>
+            </g>
+
+            <!-- Outgoing arrow: "smarter next pallet" -->
+            <path class="msb2-out" d="M 240 80 Q 240 50, 300 40" fill="none" stroke="#6EC6FF" stroke-width="2.4" stroke-linecap="round"/>
+            <polyline class="msb2-out-arrow" points="294,34 300,40 296,46" fill="none" stroke="#6EC6FF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- Smarter pallet output -->
+            <g class="msb2-output">
+              <rect x="306" y="26" width="84" height="28" rx="4" fill="#FFFFFF" stroke="#000" stroke-width="3"/>
+              <line x1="316" y1="38" x2="380" y2="38" stroke="#000" stroke-width="2" opacity="0.55"/>
+              <line x1="316" y1="46" x2="368" y2="46" stroke="#000" stroke-width="2" opacity="0.55"/>
+              <!-- sparkle -->
+              <polygon points="398,30 402,34 406,30 402,26" fill="#6EC6FF" stroke="#000" stroke-width="1.5"/>
+              <text x="348" y="22" text-anchor="middle" font-family="ui-serif, Georgia, serif" font-style="italic" font-size="11" fill="#6EC6FF" letter-spacing="0.04em" data-es="match más fino">smarter match</text>
+            </g>
+          </g><!-- end .msa-phase-b -->
+        </svg>
+      </div>
+
+      <div class="ms-loop__illus-foot">
+        <h3 class="ms-loop__illus-title" data-es="Cada ciclo apila el siguiente.">Each cycle stacks the next.</h3>
+        <p class="ms-loop__illus-align" data-es="Ganamos cuando tú vendes, por eso filtramos antes de listar.">
+          We win <em>when you sell</em>, so we screen hard before listing.
+        </p>
+
+        <div class="ms-loop__illus-stats" aria-hidden="true">
+          <div class="msa-stat">
+            <span class="msa-stat__num" data-msa-target="3.2">0.0×</span>
+            <span class="msa-stat__lbl" data-es="Crecimiento del lote">Lot value growth</span>
+          </div>
+          <div class="msa-stat">
+            <span class="msa-stat__num" data-msa-target="92">0%</span>
+            <span class="msa-stat__lbl" data-es="Pedido recurrente">Repeat-buy rate</span>
+          </div>
+          <div class="msa-stat">
+            <span class="msa-stat__num" data-msa-target="47">0</span>
+            <span class="msa-stat__lbl" data-es="Ciclos completados">Cycles cleared</span>
+          </div>
+        </div>
+
+        <p class="ms-loop__illus-sub" data-es="*Net-30 sujeto a aprobación, contrato de crédito aparte y discreción de MasterStock. Las condiciones estándar son wire al liberar.">
+          *Net-30 subject to approval, separate credit agreement and MasterStock's discretion. Standard terms are wire on release.
+        </p>
       </div>
     </div>
-
 
   </div>
 </section>
 
+<script>
+(function() {
+  var card = document.querySelector('[data-msloop]');
+  if (!card) return;
+  var nodes = card.querySelectorAll('[data-msloop-node]');
+  var paths = card.querySelectorAll('.ms-loop__paths path');
+  var counterEl = card.querySelector('[data-msloop-counter]');
+  var scoreEl = card.querySelector('[data-msloop-score]');
+  var barEl = card.querySelector('[data-msloop-bar]');
+  var deltaEl = card.querySelector('[data-msloop-delta]');
+
+  // Logical order: 0 → 1 → 2 → 3 → 0 ...
+  var order = [0,1,2,3];
+  var active = 0;
+  var cycle = 1;
+  var score = 62;
+  var lastScore = 62;
+  var STEP_MS = 1600;
+  var timer = null;
+
+  function setEdge(fromIdx, toIdx) {
+    var key = fromIdx + '-' + toIdx;
+    paths.forEach(function(p) {
+      if (p.getAttribute('data-edge') === key) p.classList.add('ms-loop__paths-active');
+      else p.classList.remove('ms-loop__paths-active');
+    });
+  }
+
+  function setActive(i) {
+    nodes.forEach(function(n) {
+      var idx = parseInt(n.getAttribute('data-msloop-node'), 10);
+      n.setAttribute('data-active', idx === i ? 'true' : 'false');
+    });
+    var prev = (i - 1 + 4) % 4;
+    setEdge(prev, i);
+  }
+
+  function fmt(n) { return n < 10 ? '0' + n : '' + n; }
+
+  function tick() {
+    active = (active + 1) % 4;
+    setActive(order[active]);
+
+    // When we return to node 0 → one full cycle completed
+    if (active === 0) {
+      cycle += 1;
+      lastScore = score;
+      // Asymptotic improvement toward 96%
+      var bump = Math.max(2, Math.round((96 - score) * 0.45));
+      score = Math.min(96, score + bump);
+      counterEl.textContent = fmt(cycle);
+      scoreEl.textContent = score + '%';
+      barEl.style.width = score + '%';
+      deltaEl.textContent = '+' + (score - lastScore) + '%';
+      // Reset after a few cycles so the loop keeps a sense of growth
+      if (cycle >= 6) {
+        setTimeout(function() {
+          cycle = 1; score = 62; lastScore = 62;
+          counterEl.textContent = fmt(cycle);
+          scoreEl.textContent = score + '%';
+          barEl.style.width = score + '%';
+          deltaEl.textContent = '+0%';
+        }, 2200);
+      }
+    }
+  }
+
+  function start() {
+    if (timer) clearInterval(timer);
+    setActive(order[active]);
+    timer = setInterval(tick, STEP_MS);
+  }
+  function stop() {
+    if (timer) { clearInterval(timer); timer = null; }
+  }
+
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) start();
+        else stop();
+      });
+    }, { threshold: 0.2 });
+    io.observe(card);
+  } else {
+    start();
+  }
+
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    stop();
+    setActive(0);
+  }
+})();
+
+// ===== Count-up for illustrated card stats (synced with 6.4s pallet animation) =====
+(function() {
+  var stage = document.querySelector('.ms-loop__illus-stage');
+  var stats = document.querySelectorAll('.msa-stat__num[data-msa-target]');
+  if (!stage || !stats.length) return;
+
+  var CYCLE_MS = 9000;
+  var COUNT_START = 2100;   // stats start counting after stacks finish building
+  var COUNT_DURATION = 1200;
+  var loopTimer = null;
+
+  function format(target, value) {
+    if (target % 1 !== 0)      return value.toFixed(1) + '×';  // 3.2×
+    if (target === 92)         return Math.round(value) + '%';
+    return Math.round(value).toString();                             // 47
+  }
+
+  function runCount() {
+    var t0 = performance.now();
+    function step(t) {
+      var p = Math.min(1, (t - t0) / COUNT_DURATION);
+      // ease out cubic
+      var eased = 1 - Math.pow(1 - p, 3);
+      stats.forEach(function(el) {
+        var target = parseFloat(el.getAttribute('data-msa-target'));
+        el.textContent = format(target, target * eased);
+      });
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  function resetStats() {
+    stats.forEach(function(el) {
+      var target = parseFloat(el.getAttribute('data-msa-target'));
+      el.textContent = format(target, 0);
+    });
+  }
+
+  function cycleLoop() {
+    resetStats();
+    setTimeout(runCount, COUNT_START);
+  }
+
+  function start() {
+    if (loopTimer) return;
+    cycleLoop();
+    loopTimer = setInterval(cycleLoop, CYCLE_MS);
+  }
+  function stop() {
+    if (loopTimer) { clearInterval(loopTimer); loopTimer = null; }
+  }
+
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) { if (e.isIntersecting) start(); else stop(); });
+    }, { threshold: 0.25 });
+    io.observe(stage);
+  } else {
+    start();
+  }
+
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    stop();
+    // Show final values
+    stats.forEach(function(el) {
+      var target = parseFloat(el.getAttribute('data-msa-target'));
+      el.textContent = format(target, target);
+    });
+  }
+})();
+</script>
+
+
+<!-- ============================================================
+     CONSTANTS — what stays the same on every deal, every cycle.
+     ============================================================ -->
+<style>
+  .ms-constants {
+    position: relative;
+    padding: 72px 24px 96px;
+    background: linear-gradient(180deg, #F8FAFC 0%, #ffffff 60%, #F1F5FB 100%);
+    overflow: hidden;
+  }
+  .ms-constants__bg {
+    position: absolute; inset: 0;
+    background-image:
+      radial-gradient(circle at 12% 18%, rgba(10,92,216,0.06) 0, transparent 38%),
+      radial-gradient(circle at 88% 82%, rgba(110,198,255,0.08) 0, transparent 42%);
+    pointer-events: none;
+  }
+  .ms-constants__wrap {
+    position: relative; z-index: 2;
+    max-width: 1200px; margin: 0 auto;
+  }
+  .ms-constants__head { text-align: center; margin-bottom: 44px; }
+  .ms-constants__eye {
+    display: inline-block;
+    font: 700 11px/1 Inter, ui-sans-serif, system-ui, sans-serif;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: #0A5CD8; margin-bottom: 14px;
+  }
+  .ms-constants__title {
+    font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+    font-size: clamp(26px, 3vw, 38px); font-weight: 800;
+    color: #0B1B35; line-height: 1.15; letter-spacing: -0.018em;
+    margin: 0 0 14px; max-width: 720px;
+    margin-left: auto; margin-right: auto;
+  }
+  .ms-constants__title .grad {
+    background: linear-gradient(135deg, #0A5CD8 0%, #6EC6FF 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .ms-constants__lead {
+    font-size: 15.5px; color: #4A5568; line-height: 1.55;
+    max-width: 620px; margin: 0 auto;
+  }
+
+  .ms-constants__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  @media (min-width: 720px)  { .ms-constants__grid { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1100px) { .ms-constants__grid { grid-template-columns: 1fr 1fr 1fr 1fr; gap: 18px; } }
+
+  .ms-const-card {
+    position: relative;
+    background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+    border: 1px solid rgba(11, 27, 53, 0.07);
+    border-radius: 22px;
+    padding: 40px 34px 34px;
+    overflow: hidden;
+    isolation: isolate;
+    transition: transform .6s cubic-bezier(.2,.7,.2,1),
+                box-shadow .6s cubic-bezier(.2,.7,.2,1),
+                border-color .45s ease,
+                background .45s ease;
+    box-shadow: 0 1px 2px rgba(11, 27, 53, 0.04),
+                0 6px 18px -10px rgba(11, 27, 53, 0.08);
+  }
+
+  /* Editorial-style numeric watermark in the corner */
+  .ms-const-card::after {
+    content: attr(data-num);
+    position: absolute;
+    top: 18px; right: 26px;
+    font-family: ui-serif, Georgia, 'Times New Roman', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 92px;
+    line-height: 1;
+    letter-spacing: -0.05em;
+    color: rgba(10, 92, 216, 0.06);
+    pointer-events: none;
+    transition: color .55s ease, transform .55s cubic-bezier(.2,.7,.2,1);
+  }
+  .ms-const-card:hover::after {
+    color: rgba(255, 255, 255, 0.16);
+    transform: translateY(-2px);
+  }
+
+  /* Hover fill: deep navy → cobalt gradient with subtle highlight */
+  .ms-const-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 90% 0%, rgba(110, 198, 255, 0.35) 0%, transparent 55%),
+      linear-gradient(150deg, #0A5CD8 0%, #0E3F8E 55%, #07235A 100%);
+    opacity: 0;
+    border-radius: 22px;
+    transition: opacity .55s cubic-bezier(.2,.7,.2,1);
+    z-index: -1;
+  }
+  .ms-const-card > * { position: relative; z-index: 1; }
+  .ms-const-card:hover {
+    transform: translateY(-4px);
+    border-color: transparent;
+    box-shadow: 0 30px 60px -22px rgba(10, 30, 80, 0.55),
+                0 8px 18px -14px rgba(10, 30, 80, 0.35);
+    background: transparent;
+  }
+  .ms-const-card:hover::before { opacity: 1; }
+
+  /* Icon: no tile, just stroke + a thin accent rule underneath */
+  .ms-const-card__ic {
+    width: 44px; height: 44px;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    color: #0A5CD8;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 0 30px;
+    position: relative;
+    transition: color .45s ease;
+  }
+  .ms-const-card__ic::after {
+    content: '';
+    position: absolute;
+    bottom: -14px; left: 0;
+    width: 28px; height: 1px;
+    background: linear-gradient(90deg, #0A5CD8 0%, transparent 100%);
+    transition: width .55s cubic-bezier(.2,.7,.2,1),
+                background .45s ease;
+  }
+  .ms-const-card__ic svg {
+    width: 30px; height: 30px;
+    stroke-width: 1.4;
+  }
+  .ms-const-card:hover .ms-const-card__ic { color: #FFFFFF; }
+  .ms-const-card:hover .ms-const-card__ic::after {
+    width: 60px;
+    background: linear-gradient(90deg, #FFFFFF 0%, transparent 100%);
+  }
+
+  /* Title: lighter weight, tighter tracking for editorial feel */
+  .ms-const-card h3 {
+    font: 600 22px/1.22 Inter, ui-sans-serif, system-ui, sans-serif;
+    color: #0B1B35;
+    letter-spacing: -0.025em;
+    margin: 0 0 12px;
+    transition: color .45s ease;
+  }
+  .ms-const-card:hover h3 { color: #FFFFFF; }
+
+  /* Body: more breathing room, muted */
+  .ms-const-card p {
+    font: 400 14.5px/1.65 Inter, sans-serif;
+    color: #56627A;
+    margin: 0 0 30px;
+    transition: color .45s ease;
+  }
+  .ms-const-card:hover p { color: rgba(255, 255, 255, 0.82); }
+
+  /* Tag: kill the pill — refined uppercase line with leader dash */
+  .ms-const-card__tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font: 600 10.5px/1 Inter, sans-serif;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #0A5CD8;
+    background: transparent;
+    border: none;
+    padding: 0;
+    position: relative;
+    transition: color .45s ease, letter-spacing .45s ease;
+  }
+  .ms-const-card__tag::before {
+    content: '';
+    width: 22px; height: 1px;
+    background: currentColor;
+    transition: width .55s cubic-bezier(.2,.7,.2,1);
+  }
+  .ms-const-card:hover .ms-const-card__tag {
+    color: #6EC6FF;
+    letter-spacing: 0.20em;
+  }
+  .ms-const-card:hover .ms-const-card__tag::before {
+    width: 44px;
+  }
+
+  /* Package layout: card becomes a flex column with tags + CTA at the bottom */
+  .ms-const-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 380px;
+  }
+  .ms-const-card p { flex: 0 0 auto; }
+  .ms-const-card__chips-label {
+    font: 700 9.5px/1 Inter, sans-serif;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #94A3B8;
+    margin-bottom: 12px;
+    transition: color .45s ease;
+  }
+  .ms-const-card:hover .ms-const-card__chips-label { color: rgba(255,255,255,0.55); }
+  .ms-const-card__chips {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    margin-bottom: 24px;
+  }
+  .ms-const-card__chip {
+    display: inline-block;
+    font: 600 10.5px/1 Inter, sans-serif;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #0A5CD8;
+    background: rgba(10, 92, 216, 0.07);
+    border: 1px solid rgba(10, 92, 216, 0.14);
+    padding: 6px 10px;
+    border-radius: 999px;
+    transition: background .35s ease, color .35s ease, border-color .35s ease;
+  }
+  .ms-const-card:hover .ms-const-card__chip {
+    color: #FFFFFF;
+    background: rgba(255, 255, 255, 0.10);
+    border-color: rgba(255, 255, 255, 0.20);
+  }
+  .ms-const-card__cta {
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font: 600 12.5px/1 Inter, sans-serif;
+    letter-spacing: 0.02em;
+    color: #0B1B35;
+    text-decoration: none;
+    padding-top: 16px;
+    border-top: 1px solid rgba(11, 27, 53, 0.10);
+    transition: color .45s ease, gap .35s cubic-bezier(.2,.7,.2,1),
+                border-color .45s ease;
+  }
+  .ms-const-card__cta svg {
+    width: 14px; height: 14px;
+    transition: transform .35s cubic-bezier(.2,.7,.2,1);
+  }
+  .ms-const-card:hover .ms-const-card__cta {
+    color: #FFFFFF;
+    gap: 12px;
+    border-top-color: rgba(255, 255, 255, 0.25);
+  }
+  .ms-const-card:hover .ms-const-card__cta svg { transform: translateX(2px); }
+</style>
+
+<section class="ms-constants" aria-label="How MasterStock operates on every deal">
+  <div class="ms-constants__bg" aria-hidden="true"></div>
+  <div class="ms-constants__wrap">
+    <div class="ms-constants__head">
+      <span class="ms-constants__eye" data-es="Cómo operamos">How we operate</span>
+      <h2 class="ms-constants__title" data-es="Cuatro estándares. &lt;span class=&quot;grad&quot;&gt;Cada deal, cada ciclo.&lt;/span&gt;">
+        Four standards. <span class="grad">Every deal, every cycle.</span>
+      </h2>
+      <p class="ms-constants__lead" data-es="El crédito crece y los lotes mejoran con tu track record. Pero la forma en que operamos no cambia. Estos son los cuatro estándares que aplican desde tu primer pedido.">
+        Credit grows and lots get better with your track record. But the way we operate doesn't change. These are the four standards that apply from your very first order.
+      </p>
+    </div>
+
+    <div class="ms-constants__grid">
+
+      <!-- 01 — CAPITAL -->
+      <article class="ms-const-card" data-num="01">
+        <div class="ms-const-card__ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/><path d="M16 4l3 3"/></svg>
+        </div>
+        <h3 data-es="Capital. Día cero del lado nuestro.">Capital. Day zero on our side.</h3>
+        <p data-es="Le pagamos al supplier en USD por wire el día cero. Tu línea crece con tu historial, no con tu registro.">We wire the US supplier on day zero. Your line grows with your track record, not with your signup.</p>
+        <div class="ms-const-card__chips-label" data-es="Lo que incluye:">Inside this standard:</div>
+        <div class="ms-const-card__chips">
+          <span class="ms-const-card__chip" data-es="Wire en día cero">Day-zero wire</span>
+          <span class="ms-const-card__chip">Net-7</span>
+          <span class="ms-const-card__chip">Net-15</span>
+          <span class="ms-const-card__chip">Net-30</span>
+        </div>
+        <a class="ms-const-card__cta" href="#how-the-bundle-works">
+          <span data-es="Ver la escalera de crédito">See the credit ladder</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+        </a>
+      </article>
+
+      <!-- 02 — CATALOG -->
+      <article class="ms-const-card" data-num="02">
+        <div class="ms-const-card__ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6"/><path d="m20 20-4-4"/><path d="m8 11 2 2 3-3"/></svg>
+        </div>
+        <h3 data-es="Catálogo curado, no abierto.">Curated catalog, not open.</h3>
+        <p data-es="Sólo te mostramos lotes que podrían calzar tu canal. Cazamos contra tu demanda con derecho de primer rechazo.">You only see lots that could fit your channel. We source against your demand with right-of-first-refusal.</p>
+        <div class="ms-const-card__chips-label" data-es="Lo que incluye:">Inside this standard:</div>
+        <div class="ms-const-card__chips">
+          <span class="ms-const-card__chip" data-es="Contra tu demanda">Demand-driven</span>
+          <span class="ms-const-card__chip" data-es="Derecho de primer rechazo">Right-of-first-refusal</span>
+          <span class="ms-const-card__chip" data-es="Proveedores Tier-1">Tier-1 suppliers</span>
+          <span class="ms-const-card__chip" data-es="3PLs del Northeast">Northeast 3PLs</span>
+        </div>
+        <a class="ms-const-card__cta" href="/how-it-works/">
+          <span data-es="Ver canales de sourcing">See sourcing channels</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+        </a>
+      </article>
+
+      <!-- 03 — MANIFEST -->
+      <article class="ms-const-card" data-num="03">
+        <div class="ms-const-card__ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.4 8.5 8 10 4.6-1.5 8-5 8-10V6z"/><path d="m9 12 2.2 2.2L15 10.4" stroke-width="2.2"/></svg>
+        </div>
+        <h3 data-es="Manifiesto verificado antes de listar.">Manifest verified before listing.</h3>
+        <p data-es="Cada lote se fotografía, cuenta, grada y firma por un fundador antes de aparecer en el catálogo.">Every lot is photographed, counted, graded, and founder-signed before it reaches the catalog.</p>
+        <div class="ms-const-card__chips-label" data-es="Lo que incluye:">Inside this standard:</div>
+        <div class="ms-const-card__chips">
+          <span class="ms-const-card__chip" data-es="Firmado por el founder">Founder-signed</span>
+          <span class="ms-const-card__chip" data-es="Fotografiado">Photographed</span>
+          <span class="ms-const-card__chip" data-es="Contado">Counted</span>
+          <span class="ms-const-card__chip" data-es="Graduado">Graded</span>
+        </div>
+        <a class="ms-const-card__cta" href="/how-it-works/#lot-anatomy">
+          <span data-es="Ver un manifest de ejemplo">See a sample manifest</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+        </a>
+      </article>
+
+      <!-- 04 — RECOURSE -->
+      <article class="ms-const-card" data-num="04">
+        <div class="ms-const-card__ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><path d="M12 14.5v3"/></svg>
+        </div>
+        <h3 data-es="Recurso del lado nuestro.">Recourse on our side.</h3>
+        <p data-es="Conservamos el título de la mercancía hasta que se paga. Cero ciclos de disputa, recurso sobre el lote, no sobre ti.">We hold title to the inventory until it's paid. No dispute loops, recourse stays on the lot, not on you.</p>
+        <div class="ms-const-card__chips-label" data-es="Lo que incluye:">Inside this standard:</div>
+        <div class="ms-const-card__chips">
+          <span class="ms-const-card__chip" data-es="Título retenido">Title retained</span>
+          <span class="ms-const-card__chip" data-es="Bill of Sale">Bill of Sale</span>
+          <span class="ms-const-card__chip" data-es="Sin ciclos de disputa">No dispute loop</span>
+          <span class="ms-const-card__chip" data-es="Recurso sobre el lote">Recourse on lot</span>
+        </div>
+        <a class="ms-const-card__cta" href="/terms.html">
+          <span data-es="Leer los términos">Read the terms</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+        </a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+
 
 <!-- ============ REVIEWS WALL (auction floors warning) ============ -->
 <style>
-  .ms-reviews-wall { padding: 96px 0; background: #FFFFFF; }
+  .ms-reviews-wall { padding: 64px 0 72px; background: #FFFFFF; }
   .ms-reviews-wall .ms-rev-head-wrap { max-width: 760px; margin: 0 auto; text-align: center; }
-  .ms-reviews-wall .ms-rev-eyebrow { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.18em; color: #0A5CD8; margin-bottom: 14px; }
-  .ms-reviews-wall .ms-rev-h2 { font-size: clamp(28px, 4.2vw, 44px); font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; color: #0B1B35; margin: 0 0 18px; }
+  .ms-reviews-wall .ms-rev-eyebrow { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.18em; color: #0A5CD8; margin-bottom: 12px; }
+  .ms-reviews-wall .ms-rev-h2 { font-size: clamp(24px, 3.6vw, 36px); font-weight: 800; line-height: 1.18; letter-spacing: -0.02em; color: #0B1B35; margin: 0 0 14px; }
   .ms-reviews-wall .ms-rev-h2-accent { background: linear-gradient(135deg, #0A5CD8 0%, #6EC6FF 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
-  .ms-reviews-wall .ms-rev-lead { font-size: 15.5px; line-height: 1.6; color: #475569; margin: 0; }
-  .ms-reviews-wall .ms-rev-grid { margin-top: 56px; display: grid; grid-template-columns: 1fr; gap: 18px; max-width: 1180px; margin-left: auto; margin-right: auto; }
-  .ms-reviews-wall .ms-rev-card { background: #fff; border: 1px solid #E2E8F0; border-radius: 14px; padding: 0; display: grid; grid-template-columns: 1fr auto 1fr; align-items: stretch; transition: transform .25s cubic-bezier(0.16,1,0.3,1), box-shadow .25s ease, border-color .25s ease; overflow: hidden; }
-  .ms-reviews-wall .ms-rev-card:hover { transform: translateY(-3px); box-shadow: 0 20px 40px -20px rgba(15,23,42,0.18); border-color: rgba(10,92,216,0.25); }
-  .ms-reviews-wall .ms-rev-pane { padding: 22px; display: flex; flex-direction: column; }
-  .ms-reviews-wall .ms-rev-pane-fix { background: linear-gradient(135deg, #F8FAFC 0%, #EFF6FF 100%); }
+  .ms-reviews-wall .ms-rev-lead { font-size: 14.5px; line-height: 1.55; color: #475569; margin: 0; }
+  .ms-reviews-wall .ms-rev-grid { margin-top: 32px; display: grid; grid-template-columns: 1fr; gap: 8px; max-width: 1180px; margin-left: auto; margin-right: auto; }
+  .ms-reviews-wall .ms-rev-card { background: #fff; border: 1px solid #E2E8F0; border-radius: 10px; padding: 0; display: grid; grid-template-columns: 1fr auto 1fr; align-items: stretch; transition: transform .2s cubic-bezier(0.16,1,0.3,1), box-shadow .2s ease, border-color .2s ease; overflow: hidden; }
+  .ms-reviews-wall .ms-rev-card:hover { transform: translateY(-2px); box-shadow: 0 12px 24px -16px rgba(15,23,42,0.18); border-color: rgba(10,92,216,0.25); }
+  .ms-reviews-wall .ms-rev-pane { padding: 12px 14px; display: flex; flex-direction: column; }
+  .ms-reviews-wall .ms-rev-pane-fix {
+    background: linear-gradient(135deg, #F8FAFC 0%, #EFF6FF 100%);
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    grid-template-rows: auto auto auto;
+    column-gap: 10px;
+    row-gap: 2px;
+    align-items: start;
+  }
+  .ms-reviews-wall .ms-rev-pane-fix .ms-rev-fix-eyebrow { grid-column: 1 / -1; margin-bottom: 4px; }
+  .ms-reviews-wall .ms-rev-pane-fix .ms-rev-fix-icon { grid-column: 1; grid-row: 2 / span 2; align-self: start; margin-top: 2px; }
+  .ms-reviews-wall .ms-rev-pane-fix .ms-rev-fix-title { grid-column: 2; grid-row: 2; }
+  .ms-reviews-wall .ms-rev-pane-fix .ms-rev-fix-body { grid-column: 2; grid-row: 3; }
   .ms-reviews-wall .ms-rev-arrow { display: flex; align-items: center; justify-content: center; position: relative; width: 0; }
-  .ms-reviews-wall .ms-rev-arrow svg { position: absolute; left: -14px; top: 50%; transform: translateY(-50%); background: #fff; border: 1px solid #E2E8F0; border-radius: 50%; padding: 5px; width: 28px; height: 28px; color: #0A5CD8; }
-  .ms-reviews-wall .ms-rev-fix-eyebrow { display: inline-flex; align-items: center; gap: 5px; align-self: flex-start; padding: 3px 8px; margin-bottom: 14px; background: rgba(10,92,216,0.08); border: 1px solid rgba(10,92,216,0.25); color: #0A5CD8; font-size: 10.5px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; border-radius: 999px; }
-  .ms-reviews-wall .ms-rev-fix-eyebrow::before { content: ""; width: 6px; height: 6px; background: #0A5CD8; border-radius: 50%; }
-  .ms-reviews-wall .ms-rev-fix-icon { width: 32px; height: 32px; border-radius: 8px; background: linear-gradient(135deg, #0A5CD8 0%, #2563EB 100%); display: inline-flex; align-items: center; justify-content: center; color: #fff; margin-bottom: 10px; }
-  .ms-reviews-wall .ms-rev-fix-icon svg { width: 18px; height: 18px; }
-  .ms-reviews-wall .ms-rev-fix-title { font-size: 16px; font-weight: 800; color: #0B1B35; line-height: 1.3; letter-spacing: -0.01em; margin: 0 0 8px; }
-  .ms-reviews-wall .ms-rev-fix-body { font-size: 13.5px; line-height: 1.55; color: #475569; margin: 0; }
+  .ms-reviews-wall .ms-rev-arrow svg { position: absolute; left: -11px; top: 50%; transform: translateY(-50%); background: #fff; border: 1px solid #E2E8F0; border-radius: 50%; padding: 4px; width: 22px; height: 22px; color: #0A5CD8; z-index: 2; }
+  .ms-reviews-wall .ms-rev-fix-eyebrow { display: inline-flex; align-items: center; gap: 4px; align-self: flex-start; padding: 2px 7px; margin-bottom: 6px; background: rgba(10,92,216,0.08); border: 1px solid rgba(10,92,216,0.25); color: #0A5CD8; font-size: 9.5px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; border-radius: 999px; }
+  .ms-reviews-wall .ms-rev-fix-eyebrow::before { content: ""; width: 5px; height: 5px; background: #0A5CD8; border-radius: 50%; }
+  .ms-reviews-wall .ms-rev-fix-icon { width: 28px; height: 28px; border-radius: 7px; background: linear-gradient(135deg, #0A5CD8 0%, #2563EB 100%); display: inline-flex; align-items: center; justify-content: center; color: #fff; flex-shrink: 0; }
+  .ms-reviews-wall .ms-rev-fix-icon svg { width: 14px; height: 14px; }
+  .ms-reviews-wall .ms-rev-fix-title { font-size: 13.5px; font-weight: 800; color: #0B1B35; line-height: 1.3; letter-spacing: -0.01em; margin: 0 0 3px; }
+  .ms-reviews-wall .ms-rev-fix-body { font-size: 12px; line-height: 1.45; color: #475569; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
   @media (max-width: 720px) {
     .ms-reviews-wall .ms-rev-card { grid-template-columns: 1fr; }
     .ms-reviews-wall .ms-rev-arrow { width: auto; height: 0; }
-    .ms-reviews-wall .ms-rev-arrow svg { left: 50%; top: -14px; transform: translateX(-50%) rotate(90deg); }
+    .ms-reviews-wall .ms-rev-arrow svg { left: 50%; top: -11px; transform: translateX(-50%) rotate(90deg); }
     .ms-reviews-wall .ms-rev-pane-fix { border-top: 1px solid #E2E8F0; }
   }
-  .ms-reviews-wall .ms-rev-card-head { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
-  .ms-reviews-wall .ms-rev-avatar { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; font-size: 13px; font-weight: 800; color: #fff; flex: 0 0 auto; }
-  .ms-reviews-wall .ms-rev-meta { flex: 1; min-width: 0; }
-  .ms-reviews-wall .ms-rev-name { font-size: 13.5px; font-weight: 700; color: #0B1B35; line-height: 1.2; }
-  .ms-reviews-wall .ms-rev-sub  { font-size: 11.5px; color: #94A3B8; margin-top: 2px; }
-  .ms-reviews-wall .ms-rev-date { font-size: 11.5px; color: #94A3B8; flex: 0 0 auto; }
-  .ms-reviews-wall .ms-rev-stars { display: inline-flex; gap: 2px; margin-bottom: 10px; }
-  .ms-reviews-wall .ms-rev-stars span { width: 14px; height: 14px; background: #E2E8F0; clip-path: polygon(50% 0, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); }
+  .ms-reviews-wall .ms-rev-card-head { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+  .ms-reviews-wall .ms-rev-avatar { width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; font-size: 10.5px; font-weight: 800; color: #fff; flex: 0 0 auto; }
+  .ms-reviews-wall .ms-rev-meta { flex: 1; min-width: 0; display: flex; align-items: baseline; gap: 6px; }
+  .ms-reviews-wall .ms-rev-name { font-size: 12px; font-weight: 700; color: #0B1B35; line-height: 1.2; }
+  .ms-reviews-wall .ms-rev-sub { font-size: 10.5px; color: #94A3B8; }
+  .ms-reviews-wall .ms-rev-date { font-size: 10.5px; color: #94A3B8; flex: 0 0 auto; }
+  .ms-reviews-wall .ms-rev-stars { display: inline-flex; gap: 1px; margin-bottom: 5px; }
+  .ms-reviews-wall .ms-rev-stars span { width: 11px; height: 11px; background: #E2E8F0; clip-path: polygon(50% 0, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); }
   .ms-reviews-wall .ms-rev-stars span.on { background: #EF4444; }
-  .ms-reviews-wall .ms-rev-title { font-size: 14.5px; font-weight: 700; color: #0B1B35; margin-bottom: 8px; line-height: 1.35; letter-spacing: -0.01em; }
-  .ms-reviews-wall .ms-rev-body  { font-size: 12.5px; line-height: 1.55; color: #475569; overflow: hidden; }
-  .ms-reviews-wall .ms-redacted { display: inline-block; background: #0B1B35; color: #0B1B35; padding: 0 8px; border-radius: 3px; user-select: none; -webkit-user-select: none; vertical-align: baseline; letter-spacing: 0.04em; }
-  .ms-reviews-wall .ms-rev-footnote { margin-top: 36px; text-align: center; font-size: 14px; color: #475569; }
+  .ms-reviews-wall .ms-rev-title { font-size: 13px; font-weight: 700; color: #0B1B35; margin-bottom: 3px; line-height: 1.3; letter-spacing: -0.01em; }
+  .ms-reviews-wall .ms-rev-body { font-size: 11.5px; line-height: 1.45; color: #475569; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+  .ms-reviews-wall .ms-redacted { display: inline-block; background: #0B1B35; color: #0B1B35; padding: 0 6px; border-radius: 2px; user-select: none; -webkit-user-select: none; vertical-align: baseline; letter-spacing: 0.04em; font-size: 0.85em; }
+  .ms-reviews-wall .ms-rev-footnote { margin-top: 24px; text-align: center; font-size: 13px; color: #475569; }
   .ms-reviews-wall .ms-rev-footnote a { color: #0A5CD8; font-weight: 600; }
   .ms-reviews-wall .ms-rev-footnote a:hover { text-decoration: underline; }
   /* Competitor badge on each card */
-  .ms-reviews-wall .ms-rev-badge { display: inline-flex; align-items: center; gap: 5px; align-self: flex-start; padding: 3px 8px; margin-bottom: 10px; background: #FEF2F2; border: 1px solid #FCA5A5; color: #B91C1C; font-size: 10.5px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; border-radius: 999px; }
-  .ms-reviews-wall .ms-rev-badge::before { content: ""; width: 6px; height: 6px; background: #EF4444; border-radius: 50%; }
+  .ms-reviews-wall .ms-rev-badge { display: inline-flex; align-items: center; gap: 4px; align-self: flex-start; padding: 2px 7px; margin-bottom: 6px; background: #FEF2F2; border: 1px solid #FCA5A5; color: #B91C1C; font-size: 9.5px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; border-radius: 999px; }
+  .ms-reviews-wall .ms-rev-badge::before { content: ""; width: 5px; height: 5px; background: #EF4444; border-radius: 50%; }
 </style>
 <section class="ms-reviews-wall">
   <div class="max-w-7xl mx-auto px-5 sm:px-8">
