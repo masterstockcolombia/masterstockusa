@@ -3578,6 +3578,7 @@ html::-webkit-scrollbar:horizontal, body::-webkit-scrollbar:horizontal, *::-webk
   <div class="relative max-w-7xl mx-auto px-5 sm:px-8 pt-6 sm:pt-10 lg:pt-14 pb-12 lg:pb-16">
     <div class="grid lg:grid-cols-12 gap-10 lg:gap-8 items-center">
       <div class="lg:col-span-6 text-left max-w-2xl">
+        <p class="text-xs font-bold tracking-widest uppercase text-blue-600 mb-3 reveal reveal-delay-1">Cross-Border B2B Trade Finance &middot; US&nbsp;Liquidation</p>
         <h1 class="font-extrabold reveal reveal-delay-1" data-es="Lo &lt;span class=&quot;gradient-text&quot;&gt;encontramos&lt;/span&gt;. Lo &lt;span class=&quot;gradient-text&quot;&gt;financiamos&lt;/span&gt;. Tú lo vendes.">
           We <span class="gradient-text">find it</span>. We <span class="gradient-text">finance it</span>. You sell it.
         </h1>
@@ -4974,8 +4975,8 @@ html::-webkit-scrollbar:horizontal, body::-webkit-scrollbar:horizontal, *::-webk
           </div>
         </div>
 
-        <p class="ms-loop__illus-sub" data-es="*Net-30 sujeto a aprobación, contrato de crédito aparte y discreción de MasterStock. Las condiciones estándar son wire al liberar.">
-          *Net-30 subject to approval, separate credit agreement and MasterStock's discretion. Standard terms are wire on release.
+        <p class="ms-loop__illus-sub" data-es="*Net-30 sujeto a aprobación, contrato de crédito aparte y discreción de MasterStock. Las condiciones estándar son wire al liberar. Las métricas mostradas son proyecciones del modelo de deals, no cifras históricas.">
+          *Net-30 subject to approval, separate credit agreement and MasterStock's discretion. Standard terms are wire on release. Stats shown are model projections, not historical figures.
         </p>
       </div>
     </div>
@@ -5150,6 +5151,355 @@ html::-webkit-scrollbar:horizontal, body::-webkit-scrollbar:horizontal, *::-webk
 })();
 </script>
 
+
+<!-- ============================================================
+     CREDIT LADDER — wire-on-release → 30%+Net-15 → Net-30 full.
+     ============================================================ -->
+<style>
+  .ms-ladder {
+    position: relative;
+    padding: 80px 24px 96px;
+    background: linear-gradient(180deg, #06112A 0%, #0D1F3C 100%);
+    overflow: hidden;
+  }
+  .ms-ladder::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      radial-gradient(circle at 15% 50%, rgba(110,198,255,0.07) 0, transparent 45%),
+      radial-gradient(circle at 85% 30%, rgba(10,92,216,0.09) 0, transparent 40%);
+    pointer-events: none;
+  }
+  .ms-ladder__wrap {
+    position: relative; z-index: 2;
+    max-width: 1100px; margin: 0 auto;
+  }
+  .ms-ladder__head {
+    text-align: center; margin-bottom: 48px;
+  }
+  .ms-ladder__eyebrow {
+    display: inline-block;
+    font: 700 11px/1 Inter, ui-sans-serif, system-ui, sans-serif;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: #6EC6FF; margin-bottom: 14px;
+  }
+  .ms-ladder__title {
+    font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+    font-size: clamp(26px, 3vw, 38px); font-weight: 800;
+    color: #FFFFFF; line-height: 1.15; letter-spacing: -0.018em;
+    margin: 0 0 14px;
+  }
+  .ms-ladder__title .grad {
+    background: linear-gradient(135deg, #6EC6FF 0%, #A0DEFF 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .ms-ladder__lead {
+    font-size: 15.5px; color: rgba(255,255,255,0.6); line-height: 1.55;
+    max-width: 580px; margin: 0 auto;
+  }
+  .ms-ladder__steps {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  @media (min-width: 720px) {
+    .ms-ladder__steps {
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+      align-items: start; gap: 0;
+    }
+  }
+  .ms-ladder__step {
+    background: rgba(255,255,255,0.04);
+    border: 1.5px solid rgba(110,198,255,0.14);
+    border-radius: 16px;
+    padding: 28px 24px 24px;
+  }
+  .ms-ladder__step--peak {
+    border-color: rgba(110,198,255,0.4);
+    background: rgba(10,92,216,0.2);
+  }
+  .ms-ladder__step-badge {
+    display: inline-block;
+    font: 700 10.5px/1 Inter, sans-serif;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: #6EC6FF;
+    background: rgba(110,198,255,0.1);
+    border: 1px solid rgba(110,198,255,0.22);
+    border-radius: 4px;
+    padding: 4px 8px;
+    margin-bottom: 16px;
+  }
+  .ms-ladder__step--peak .ms-ladder__step-badge {
+    color: #FFFFFF;
+    background: rgba(10,92,216,0.5);
+    border-color: rgba(110,198,255,0.45);
+  }
+  .ms-ladder__step-cycle {
+    font: 700 11px/1 Inter, sans-serif;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: rgba(255,255,255,0.38);
+    margin-bottom: 10px;
+  }
+  .ms-ladder__step-term {
+    font: 800 clamp(24px, 3.5vw, 36px)/1 Inter, sans-serif;
+    color: #FFFFFF; margin-bottom: 12px;
+  }
+  .ms-ladder__step--peak .ms-ladder__step-term {
+    background: linear-gradient(135deg, #6EC6FF 0%, #A0DEFF 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .ms-ladder__step-desc {
+    font-size: 13.5px; color: rgba(255,255,255,0.52);
+    line-height: 1.6;
+  }
+  .ms-ladder__arrow {
+    display: none;
+  }
+  @media (min-width: 720px) {
+    .ms-ladder__arrow {
+      display: flex; align-items: center; justify-content: center;
+      width: 36px; flex-shrink: 0; padding-top: 60px;
+      color: rgba(110,198,255,0.45);
+    }
+    .ms-ladder__arrow svg { width: 20px; height: 20px; }
+  }
+  .ms-ladder__callout {
+    background: rgba(255,255,255,0.04);
+    border: 1.5px solid rgba(110,198,255,0.12);
+    border-left: 3px solid #0A5CD8;
+    border-radius: 12px;
+    padding: 28px 32px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  @media (min-width: 720px) {
+    .ms-ladder__callout { grid-template-columns: 1fr 280px; gap: 40px; align-items: center; }
+  }
+  .ms-ladder__callout-eyebrow {
+    font: 700 10.5px/1 Inter, sans-serif;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: rgba(110,198,255,0.7); margin-bottom: 10px;
+  }
+  .ms-ladder__callout-title {
+    font: 700 16px/1.35 Inter, sans-serif;
+    color: #FFFFFF; margin: 0 0 8px;
+  }
+  .ms-ladder__callout-body {
+    font-size: 13.5px; color: rgba(255,255,255,0.55); line-height: 1.6; margin: 0;
+  }
+  .ms-ladder__callout-stat {
+    text-align: left;
+    padding: 20px 24px;
+    background: rgba(10,92,216,0.2);
+    border: 1px solid rgba(110,198,255,0.2);
+    border-radius: 10px;
+  }
+  @media (min-width: 720px) {
+    .ms-ladder__callout-stat { text-align: center; }
+  }
+  .ms-ladder__callout-num {
+    font: 800 clamp(28px, 4vw, 42px)/1 Inter, sans-serif;
+    color: #6EC6FF; display: block; margin-bottom: 6px;
+  }
+  .ms-ladder__callout-num-lbl {
+    font: 400 12px/1.45 Inter, sans-serif;
+    color: rgba(255,255,255,0.45);
+  }
+</style>
+
+<section id="credit-ladder" class="ms-ladder" aria-label="Credit ladder">
+  <div class="ms-ladder__wrap">
+    <div class="ms-ladder__head">
+      <span class="ms-ladder__eyebrow" data-es="Escalera de crédito">Credit ladder</span>
+      <h2 class="ms-ladder__title" data-es="Tu línea crece con tu &lt;span class=&quot;grad&quot;&gt;track record.&lt;/span&gt;">
+        Your line grows with your <span class="grad">track record.</span>
+      </h2>
+      <p class="ms-ladder__lead" data-es="No necesitas historial crediticio en EE. UU. ni cuenta bancaria allá. Empiezas en el primer peldaño y subes con cada ciclo que pagas limpio.">
+        No US credit history required. No US bank account. You start at the first rung and climb with every clean cycle.
+      </p>
+    </div>
+
+    <div class="ms-ladder__steps">
+      <div class="ms-ladder__step">
+        <span class="ms-ladder__step-badge" data-es="Ciclo 1">Cycle 1</span>
+        <div class="ms-ladder__step-cycle" data-es="Condiciones estándar">Standard terms</div>
+        <div class="ms-ladder__step-term" data-es="Wire al liberar">Wire-on-release</div>
+        <p class="ms-ladder__step-desc" data-es="Pagas antes de que el lote salga de nuestro cross-dock en NJ. Sin exposición de crédito de nuestra parte. Sin barreras de entrada para ti.">
+          You pay before the lot ships from our NJ cross-dock. No credit exposure on our end. No entry barrier on yours.
+        </p>
+      </div>
+
+      <div class="ms-ladder__arrow" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+      </div>
+
+      <div class="ms-ladder__step">
+        <span class="ms-ladder__step-badge" data-es="Ciclo 2">Cycle 2</span>
+        <div class="ms-ladder__step-cycle" data-es="Primer crédito parcial">First partial credit</div>
+        <div class="ms-ladder__step-term">30% + Net-15</div>
+        <p class="ms-ladder__step-desc" data-es="30% de entrada, el 70% restante a Net-15 desde recepción. Tu primer acceso a capital diferido en USD cross-border.">
+          30% down, 70% at Net-15 from delivery. Your first access to deferred USD capital cross-border.
+        </p>
+      </div>
+
+      <div class="ms-ladder__arrow" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+      </div>
+
+      <div class="ms-ladder__step ms-ladder__step--peak">
+        <span class="ms-ladder__step-badge" data-es="Ciclo 3+">Cycle 3+</span>
+        <div class="ms-ladder__step-cycle" data-es="Crédito completo — solo compradores aprobados">Full credit, approved buyers only</div>
+        <div class="ms-ladder__step-term">Net-30</div>
+        <p class="ms-ladder__step-desc" data-es="Crédito completo a 30 días en USD. Solo a compradores aprobados bajo acuerdo de crédito firmado y a discreción de MasterStock. Ningún banco te da esto sin SSN ni historial en EE. UU.">
+          Full 30-day credit in USD. Extended only to approved buyers under a signed credit agreement and at MasterStock's discretion. No bank offers this without a US SSN or credit history.
+        </p>
+      </div>
+    </div>
+
+    <div class="ms-ladder__callout">
+      <div>
+        <p class="ms-ladder__callout-eyebrow" data-es="Por qué importadores LATAM no tienen alternativa">Why LATAM importers have no alternative</p>
+        <p class="ms-ladder__callout-title" data-es="El financiamiento en USD cross-border no existe para empresas LATAM. Nosotros lo construimos.">Cross-border USD financing doesn't exist for LATAM companies. We built it.</p>
+        <p class="ms-ladder__callout-body" data-es="Los bancos en LATAM no financian importaciones de EE. UU. en USD sin garantías locales. Los suppliers en EE. UU. no dan crédito a empresas extranjeras sin historial local. Los prestamistas informales cobran 36-60%+ anualizado. MasterStock asume ese riesgo de crédito porque estamos en el balance en ambos lados del deal, con el inventario como colateral.">
+          Banks in LATAM won't finance US imports in USD without local collateral. US suppliers don't extend credit to foreign companies without local history. Informal lenders charge 36-60%+ annualized. MasterStock takes that credit risk because we are on the balance sheet on both sides of the deal, with inventory as collateral.
+        </p>
+      </div>
+      <div class="ms-ladder__callout-stat">
+        <span class="ms-ladder__callout-num">36&ndash;60%</span>
+        <span class="ms-ladder__callout-num-lbl" data-es="Costo anualizado del financiamiento alternativo para importadores LATAM (prestamistas informales). El costo de MasterStock está embebido en el precio FOB.">Annualized cost of alternative financing for LATAM importers (informal lenders). MasterStock's cost is embedded in the FOB price.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     WHY NOW — market context: overstock surge + financing gap.
+     ============================================================ -->
+<style>
+  .ms-whynow {
+    position: relative;
+    padding: 80px 24px 88px;
+    background: #F8FAFC;
+    overflow: hidden;
+  }
+  .ms-whynow::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle at 90% 10%, rgba(10,92,216,0.05) 0, transparent 40%);
+    pointer-events: none;
+  }
+  .ms-whynow__wrap {
+    position: relative; z-index: 2;
+    max-width: 1100px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  @media (min-width: 800px) {
+    .ms-whynow__wrap { grid-template-columns: 1fr 1.5fr; gap: 64px; align-items: start; }
+  }
+  .ms-whynow__eyebrow {
+    display: inline-block;
+    font: 700 11px/1 Inter, ui-sans-serif, system-ui, sans-serif;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: #0A5CD8; margin-bottom: 14px;
+  }
+  .ms-whynow__title {
+    font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+    font-size: clamp(24px, 2.8vw, 36px); font-weight: 800;
+    color: #0B1B35; line-height: 1.18; letter-spacing: -0.015em;
+    margin: 0 0 14px;
+  }
+  .ms-whynow__title .grad {
+    background: linear-gradient(135deg, #0A5CD8 0%, #6EC6FF 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .ms-whynow__lead {
+    font-size: 15px; color: #4A5568; line-height: 1.6; margin: 0;
+  }
+  .ms-whynow__items {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-direction: column; gap: 20px;
+  }
+  .ms-whynow__item {
+    display: flex; gap: 16px; align-items: flex-start;
+  }
+  .ms-whynow__item-icon {
+    flex-shrink: 0;
+    width: 36px; height: 36px;
+    background: linear-gradient(135deg, #0A5CD8 0%, #3FA8FF 100%);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    color: #FFFFFF;
+  }
+  .ms-whynow__item-icon svg { width: 18px; height: 18px; }
+  .ms-whynow__item-body {}
+  .ms-whynow__item-title {
+    font: 700 14.5px/1.3 Inter, sans-serif;
+    color: #0B1B35; margin: 0 0 4px;
+  }
+  .ms-whynow__item-desc {
+    font-size: 13.5px; color: #4A5568; line-height: 1.6; margin: 0;
+  }
+</style>
+
+<section class="ms-whynow" aria-label="Why now">
+  <div class="ms-whynow__wrap">
+    <div>
+      <span class="ms-whynow__eyebrow" data-es="Por qué ahora">Why now</span>
+      <h2 class="ms-whynow__title" data-es="El mercado se abrió. &lt;span class=&quot;grad&quot;&gt;La mayoría lo perdió.&lt;/span&gt;">
+        The market opened. <span class="grad">Most missed it.</span>
+      </h2>
+      <p class="ms-whynow__lead" data-es="El corredor US &rarr; LATAM tiene un desequilibrio estructural: demasiado inventario del lado americano, demasiada demanda sin financiamiento del lado LATAM. Cuatro fuerzas lo están empujando a su punto de quiebre.">
+        The US &rarr; LATAM corridor has a structural imbalance: too much inventory on the US side, too much unfinanced demand on the LATAM side. Four forces are pushing it to a breaking point.
+      </p>
+    </div>
+
+    <ul class="ms-whynow__items">
+      <li class="ms-whynow__item">
+        <div class="ms-whynow__item-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h4l2 2h12v10a2 2 0 0 1-2 2H3z"/><path d="M3 6V4a1 1 0 0 1 1-1h3l2 3"/></svg>
+        </div>
+        <div class="ms-whynow__item-body">
+          <p class="ms-whynow__item-title" data-es="Sobrestock en EE. UU. en máximos históricos">US overstock at multi-year highs</p>
+          <p class="ms-whynow__item-desc" data-es="El front-loading de aranceles en 2025 y la corrección post-COVID dejaron a retailers y 3PLs del Northeast con exceso de inventario. El pipeline de lotes nunca fue tan profundo.">Tariff front-loading in 2025 and the post-COVID inventory correction left Northeast retailers and 3PLs with excess stock. The lot pipeline has never been deeper.</p>
+        </div>
+      </li>
+      <li class="ms-whynow__item">
+        <div class="ms-whynow__item-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="ms-whynow__item-body">
+          <p class="ms-whynow__item-title" data-es="Aranceles a China reordenan el sourcing LATAM">China tariffs are reshaping LATAM sourcing</p>
+          <p class="ms-whynow__item-desc" data-es="Los aranceles de Trump sobre importaciones chinas encogieron el catálogo de productos chinos baratos en LATAM. Los importadores buscan alternativas. El overstock americano es la respuesta, si pueden financiarlo.">Trump tariffs on Chinese imports shrank the cheap-China catalog for LATAM buyers. Importers are looking for alternatives. US overstock is the answer, if they can finance it.</p>
+        </div>
+      </li>
+      <li class="ms-whynow__item">
+        <div class="ms-whynow__item-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        </div>
+        <div class="ms-whynow__item-body">
+          <p class="ms-whynow__item-title" data-es="La demanda LATAM por marcas US nunca fue tan alta">LATAM demand for US brands at a record</p>
+          <p class="ms-whynow__item-desc" data-es="El dólar fuerte y la aspiración de marcas US siguen empujando el ticket promedio. Importadores Tier-1 en Chile, Colombia, México y Perú tienen la demanda pero no el acceso al inventario financiado.">A strong dollar and US brand aspiration keep pushing average tickets up. Tier-1 importers in Chile, Colombia, Mexico, and Peru have the demand but not access to financed inventory.</p>
+        </div>
+      </li>
+      <li class="ms-whynow__item">
+        <div class="ms-whynow__item-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <div class="ms-whynow__item-body">
+          <p class="ms-whynow__item-title" data-es="Ninguna institución financia el corredor">Zero institutional capital in the corridor</p>
+          <p class="ms-whynow__item-desc" data-es="Los bancos en EE. UU. no prestan a importadores LATAM sin historial local. Los bancos en LATAM no financian importaciones en USD sin colateral local. Este gap no desaparecerá solo.">US banks won't lend to LATAM importers without local history. LATAM banks won't finance USD imports without local collateral. This gap isn't going away on its own.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
 
 <!-- ============================================================
      CONSTANTS — what stays the same on every deal, every cycle.
@@ -5434,7 +5784,7 @@ html::-webkit-scrollbar:horizontal, body::-webkit-scrollbar:horizontal, *::-webk
           <span class="ms-const-card__chip">Net-15</span>
           <span class="ms-const-card__chip">Net-30</span>
         </div>
-        <a class="ms-const-card__cta" href="#how-the-bundle-works">
+        <a class="ms-const-card__cta" href="#credit-ladder">
           <span data-es="Ver la escalera de crédito">See the credit ladder</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
         </a>
