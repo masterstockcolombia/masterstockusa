@@ -221,27 +221,28 @@ body.menu-open .nav-toggle__dots span:first-child { transform: translateY(2px) r
 body.menu-open .nav-toggle__dots span:last-child { transform: translateY(-3px) rotate(-45deg); }
 
 @media (max-width: 640px) {
-  /* Fixed solid top bar: logo + request access + sign in + menu, always visible */
+  /* Fixed top bar: logo on the left, actions (request / sign in / menu) grouped on the right */
   .floating-nav {
-    top: 0; padding: 8px 12px;
+    top: 0; padding: 8px 14px; gap: 8px; justify-content: flex-start;
     background: rgba(11, 26, 51, 0.92);
     backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   }
   .floating-nav--scrolled {
-    background: rgba(252, 250, 244, 0.92);
+    background: rgba(252, 250, 244, 0.94);
     border-bottom-color: rgba(21, 35, 63, 0.10);
   }
   .floating-nav--hidden { transform: none; opacity: 1; }
-  .nav-pill, .nav-toggle, .nav-pill--ghost { height: 40px; }
+  .nav-logo { order: -1; margin-right: auto; }
+  .nav-pill--cta { order: 1; padding: 0 4px; }
+  .nav-right { order: 2; gap: 8px; }
+  .nav-pill, .nav-toggle, .nav-pill--ghost { height: 38px; }
   .nav-pill__label { display: none; }
-  .nav-pill--cta { padding: 0 4px; }
   .nav-pill--cta .nav-pill__icon, .nav-toggle__dots { width: 28px; height: 28px; }
-  .nav-pill--ghost { display: inline-flex; align-items: center; padding: 0 14px; font-size: 12px; }
+  .nav-pill--ghost { display: inline-flex; align-items: center; padding: 0 16px; font-size: 12px; }
   .nav-toggle { padding: 0 6px; gap: 0; }
   .nav-toggle__label { display: none; }
-  .nav-right { gap: 6px; }
-  .nav-logo__mark { width: 34px; height: 34px; }
+  .nav-logo__mark { width: 36px; height: 36px; }
   .nav-logo__name { display: none; }
 }
 
