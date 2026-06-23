@@ -233,7 +233,7 @@ body.menu-open .nav-toggle__dots span:last-child { transform: translateY(-3px) r
     border-bottom-color: rgba(21, 35, 63, 0.10);
   }
   .floating-nav--hidden { transform: none; opacity: 1; }
-  .nav-logo { order: -1; margin-right: auto; }
+  .nav-logo { order: -1; margin-right: auto; flex-direction: row; gap: 8px; }
   .nav-right { order: 2; gap: 8px; }
   .nav-pill, .nav-toggle, .nav-pill--ghost { height: 38px; }
   .nav-pill__label { display: none; }
@@ -246,7 +246,8 @@ body.menu-open .nav-toggle__dots span:last-child { transform: translateY(-3px) r
   .nav-toggle { padding: 0 6px; gap: 0; }
   .nav-toggle__label { display: none; }
   .nav-logo__mark { width: 36px; height: 36px; }
-  .nav-logo__name { display: none; }
+  .nav-logo__name { display: block; font-size: 12px; letter-spacing: 0.04em; }
+  .nav-logo__name span { display: none; }
 }
 
 /* ---------- Menu overlay ---------- */
