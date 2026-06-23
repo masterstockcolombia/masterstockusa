@@ -221,9 +221,28 @@ body.menu-open .nav-toggle__dots span:first-child { transform: translateY(2px) r
 body.menu-open .nav-toggle__dots span:last-child { transform: translateY(-3px) rotate(-45deg); }
 
 @media (max-width: 640px) {
-  .nav-pill--ghost { display: none; }
+  /* Fixed solid top bar: logo + request access + sign in + menu, always visible */
+  .floating-nav {
+    top: 0; padding: 8px 12px;
+    background: rgba(11, 26, 51, 0.92);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  .floating-nav--scrolled {
+    background: rgba(252, 250, 244, 0.92);
+    border-bottom-color: rgba(21, 35, 63, 0.10);
+  }
+  .floating-nav--hidden { transform: none; opacity: 1; }
+  .nav-pill, .nav-toggle, .nav-pill--ghost { height: 40px; }
   .nav-pill__label { display: none; }
-  .nav-pill--cta { padding: 0 8px; }
+  .nav-pill--cta { padding: 0 4px; }
+  .nav-pill--cta .nav-pill__icon, .nav-toggle__dots { width: 28px; height: 28px; }
+  .nav-pill--ghost { display: inline-flex; align-items: center; padding: 0 14px; font-size: 12px; }
+  .nav-toggle { padding: 0 6px; gap: 0; }
+  .nav-toggle__label { display: none; }
+  .nav-right { gap: 6px; }
+  .nav-logo__mark { width: 34px; height: 34px; }
+  .nav-logo__name { display: none; }
 }
 
 /* ---------- Menu overlay ---------- */
@@ -319,7 +338,7 @@ body.menu-open .menu-overlay { transform: scale(1) translateY(0); opacity: 1; po
 /* The vertical mobile clip has ~9% black letterbox baked into the top & bottom of the file;
    a slight zoom on phones pushes those bars off-screen (hero has overflow:hidden). */
 @media (max-width: 760px) {
-  .hero__video { transform: scale(1.25); transform-origin: center; }
+  .hero__video { transform: scale(1.12); transform-origin: center; }
 }
 .hero__veil {
   position: absolute; inset: 0; z-index: 1; pointer-events: none;
